@@ -38,8 +38,8 @@ export const zipDev = () => {
         if (app.settings.useExistingRepo) {
           await gitInstance.push('origin', 'master');
         } else {
-          await gitInstance.addRemote('origin', process.env.REPO_URL);
-          await gitInstance.push('origin', 'master', { '--repo': process.env.REPO_URL });
+          await gitInstance.addRemote('origin', app.settings.repoUrl);
+          await gitInstance.push('origin', 'master', { '--repo': app.settings.repoUrl });
           app.settings.useExistingRepo = true;
           fs.writeFileSync('settings.json', JSON.stringify(settings, null, 2));
         }

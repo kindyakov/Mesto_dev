@@ -12,7 +12,8 @@ export const createRepo = (done) => {
     private: true
   }).then(({ data }) => {
     console.log(app.plugins.chalk.green("Репозиторий успешно создан:"), data.html_url);
-    fs.writeFileSync('.env', `\nREPO_URL=${data.clone_url}\n`, { flag: 'a' });
+    app.settings.repoUrl = data.html_url;
+    fs.writeFileSync('settings.json', JSON.stringify(settings, null, 2));
     done()
   }).catch((error) => {
     console.error("Ошибка при создании репозитория: ", error);
