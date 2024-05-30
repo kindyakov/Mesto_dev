@@ -13,7 +13,7 @@ export const createRepo = (done) => {
   }).then(({ data }) => {
     console.log(app.plugins.chalk.green("Репозиторий успешно создан:"), data.html_url);
     app.settings.repoUrl = data.html_url;
-    fs.writeFileSync('settings.json', JSON.stringify(settings, null, 2));
+    fs.writeFileSync('settings.json', JSON.stringify(app.settings, null, 2));
     done()
   }).catch((error) => {
     console.error("Ошибка при создании репозитория: ", error);

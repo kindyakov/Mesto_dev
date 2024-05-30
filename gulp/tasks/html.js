@@ -46,6 +46,7 @@ const html = () => {
             if (fs.existsSync(fileStylePath)) {
               const cssContent = fs.readFileSync(`${app.path.shared.css}${fileName}.css`, 'utf8');
               fileContents = fileContents.replace(/@@critical-css/g, `<style>${cssContent}</style>`);
+              // fileContents = fileContents.replace(/@@critical-css/g, `<link rel="preload" href="${pageData[`${fileName}`].path}css/${fileName}.min.css">`);
             } else {
               fileContents = fileContents.replace(/@@critical-css/g, '');
             }

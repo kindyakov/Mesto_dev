@@ -41,7 +41,7 @@ export const zipDev = () => {
           await gitInstance.addRemote('origin', app.settings.repoUrl);
           await gitInstance.push('origin', 'master', { '--repo': app.settings.repoUrl });
           app.settings.useExistingRepo = true;
-          fs.writeFileSync('settings.json', JSON.stringify(settings, null, 2));
+          fs.writeFileSync('settings.json', JSON.stringify(app.settings, null, 2));
         }
 
         console.log(app.plugins.chalk.green('Обновления добавлены'))

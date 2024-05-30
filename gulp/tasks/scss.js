@@ -57,6 +57,8 @@ export function insertCriticalCss() {
         cascade: true
       })))
       .pipe(app.plugins.if(app.isBuild, cleanCss()))
+      // .pipe(rename({ extname: '.min.css' }))
+      // .pipe(app.gulp.dest(app.path.build.css))
       .pipe(app.gulp.dest(app.path.shared.css))
       .on('end', function () {
         console.log(app.plugins.chalk.green(`Добавлены критические стили`))
