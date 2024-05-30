@@ -17,7 +17,6 @@ export const zip = () => {
   )
 }
 
-
 export const zipDev = () => {
   deleteAsync(`./${app.path.rootFolder}_dev.zip`); // Удаляем старый архив, если есть
   return (
@@ -37,6 +36,7 @@ export const zipDev = () => {
           .then(() => gitInstance.commit(app.version))
           .then(() => gitInstance.addRemote('origin', process.env.REPO_URL))
           .then(() => gitInstance.push('origin', 'master', { '--repo': process.env.REPO_URL }))
+          .then(() => console.log(app.plugins.chalk.green('Обновления добавлены')))
           .catch((err) => console.error('Failed to commit+push', err));
       })
   );
