@@ -34,8 +34,9 @@ export const zipDev = () => {
         gitInstance.init()
           .then(() => gitInstance.add('./*'))
           .then(() => gitInstance.commit(app.version))
-          .then(() => gitInstance.addRemote('origin', process.env.REPO_URL))
-          .then(() => gitInstance.push('origin', 'master', { '--repo': process.env.REPO_URL }))
+          // .then(() => gitInstance.addRemote('origin', process.env.REPO_URL))
+          // .then(() => gitInstance.push('origin', 'master', { '--repo': process.env.REPO_URL }))
+          .then(() => gitInstance.push('origin', 'master'))
           .then(() => console.log(app.plugins.chalk.green('Обновления добавлены')))
           .catch((err) => console.error('Failed to commit+push', err));
       })
