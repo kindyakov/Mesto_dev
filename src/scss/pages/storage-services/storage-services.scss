@@ -1,0 +1,264 @@
+.storage-services {
+	&__container {
+	}
+
+	&__body {
+		padding-bottom: 100px;
+		@media (max-width: $md3) {
+			padding-bottom: 60px;
+		}
+	}
+
+	&__info {
+		margin-top: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	&__row {
+		display: flex;
+		gap: 10px;
+		@media (max-width: $md2) {
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		row-gap: 30px;
+	}
+
+	&__block {
+		display: flex;
+		flex-direction: column;
+		row-gap: 30px;
+	}
+
+	&__title {
+	}
+
+	&__text {
+		padding: 30px 40px;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+
+		&.bg {
+			background-color: #f5f5f5;
+		}
+
+		h3 {
+			text-align: left;
+			font-weight: 600;
+			@include adaptiv-font(28, 18, 1);
+			line-height: normal;
+		}
+
+		// p {
+		@include adaptiv-font(20, 16, 1);
+		text-align: justify;
+		font-weight: 400;
+		// }
+
+		ol {
+			padding-left: 20px;
+		}
+
+		li {
+			@include adaptiv-font(20, 14, 1);
+		}
+
+		ul {
+			display: flex;
+			flex-direction: column;
+			row-gap: 10px;
+			li {
+				text-align: left;
+				position: relative;
+				padding-left: 20px;
+				&::before {
+					position: absolute;
+					content: '•';
+					top: 0;
+					left: 0;
+					font-size: 30px;
+				}
+			}
+		}
+
+		@media (max-width: $md1) {
+			padding: 20px;
+		}
+	}
+
+	&__img {
+		flex: 0 0 400px;
+		// height: 350px;
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+		overflow: hidden;
+		img {
+			max-width: 100%;
+			max-height: 100%;
+			object-fit: contain;
+			@media (max-width: $md4) {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+		@media (max-width: 860px) {
+			flex: 1 1 auto;
+		}
+	}
+
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		row-gap: 30px;
+		@include adaptiv-value('margin-top', 40, 20, 1);
+	}
+
+	// &__heading {}
+
+	&__tabs {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		gap: 20px;
+		padding: 10px;
+		background-color: #f5f5f5;
+		@media (max-width: $md2) {
+			gap: 10px;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+		}
+		@media (max-width: $md3) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@media (max-width: 380px) {
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+
+	&__tab {
+		flex: 1 1 25%;
+		color: $black;
+		padding: 20px 10px;
+		border: 1px solid transparent;
+		background-color: #f5f5f5;
+
+		&::before,
+		&::after {
+			background-color: $green;
+		}
+
+		&::after {
+			transform: translate(-101%, -50%);
+			width: 50%;
+		}
+		&::before {
+			transform: translate(101%, -50%);
+			width: 50%;
+		}
+
+		&:hover {
+			color: $green;
+			border-color: $green;
+		}
+
+		&._tab-btn-active {
+			color: $white;
+			&::after {
+				width: 51%;
+				transform: translate(0, -50%);
+			}
+			&::before {
+				width: 51%;
+				transform: translate(0, -50%);
+			}
+		}
+	}
+
+	&__content {
+		display: none;
+		&.grid-col-2 {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		&.grid-col-3 {
+			grid-template-columns: repeat(3, 1fr);
+		}
+		gap: 10px;
+
+		&._tab-content-active {
+			display: grid;
+		}
+		@media (max-width: $md3) {
+			&.grid-col-2,
+			&.grid-col-3 {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		@media (max-width: $md4) {
+			&.grid-col-2,
+			&.grid-col-3 {
+				grid-template-columns: repeat(1, 1fr);
+			}
+		}
+	}
+
+	&__item {
+		width: 100%;
+		@include adaptiv-value('height', 250, 150, 1);
+		position: relative;
+		padding: 30px;
+		border: 1px solid #bfc0c3;
+		overflow: hidden;
+		color: $black;
+		transition: 0.3s;
+
+		&:hover {
+			background: rgba(0, 77, 86, 0.5);
+			color: $white;
+			svg {
+				fill: $green;
+				&.stroke {
+					fill: transparent;
+					stroke: $green;
+				}
+			}
+		}
+
+		&_title {
+			position: relative;
+			z-index: 1;
+			font-weight: 700;
+			font-size: 24px;
+			@include adaptiv-font(24, 20, 1);
+		}
+
+		svg,
+		img {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			z-index: 0;
+			fill: $orange;
+			transition: 0.3s;
+			@include adaptiv-value('max-width', 160, 90, 1);
+			@include adaptiv-value('max-height', 160, 90, 1);
+			&.stroke {
+				fill: transparent;
+				stroke: $orange;
+			}
+		}
+
+		@media (max-width: $md1) {
+			padding: 20px;
+		}
+	}
+}

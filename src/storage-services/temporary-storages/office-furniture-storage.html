@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('../../html/components/_head.html',{
+  "title": "@@fileName.title",
+  "description": "@@fileName.description",
+  "path":"@@fileName.path"
+  })
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://mesto-store.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Услуги хранения",
+        "item": "https://mesto-store.ru/services.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Временное хранение",
+        "item": "https://mesto-store.ru/storage-services/temporary-storage.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Хранение офисной мебели",
+        "item": "https://mesto-store.ru/storage-services/temporary-storage/fileName.html"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+{
+"@context": "https://schema.org/",
+"@type": "Product",
+"name": "Хранение офисной мебели",
+"image": "https://mesto-store.ru/img/favicon/logo.svg",
+"brand": "МЕСТО",
+"description": "@@fileName.description"
+}
+</script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('../../html/components/_header.html', {'fixed':'',path:'../../'})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="/" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <a href="../../services.html" class="path__link hover-link">Услуги хранения</a>
+              <span class="path__sep">/</span>
+              <a href="../temporary-storage.html" class="path__link hover-link">Временное хранение</a>
+              <span class="path__sep">/</span>
+              <span>Хранение офисной мебели</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="storage-services">
+        <div class="storage-services__container _container">
+          <div class="storage-services__body">
+            <h1 class="storage-services__title h2">Аренда склада для хранения офисной мебели</h1>
+            <div class="storage-services__info">
+              <div class="storage-services__row">
+                <div class="storage-services__text text bg">
+                  <p>Проблема хранения офисной мебели особенно актуальна при переезде, ремонте или структурных
+                    изменениях
+                    в компании. Мы
+                    предлагаем договора краткосрочной (от 1 месяца) и долгосрочной аренды по доступным ценам. Сервис
+                    хранения вещей в Москве
+                    МЕСТО круглосуточно готов к приему и размещению офисной мебели и оргтехники.</p>
+                </div>
+                <div class="storage-services__img">
+                  <img src="../../img/warehouse.png" alt="Картинка">
+                </div>
+              </div>
+              <div class="storage-services__text text">
+
+                <h3>Преимущества хранения офисной мебели в кладовых сервиса МЕСТО</h3>
+                <p>Часто офисная мебель на хранение отправляется в собранном виде. Чтобы сэкономить место, стоит
+                  предварительно разобрать
+                  столы и шкафы. Бьющиеся элементы (стеклянные витрины и полочки, зеркала), а также предметы с
+                  лакированной поверхностью
+                  желательно упаковывают в гофрокартон.</p>
+                <p>Все, что убирается в коробки, обязательно маркируется. Впоследствии это облегчит поиски нужных
+                  предметов. Также
+                  желательно составить опись имущества, отправленного на хранение, и корректировать список по мере
+                  изъятия или добавления
+                  вещей.</p>
+                <p>Склад для офисной мебели должен обеспечивать оптимальный микроклимат. В наших комплексах
+                  поддерживается температура на
+                  уровне 15-17°C и влажность не более 60-80%. В таких условиях мебель, в том числе сделанная из
+                  натурального дерева, и
+                  чувствительная к условиям окружающей среды оргтехника хорошо сохраняются. Поскольку боксы закрыты, в
+                  них нет окон,
+                  предметы не выцветают, резиновые и пластиковые элементы не портятся.</p>
+                <h3>Как арендовать бокс для офисной мебели</h3>
+                <p>В комплексах МЕСТО созданы все условия для бережного хранения офисной мебели, у нас есть:</p>
+                <ul>
+                  <li>видеонаблюдение и круглосуточная охрана;</li>
+                  <li>цифровые и навесные замки;</li>
+                  <li>хорошее освещение и регулярная уборка;</li>
+                  <li>удобные подъезды и парковки;</li>
+                  <li>доступ в бокс в любое удобное время;</li>
+                  <li>тележки для перевозки тяжелых грузов со стоянки в кладовую.</li>
+                </ul>
+                <p>Вы можете оформить заявку на аренду по телефону или на сайте. В комплексах есть кладовые площадью до
+                  9 кв.м. Определить
+                  нужный размер помещения для хранения мебели поможет специальный калькулятор.</p>
+                <p>Мы сотрудничаем с самозанятыми, индивидуальными предпринимателями и юридическими лицами и заключаем
+                  официальные
+                  договора. Предусмотрены любые формы оплаты.</p>
+                <p>Позвоните нам, чтобы уточнить детали. Дополнительно мы предлагаем предварительный осмотр помещений по
+                  заявкам,
+                  оставленным на сайте.</p>
+              </div>
+
+            </div>
+
+            <div class="storage-services__wrapper" data-tabs-init="storage-services-tabs">
+              <h2 class="storage-services__heading h2">Услуги хранения</h2>
+              <div class="storage-services__tabs">
+                <a href="../seasonal-storage.html" class="storage-services__tab button _my-tabs-btn">
+                  <span>Сезонное хранение</span>
+                </a>
+                <a href="../relocation-renovation.html" class="storage-services__tab button _my-tabs-btn">
+                  <span>Переезд и ремонт</span>
+                </a>
+                <a href="../temporary-storage.html" class="storage-services__tab button _my-tabs-btn _tab-btn-active">
+                  <span>Временное хранение</span>
+                </a>
+                <a href="../long-term-storage.html" class="storage-services__tab button _my-tabs-btn">
+                  <span>Длительное хранение</span>
+                </a>
+              </div>
+              @@include('../../html/storage-services/temporary-storages.html',{path:''})
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('../../html/components/_footer.html',{path:'../../'})
+  </div>
+  @@include('../../html/components/_modal.html',{path:'../../'})
+  @@include('../../html/components/_js.html',{path:'../../'})
+</body>
+
+</html>

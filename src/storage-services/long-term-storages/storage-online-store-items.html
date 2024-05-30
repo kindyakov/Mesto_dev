@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('../../html/components/_head.html',{
+  "title": "@@fileName.title",
+  "description": "@@fileName.description",
+  "path":"@@fileName.path"
+  })
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://mesto-store.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Услуги хранения",
+        "item": "https://mesto-store.ru/services.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Длительное хранение",
+        "item": "https://mesto-store.ru/storage-services/long-term-storage.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Хранение вещей интернет-магазина",
+        "item": "https://mesto-store.ru/storage-services/long-term-storages/fileName.html"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "Хранение вещей интернет-магазина",
+        "image": "https://mesto-store.ru/img/favicon/logo.svg",
+        "brand": "МЕСТО",
+        "description": "@@fileName.description"
+      }
+    </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('../../html/components/_header.html', {'fixed':'',path:'../../'})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="/" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <a href="../../services.html" class="path__link hover-link">Услуги хранения</a>
+              <span class="path__sep">/</span>
+              <a href="../long-term-storage.html" class="path__link hover-link">Длительное хранение</a>
+              <span class="path__sep">/</span>
+              <span>Хранение вещей интернет-магазина</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="storage-services">
+        <div class="storage-services__container _container">
+          <div class="storage-services__body">
+            <h1 class="storage-services__title h2">Аренда склада для интернет-магазина в Москве</h1>
+            <div class="storage-services__info">
+              <div class="storage-services__row">
+                <div class="storage-services__text text bg">
+                  <p>Сервис хранения вещей предлагает арендовать склад для интернет-магазина в Москве. Просторные
+                    помещения находятся на
+                    охраняемых территориях. На дверях установлены цифровые замки. Доступ в здания открыт круглосуточно,
+                    что важно для
+                    оперативной обработки заказов.</p>
+                </div>
+                <div class="storage-services__img">
+                  <img src="../../img/warehouse.png" alt="Картинка">
+                </div>
+              </div>
+              <div class="storage-services__text text">
+
+                <h3>Кладовки для интернет-магазинов в МЕСТО</h3>
+                <p>В зданиях поддерживается микроклимат, который подходит для хранения самых разных материалов.
+                  Температура 15-17°С и
+                  влажность 60-80% считаются оптимальными для изделий из бумаги и текстиля, металла, натурального дерева
+                  и кожи, для
+                  электроники. В таких условиях хорошо сохраняются товарный вид и функциональность товаров.</p>
+                <p>Мы тщательно следим за порядком в зданиях и на прилегающих территориях, поэтому:</p>
+                <ul>
+                  <li>везде установлены камеры видеонаблюдения;</li>
+                  <li>круглосуточно работает охрана;</li>
+                  <li>регулярно проводится уборка;</li>
+                  <li>выполняется санобработка;</li>
+                  <li>в коридорах устроено дневное освещение;</li>
+                  <li>на дверях установлены цифровые замки, можно повесить и навесные.</li>
+                </ul>
+                <p>Возле комплексов удобные транспортные развязки, недалеко находятся станции метрополитена. Напротив
+                  ворот устроена зона
+                  погрузки-выгрузки. На площадках свободно маневрируют малотоннажные грузовики. Рядом припаркованы
+                  тележки для перевозки
+                  грузов. В коридорах стоят лестницы для доступа на верхние стеллажи.</p>
+                <h3>Как арендовать склад для интернет-магазина</h3>
+                <p>Среди наших клиентов – самозанятые, индивидуальные предприниматели и юридические лица. Для
+                  организации хранения для
+                  интернет-магазинов оставьте заявку по телефону или в форме на сайте. Для доступа к помещению с
+                  цифровым замком
+                  потребуется код. При оформлении через сайт он поступает в СМС после оплаты услуг хранения. По
+                  аналогичной схеме можно
+                  заказать предварительный осмотр помещений.</p>
+                <p>В комплексах МЕСТО множество кладовых площадью от 1 кв.м до 9 кв.м. На сайте работает калькулятор,
+                  который поможет
+                  определить требуемый размер помещения с учетом количества и специфики вещей. Есть возможность аренды
+                  на 1 месяц и на
+                  срок до 1 года. Цена долгосрочной аренды ниже краткосрочной.</p>
+                <p>Позвоните нам, чтобы узнать подробности аренды кладовки для интернет-магазина. Лучшие условия для
+                  хранения товара вы
+                  найдете в МЕСТО!</p>
+              </div>
+
+            </div>
+
+            <div class="storage-services__wrapper" data-tabs-init="storage-services-tabs">
+              <h2 class="storage-services__heading h2">Услуги хранения</h2>
+              <div class="storage-services__tabs">
+                <a href="../seasonal-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Сезонное
+                    хранение</span></a>
+                <a href="../relocation-renovation.html" class="storage-services__tab button _my-tabs-btn"><span>Переезд
+                    и
+                    ремонт</span></a>
+                <a href="../temporary-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Временное
+                    хранение</span></a>
+                <a href="../long-term-storage.html"
+                  class="storage-services__tab button _my-tabs-btn _tab-btn-active"><span>Длительное
+                    хранение</span></a>
+              </div>
+              <div class="storage-services__content _my-tabs-content grid-col-3 _tab-content-active">
+                @@include('../../html/storage-services/long-term-storages.html',{path:''})
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('../../html/components/_footer.html',{path:'../../'})
+  </div>
+  @@include('../../html/components/_modal.html',{path:'../../'})
+  @@include('../../html/components/_js.html',{path:'../../'})
+</body>
+
+</html>

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+@@include('html/components/_head.html',{
+"title": "@@account.title",
+"description": "@@account.description",
+"path":"@@account.path"
+})
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('html/components/_header.html', {'fixed':'',path:''})
+    <main class="main">
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="index.html" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <span>Личный кабинет</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="account section-pers-acc">
+        <div class="_container">
+          <div class="pers-acc__row" data-tabs-init="account-tabs">
+            <aside class="account__aside">
+              <div class="pers-acc__row__left-col">
+                <div class="pers-acc__row__left-col__btn cursor-pointer account-tabs-btn button"
+                  style="margin-bottom: 10px;" id="pers-acc__row__left-col__btn-1"><span>Открыть</span></div>
+                <div class="pers-acc__row__left-col__btn cursor-pointer account-tabs-btn button"
+                  id="pers-acc__row__left-col__btn-2">
+                  <span>Мои кладовки</span>
+                </div>
+                <div class="pers-acc__row__left-col__grid">
+                  <div
+                    class="pers-acc__row__left-col__btn cursor-pointer account-tabs-btn account-tabs-btn-change-password button"
+                    id="pers-acc__row__left-col__btn-3">
+                    <span>Смена пароля</span>
+                  </div>
+                  <div
+                    class="pers-acc__row__left-col__btn cursor-pointer account-tabs-btn account-tabs-btn-my-data button"
+                    id="pers-acc__row__left-col__btn-4">
+                    <span>Мои данные</span>
+                  </div>
+                  <div class="pers-acc__row__left-col__btn cursor-pointer account-tabs-btn button"
+                    id="pers-acc__row__left-col__btn-5">
+                    <span>Способы оплаты</span>
+                  </div>
+                  <div
+                    class="pers-acc__row__left-col__btn cursor-pointer account-tabs-btn button account-departures-btn"
+                    id="pers-acc__row__left-col__btn-6">
+                    <span>Выезды</span>
+                  </div>
+                </div>
+              </div>
+            </aside>
+            <!-- Доступ к кладовке -->
+            <div class="assets-storage__row__right-col account-tabs-content account-assets-storage">
+              <h2 class="assets-storage__row__right-col__title h3">Доступ к кладовке</h2>
+              <p class="assets-storage__row__right-col__desc1">
+                Терминал работает полностью в автоматическом режиме. Чтобы получить доступ к кладовой, вам
+                необходимо выполнить следующие действия:
+              </p>
+              <div class="account-assets-storage__points-slider points-slider-assets-storage">
+                <div class="assets-storage__row__right-col__row-points">
+                  <div class="assets-storage__row__right-col__row-points__block">
+                    <div class="assets-storage__row__right-col__row-points__block__content">
+                      <p class="assets-storage__row__right-col__row-points__block__num">1</p>
+                      <img src="img/access-storage/img-1.png" alt="Картинка">
+                    </div>
+                    <div
+                      class="assets-storage__row__right-col__row-points__block__btn assets-storage-button btn-open-barrier button-4">
+                      <span>Открыть шлагбаум</span>
+                    </div>
+                  </div>
+                  <div class="assets-storage__row__right-col__row-points__block">
+                    <div class="assets-storage__row__right-col__row-points__block__content">
+                      <p class="assets-storage__row__right-col__row-points__block__num">2</p>
+                      <img src="img/access-storage/img-2.png" alt="Картинка">
+                    </div>
+                    <div
+                      class="assets-storage__row__right-col__row-points__block__btn assets-storage-button btn-open-gates button-4">
+                      <span>Открыть ворота</span>
+                    </div>
+                  </div>
+                  <div class="assets-storage__row__right-col__row-points__block">
+                    <div class="assets-storage__row__right-col__row-points__block__content">
+                      <p class="assets-storage__row__right-col__row-points__block__num">3</p>
+                      <img src="img/access-storage/img-3.png" alt="Картинка">
+                    </div>
+                    <div
+                      class="assets-storage__row__right-col__row-points__block__btn assets-storage-button btn-open-door button-4">
+                      <span>Открыть дверь</span>
+                    </div>
+                  </div>
+                  <div class="assets-storage__row__right-col__row-points__block">
+                    <div class="assets-storage__row__right-col__row-points__block__content">
+                      <p class="assets-storage__row__right-col__row-points__block__num">4</p>
+                      <img src="img/access-storage/img-4.png" alt="Картинка">
+                    </div>
+                    <div
+                      class="assets-storage__row__right-col__row-points__block__btn assets-storage-button btn-open-room button-4">
+                      <span>Открыть кладовку</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="assets-storage__row__right-col__desc2">
+                <b>Шаг 1: </b> Откройте шлагбаум при входе и выходе с терминала.<br>
+                Использование данной функции позволяет арендаторам дистанционно открывать шлагбаум для посещения
+                кладовой. При этом можно находиться в любом месте, достаточно иметь доступ к сотовой связи.
+              </p>
+              <p class="assets-storage__row__right-col__desc2">
+                <b>Шаг 2: </b> Откройте ворота.<br>
+                Вы можете дистанционно открыть ворота для посещения кладовой. При этом можно находиться в любом
+                месте, достаточно иметь доступ к сотовой связи.
+              </p>
+              <p class="assets-storage__row__right-col__desc2">
+                <b>Шаг 3: </b> Откройте дверь и кладовку.<br>
+                Вы можете получить доступ к складу удаленно, как если бы вы находились в кладовой. Вам не нужно физически присутствовать
+                там, главное иметь подключение к мобильной сети.
+              </p>
+            </div>
+
+            <!-- Мои кладовки -->
+            <div class="agreement2__row__right-col account-tabs-content account-storerooms">
+              <div class="account-storerooms__agreements agreements-account-storerooms">
+              </div>
+            </div>
+
+            <!-- Смена пароля -->
+            <div class="pass-change__row__right-col account-tabs-content account-change-password">
+              <form class="pass-change__form account-change-password__form form-change-password">
+                <h2>Смена пароля</h2>
+                <div class="pass-change__form__block-inpts">
+                  <div class="wrap-input">
+                    <input type="password" name="current_password" class="input" placeholder="Старый пароль">
+                    <svg class='icon icon-eye'>
+                      <use xlink:href='img/svg/sprite.svg#eye'></use>
+                    </svg>
+                  </div>
+                  <div class="wrap-input">
+                    <input type="password" name="password" class="input" placeholder="Новый пароль">
+                    <svg class='icon icon-eye'>
+                      <use xlink:href='img/svg/sprite.svg#eye'></use>
+                    </svg>
+                  </div>
+                  <div class="wrap-input">
+                    <input type="password" name="repassword" class="input" placeholder="Подтвердить новый пароль">
+                    <svg class='icon icon-eye'>
+                      <use xlink:href='img/svg/sprite.svg#eye'></use>
+                    </svg>
+                  </div>
+                </div>
+                <button type="submit" class="account-change-password__button button-2"><span>Подтвердить</span></button>
+              </form>
+            </div>
+
+            <!-- Мои данные -->
+            <div class="my-data__row__right-col account-tabs-content account-my-data">
+              <div class="my-data__content-4 my-data-tabs-content">
+                <h2>Основная информация</h2>
+                <div class="my-data__content-4__block-inpts">
+                  <form class="form-account-data" data-form-type="familyname">
+                    <div class="wrap-input wrap-input-btn">
+                      <input type="text" class="input my-data-input" placeholder="Фамилия" name="familyname">
+                      <button class="button button-input"><span>Изменить</span></button>
+                    </div>
+                  </form>
+                  <form class="form-account-data" data-form-type="firstname">
+                    <div class="wrap-input  wrap-input-btn">
+                      <input type="text" class="input my-data-input" placeholder="Имя" name="firstname">
+                      <button class="button button-input"><span>Изменить</span></button>
+                    </div>
+                  </form>
+                  <form class="form-account-data" data-form-type="patronymic">
+                    <div class="wrap-input  wrap-input-btn">
+                      <input type="text" class="input my-data-input" placeholder="Отчество" name="patronymic">
+                      <button class="button button-input"><span>Изменить</span></button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="my-data__content-3 my-data-tabs-content">
+                <h2>Контактные данные</h2>
+                <div class="my-data__content-3__block-inpts">
+                  <form class="form-account-data" data-form-type="username">
+                    <div class="wrap-input wrap-input-btn">
+                      <input type="tel" class="input my-data-input" placeholder="Номер телефона" name="username"
+                        inputmode="tel">
+                      <button class="button button-input"><span>Изменить</span></button>
+                    </div>
+                  </form>
+                  <form class="form-account-data" data-form-type="email">
+                    <div class="wrap-input wrap-input-btn">
+                      <input type="email" class="input my-data-input" placeholder="Электронная почта" name="email">
+                      <button class="button button-input"><span>Изменить</span></button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="my-data__content-2 my-data-tabs-content">
+                <h2>Паспортные данные</h2>
+                <div class="my-data__content-2__container">
+                  <form class="my-data__content-2__container__block-avatar">
+                    <label>
+                      <input type="file" name="file" accept="image/png, image/jpeg, image/jpg"
+                        class="input-photo-passport">
+                    </label>
+                    <button>
+                      <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M21.4353 11.64H12.5073V20.376H9.48331V11.64H0.555313V8.808H9.48331V0.0239983H12.5073V8.808H21.4353V11.64Z"
+                          fill="white"></path>
+                      </svg>
+                    </button>
+                    <p>Загрузите
+                      или сделайте фото
+                      паспорта</p>
+                    <img src="" alt="" class="img-passport">
+                  </form>
+                  <div class="my-data__content-2__container__grid-inpts">
+                    <div class="wrap-input">
+                      <input type="text" class="input my-data-input" placeholder="Серия паспорта" name="series">
+                    </div>
+                    <div class="wrap-input">
+                      <input type="text" class="input my-data-input" placeholder="Номер паспорта" name="no">
+                    </div>
+                    <div class="wrap-input">
+                      <input type="text" class="input my-data-input" placeholder="Дата выдачи" name="issue_date">
+                    </div>
+                    <div class="wrap-input">
+                      <input type="text" class="input my-data-input" placeholder="Код подразделения" name="subdivision">
+                    </div>
+                    <div class="wrap-input">
+                      <input type="text" class="input my-data-input" placeholder="Кем выдан паспорт" name="issued_by"
+                        id="my-data__content-2__container__grid-inpts__inpt-last">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="my-data__content-1 my-data-tabs-content">
+                <h2>Реквизиты</h2>
+                <p class="my-data__content-1__desc">Банковские реквизиты для безналичной оплаты</p>
+                <div class="my-data__content-1__block-inpts">
+                  <div class="my-data__content-1__block-inpts__row col-2">
+                    <div class="wrap-input">
+                      <input type="text" class="input my-data-input" placeholder="Юридическое наименование"
+                        name="fullname">
+                    </div>
+                    <div class="wrap-input">
+                      <input type="text" class="input my-data-input" placeholder="Юридический адрес регистрации"
+                        name="address">
+                    </div>
+                  </div>
+                  <div class="my-data__content-1__block-inpts__grid">
+                    <div class="wrap-input">
+                      <input type="text" class="input my-data-input" placeholder="БИК" name="bik">
+                    </div>
+                    <div class="wrap-input">
+                      <input type="text" class="input my-data-input" placeholder="ИНН" name="inn">
+                    </div>
+                    <div class="wrap-input">
+                      <input type="text" class="input my-data-input" placeholder="КПП" name="kpp">
+                    </div>
+                    <div class="wrap-input">
+                      <input type="text" class="input my-data-input" placeholder="Наименование банка" name="bank">
+                    </div>
+                    <div class="wrap-input">
+                      <input type="text" class="input my-data-input" placeholder="р/с" name="rs">
+                    </div>
+                    <div class="wrap-input">
+                      <input type="text" class="input my-data-input" placeholder="к/с" name="ks">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="my-data__row-bottom">
+                <button class="my-data__row-bottom__btn my-data__row-bottom__btn-1 my-data-tabs-btn button-4">
+                  <span>Основная информация</span>
+                </button>
+                <button class="my-data__row-bottom__btn my-data__row-bottom__btn-1 my-data-tabs-btn button-4">
+                  <span>Контактные данные</span>
+                </button>
+                <button
+                  class="my-data__row-bottom__btn my-data__row-bottom__btn-2 my-data-tabs-btn button-4 btn-tabs-passport-data">
+                  <span>Паспортные данные</span>
+                </button>
+                <button
+                  class="my-data__row-bottom__btn my-data__row-bottom__btn-3 my-data-tabs-btn button-4 btn-tabs-requisites _none">
+                  <span>Реквизиты</span>
+                </button>
+              </div>
+              <!-- <p class="my-data__p-bottom">
+                <b>Шаг 3: </b>Заполнить реквизиты
+              </p> -->
+            </div>
+
+            <!-- Способы оплаты -->
+            <div class="payment-method-3__row__right-col account-tabs-content account-payment-methods"
+              id="payment-method-3__row__right-col">
+              <div class="payment-method-3__row__right-col__row-top payment-methods-tabs-buttons">
+                <div class="payment-method-3__row__right-col__row-top__btn
+                        payment-method-3__row__right-col__row-top__btn-1 payment-methods-tabs-btn button-4">
+                  <span>Электронные платежи</span>
+                </div>
+                <div class="payment-method-3__row__right-col__row-top__btn
+                        payment-method-3__row__right-col__row-top__btn-2 payment-methods-tabs-btn button-4">
+                  <span>Безналичные платежи</span>
+                </div>
+              </div>
+              <div class="payment-method-3__row__right-col__content2 payment-methods-tabs-content">
+                <p class="payment-method-3__row__right-col__p1">Способы оплаты</p>
+                <div class="payment-cards">
+
+                </div>
+                <button class="button-5 btn-link-card"><span>Привязать карту</span></button>
+              </div>
+              <div class="payment-method-3__row__right-col__content1 payment-methods-tabs-content">
+                <p class="payment-method-3__row__right-col__p1">Способы оплаты</p>
+                <div class="payment-cards payment-bank-transfer">
+                  <label class="payment-cards__card">
+                    <span>Оплата по безналичному расчету</span>
+                    <p>Основной способ</p>
+                    <input type="radio" name="card_payment_1958" class="rent-room__payment_input-radio input-radio"
+                      id="card-payment-0_1957" value="8800">
+                    <label for="card-payment-0_1957" class="rent-room__payment_label label-radio"></label>
+                  </label>
+                </div>
+                <div class="payment-method-accordion _my-accordion">
+                  <div class="_my-accordion-control">
+                    <button class="payment-method-3__row__right-col__btn">
+                      <span>Привязать новые реквизиты</span>
+                    </button>
+                  </div>
+                  <div class="_my-accordion-content">
+                    <form class="form-link-new-banking-details">
+                      <div class="wrap-input">
+                        <input type="text" class="input my-data-input" placeholder="БИК" name="bik">
+                      </div>
+                      <div class="wrap-input">
+                        <input type="text" class="input my-data-input" placeholder="Наименование банка" name="bank">
+                      </div>
+                      <div class="wrap-input">
+                        <input type="text" class="input my-data-input" placeholder="р/с" name="rs">
+                      </div>
+                      <div class="wrap-input">
+                        <input type="text" class="input my-data-input" placeholder="к/с" name="ks">
+                      </div>
+                      <button class="button-2"><span>Сохранить</span></button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Выезды -->
+            <div class="payment-method__row__right-col account-tabs-content account-departures"
+              id="payment-method__row__right-col">
+              <div class="payment-method__row__right-col__row-top account-departures-tabs">
+
+              </div>
+              <div class="account-departures-rooms account-departures-step-1">
+
+              </div>
+              <div class="payment-method__row__right-col__content account-departures-step-2 _none">
+                <div class="payment-method__row__right-col__container-medium">
+                  <div class="payment-method__row__right-col__row-2">
+                    <form class="payment-method__row__right-col__row-2__left-block form-moving-out-room-photo">
+                      <label>
+                        <input type="file" name="file" accept="image/png, image/jpeg, image/jpg" class="input-file">
+                      </label>
+                      <button>
+                        <span></span>
+                        <span></span>
+                      </button>
+                      <p>Загрузите фото кладовки</p>
+                      <img src="" alt="">
+                    </form>
+                    <div class="payment-method__row__right-col__row-2__right-block">
+                      <p class="p1">Осталось времени для загрузки:</p>
+                      <div class="watch">
+                        <div class="watch__item">
+                          <b class="watch__item_count count-days"><span>1</span></b>
+                          <b class="watch__item_count count-days"><span>2</span></b>
+                          <span class="watch__item_span time-days">дней</span>
+                        </div>
+                        <span class="watch__separator">:</span>
+                        <div class="watch__item">
+                          <b class="watch__item_count count-hours"><span>2</span></b>
+                          <b class="watch__item_count count-hours"><span>3</span></b>
+                          <span class="watch__item_span time-hours">часа</span>
+                        </div>
+                        <span class="watch__separator">:</span>
+                        <div class="watch__item">
+                          <b class="watch__item_count count-minutes"><span>5</span></b>
+                          <b class="watch__item_count count-minutes"><span>3</span></b>
+                          <span class="watch__item_span time-minutes">минуты</span>
+                        </div>
+                        <span class="watch__separator">:</span>
+                        <div class="watch__item">
+                          <b class="watch__item_count count-seconds"><span>5</span></b>
+                          <b class="watch__item_count count-seconds"><span>9</span></b>
+                          <span class="watch__item_span time-seconds">секунд</span>
+                        </div>
+                      </div>
+                      <div class="flipdown" id="timer-for-loading"></div>
+                    </div>
+                  </div>
+                  <p class="payment-method__row__right-col__container-medium__p-bottom">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M0.499999 11C0.5 5.20101 5.20101 0.5 11 0.500001C16.799 0.500001 21.5 5.20101 21.5 11C21.5 16.799 16.799 21.5 11 21.5C5.20101 21.5 0.499999 16.799 0.499999 11Z"
+                        stroke="#2D3A3D"></path>
+                      <path
+                        d="M9.975 7.355C9.975 7.075 10.075 6.84 10.275 6.65C10.485 6.46 10.725 6.365 10.995 6.365C11.285 6.365 11.525 6.46 11.715 6.65C11.915 6.84 12.015 7.075 12.015 7.355C12.015 7.625 11.915 7.86 11.715 8.06C11.525 8.25 11.285 8.345 10.995 8.345C10.725 8.345 10.485 8.25 10.275 8.06C10.075 7.86 9.975 7.625 9.975 7.355ZM10.2 10.1H11.79V17H10.2V10.1Z"
+                        fill="#2D3A3D"></path>
+                    </svg>
+                    Загрузите фото чистой и пустой каладовки для проверки
+                  </p>
+                </div>
+
+                <div class="payment-method__row__right-col__row-buttons">
+                  <button class="payment-method__row__right-col__row-buttons__btn button-4 btn-cancel-check-out">
+                    <span>Отменить выезд</span>
+                  </button>
+                  <button
+                    class="payment-method__row__right-col__row-buttons__btn button-4 btn-complete-lease-departures">
+                    <span>Отправить фото</span>
+                  </button>
+                </div>
+
+                <p class="payment-method__row__right-col__content__p-bottom">
+                  <span>Шаг 2: </span> Загрузите фото кладовки
+                </p>
+
+              </div>
+              <div class="payment-method__row__right-col__content account-departures-step-3 _none">
+                <div class="payment-method__row__right-col__container-medium">
+                  <div class="payment-method__row__right-col__row-2">
+                    <div class="payment-method__row__right-col__row-2__right-block">
+                      <p class="p1">Кладовка ваша в течение:</p>
+                      <div class="watch">
+                        <div class="watch__item">
+                          <b class="watch__item_count count-days"><span>1</span></b>
+                          <b class="watch__item_count count-days"><span>2</span></b>
+                          <span class="watch__item_span time-days">дней</span>
+                        </div>
+                        <span class="watch__separator">:</span>
+                        <div class="watch__item">
+                          <b class="watch__item_count count-hours"><span>2</span></b>
+                          <b class="watch__item_count count-hours"><span>3</span></b>
+                          <span class="watch__item_span time-hours">часа</span>
+                        </div>
+                        <span class="watch__separator">:</span>
+                        <div class="watch__item">
+                          <b class="watch__item_count count-minutes"><span>5</span></b>
+                          <b class="watch__item_count count-minutes"><span>3</span></b>
+                          <span class="watch__item_span time-minutes">минуты</span>
+                        </div>
+                        <span class="watch__separator">:</span>
+                        <div class="watch__item">
+                          <b class="watch__item_count count-seconds"><span>5</span></b>
+                          <b class="watch__item_count count-seconds"><span>9</span></b>
+                          <span class="watch__item_span time-seconds">секунд</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="payment-method__row__right-col__row-buttons">
+                  <button class="payment-method__row__right-col__row-buttons__btn button-4 btn-cancel-check-out">
+                    <span>Отменить выезд</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="agreement2__container-bottom account-storerooms-rooms">
+            <h2>Мои кладовки</h2>
+            <div class="account-storerooms-rooms__slider account-storerooms-slider swiper">
+              <div class="account-storerooms-rooms__slider-wrapper account-storerooms-slider-wrapper swiper-wrapper">
+                <div class="account-storerooms-rooms__slider-slide swiper-slide">
+
+                </div>
+              </div>
+
+              <div class="account-storerooms-rooms__slider-bottom">
+                <button class="account-storerooms-rooms__slider-button btn-prev">
+                  <svg class='icon icon-arrow-left'>
+                    <use xlink:href='img/svg/sprite.svg#arrow-left'></use>
+                  </svg>
+                </button>
+                <div class="account-storerooms-rooms__paging"></div>
+                <button class="account-storerooms-rooms__slider-button btn-next">
+                  <svg class='icon icon-arrow-right'>
+                    <use xlink:href='img/svg/sprite.svg#arrow-right'></use>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="agreement2__container-bottom account-storerooms-scheme">
+            <div class="account-storerooms-scheme__top">
+              <h2>Чертёж</h2>
+              <h2 class="account-storerooms-title-agreement"></h2>
+            </div>
+            <div class="account-storerooms-scheme__rooms">
+
+            </div>
+            <div class="warehouse__schemes" data-tabs-init="account-schemes-tabs">
+              <ul class="warehouse__schemes_info">
+                <li class="my">Арендованная кладовка</li>
+                <li class="my-select">Выбранная арендованная кладовка</li>
+                <li class="free">Свободно</li>
+                <li class="select">Выбрано</li>
+                <li class="boock">Занято</li>
+              </ul>
+              <div class="warehouse__schemes_tabs">
+                <button class="warehouse__schemes_tab button tabs-btn-schemes"><span>1 ярус</span></button>
+                <button class="warehouse__schemes_tab button tabs-btn-schemes"><span>2 ярус</span></button>
+              </div>
+              <div class="warehouse__schemes_content tabs-content-schemes content-schemes-one">
+                <div class="wrap-scheme">
+                  @@include('html/sсhemes/scheme-1.html',{path:''})
+                </div>
+              </div>
+              <div class="warehouse__schemes_content tabs-content-schemes content-schemes-two">
+                <div class="wrap-scheme">
+                  @@include('html/sсhemes/scheme-2.html',{path:''})
+                </div>
+              </div>
+              <div class="warehouse__schemes_buttons">
+                <button class="warehouse__schemes_button btn-left">
+                  <svg class="icon icon-arrow-left">
+                    <use xlink:href="img/svg/sprite.svg#arrow-left"></use>
+                  </svg>
+                </button>
+                <button class="warehouse__schemes_button btn-right">
+                  <svg class="icon icon-arrow-right">
+                    <use xlink:href="img/svg/sprite.svg#arrow-right"></use>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+    @@include('html/components/_footer.html',{path:''})
+  </div>
+  @@include('html/components/_modal.html',{path:''})
+  @@include('html/components/_modal-account.html',{path:''})
+  <!-- <script src="assets/libs/flipdown/flipdown.min.js"></script> -->
+  @@include('html/components/_js.html',{path:''})
+</body>
+
+</html>

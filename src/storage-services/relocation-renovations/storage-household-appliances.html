@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('../../html/components/_head.html',{
+  "title": "@@fileName.title",
+  "description": "@@fileName.description",
+  "path":"@@fileName.path"
+  })
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://mesto-store.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Услуги хранения",
+        "item": "https://mesto-store.ru/services.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Переезд и ремонт",
+        "item": "https://mesto-store.ru/storage-services/relocation-renovation.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Хранение бытовых приборов",
+        "item": "https://mesto-store.ru/storage-services/relocation-renovations/fileName.html"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+      {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "Хранение бытовых приборов",
+      "image": "https://mesto-store.ru/img/favicon/logo.svg",
+      "brand": "МЕСТО",
+      "description": "@@fileName.description"
+      }
+      </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('../../html/components/_header.html', {'fixed':'',path:'../../'})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="/" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <a href="../../services.html" class="path__link hover-link">Услуги хранения</a>
+              <span class="path__sep">/</span>
+              <a href="../relocation-renovation.html" class="path__link hover-link">Переезд и ремонт</a>
+              <span class="path__sep">/</span>
+              <span>Хранение бытовых приборов</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="storage-services">
+        <div class="storage-services__container _container">
+          <div class="storage-services__body">
+            <h1 class="storage-services__title h2">Хранение посуды и бытовых приборов в Москве</h1>
+            <div class="storage-services__info">
+              <div class="storage-services__row">
+                <div class="storage-services__text text bg">
+                  <p>Планируете сделать ремонт на кухне? Чтобы сделать это, необходимо вынести из комнаты различные
+                    предметы, включая хрупкие
+                    тарелки и бытовые приборы разных размеров: от миксера и блендера до большого холодильника.Все эти
+                    вещи требуют бережного
+                    обращения и особых условий хранения — высокая влажность воздуха и резкие перепады температур
+                    недопустимы. В Москве
+                    услуги по хранению посуды и бытовой техники предоставляет кладовка «МЕСТО». Наш автоматизированный
+                    сервис хранения вещей
+                    предоставляет удобные кладовки разного размера, где поддерживается оптимальный температурный режим и
+                    влажность.
+                    Заказывайте одну из этих кладовок и перевозите к нам бытовые приборы.</p>
+                </div>
+                <div class="storage-services__img">
+                  <img src="../../img/warehouse.png" alt="Картинка">
+                </div>
+              </div>
+              <div class="storage-services__text text">
+                <h3>Кому пригодится склад для бытовых приборов?</h3>
+                <p>Ремонт на кухне в квартире или офисе — самый частый, но не единственный случай, когда востребованы наши услуги. В
+                компанию МЕСТО можно обратиться, если вы:</p>
+                <ul>
+                  <li>Обновили дома приборы и технику, но ещё не придумали, что делать со старыми вещами. Их можно подержать в нашей кладовке
+                  до продажи или другого использования.</li>
+                  <li>Забираете приборы с дачи или загородного дома, где вы живете только летом. Зимой в неотапливаемом помещении техника
+                  может выйти из строя или привлечь грабителей, а в нашей кладовке она будет в сохранности.</li>
+                  <li>Профессионально занимаетесь ремонтом помещений. Клиенты часто не задумываются о том, куда можно убрать вещи на время
+                  вашей работы. Вы можете посоветовать им удобное решение и даже организовать перевозку за отдельную плату.</li>
+                  <li>Оказываете услуги по ремонту бытовых приборов. Когда много заказов, техника накапливается в большом количестве. Часть
+                  таких вещей можно временно отвезти к нам.</li>
+                </ul>
+                <p>Наш склад для бытовых приборов подходит для любой техники: холодильников, кухонных плит, микроволновых печей,
+                кондиционеров и вытяжек, стиральных машин, водонагревателей, телевизоров, компьютеров, фотокамер и так далее. Все эти
+                вещи хранятся в сухих отапливаемых помещениях. Доступ к ним есть только владельца техники. Территория наших комплексов
+                хорошо охраняется, есть сигнализация и круглосуточное видеонаблюдение. Мы гарантируем сохранность ваших приборов.</p>
+                <p>Цена аренды кладовки зависит от ее площади и сроков. Предварительную стоимость можно рассчитать с помощью калькулятора
+                на сайте. Заказывайте подходящую кладовку онлайн и привозите к нам свои бытовые приборы.</p>
+              </div>
+
+            </div>
+
+            <div class="storage-services__wrapper" data-tabs-init="storage-services-tabs">
+              <h2 class="storage-services__heading h2">Услуги хранения</h2>
+              <div class="storage-services__tabs">
+                <a href="../seasonal-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Сезонное
+                    хранение</span></a>
+                <a href="../relocation-renovation.html"
+                  class="storage-services__tab button _my-tabs-btn _tab-btn-active">
+                  <span>Переезд и ремонт</span>
+                </a>
+                <a href="../temporary-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Временное
+                    хранение</span></a>
+                <a href="../long-term-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Длительное
+                    хранение</span></a>
+              </div>
+
+              <div class="storage-services__content _my-tabs-content grid-col-2 _tab-content-active">
+                @@include('../../html/storage-services/relocation-renovations.html',{path:''})
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('../../html/components/_footer.html',{path:'../../'})
+  </div>
+  @@include('../../html/components/_modal.html',{path:'../../'})
+  @@include('../../html/components/_js.html',{path:'../../'})
+</body>
+
+</html>

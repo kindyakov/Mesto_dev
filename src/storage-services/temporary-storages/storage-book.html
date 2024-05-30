@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('../../html/components/_head.html',{
+  "title": "@@fileName.title",
+  "description": "@@fileName.description",
+  "path":"@@fileName.path"
+  })
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://mesto-store.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Услуги хранения",
+        "item": "https://mesto-store.ru/services.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Временное хранение",
+        "item": "https://mesto-store.ru/storage-services/temporary-storage.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Хранение книг",
+        "item": "https://mesto-store.ru/storage-services/temporary-storage/fileName.html"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+{
+"@context": "https://schema.org/",
+"@type": "Product",
+"name": "Хранение книг",
+"image": "https://mesto-store.ru/img/favicon/logo.svg",
+"brand": "МЕСТО",
+"description": "@@fileName.description"
+}
+</script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('../../html/components/_header.html', {'fixed':'',path:'../../'})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="/" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <a href="../../services.html" class="path__link hover-link">Услуги хранения</a>
+              <span class="path__sep">/</span>
+              <a href="../temporary-storage.html" class="path__link hover-link">Временное хранение</a>
+              <span class="path__sep">/</span>
+              <span>Хранение книг</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="storage-services">
+        <div class="storage-services__container _container">
+          <div class="storage-services__body">
+            <h1 class="storage-services__title h2">Арендовать склад для хранения книг в Москве</h1>
+            <div class="storage-services__info">
+              <div class="storage-services__row">
+                <div class="storage-services__text text bg">
+                  <p>Сервис хранения вещей в Москве МЕСТО предлагает компактные кладовки и просторные (площадью до 9
+                    кв.м)
+                    кладовые. В
+                    помещениях поддерживается постоянный микроклимат, проводятся регулярные уборки и санитарная
+                    обработка.
+                    Если нужен склад
+                    для хранения книг и других вещей, для которых важно обеспечить стабильность параметров окружающей
+                    среды, обращайтесь в
+                    МЕСТО.</p>
+                </div>
+                <div class="storage-services__img">
+                  <img src="../../img/warehouse.png" alt="Картинка">
+                </div>
+              </div>
+              <div class="storage-services__text text">
+
+                <h3>Преимущества хранения книг в кладовых сервиса МЕСТО</h3>
+                <p>Хранение книг в Москве сопряжено с некоторыми особенностями. Нестабильность климата и отопительного
+                  сезона отрицательно
+                  влияют на состояние бумаги. Она плохо переносит перепады температур, избыток и недостаток влажности
+                  воздуха, а также
+                  пыль. От этого листы желтеют, становятся рыхлыми, бледнеют краски и портятся обложки. При
+                  неблагоприятных условиях
+                  хранения на бумаге развивается плесень, которая опасна тем, что разрушает структуру материалов и
+                  вызывает аллергические
+                  реакции.</p>
+                <p>В кладовых МЕСТО всегда стабильная температура 15-17°C. Уровень влажности находится на уровне 60-80%.
+                  В комплексах
+                  работает вентиляция. Все боксы закрытые, то есть книги защищены от фотостарения, которое проявляется
+                  под воздействием
+                  солнечных лучей. В кладовых МЕСТО создан оптимальный режим для хранения книг. Убедитесь в этом,
+                  заказав на сайте
+                  ознакомительный осмотр выбранного бокса. После заполнения формы поступит SMS с кодом для доступа в
+                  хранилище. Услуга
+                  бесплатная.</p>
+                <h3>Как организовать хранение книг</h3>
+                <p>В МЕСТО вы можете оформить постоянное или временное хранение книг. У нас доступные цены на аренду
+                  кладовых. При
+                  заключении долгосрочного соглашения общая стоимость будет ниже.</p>
+                <p>Наши комплексы расположены в районах с продуманными развязками, поблизости есть станции метро.
+                  Хранить книги в МЕСТО
+                  удобно еще и потому, что у нас:</p>
+                <ul>
+                  <li>есть круглосуточная охрана;</li>
+                  <li>смонтированы системы видеонаблюдения и пожарной сигнализации;</li>
+                  <li>возможен круглосуточный доступ к боксам;</li>
+                  <li>есть кладовые с навесными и цифровыми замками;</li>
+                  <li>на стоянках припаркованы тележки, на которых книги бережно перевозятся в хранилище.</li>
+                </ul>
+                <p>Чтобы узнать больше о возможности хранения книг в МЕСТО, позвоните нам по телефону или оставьте на
+                  сайте заявку на
+                  обратный звонок.</p>
+              </div>
+
+            </div>
+
+            <div class="storage-services__wrapper" data-tabs-init="storage-services-tabs">
+              <h2 class="storage-services__heading h2">Услуги хранения</h2>
+              <div class="storage-services__tabs">
+                <a href="../seasonal-storage.html" class="storage-services__tab button _my-tabs-btn">
+                  <span>Сезонное хранение</span>
+                </a>
+                <a href="../relocation-renovation.html" class="storage-services__tab button _my-tabs-btn">
+                  <span>Переезд и ремонт</span>
+                </a>
+                <a href="../temporary-storage.html" class="storage-services__tab button _my-tabs-btn _tab-btn-active">
+                  <span>Временное хранение</span>
+                </a>
+                <a href="../long-term-storage.html" class="storage-services__tab button _my-tabs-btn">
+                  <span>Длительное хранение</span>
+                </a>
+              </div>
+              @@include('../../html/storage-services/temporary-storages.html',{path:''})
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('../../html/components/_footer.html',{path:'../../'})
+  </div>
+  @@include('../../html/components/_modal.html',{path:'../../'})
+  @@include('../../html/components/_js.html',{path:'../../'})
+</body>
+
+</html>

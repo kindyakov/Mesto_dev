@@ -1,0 +1,218 @@
+.authorization {
+	padding-bottom: 100px;
+	&__container {
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		row-gap: 40px;
+	}
+
+	&__tabs {
+		width: 100%;
+		padding: 10px;
+		background-color: #f5f5f5;
+		display: flex;
+		gap: 10px;
+	}
+
+	&__tab {
+		flex: 1 1 50%;
+		color: $black;
+		border: 1px solid transparent;
+		background-color: #f5f5f5;
+		padding: 20px 10px;
+		&::before,
+		&::after {
+			background-color: $green;
+		}
+
+		&::after {
+			transform: translate(-101%, -50%);
+			width: 50%;
+		}
+		&::before {
+			transform: translate(101%, -50%);
+			width: 50%;
+		}
+
+		&:hover {
+			color: $green;
+			border-color: $green;
+		}
+
+		&._tab-btn-active {
+			color: $white;
+			&::after {
+				width: 51%;
+				transform: translate(0, -50%);
+			}
+			&::before {
+				width: 51%;
+				transform: translate(0, -50%);
+			}
+		}
+	}
+
+	&__content {
+		display: none;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 30px;
+		width: 100%;
+		padding: 50px;
+		border: 1px solid #bfc0c3;
+
+		&.content-authorization {
+		}
+		&.content-registration {
+		}
+
+		&._tab-content-active {
+			display: flex;
+		}
+
+		@media (max-width: $md1) {
+			padding: 30px 10px;
+		}
+	}
+
+	&__title {
+		padding: 0;
+		text-align: center;
+	}
+
+	&__wrapper {
+		max-width: 600px;
+		display: flex;
+		flex-direction: column;
+		row-gap: 10px;
+		width: 100%;
+	}
+
+	&__form {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 20px;
+
+		&._disabled {
+			.input {
+				background-color: #f5f5f5;
+			}
+			.button-input {
+				cursor: auto;
+				&.button {
+					color: $white;
+					&::after,
+					&::before {
+						transform: translate(0, -50%);
+					}
+				}
+			}
+		}
+
+		&_wrap-inputs {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			width: 100%;
+		}
+
+		&_info {
+			font-weight: 600;
+			font-size: 16px;
+			a {
+				color: $orange;
+				text-decoration: underline;
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+
+		&_bottom {
+			margin-top: 60px;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			row-gap: 10px;
+			@media (max-width: $md1) {
+				margin-top: 0;
+			}
+		}
+
+		&_button {
+			width: 100%;
+			padding: 20px 10px;
+			background-color: #f5f5f5;
+			color: $white;
+			&::after {
+				transform: translate(0, 0);
+			}
+
+			&:hover {
+				color: $orange;
+				&::after {
+					transform: translate(0, 101%);
+				}
+			}
+			&._disabled {
+				cursor: auto;
+				&:hover {
+					color: $white;
+					&::after {
+						transform: translate(0, 0);
+					}
+				}
+				&:active {
+					transform: scale(1);
+				}
+			}
+		}
+
+		&_forgot-password {
+			font-weight: 600;
+			font-size: 16px;
+			text-decoration: underline;
+			color: $orange;
+			cursor: pointer;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+
+		// &_button-input {}
+	}
+
+	&__wrap-input {
+		.just-validate-error-label {
+			left: auto;
+			display: inline;
+			right: 30px;
+			top: 50%;
+			transform: translate(0, -50%);
+			text-align: right;
+		}
+		&.wrap-input-btn {
+			.just-validate-error-label {
+				right: 160px;
+			}
+			@media (max-width: $md4) {
+				.just-validate-error-label {
+					right: auto;
+					left: 10px;
+					top: 5px;
+					transform: translate(0, 0);
+				}
+			}
+		}
+	}
+
+	&__input {
+	}
+}

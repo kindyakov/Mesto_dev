@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('../../html/components/_head.html',{
+  "title": "@@fileName.title",
+  "description": "@@fileName.description",
+  "path":"@@fileName.path"
+  })
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://mesto-store.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Услуги хранения",
+        "item": "https://mesto-store.ru/services.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Временное хранение",
+        "item": "https://mesto-store.ru/storage-services/temporary-storage.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Хранение детских вещей и игрушек",
+        "item": "https://mesto-store.ru/storage-services/temporary-storage/fileName.html"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+{
+"@context": "https://schema.org/",
+"@type": "Product",
+"name": "Хранение детских вещей и игрушек",
+"image": "https://mesto-store.ru/img/favicon/logo.svg",
+"brand": "МЕСТО",
+"description": "@@fileName.description"
+}
+</script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('../../html/components/_header.html', {'fixed':'',path:'../../'})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="/" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <a href="../../services.html" class="path__link hover-link">Услуги хранения</a>
+              <span class="path__sep">/</span>
+              <a href="../temporary-storage.html" class="path__link hover-link">Временное хранение</a>
+              <span class="path__sep">/</span>
+              <span>Хранение детских вещей и игрушек</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="storage-services">
+        <div class="storage-services__container _container">
+          <div class="storage-services__body">
+            <h1 class="storage-services__title h2">Аренда склада для хранения детских вещей в Москве</h1>
+            <div class="storage-services__info">
+              <div class="storage-services__row">
+                <div class="storage-services__text text bg">
+                  <p>Место для хранения детских вещей должно быть сухим и чистым, как в кладовках МЕСТО. В наших
+                    кладовых поддерживается
+                    постоянная температура в 15-17°C, а влажность находится на оптимальном уровне: в пределах 60-80%. На
+                    территориях и в
+                    зданиях комплексов периодически проводятся дезинсекция и дератизация, а в боксах и коридорах
+                    регулярно убираются.</p>
+                </div>
+                <div class="storage-services__img">
+                  <img src="../../img/warehouse.png" alt="Картинка">
+                </div>
+              </div>
+              <div class="storage-services__text text">
+                <h3>Условия для хранения детских вещей</h3>
+                <p>Хранение детских игрушек и колясок, одежды и мебели в условиях квартиры привычно, но неудобно. В
+                  домах они занимают
+                  слишком много места. Выставлять детское приданное на балкон опасно, ведь оно может отсыреть и
+                  испортиться. Такие вещи
+                  можно хранить только в чистых и сухих помещениях. В комплексах МЕСТО мы тщательно следим за
+                  соблюдением гигиенических
+                  норм, организовали круглосуточную охрану, в том числе с видеонаблюдением, и систему пожарной
+                  безопасности.</p>
+                <p>Наши площадки расположены в районах, рядом с которыми есть метро и удобные транспортные развязки. У
+                  ворот припаркованы
+                  тележки для перемещения габаритных грузов (детских кроваток и комодов). Возле зданий оборудованы
+                  просторные парковки.</p>
+                <h3>Как арендовать кладовку для хранения детских вещей</h3>
+                <p>Чтобы арендовать в Москве кладовую, обратитесь в сервис хранения вещей МЕСТО. У нас есть боксы
+                  площадью от вместительных
+                  локеров 1м.куб. до персональных размеров площадью под ваш запрос. В кладовку поместятся санки,
+                  самокаты и велосипеды. Вы
+                  можете выбрать любую свободную кладовую и оформить гостевой визит.</p>
+                <p>В кладовках можно воспользоваться боксами с электронными навесными замками. Предусмотрен личный
+                  кабинет арендатора,
+                  больше никаких ключей и брелоков! Управляйте доступом к своему помещению прямо со смартфона</p>
+                <ol>
+                  <li>Выберите кладовку.</li>
+                  <li>Оплатите услугу</li>
+                  <li>Заполните данные в личном кабинете</li>
+                  <li>Получите доступ к кладовке через личный кабинет</li>
+                  <li>Перевезите детские вещи на хранение в надежное МЕСТО.</li>
+                </ol>
+                <p>Доступ в здания открыт круглосуточно. Предусмотрены краткосрочная (от 1 месяца) и долгосрочная (до 1 года) аренда. Это
+                удобно, если вещи нужно определить на сезонное или постоянное хранение.</p>
+                <p>Чтобы определить размер кладовки, в которой поместятся все вещи, воспользуйтесь специальным калькулятором. Итоговая цена
+                зависит от площади выбранного помещения и срока его аренды.</p>
+                <p>Позвоните нам, чтобы получить консультацию или договориться о хранении детских вещей в Москве.</p>
+              </div>
+
+            </div>
+
+            <div class="storage-services__wrapper" data-tabs-init="storage-services-tabs">
+              <h2 class="storage-services__heading h2">Услуги хранения</h2>
+              <div class="storage-services__tabs">
+                <a href="../seasonal-storage.html" class="storage-services__tab button _my-tabs-btn">
+                  <span>Сезонное хранение</span>
+                </a>
+                <a href="../relocation-renovation.html" class="storage-services__tab button _my-tabs-btn">
+                  <span>Переезд и ремонт</span>
+                </a>
+                <a href="../temporary-storage.html" class="storage-services__tab button _my-tabs-btn _tab-btn-active">
+                  <span>Временное хранение</span>
+                </a>
+                <a href="../long-term-storage.html" class="storage-services__tab button _my-tabs-btn">
+                  <span>Длительное хранение</span>
+                </a>
+              </div>
+              @@include('../../html/storage-services/temporary-storages.html',{path:''})
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('../../html/components/_footer.html',{path:'../../'})
+  </div>
+  @@include('../../html/components/_modal.html',{path:'../../'})
+  @@include('../../html/components/_js.html',{path:'../../'})
+</body>
+
+</html>

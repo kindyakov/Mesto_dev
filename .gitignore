@@ -1,0 +1,10 @@
+.env
+node_modules
+dist
+.vscode
+package-lock.json
+Mesto_dev.zip
+Mesto_build.zip
+Место_dev.zip
+Место_build.zip
+Desktop.ini

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('../../html/components/_head.html',{
+  "title": "@@fileName.title",
+  "description": "@@fileName.description",
+  "path":"@@fileName.path"
+  })
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://mesto-store.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Услуги хранения",
+        "item": "https://mesto-store.ru/services.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Сезонное хранение",
+        "item": "https://mesto-store.ru/storage-services/seasonal-storage.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Хранение шин",
+        "item": "https://mesto-store.ru/storage-services/seasonal-storage/fileName.html"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+        {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "Хранение шин",
+        "image": "https://mesto-store.ru/img/favicon/logo.svg",
+        "brand": "МЕСТО",
+        "description": "@@fileName.description"
+        }
+        </script>
+
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('../../html/components/_header.html', {'fixed':'',path:'../../'})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="/" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <a href="../../services.html" class="path__link hover-link">Услуги хранения</a>
+              <span class="path__sep">/</span>
+              <a href="../seasonal-storage.html" class="path__link hover-link">Сезонное хранение</a>
+              <span class="path__sep">/</span>
+              <span>Хранение шин</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="storage-services">
+        <div class="storage-services__container _container">
+          <div class="storage-services__body">
+            <h1 class="storage-services__title h2">Аренда кладовки для хранения автомобильных шин в Москве</h1>
+            <div class="storage-services__info">
+              <div class="storage-services__row">
+                <div class="storage-services__text text bg">
+                  <p>Ежегодно автовладельцы меняют шины на своих автомобилях: весной зимние на летние, а осенью
+                    наоборот,
+                    летние на зимние.
+                    Таково требование закона. Это необходимо для безопасности движения. Это правильно. Однако если у
+                    автовладельца нет
+                    гаража, то как ему организовать сезонное хранение шин в Москве? Ответ на этот вопрос вы найдете в
+                    сети
+                    комплексов
+                    кладовых МЕСТО.</p>
+                </div>
+                <div class="storage-services__img">
+                  <img src="../../img/warehouse.png" alt="Картинка">
+                </div>
+              </div>
+              <div class="storage-services__text text">
+
+                <h3>Условия хранения автомобильных шин в МЕСТО</h3>
+                <p>Сервис хранения вещей в Москве МЕСТО предлагает аренду кладовых площадью 1-9 кв.м. Перед воротами
+                  здания оборудована
+                  широкая площадка, предназначенная для маневрирования малотоннажных грузовиков. Борт может подъехать
+                  прямо ко входу.
+                  Рядом стоят тележки, которые можно использовать для перевозки автошин.</p>
+                <p>У нас созданы оптимальные условия для хранения зимних и летних шин:</p>
+                <ul>
+                  <li>здания оборудованы противопожарной сигнализацией;</li>
+                  <li>на территории ведется круглосуточное видеонаблюдение;</li>
+                  <li>круглый год в помещениях поддерживаются оптимальные уровень влажности и температура (15-17°C);
+                  </li>
+                  <li>в комплексах широкие и чистые коридоры с хорошей освещенностью.</li>
+                </ul>
+                <p>
+                  Поскольку боксы закрытые, резина не подвергается фотостарению. Также там отсутствуют отопительные
+                  приборы, близость
+                  которых может навредить изделиям. Одновременно в кладовой можно хранить и другие аксессуары и
+                  комплектующие для
+                  автомобиля. Доступ к кладовой открыт к круглосуточно.
+                </p>
+                <h3>Как оформить аренду бокса</h3>
+                <p>Мы предлагаем боксы с навесными и цифровыми замками. В первом случае поможет администратор, а в
+                  последнем договор аренды
+                  можно оформить самостоятельно дистанционным способом. После заполнения формы на сайте и внесения
+                  оплаты поступает СМС, в
+                  котором будет код для доступа в кладовую. По этой же схеме вы можете бесплатно заказать
+                  предварительный осмотр
+                  заинтересовавшего помещения.</p>
+                <p>Комплексы МЕСТО расположены поблизости от метро, там, где есть транспортные развязки. Приходите к нам
+                  на экскурсию и
+                  заключайте договор на хранение вещей и автомобильных шин!</p>
+              </div>
+
+            </div>
+
+            <div class="storage-services__wrapper" data-tabs-init="storage-services-tabs">
+              <h2 class="storage-services__heading h2">Услуги хранения</h2>
+              <div class="storage-services__tabs">
+                <a href="../seasonal-storage.html"
+                  class="storage-services__tab button _my-tabs-btn _tab-btn-active"><span>Сезонное
+                    хранение</span></a>
+                <a href="../relocation-renovation.html" class="storage-services__tab button _my-tabs-btn"><span>Переезд
+                    и
+                    ремонт</span></a>
+                <a href="../temporary-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Временное
+                    хранение</span></a>
+                <a href="../long-term-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Длительное
+                    хранение</span></a>
+              </div>
+
+              <div class="storage-services__content _my-tabs-content grid-col-3 _tab-content-active">
+                @@include('../../html/storage-services/seasonal-storages.html',{path:''})
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('../../html/components/_footer.html',{path:'../../'})
+  </div>
+  @@include('../../html/components/_modal.html',{path:'../../'})
+  @@include('../../html/components/_js.html',{path:'../../'})
+</body>
+
+</html>

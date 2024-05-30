@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('../../html/components/_head.html',{
+  "title": "@@fileName.title",
+  "description": "@@fileName.description",
+  "path":"@@fileName.path"
+  })
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://mesto-store.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Услуги хранения",
+        "item": "https://mesto-store.ru/services.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Переезд и ремонт",
+        "item": "https://mesto-store.ru/storage-services/relocation-renovation.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Хранение техники",
+        "item": "https://mesto-store.ru/storage-services/relocation-renovations/fileName.html"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Хранение техники",
+  "image": "https://mesto-store.ru/img/favicon/logo.svg",
+  "brand": "МЕСТО",
+  "description": "@@fileName.description"
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('../../html/components/_header.html', {'fixed':'',path:'../../'})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="/" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <a href="../../services.html" class="path__link hover-link">Услуги хранения</a>
+              <span class="path__sep">/</span>
+              <a href="../relocation-renovation.html" class="path__link hover-link">Переезд и ремонт</a>
+              <span class="path__sep">/</span>
+              <span>Хранение техники</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="storage-services">
+        <div class="storage-services__container _container">
+          <div class="storage-services__body">
+            <h1 class="storage-services__title h2">Аренда склада для хранения техники в Москве</h1>
+            <div class="storage-services__info">
+              <div class="storage-services__row">
+                <div class="storage-services__text text bg">
+                  <p>Многие виды бизнеса сталкиваются с тем, что часть оборудования простаивает на том или ином этапе
+                    производственного
+                    цикла. Но собственный склад под хранение оборудования есть не у всех. Содержать его вместе с
+                    персоналом и охраной
+                    слишком дорого, особенно в Москве. Проблему решает сервис хранения вещей МЕСТО. Мы предоставляем
+                    боксы
+                    для хранения
+                    техники предприятиям и частным лицам. Чаще всего наши услуги востребованы в следующих случаях:</p>
+                </div>
+                <div class="storage-services__img">
+                  <img src="../../img/warehouse.png" alt="Картинка">
+                </div>
+              </div>
+              <div class="storage-services__text text">
+
+                <ul>
+                  <li>Оборудование необходимо для работы бизнеса, но временно не используется.</li>
+                  <li>Техника предназначена для продажи, но покупатель ещё не найден.</li>
+                  <li>Помещение, где располагалось оборудование, требует ремонта или реконструкции.</li>
+                </ul>
+                <h3>Преимущества хранения техники в сервисе МЕСТО</h3>
+                <p>Мы предлагаем взять в аренду бокс для хранения оборудования и техники на любой срок. К нам можно
+                  привезти бытовые
+                  приборы, заводские станки, строительную технику или электронику, чувствительную к условиям хранения.
+                </p>
+                <ul>
+                  <li>В помещениях поддерживается подходящий для техники температурный режим 15-17 градусов тепла.
+                    Резкие перепады температуры
+                    исключены.</li>
+                  <li>Места хранения техники чистые, сухие и проветриваемые. Оборудование не пострадает от влажности,
+                    пыли, насекомых или
+                    других негативных факторов.</li>
+                  <li>Разные размеры боксов дают возможность выбрать оптимальный вариант и не переплачивать за площадь.
+                  </li>
+                </ul>
+                <p>Дорогое оборудование может быть украдено, но не в нашем сервисе хранения вещей. Мы обеспечиваем
+                  надежную защиту
+                  имущества наших клиентов. Территория терминалов находится под круглосуточным видеонаблюдением внутри и
+                  снаружи.
+                  Предусмотрена сигнализация, работает охрана. Доступ к оборудованию в режиме 24/7 есть только у того,
+                  кто взял бокс в
+                  аренду. Возможен доступ других лиц при наличии доверенности. Этот документ быстро оформляется в нашем
+                  офисе.</p>
+                <p>У нас есть несколько комплексов для хранения техники в Москве. Цена аренды бокса зависит от
+                  расположения терминала,
+                  площади и сроков. Стоимость легко рассчитать с помощью калькулятора на нашем сайте. Если сомневаетесь,
+                  какой размер
+                  бокса подойдет, наш специалист порекомендует подходящий вариант. Оформить аренду можно онлайн за
+                  несколько минут, что
+                  экономит время. После этого остается только привезти вещи и оставить их в выбранном боксе.</p>
+                <p>Пользуйтесь нашими услугами, и вы останетесь довольны сохранностью и состоянием своей техники!</p>
+              </div>
+
+            </div>
+
+            <div class="storage-services__wrapper" data-tabs-init="storage-services-tabs">
+              <h2 class="storage-services__heading h2">Услуги хранения</h2>
+              <div class="storage-services__tabs">
+                <a href="../seasonal-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Сезонное
+                    хранение</span></a>
+                <a href="../relocation-renovation.html"
+                  class="storage-services__tab button _my-tabs-btn _tab-btn-active">
+                  <span>Переезд и ремонт</span>
+                </a>
+                <a href="../temporary-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Временное
+                    хранение</span></a>
+                <a href="../long-term-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Длительное
+                    хранение</span></a>
+              </div>
+
+              <div class="storage-services__content _my-tabs-content grid-col-2 _tab-content-active">
+                @@include('../../html/storage-services/relocation-renovations.html',{path:''})
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('../../html/components/_footer.html',{path:'../../'})
+  </div>
+  @@include('../../html/components/_modal.html',{path:'../../'})
+  @@include('../../html/components/_js.html',{path:'../../'})
+</body>
+
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('html/components/_head.html',{
+  "title": "@@rent-room.title",
+  "description": "@@rent-room.description",
+  "path":"@@rent-room.path"
+  })
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('html/components/_header.html', {'fixed':'',path:''})
+    <main class='main'>
+      <section class="rent-room section">
+        <div class="rent-room__container _container">
+          <div class="rent-room__body">
+            <h1 class="rent-room__title h2">Аренда кладовки</h1>
+            <div class="rent-room__progress">
+              <div class="rent-room__progress_content">
+                <div class="rent-room__progress_step">
+                  <svg class='icon icon-circle'>
+                    <use xlink:href='img/svg/sprite.svg#circle'></use>
+                  </svg>
+                  <span>Выбор кладовки</span>
+                </div>
+                <div class="rent-room__progress_step step-progress _active">
+                  <svg class='icon icon-circle'>
+                    <use xlink:href='img/svg/sprite.svg#circle'></use>
+                  </svg>
+                  <span>Авторизация</span>
+                </div>
+                <div class="rent-room__progress_step step-progress">
+                  <svg class='icon icon-circle'>
+                    <use xlink:href='img/svg/sprite.svg#circle'></use>
+                  </svg>
+                  <span>Оплата</span>
+                </div>
+                <div class="rent-room__progress_step step-progress">
+                  <svg class='icon icon-circle'>
+                    <use xlink:href='img/svg/sprite.svg#circle'></use>
+                  </svg>
+                  <span>Заключение договора</span>
+                </div>
+                <div class="rent-room__progress_scale scale-progress"></div>
+              </div>
+            </div>
+
+            <div class="rent-room__wrapper">
+              <div class="rent-room__step rent-room-step step-authorization _step-active">
+                <div class="rent-room__step_block-text">
+                  <h4 class="rent-room__step_title">Шаг 2</h4>
+                  <span class="rent-room__step_subtitle">Заполните данные для регистрации</span>
+                  <p class="rent-room__step_text text">Для оплаты кладовки онлайн Вы должны быть зарегистрированы на
+                    сайте.
+                    В личном кабинете доступны счета на оплату, а также
+                    хронятся история платежей и документы аренды.</p>
+                </div>
+
+                <div class="rent-room__authorization authorization-rent-room"
+                  data-tabs-init="authorization-rent-room-tabs">
+                  <div class="rent-room__authorization_tabs">
+                    <button
+                      class="rent-room__authorization_tab button _my-tabs-btn btn-authorization"><span>Авторизация</span></button>
+                    <button
+                      class="rent-room__authorization_tab button _my-tabs-btn btn-registration"><span>Регистрация</span></button>
+                  </div>
+
+                  <div class="rent-room__authorization_content _my-tabs-content content-authorization">
+                    <form class="rent-room__authorization_form form-authorization">
+                      <div class="rent-room__authorization_wrapper-inputs">
+                        <label class="rent-room__authorization_wrap-input wrap-input">
+                          <input type="tel" name="username" class="rent-room__authorization_input input"
+                            placeholder="Номер телефона" inputmode="tel">
+                        </label>
+                        <label class="rent-room__authorization_wrap-input wrap-input">
+                          <input type="password" name="password" class="rent-room__authorization_input input"
+                            placeholder="Пароль">
+                          <svg class='icon icon-eye'>
+                            <use xlink:href='img/svg/sprite.svg#eye'></use>
+                          </svg>
+                        </label>
+                      </div>
+                      <button class="rent-room__authorization_button button-2"><span>Войти</span></button>
+                      <div class="rent-room__authorization_info">
+                        У Вас ещё нет аккаунта? <a href="" class="tab-registration">Зарегистрировать новый аккаунт</a>
+                      </div>
+                      <span
+                        class="rent-room__authorization_forgot-password forgot-password btn-modal-password-recovery-open">Забыли
+                        пароль?</span>
+                    </form>
+                  </div>
+
+                  <div class="rent-room__authorization_content _my-tabs-content content-registration">
+                    <form class="rent-room__authorization_form form-send-phone">
+                      <label class="rent-room__authorization_wrap-input wrap-input wrap-input-btn">
+                        <input type="tel" name="username" placeholder="Номер телефона" inputmode="tel"
+                          class="authorization__input input">
+                        <button type="submit"
+                          class="rent-room__authorization_button-input button button-input"><span>Получить
+                            код</span></button>
+                      </label>
+                    </form>
+                    <form class="rent-room__authorization_form form-send-code _disabled">
+                      <label class="rent-room__authorization_wrap-input wrap-input wrap-input-btn">
+                        <input type="text" name="code" placeholder="Код из СМС" inputmode="tel"
+                          class="rent-room__authorization_input input" disabled>
+                        <button type="submit" class="rent-room__authorization_button-input button button-input"
+                          disabled=""><span>Подтвердить</span></button>
+                      </label>
+                    </form>
+                    <form class="rent-room__authorization_form form-registration _disabled">
+                      <div class="rent-room__authorization_wrapper-inputs">
+
+                        <div class="rent-room__authorization_wrap-input wrap-input">
+                          <input type="email" name="email" class="rent-room__authorization_input input"
+                            placeholder="Электронная почта" disabled>
+                        </div>
+                        <div class="rent-room__authorization_wrap-input wrap-input">
+                          <input type="password" name="password" class="rent-room__authorization_input input"
+                            placeholder="Пароль" disabled>
+                          <svg class='icon icon-eye'>
+                            <use xlink:href='img/svg/sprite.svg#eye'></use>
+                          </svg>
+                        </div>
+                        <div class="rent-room__authorization_wrap-input wrap-input">
+                          <input type="password" name="repassword" class="rent-room__authorization_input input"
+                            placeholder="Подтвердить пароль" disabled>
+                          <svg class='icon icon-eye'>
+                            <use xlink:href='img/svg/sprite.svg#eye'></use>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="privacy-policy">
+                        <input type="checkbox" name="privacy_policy" id="privacy-policy-1"
+                          class="privacy-policy__input-checkbox input-checkbox" checked>
+                        <label for="privacy-policy-1" class="privacy-policy__label-checkbox label-checkbox">
+                          <svg class="icon icon-check">
+                            <use xlink:href="img/svg/sprite.svg#check"></use>
+                          </svg>
+                        </label>
+                        <p class="privacy-policy__text">Ознакомлен с <a href="./persdata.html">политикой
+                            конфиденциальности</a></p>
+                      </div>
+                      <button class="rent-room__authorization_button button-2"
+                        disabled><span>Зарегистрироваться</span></button>
+                      <div class="rent-room__authorization_info">
+                        Уже зарегистрированы? <a href="" class="tab-authorization">Войти в аккаунт</a>
+                      </div>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="rent-room__step rent-room-step step-payment">
+                <div class="rent-room__step_block-text">
+                  <h4 class="rent-room__step_title">Шаг 3</h4>
+                  <span class="rent-room__step_subtitle">Оплатить картой</span>
+                  <p class="rent-room__step_text text">После оплаты и подтверждения вашей личности вы получите доступ к
+                    арендованной кладовой.</p>
+                  <span class="rent-room__step_subtitle">Оплатить через банк</span>
+                  <p class="rent-room__step_text text">Кладовка резервируется на 3 дня. Вы получите к нему доступ после
+                    поступления денег на расчетный счет и подтверждения
+                    вашей линости. Счет можно найти в личном кабинете и на почте.</p>
+                </div>
+
+                <div class="rent-room__tariffs">
+                  <label class="rent-room__tariffs_wrap-input wrap-input">
+                    <input type="number" name="month" class="rent-room__tariffs_input input input-month"
+                      placeholder="Количество месяцев аренды" inputmode="tel" autocomplete="off">
+                  </label>
+                  <ul class="rent-room__tariffs_list-month">
+                    <li class="rent-room__tariffs_item item-month" data-month="1">
+                      <span>1 месяц</span>
+                      <b data-amount="amount_1m">от 2586 ₽/м</b>
+                    </li>
+                    <li class="rent-room__tariffs_item item-month" data-month="6">
+                      <span>6 месяцев</span>
+                      <b data-amount="amount_6m">от 2286 ₽/м</b>
+                    </li>
+                    <li class="rent-room__tariffs_item item-month" data-month="11">
+                      <span>11 месяцeв</span>
+                      <b data-amount="amount_11m">от 2186 ₽/м</b>
+                    </li>
+                  </ul>
+                  <div class="rent-room__tariffs_result">
+                    <span>Итого:</span>
+                    <b class="result-price-room">26 232 ₽</b>
+                  </div>
+                  <label class="rent-room__tariffs_wrap-input wrap-input wrap-input-btn promo-code">
+                    <input type="text" name="promo-code" class="rent-room__tariffs_input input input-promo-code"
+                      placeholder="Промокод">
+                    <button
+                      class="rent-room__tariffs_button button button-input btn-promo-code"><span>Применить</span></button>
+                  </label>
+                </div>
+              </div>
+
+              <div class="rent-room__step rent-room-step step-agreement-conclusion">
+                <div class="rent-room__step_block-text">
+                  <h4 class="rent-room__step_title">Шаг 4</h4>
+                  <span class="rent-room__step_subtitle">Заполните персональные данные</span>
+                  <p class="rent-room__step_text text">Мы заключаем с Вами договор на аренду кладовки.
+                    Для этого требуются Ваши персональные данные.
+                    Мы гарантируем их полную безопасность.</p>
+                </div>
+
+                <form class="rent-room__form form-agreement-conclusion">
+                  <label class="rent-room__form_wrap-input wrap-input">
+                    <input type="text" name="familyname" class="rent-room__form_input input input-agreement-conclusion"
+                      placeholder="Фамилия">
+                  </label>
+                  <label class="rent-room__form_wrap-input wrap-input">
+                    <input type="text" name="firstname" class="rent-room__form_input input input-agreement-conclusion"
+                      placeholder="Имя">
+                  </label>
+                  <label class="rent-room__form_wrap-input wrap-input">
+                    <input type="text" name="patronymic" class="rent-room__form_input input input-agreement-conclusion"
+                      placeholder="Отчество">
+                  </label>
+                  <label class="rent-room__form_wrap-input wrap-input">
+                    <input type="text" name="birthday"
+                      class="rent-room__form_input input input-agreement-conclusion not-icon-date"
+                      placeholder="Дата рождения" readonly>
+                  </label>
+                  <label class="rent-room__form_wrap-input wrap-input">
+                    <input type="text" name="address" class="rent-room__form_input input input-agreement-conclusion"
+                      placeholder="Адрес регистрации">
+                  </label>
+                  <div class="rent-room__form_row">
+                    <label class="rent-room__form_wrap-input wrap-input">
+                      <input type="text" name="series" class="rent-room__form_input input input-agreement-conclusion"
+                        placeholder="Серия паспорта" inputmode="tel">
+                    </label>
+                    <label class="rent-room__form_wrap-input wrap-input">
+                      <input type="text" name="no" class="rent-room__form_input input input-agreement-conclusion"
+                        placeholder="Номер паспорта" inputmode="tel">
+                    </label>
+                  </div>
+                  <div class="rent-room__form_row">
+                    <label class="rent-room__form_wrap-input wrap-input">
+                      <input type="text" name="issue_date"
+                        class="rent-room__form_input input input-agreement-conclusion not-icon-date"
+                        placeholder="Дата выдачи" readonly>
+                    </label>
+                    <label class="rent-room__form_wrap-input wrap-input">
+                      <input type="text" name="subdivision"
+                        class="rent-room__form_input input input-agreement-conclusion" placeholder="Код подразделения"
+                        inputmode="tel">
+                    </label>
+                  </div>
+                  <label class="rent-room__form_wrap-input wrap-input">
+                    <input type="text" name="issued_by" class="rent-room__form_input input input-agreement-conclusion"
+                      placeholder="Кем выдан паспорт">
+                  </label>
+                  <label class="rent-room__form_wrap-input wrap-input wrap-input-file">
+                    <input type="file" name="file" class="input-file" accept="image/png, image/jpeg, image/jpg">
+                    <span>Загрузить фотографию паспорта</span>
+                    <b></b>
+                  </label>
+                  <button type="submit" class="rent-room__form_button button-2"><span>Заключить договор</span></button>
+                </form>
+              </div>
+
+              <div class="rent-room__rooms-slider rooms-slider-rent-room  swiper" data-da=".rent-room__body,992,last">
+                <div class="rent-room__rooms-slider_wrapper rooms-rent-room swiper-wrapper">
+
+                </div>
+                <div class="rent-room__rooms-slider_bottom bottom-rooms-slider-rent-room">
+                  <button class="rent-room__rooms-slider_button btn-slider-rent-rooms-prev">
+                    <svg class='icon icon-arrow-left'>
+                      <use xlink:href='img/svg/sprite.svg#arrow-left'></use>
+                    </svg>
+                  </button>
+                  <div class="rent-room__rooms-slider_paging paging-slider-rent-rooms"></div>
+                  <button class="rent-room__rooms-slider_button btn-slider-rent-rooms-next">
+                    <svg class='icon icon-arrow-right'>
+                      <use xlink:href='img/svg/sprite.svg#arrow-right'></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="rent-room__payment payment-rent-room _none" data-tabs-init="payment-rent-room-tabs"
+              id="payment-rent-room">
+              <h3 class="h3" style="text-align: center;">Выберите способ оплаты</h3>
+              <div class="rent-room__payment_tabs">
+                <button class="rent-room__payment_tab button _my-tabs-btn"><span>Оплатить онлайн</span></button>
+                <button class="rent-room__payment_tab button _my-tabs-btn"><span>Оплата по счету</span></button>
+              </div>
+              <div class="rent-room__payment_content _my-tabs-content content-payment-online">
+                <div class="rent-room__payment_col">
+                  <div class="rent-room__payment_top">
+                    <h4 class="rent-room__payment_title">Оплатить через банк</h4>
+                  </div>
+                  <form class="rent-room__payment_form form-payment-online">
+                    <div class="payment-cards">
+                    </div>
+
+                    <div class="rent-room__payment_result">
+                      <span>К оплате</span>
+                      <b class="payment-online-result result-price-room">26 245 р</b>
+                    </div>
+                    <div class="privacy-policy">
+                      <input type="checkbox" name="auto-payments" id="auto-payments-0"
+                        class="privacy-policy__input-checkbox input-checkbox">
+                      <label for="auto-payments-0" class="privacy-policy__label-checkbox label-checkbox">
+                        <svg class="icon icon-check">
+                          <use xlink:href="img/svg/sprite.svg#check"></use>
+                        </svg>
+                      </label>
+                      <a class="privacy-policy__text underline" target="_blank"
+                        href="./assets/files/Oferta_autopayment.docx">Присоединяюсь к Оферте автоплатежей</a>
+                    </div>
+                    <div class="rent-room__payment_bottom">
+                      <button type="submit"
+                        class="rent-room__payment_button button-2 button-payment"><span>Оплатить</span></button>
+                      <div class="privacy-policy">
+                        <input type="checkbox" name="privacy-policy" id="privacy-policy-0"
+                          class="privacy-policy__input-checkbox input-checkbox">
+                        <label for="privacy-policy-0" class="privacy-policy__label-checkbox label-checkbox">
+                          <svg class="icon icon-check">
+                            <use xlink:href="img/svg/sprite.svg#check"></use>
+                          </svg>
+                        </label>
+                        <p class="privacy-policy__text">Ознакомлен с условиями <a
+                            href="assets/files/Oferta_Fizlitsa.docx" target="_blank">Договора аренды</a></p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="rent-room__payment_col">
+                  <div class="rent-room__payment_block-text">
+                    <p class="rent-room__payment_text text">
+                      При выборе способа оплаты с использованием пластиковой карты, платеж по заказу совершается сразу
+                      после его создания.
+                      После пополнения баланса на нашем веб-сайте, Вам необходимо нажать кнопку “Оплатить”. Это действие
+                      перенаправит Вас на
+                      страницу аутентификационного сервера, где потребуется ввести данные пластика и провести
+                      авторизацию, а затем вернуться
+                      на наш веб-сайт. После возврата на наш сайт система проинформирует Вас о результате
+                      аутентификации. В случае успешной
+                      аутентификации Ваш заказ будет выполняться автоматически в соответствии с указанными Вами
+                      условиями. Если аутентификация
+                      карты не удастся, Вы можете повторить процесс оплаты.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="rent-room__payment_content _my-tabs-content content-payment-invoice">
+                <div class="rent-room__payment_col">
+                  <div class="rent-room__payment_block-text">
+                    <p class="rent-room__payment_text text">
+                      Если вы выбираете оплату по банковским реквизитам, счёт будет создан сразу после оформления
+                      заказа. Вы можете скачать
+                      счёт с сайта или получить его по электронной почте.Счет действителен в течении трех банковских
+                      дней.Рекомендуем в
+                      разделе “Мои данные” в личном кабинете указать адреса электронной почты для оповещений по вопросам
+                      бухгалтерии,
+                      технической поддержки и получения новостей.
+                    </p>
+                    <hr>
+                    <p class="rent-room__payment_text text"><b>Банковские реквизиты для безналичной оплаты</b></p>
+                    <p class="rent-room__payment_text text"><b>Юридический адрес: 121471, Россия, Москва, <br> Можайское
+                        шоссе, д.29, кв.48</b></p>
+                    <p class="rent-room__payment_text text"><b>Телефон: +7 (495) 165-15-65</b></p>
+                    <p class="rent-room__payment_text text"><b>ИП Брысина Евгения Александровна</b></p>
+                    <p class="rent-room__payment_text text">ИНН: 771921821260</p>
+                    <p class="rent-room__payment_text text">ОГРН: 321774600399092</p>
+                    <p class="rent-room__payment_text text">Р/счет: 40802810600006063648</p>
+                    <p class="rent-room__payment_text text">Банк АО «Тинькофф Банк»</p>
+                    <p class="rent-room__payment_text text">К/счет банка: 30101810145250000974</p>
+                    <p class="rent-room__payment_text text">БИК банка: 044525974</p>
+                  </div>
+                </div>
+                <div class="rent-room__payment_col">
+                  <div class="rent-room__payment_top">
+                    <h4 class="rent-room__payment_title">Реквизиты</h4>
+                    <p class="rent-room__payment_text text">Заполните банковские реквизиты для безналичной оплаты</p>
+                  </div>
+                  <form class="rent-room__payment_form form-payment-invoice">
+                    <label class="rent-room__payment_wrap-input wrap-input">
+                      <input type="text" name="fullname" class="rent-room__payment_input input"
+                        placeholder="Юридическое наименование" autocomplete="off">
+                    </label>
+                    <label class="rent-room__payment_wrap-input wrap-input">
+                      <input type="text" name="address" class="rent-room__payment_input input"
+                        placeholder="Юридический адрес регистрации" autocomplete="off">
+                    </label>
+                    <label class="rent-room__payment_wrap-input wrap-input">
+                      <input type="number" name="bik" class="rent-room__payment_input input" placeholder="БИК"
+                        inputmode="tel" autocomplete="off">
+                    </label>
+                    <label class="rent-room__payment_wrap-input wrap-input">
+                      <input type="number" name="inn" class="rent-room__payment_input input" placeholder="ИНН"
+                        inputmode="tel" autocomplete="off">
+                    </label>
+                    <label class="rent-room__payment_wrap-input wrap-input">
+                      <input type="number" name="kpp" class="rent-room__payment_input input" placeholder="КПП"
+                        inputmode="tel" autocomplete="off">
+                    </label>
+                    <label class="rent-room__payment_wrap-input wrap-input">
+                      <input type="text" name="bank" class="rent-room__payment_input input"
+                        placeholder="Наименование банка" autocomplete="off">
+                    </label>
+                    <label class="rent-room__payment_wrap-input wrap-input">
+                      <input type="number" name="rs" class="rent-room__payment_input input" placeholder="р/с"
+                        inputmode="tel" autocomplete="off">
+                    </label>
+                    <label class="rent-room__payment_wrap-input wrap-input">
+                      <input type="number" name="ks" class="rent-room__payment_input input" placeholder="к/с"
+                        inputmode="tel" autocomplete="off">
+                    </label>
+                    <div class="rent-room__payment_bottom">
+                      <button type="submit" class="rent-room__payment_button button-2 button-payment"><span>Сформировать
+                          счет</span></button>
+                      <div class="privacy-policy">
+                        <input type="checkbox" name="privacy-policy" id="privacy-policy-2"
+                          class="privacy-policy__input-checkbox input-checkbox">
+                        <label for="privacy-policy-2" class="privacy-policy__label-checkbox label-checkbox">
+                          <svg class="icon icon-check">
+                            <use xlink:href="img/svg/sprite.svg#check"></use>
+                          </svg>
+                        </label>
+                        <p class="privacy-policy__text">Ознакомлен с условиями <a
+                            href="assets/files/Oferta_Yurlitsa.docx" target="_blank">Договора аренды</a></p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('html/components/_footer.html',{path:''})
+  </div>
+  @@include('html/components/_modal.html',{path:''})
+  @@include('html/components/rent-room-modal.html',{path:''})
+  @@include('html/components/_js.html',{path:''})
+</body>
+
+</html>

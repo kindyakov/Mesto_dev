@@ -1,0 +1,171 @@
+.watch {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px 0;
+
+	&__item {
+		display: flex;
+		position: relative;
+		gap: 3px;
+
+		&_count {
+			position: relative;
+			color: $white;
+			background-color: $dark-green;
+			font-weight: 500;
+			font-size: 36px;
+			letter-spacing: 0.01em;
+			width: 30px;
+			height: 52px;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+
+			span {
+				position: relative;
+				z-index: 1;
+			}
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				width: 100%;
+				height: 50%;
+				z-index: 0;
+				background-color: $green;
+			}
+
+			@media (max-width: $md5) {
+				font-size: 20px;
+				width: 20px;
+				height: 35px;
+			}
+		}
+
+		&_span {
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			transform: translate(-50%, 0);
+			font-weight: 500;
+			font-size: 14px;
+			letter-spacing: 0.01em;
+		}
+	}
+
+	&__separator {
+		font-weight: 500;
+		font-size: 32px;
+		letter-spacing: 0.01em;
+		color: $dark-green;
+	}
+}
+
+.flipdown {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+
+	* {
+		border-radius: 0 !important;
+	}
+
+	.rotor-group {
+		padding-right: 0;
+		display: flex;
+		&-heading {
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			transform: translate(-50%);
+			font-size: 14px;
+			font-weight: 500;
+			letter-spacing: 0.01em;
+			color: #2d3a3d;
+			&::before {
+				height: auto;
+				line-height: normal;
+			}
+		}
+		&::after {
+			content: ':' !important;
+			position: absolute !important;
+			left: 100% !important;
+			top: 50% !important;
+			bottom: auto !important;
+			transform: translate(6px, -50%) !important;
+			width: auto !important;
+			height: auto !important;
+			background-color: transparent !important;
+			font-weight: 500;
+			font-size: 32px;
+			color: $green;
+		}
+		&::before {
+			display: none !important;
+		}
+		&:last-child {
+			&::after {
+				display: none;
+			}
+		}
+	}
+
+	.rotor {
+		width: 30px;
+		height: 50px;
+		font-size: 36px;
+		font-weight: 500;
+		text-align: center;
+		overflow: hidden;
+		perspective: 1000px;
+
+		&:after {
+			display: none;
+		}
+
+		&-leaf {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			text-align: center;
+
+			&-rear,
+			&-front {
+				width: 100%;
+				height: 50%;
+			}
+			&-rear {
+				background-color: $dark-green !important;
+			}
+			&-front {
+				
+				background-color: $green !important;
+				line-height: 50px;
+			}
+		}
+
+		&-top {
+			width: 100%;
+			height: 50%;
+			line-height: 50px;
+			background-color: $green !important;
+		}
+
+		&-bottom {
+			width: 100%;
+			height: 50%;
+			background-color: $dark-green !important;
+		}
+	}
+}

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('../../html/components/_head.html',{
+  "title": "@@fileName.title",
+  "description": "@@fileName.description",
+  "path":"@@fileName.path"
+  })
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://mesto-store.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Услуги хранения",
+        "item": "https://mesto-store.ru/services.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Переезд и ремонт",
+        "item": "https://mesto-store.ru/storage-services/relocation-renovation.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Хранение мебели",
+        "item": "https://mesto-store.ru/storage-services/relocation-renovations/fileName.html"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+    {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Хранение мебели",
+    "image": "https://mesto-store.ru/img/favicon/logo.svg",
+    "brand": "МЕСТО",
+    "description": "@@fileName.description"
+    }
+    </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('../../html/components/_header.html', {'fixed':'',path:'../../'})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="/" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <a href="../../services.html" class="path__link hover-link">Услуги хранения</a>
+              <span class="path__sep">/</span>
+              <a href="../relocation-renovation.html" class="path__link hover-link">Переезд и ремонт</a>
+              <span class="path__sep">/</span>
+              <span>Хранение мебели</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="storage-services">
+        <div class="storage-services__container _container">
+          <div class="storage-services__body">
+            <h1 class="storage-services__title h2">Аренда склада для хранения мебели в Москве</h1>
+            <div class="storage-services__info">
+              <div class="storage-services__row">
+                <div class="storage-services__text text bg">
+                  <p>Если Вам нужно куда-то пристроить мебель на время ремонта или переезда, обращайтесь в сервис
+                    хранения
+                    вещей МЕСТО. Наша
+                    компания предлагает услуги временного хранения мебели в Москве с круглосуточным доступом владельца.
+                    Вы
+                    можете арендовать
+                    у нас кладовку подходящего размера, сложить в ней мебель и больше ни о чем не беспокоиться. Как
+                    только
+                    вещи снова
+                    понадобятся, вы заберете их в таком же состоянии, в каком привезли. Мы гарантируем сохранность
+                    имущества и оптимальные
+                    условия в кладовках.</p>
+                </div>
+                <div class="storage-services__img">
+                  <img src="../../img/warehouse.png" alt="Картинка">
+                </div>
+              </div>
+              <div class="storage-services__text text">
+
+                <h3>Когда нужны услуги хранения мебели?</h3>
+                <p>Чаще всего мебель вывозится из дома или офиса во время ремонта. Когда нет условий для хранения
+                  столов, шкафов и кресел в
+                  другом месте, их приходится просто передвигать. Но при этом работы замедляются, а вещи легко пачкаются
+                  и пропитываются
+                  химическими запахами. Результат будет намного лучше, если полностью вывезти мебель, а потом вернуть ее
+                  в уже
+                  отремонтированные помещения. Есть и другие случаи, когда востребовано временное хранение мебели:</p>
+                <ul>
+                  <li>Переезд. Иногда покидать прежнее жилье или офис приходится до того, как новое место будет найдено
+                    или отремонтировано. В
+                    этом случае привозите свои вещи к нам до тех пор, пока не будете готовы к переезду.</li>
+                  <li>Покупка новой мебели. Если вы заказали новый гарнитур или встроенную мебель, а стадия ремонта еще
+                    не позволят установить
+                    их, мы готовы помочь. К нам можно привезти и оставшуюся старую мебель, если вы не хотите ее
+                    выбрасывать.</li>
+                  <li>Сезонное хранение. Любите отдыхать летом за городом? Для этого нужна удобная уличная мебель. Но
+                    оставлять ее на даче на
+                    зиму нельзя: она быстро придет в негодность. Лучше привозите ее в нашу отапливаемую кладовку.</li>
+                </ul>
+                <h3>Преимущества хранения мебели в кладовых сервиса МЕСТО</h3>
+                <p>Компания МЕСТО предлагает воспользоваться услугой хранения мебели любого размера. Это могут быть
+                  кресла и стулья,
+                  письменные и обеденные столы, кровати, диваны, комоды, шкафы и другие вещи. У нас есть кладовки
+                  разных размеров. Можно
+                  подобрать такой вариант, чтобы все поместилось, но не пришлось переплачивать за площадь. В кладовках
+                  всегда
+                  поддерживается температура 15-17 градусов тепла. Воздух вентилируется, повышенная влажность не
+                  допускается. Охрана,
+                  сигнализация и видеонаблюдение внутри и вокруг комплекса исключают риск кражи. Попасть в кладовку
+                  может только хозяин
+                  сложенных в ней вещей.</p>
+                <p>Предварительную цену аренды можно рассчитать с помощью калькулятора на сайте. Выбирайте подходящую
+                  кладовку, арендуйте
+                  ее онлайн и привозите к нам мебель на временное хранение.</p>
+              </div>
+
+            </div>
+
+            <div class="storage-services__wrapper" data-tabs-init="storage-services-tabs">
+              <h2 class="storage-services__heading h2">Услуги хранения</h2>
+              <div class="storage-services__tabs">
+                <a href="../seasonal-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Сезонное
+                    хранение</span></a>
+                <a href="../relocation-renovation.html"
+                  class="storage-services__tab button _my-tabs-btn _tab-btn-active">
+                  <span>Переезд и ремонт</span>
+                </a>
+                <a href="../temporary-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Временное
+                    хранение</span></a>
+                <a href="../long-term-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Длительное
+                    хранение</span></a>
+              </div>
+
+              <div class="storage-services__content _my-tabs-content grid-col-2 _tab-content-active">
+                @@include('../../html/storage-services/relocation-renovations.html',{path:''})
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('../../html/components/_footer.html',{path:'../../'})
+  </div>
+  @@include('../../html/components/_modal.html',{path:'../../'})
+  @@include('../../html/components/_js.html',{path:'../../'})
+</body>
+
+</html>

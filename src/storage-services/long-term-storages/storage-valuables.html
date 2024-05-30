@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('../../html/components/_head.html',{
+  "title": "@@fileName.title",
+  "description": "@@fileName.description",
+  "path":"@@fileName.path"
+  })
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://mesto-store.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Услуги хранения",
+        "item": "https://mesto-store.ru/services.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Длительное хранение",
+        "item": "https://mesto-store.ru/storage-services/long-term-storage.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Хранение ценных вещей",
+        "item": "https://mesto-store.ru/storage-services/long-term-storages/fileName.html"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "Хранение ценных вещей",
+        "image": "https://mesto-store.ru/img/favicon/logo.svg",
+        "brand": "МЕСТО",
+        "description": "@@fileName.description"
+      }
+    </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('../../html/components/_header.html', {'fixed':'',path:'../../'})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="/" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <a href="../../services.html" class="path__link hover-link">Услуги хранения</a>
+              <span class="path__sep">/</span>
+              <a href="../long-term-storage.html" class="path__link hover-link">Длительное хранение</a>
+              <span class="path__sep">/</span>
+              <span>Хранение ценных вещей</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="storage-services">
+        <div class="storage-services__container _container">
+          <div class="storage-services__body">
+            <h1 class="storage-services__title h2">Аренда камеры хранения для ценных вещей</h1>
+            <div class="storage-services__info">
+              <div class="storage-services__row">
+                <div class="storage-services__text text bg">
+                  <p>Места для хранения ценных вещей выбирают особенно тщательно. При этом важно, чтобы одновременно
+                    соблюдались 2
+                    требования: конфиденциальность и безопасность, как в кладовых МЕСТО. Сервис хранения вещей
+                    предлагает
+                    аренду компактных
+                    ячеек и просторных боксов. Помещения находятся в комплексах в Москве на хорошо охраняемых
+                    территориях.
+                    Арендаторы могут
+                    попасть внутрь в любое время суток, но все помещения закрываются на надежные цифровые замки. Здания
+                    и
+                    территория
+                    находятся под постоянным видеонаблюдением.</p>
+                </div>
+                <div class="storage-services__img">
+                  <img src="../../img/warehouse.png" alt="Картинка">
+                </div>
+              </div>
+              <div class="storage-services__text text">
+
+                <h3>Как хранить ценные вещи</h3>
+                <p>Кладовые в МЕСТО можно использовать как камеру хранения для ценных вещей, потому что в помещениях
+                  поддерживаются
+                  влажность в 60-80% и температура воздуха 15-17°С. Такие условия подходят для длительного пребывания
+                  материалов
+                  натурального происхождения (бумаги, тканей, дерева, кожи), электроприборов и электронной аппаратуры.
+                </p>
+                <p>Коридоры в зданиях хорошо освещены. Доступ к помещениям открыт круглосуточно. Внутри регулярно
+                  проводится уборка, то
+                  есть ценные вещи меньше пылятся и не портятся.</p>
+                <p>В комплексах есть кладовки и кладовые, которые можно использовать для хранения крупногабаритных
+                  предметов. Площадь
+                  помещений – 1-9 кв.м. Это отличное решение, если на хранение нужно сдать предметы, которые не
+                  помещаются в банковские
+                  кладовки. К тому же аренда кладовой дешевле аналогичных услуг банков.</p>
+                <h3>Как организовать хранение ценных вещей</h3>
+                <p>Ценные вещи помещают на хранение в кладовые:</p>
+                <ul>
+                  <li>при переездах;</li>
+                  <li>на время ремонта;</li>
+                  <li>при длительном отсутствии владельцев в городе;</li>
+                  <li>чтобы изначально предупредить противоправные действия в собственном доме.</li>
+                </ul>
+                <p>Договор на хранение ценных вещей заключается дистанционно. На нашем сайте необходимо:</p>
+                <ol>
+                  <li>Заполнить специальную форму, указав свои данные.</li>
+                  <li>Отправить заявку.</li>
+                  <li>Получить СМС с шифром для цифрового замка.</li>
+                  <li>Разместить вещи в кладовой в комплексе МЕСТО.</li>
+                </ol>
+                <p>Цена на аренду помещения определяется с учетом его габаритов и срока действия договора. По этой же
+                  схеме можно подать
+                  заявку на разовое посещение комплекса, в том числе для проверки условий хранения в конкретной
+                  кладовой.</p>
+                <p>Позвоните нам для консультации или получения помощи в оформлении договора аренды кладовой для
+                  хранения ценных вещей.</p>
+              </div>
+
+            </div>
+
+            <div class="storage-services__wrapper" data-tabs-init="storage-services-tabs">
+              <h2 class="storage-services__heading h2">Услуги хранения</h2>
+              <div class="storage-services__tabs">
+                <a href="../seasonal-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Сезонное
+                    хранение</span></a>
+                <a href="../relocation-renovation.html" class="storage-services__tab button _my-tabs-btn"><span>Переезд
+                    и
+                    ремонт</span></a>
+                <a href="../temporary-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Временное
+                    хранение</span></a>
+                <a href="../long-term-storage.html"
+                  class="storage-services__tab button _my-tabs-btn _tab-btn-active"><span>Длительное
+                    хранение</span></a>
+              </div>
+              <div class="storage-services__content _my-tabs-content grid-col-3 _tab-content-active">
+                @@include('../../html/storage-services/long-term-storages.html',{path:''})
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('../../html/components/_footer.html',{path:'../../'})
+  </div>
+  @@include('../../html/components/_modal.html',{path:'../../'})
+  @@include('../../html/components/_js.html',{path:'../../'})
+</body>
+
+</html>

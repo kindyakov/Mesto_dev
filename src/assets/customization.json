@@ -1,0 +1,42 @@
+[
+    {
+        "tags": {
+            "any": [
+                "traffic_light"
+            ]
+        },
+        "stylers": {
+            "visibility": "off"
+        }
+    },
+    {
+        "tags": {
+            "any": [
+                "entrance"
+            ]
+        },
+        "stylers": {
+            "visibility": "off"
+        }
+    },
+    {
+        "tags": {
+            "any": [
+                "road"
+            ],
+            "none": [
+                "road_1",
+                "road_2",
+                "road_3",
+                "road_4",
+                "road_5",
+                "road_6",
+                "road_7"
+            ]
+        },
+        "elements": "label.icon",
+        "stylers": {
+            "visibility": "off"
+        }
+    }
+]

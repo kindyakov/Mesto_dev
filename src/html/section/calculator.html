@@ -1,0 +1,147 @@
+<section class="calculator section" id="calculator">
+  <div class="calculator__container _container">
+    <div class="calculator__body" data-tabs-init="calculator-tabs">
+      <div class="calculator__header">
+        <div class="calculator__heading">
+          <h2 class="calculator__title h2">Калькулятор</h2>
+          <span class="calculator__info-span">Чем больше объем, тем дешевле каждый метр</span>
+        </div>
+        <div class="calculator__tabs">
+          <button class="calculator__tab _my-tabs-btn button"><span>Калькулятор стоимости</span></button>
+          <button class="calculator__tab _my-tabs-btn button"><span>Калькулятор объема</span></button>
+        </div>
+      </div>
+      <div class="calculator__content _my-tabs-content cost-calculator">
+        <div class="calculator__form">
+          <div class="calculator__form_block">
+            <h5 class="calculator__form_title">Выберите терминал</h5>
+            <select name="warehouse_id" class="calculator__form_select select-calculator">
+              <option value="0">Борисовские пруды 22 к 4 с1</option>
+            </select>
+          </div>
+          <div class="calculator__form_wrap-range">
+            <h5 class="calculator__form_title">Укажите объем кладовки</h5>
+            <div class="calculator__form_range range-calculator" data-type-range="area" data-step="1"
+              data-connect="lower" data-tooltips></div>
+          </div>
+          <div class="calculator__form_wrap-range">
+            <h5 class="calculator__form_title">Укажите срок аренды</h5>
+            <div class="calculator__form_range range-calculator" data-type-range="duration" data-step="1"
+              data-connect="lower" data-tooltips></div>
+          </div>
+          <div class="calculator__form_bottom">
+            <span class="calculator__form_price price-calculator">1 800 ₽/мес</span>
+            <button class="calculator__form_button btn-calculator button-2 btn-cost-calculator"><span>Подобрать
+                варианты</span></button>
+          </div>
+        </div>
+        <div class="calculator__preview">
+          <div class="calculator__preview_img">
+            <img src="" alt="Фото кладовки" class="img-preview-room">
+          </div>
+          <h4 class="calculator__preview_title">Выбранная кладовка</h4>
+          <p class="calculator__preview_text text">Идеальная площадь для длительного хранения сезонных вещей,
+            таких как: книги, стиральная машина, шины, сноуборд,
+            малогабаритная мебель и прочее. Несмотря на компактные размеры и небольшую цену, такие склады являются
+            довольно
+            вместительными.</p>
+        </div>
+      </div>
+      <div class="calculator__content _my-tabs-content area-calculator">
+        <aside class="calculator__aside aside-categorys">
+          <div class="calculator__header-col">Выберите категорию</div>
+          <ul class="calculator__categorys">
+            <li class="calculator__category-item item-category _active" data-category="living-room">
+              <span>Гостиная</span>
+            </li>
+            <li class="calculator__category-item item-category" data-category="kitchen-dining-room"><span>Кухня и
+                столовая</span></li>
+            <li class="calculator__category-item item-category" data-category="bedroom"><span>Спальня</span></li>
+            <li class="calculator__category-item item-category" data-category="children-room"><span>Детская
+                комната</span></li>
+            <li class="calculator__category-item item-category" data-category="office"><span>Кабинет</span></li>
+            <li class="calculator__category-item item-category" data-category="laundry-room">
+              <span>Постирочная</span>
+            </li>
+            <li class="calculator__category-item item-category" data-category="garden"><span>Сад</span></li>
+            <li class="calculator__category-item item-category" data-category="basement"><span>Подвал</span></li>
+          </ul>
+          <select name="category" class="select-area-calculator">
+            <option value="living-room">Гостиная</option>
+            <option value="kitchen-dining-room">Кухня и столовая</option>
+            <option value="bedroom">Спальня</option>
+            <option value="children-room">Детская комната</option>
+            <option value="office">Кабинет</option>
+            <option value="laundry-room">Постирочная</option>
+            <option value="garden">Сад</option>
+            <option value="basement">Подвал</option>
+          </select>
+        </aside>
+        <div class="calculator__wrapper-things">
+          <div class="calculator__header-col">Выберите предметы хранения</div>
+          <div class="calculator__body-things">
+            <div class="calculator__current-category category-current">Гостиная</div>
+            <div class="calculator__things">
+
+              <div class="calculator__thing">
+                <div class="calculator__thing_img">
+                  <img src="@@pathimg/icons/things/living-room/thing-1.png" alt="Иконка">
+                </div>
+                <span class="calculator__thing_name">Диван угловой</span>
+                <div class="calculator__thing_counter">
+                  <button class="counter-btn minus"></button>
+                  <input type="number" readonly="true" value="0" min="0" max="100" class="count" data-value-area="1.2">
+                  <button class="counter-btn plus"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="calculator__aside aside-sizes">
+          <div class="calculator__header-col">Расчетный
+            размер кладовки</div>
+          <ul class="calculator__sizes">
+            <li class="calculator__sizes-item item-sizes" data-category="living-room">
+              <span>Гостиная</span>
+              <span class="value">0.0м<sup>2</sup></span>
+            </li>
+            <li class="calculator__sizes-item item-sizes" data-category="kitchen-dining-room">
+              <span>Кухня и столовая</span>
+              <span class="value">0.0м<sup>2</sup></span>
+            </li>
+            <li class="calculator__sizes-item item-sizes" data-category="bedroom">
+              <span>Спальня</span>
+              <span class="value">0.0м<sup>2</sup></span>
+            </li>
+            <li class="calculator__sizes-item item-sizes" data-category="children-room">
+              <span>Детская комната</span>
+              <span class="value">0.0м<sup>2</sup></span>
+            </li>
+            <li class="calculator__sizes-item item-sizes" data-category="office">
+              <span>Кабинет</span>
+              <span class="value">0.0м<sup>2</sup></span>
+            </li>
+            <li class="calculator__sizes-item item-sizes" data-category="laundry-room">
+              <span>Постирочная</span>
+              <span class="value">0.0м<sup>2</sup></span>
+            </li>
+            <li class="calculator__sizes-item item-sizes" data-category="garden">
+              <span>Сад</span>
+              <span class="value">0.0м<sup>2</sup></span>
+            </li>
+            <li class="calculator__sizes-item item-sizes" data-category="basement">
+              <span>Подвал</span>
+              <span class="value">0.0м<sup>2</sup></span>
+            </li>
+          </ul>
+          <div class="calculator__size-result">
+            <span>Размер кладовки</span>
+            <span class="size-result">0.0м<sup>2</sup></span>
+          </div>
+          <button class="calculator__form_button btn-calculator button-2 btn-area-calculator"><span>Подобрать
+              варианты</span></button>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>

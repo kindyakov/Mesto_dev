@@ -1,0 +1,144 @@
+.noUi-target {
+	background-color: $green;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	height: 10px;
+	margin-bottom: 20px;
+}
+
+.noUi-base {
+}
+
+.noUi-connects {
+	border-radius: 0;
+	position: relative;
+	z-index: 2;
+	.carving {
+		position: absolute;
+		display: block;
+		width: 0;
+		height: 100%;
+		left: 0;
+		top: 0;
+		background: url('../img/svg/3.png');
+		background-repeat: repeat-x;
+		transform: scale(1, 1);
+	}
+}
+
+.noUi-connect {
+	background: transparent;
+}
+
+.noUi-origin {
+	// z-index: 1 !important;
+}
+
+.noUi-horizontal {
+	.noUi-handle {
+		width: 28px;
+		height: 28px;
+		right: -14px;
+		top: -9px;
+	}
+	.noUi-tooltip {
+		left: 50%;
+		bottom: 100%;
+		transform: translate(-50%, -70%);
+	}
+}
+
+.noUi-handle {
+	border: none;
+	border-radius: 0;
+	background: transparent;
+	cursor: grab;
+	box-shadow: none;
+	&::before,
+	&::after {
+		display: none;
+	}
+}
+
+.noUi-tooltip {
+	border: none;
+	border-radius: 0;
+	background: transparent;
+	color: $white;
+	padding: 0;
+	font-weight: 600;
+	font-size: 14px;
+	z-index: 1;
+}
+
+.noUi-touch-area {
+	display: none;
+}
+
+.range-tooltip {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	bottom: 0;
+	transform: translate(-50%, 0);
+	z-index: 0;
+
+	.icon {
+		width: 28px;
+		height: 28px;
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%, 0);
+		bottom: 0;
+	}
+
+	&_img {
+		position: absolute;
+		z-index: 1;
+		bottom: 0;
+		left: 50%;
+		transform: translate(-50%, 0);
+	}
+
+	&_img-bg {
+		z-index: -1;
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translate(-50%, 10px);
+		// opacity: 0;
+	}
+}
+
+.noUi-pips-horizontal {
+	padding: 10px 0 0 0;
+	height: 35px;
+	top: 100%;
+	left: 0;
+	width: 100%;
+}
+
+.noUi-value-horizontal {
+	transform: translate(-50%, 100%);
+}
+
+.noUi-value-sub {
+	color: $white;
+	font-weight: 400;
+	font-size: 14px;
+}
+
+.noUi-marker-horizontal {
+	background-color: $white;
+	height: 10px;
+	&.noUi-marker-large {
+		height: 10px;
+	}
+}
+
+.noUi-pips {
+	color: $white;
+	font-weight: 400;
+	font-size: 14px;
+}

@@ -1,0 +1,219 @@
+<div class="modal modal-confirm-check-out">
+  <div class="modal__content">
+    <div class="modal__body">
+      <div class="modal__close btn-modal-close">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="modal-confirm-check-out__content">
+        <p>Вы уверены, что хотите отменить выезд?</p>
+        <div>
+          <button class="button btn-modal-close btn-no"><span>Нет</span></button>
+          <button class="button btn-modal-close btn-yes"><span>Да</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-confirm-replace-room">
+  <div class="modal__content">
+    <div class="modal__body">
+      <div class="modal-confirm-replace-room__content">
+        <div class="modal-confirm-replace-room__text">
+          <p>Вы уверены, что хотите заменить<br>Кладовка 99 на Кладовка 95?</p>
+          <b>Доплата составит 23 400 ₽</b>
+        </div>
+        <div>
+          <button class="button btn-modal-close btn-replace-confirm"><span>Заменить</span></button>
+          <button class="button-3 btn-modal-close btn-cancel"><span>Отменить</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-payments-room">
+  <div class="modal__content">
+    <div class="modal__body">
+      <div class="modal-payments-room__content" data-tabs-init="modal-payments-tabs">
+        <div class="modal-payments-room__form">
+          <div class="rent-room__tariffs">
+            <label class="rent-room__tariffs_wrap-input wrap-input">
+              <input type="number" name="num_monthes" class="rent-room__tariffs_input input input-month"
+                placeholder="Количество месяцев аренды" inputmode="tel" autocomplete="off">
+            </label>
+            <ul class="rent-room__tariffs_list-month">
+              <li class="rent-room__tariffs_item item-month" data-month="1" data-price="18980">
+                <span>1 месяц</span>
+                <b>от 18&nbsp;980&nbsp;₽/м</b>
+              </li>
+              <li class="rent-room__tariffs_item item-month" data-month="6" data-price="18031">
+                <span>6 месяцев</span>
+                <b>от 18&nbsp;031&nbsp;₽/м</b>
+              </li>
+              <li class="rent-room__tariffs_item item-month" data-month="11" data-price="17082">
+                <span>11 месяцeв</span>
+                <b>от 17&nbsp;082&nbsp;₽/м</b>
+              </li>
+            </ul>
+            <label class="rent-room__tariffs_wrap-input wrap-input wrap-input-btn promo-code">
+              <input type="text" name="promo-code" class="rent-room__tariffs_input input input-promo-code"
+                placeholder="Промокод">
+              <div class="rent-room__tariffs_button button button-input btn-promo-code"><span>Применить</span></div>
+            </label>
+          </div>
+          <div class="agreement2__row__right-col__block-cards account-storerooms__agreement_form-payment">
+            <p class="p1 title">Способы оплаты</p>
+
+            <div class="payment-cards tabs-content-modal-payment-cards _my-tabs-content _tab-content-active">
+
+            </div>
+
+            <div class="payment-method-accordion _my-accordion" style="margin-top: 0;">
+              <div class="_my-accordion-control">
+                <button class="payment-method-3__row__right-col__btn">
+                  <span>Привязать новые реквизиты</span>
+                </button>
+              </div>
+              <div class="_my-accordion-content">
+                <form class="form-link-new-banking-details">
+                  <div class="wrap-input">
+                    <input type="text" class="input my-data-input" placeholder="БИК" name="bik">
+                  </div>
+                  <div class="wrap-input">
+                    <input type="text" class="input my-data-input" placeholder="Наименование банка" name="bank">
+                  </div>
+                  <div class="wrap-input">
+                    <input type="text" class="input my-data-input" placeholder="р/с" name="rs">
+                  </div>
+                  <div class="wrap-input">
+                    <input type="text" class="input my-data-input" placeholder="к/с" name="ks">
+                  </div>
+                  <button class="button-2"><span>Сохранить</span></button>
+                </form>
+              </div>
+            </div>
+
+            <div class="privacy-policy">
+              <input type="checkbox" name="auto-payments" id="17137260674409"
+                class="privacy-policy__input-checkbox input-checkbox">
+              <label for="17137260674409" class="privacy-policy__label-checkbox label-checkbox">
+                <svg class="icon icon-check">
+                  <use xlink:href="img/svg/sprite.svg#check"></use>
+                </svg>
+              </label>
+              <a class="privacy-policy__text underline" target="_blank"
+                href="./assets/files/Oferta_autopayment.docx">Присоединяюсь к
+                Оферте автоплатежей</a>
+            </div>
+            <div class="row-price">
+              <p class="p1">К оплате</p>
+              <p class="p1 price price-result">31&nbsp;980&nbsp;₽</p>
+            </div>
+            <button class="btn-payment-modal button-2"><span>Оплатить</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-select-room">
+  <div class="modal__content">
+    <div class="modal__body">
+      <div class="modal-select-room__content">
+        <p>Выберите Кладовку, которую хотите заменить</p>
+        <div class="warehouse__rooms_content content-rooms-modal">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-select-warehouse">
+  <div class="modal__content">
+    <div class="modal__body">
+      <div class="modal-select-warehouse__content btn-modal-close">
+        <h4>Выберите склад</h4>
+        <div class="modal-select-warehouse__wrapper">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-select-room-access">
+  <div class="modal__content">
+    <div class="modal__body">
+      <div class="modal-select-room-access__content">
+        <h4>Выберите кладовку</h4>
+        <div class="modal-select-room-access__rooms">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-confirm-open-room">
+  <div class="modal__content">
+    <div class="modal__body">
+      <div class="modal-confirm-open-room__content">
+        <p>Вы уверены, что хотите открыть кладовку 1 на складе 1?</p>
+        <div>
+          <button class="button btn-modal-close btn-yes"><span>Да</span></button>
+          <button class="btn-modal-close btn-no"><span>Нет</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-confirm-open-barrier">
+  <div class="modal__content">
+    <div class="modal__body">
+      <div class="modal-confirm-open-barrier__content">
+        <p>Вы уверены, что хотите открыть шлагбаум на складе 1?</p>
+        <div>
+          <button class="button btn-modal-close btn-yes"><span>Да</span></button>
+          <button class="btn-modal-close btn-no"><span>Нет</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-confirm-open-gates">
+  <div class="modal__content">
+    <div class="modal__body">
+      <div class="modal-confirm-open-gates__content">
+        <p>Вы уверены, что хотите открыть ворота на складе 1?</p>
+        <div>
+          <button class="button btn-modal-close btn-yes"><span>Да</span></button>
+          <button class="btn-modal-close btn-no"><span>Нет</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-confirm-open-door">
+  <div class="modal__content">
+    <div class="modal__body">
+      <div class="modal-confirm-open-door__content">
+        <p>Вы уверены, что хотите открыть дверь на складе 1?</p>
+        <div>
+          <button class="button btn-modal-close btn-yes"><span>Да</span></button>
+          <button class="btn-modal-close btn-no"><span>Нет</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-confirm-cancel-autopayments">
+  <div class="modal__content">
+    <div class="modal__body">
+      <div class="modal-confirm-cancel-autopayments__content">
+        <p>Вы уверены, что хотите отменить автоплатежи?</p>
+        <div>
+          <button class="button btn-modal-close btn-yes"><span>Да</span></button>
+          <button class="btn-modal-close btn-no"><span>Нет</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

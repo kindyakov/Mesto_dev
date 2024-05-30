@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('../../html/components/_head.html',{
+  "title": "@@fileName.title",
+  "description": "@@fileName.description",
+  "path":"@@fileName.path"
+  })
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://mesto-store.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Услуги хранения",
+        "item": "https://mesto-store.ru/services.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Сезонное хранение",
+        "item": "https://mesto-store.ru/storage-services/seasonal-storage.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Хранение зимних вещей",
+        "item": "https://mesto-store.ru/storage-services/seasonal-storage/fileName.html"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+          {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "Хранение зимних вещей",
+          "image": "https://mesto-store.ru/img/favicon/logo.svg",
+          "brand": "МЕСТО",
+          "description": "@@fileName.description"
+          }
+          </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('../../html/components/_header.html', {'fixed':'',path:'../../'})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="/" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <a href="../../services.html" class="path__link hover-link">Услуги хранения</a>
+              <span class="path__sep">/</span>
+              <a href="../seasonal-storage.html" class="path__link hover-link">Сезонное хранение</a>
+              <span class="path__sep">/</span>
+              <span>Хранение зимних вещей</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="storage-services">
+        <div class="storage-services__container _container">
+          <div class="storage-services__body">
+            <h1 class="storage-services__title h2">Хранение зимних вещей</h1>
+            <div class="storage-services__info">
+              <div class="storage-services__row">
+                <div class="storage-services__text text bg">
+                  <p>МЕСТО — это ваша личная кладовка для хранения вещей в Москве с
+                    отличным
+                    онлайн сервисом.
+                    Мы предоставляем вам индивидуальную кладовку с круглосуточным доступом для временного или
+                    постоянного
+                    хранения ваших личных вещей. Заключайте договор на любой срок.</p>
+                </div>
+                <div class="storage-services__img">
+                  <img src="../../img/warehouse.png" alt="Картинка">
+                </div>
+              </div>
+              <div class="storage-services__text text">
+
+              </div>
+
+            </div>
+
+            <div class="storage-services__wrapper" data-tabs-init="storage-services-tabs">
+              <h2 class="storage-services__heading h2">Услуги хранения</h2>
+              <div class="storage-services__tabs">
+                <a href="../seasonal-storage.html"
+                  class="storage-services__tab button _my-tabs-btn _tab-btn-active"><span>Сезонное
+                    хранение</span></a>
+                <a href="../relocation-renovation.html" class="storage-services__tab button _my-tabs-btn"><span>Переезд
+                    и
+                    ремонт</span></a>
+                <a href="../temporary-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Временное
+                    хранение</span></a>
+                <a href="../long-term-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Длительное
+                    хранение</span></a>
+              </div>
+
+              <div class="storage-services__content _my-tabs-content grid-col-3 _tab-content-active">
+                @@include('../../html/storage-services/seasonal-storages.html',{path:''})
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('../../html/components/_footer.html',{path:'../../'})
+  </div>
+  @@include('../../html/components/_modal.html',{path:'../../'})
+  @@include('../../html/components/_js.html',{path:'../../'})
+</body>
+
+</html>

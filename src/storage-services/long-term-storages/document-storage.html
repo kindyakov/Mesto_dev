@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('../../html/components/_head.html',{
+  "title": "@@fileName.title",
+  "description": "@@fileName.description",
+  "path":"@@fileName.path"
+  })
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://mesto-store.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Услуги хранения",
+        "item": "https://mesto-store.ru/services.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Длительное хранение",
+        "item": "https://mesto-store.ru/storage-services/long-term-storage.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Хранение документов",
+        "item": "https://mesto-store.ru/storage-services/long-term-storages/fileName.html"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "Хранение документов",
+        "image": "https://mesto-store.ru/img/favicon/logo.svg",
+        "brand": "МЕСТО",
+        "description": "@@fileName.description"
+      }
+    </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('../../html/components/_header.html', {'fixed':'',path:'../../'})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="/" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <a href="../../services.html" class="path__link hover-link">Услуги хранения</a>
+              <span class="path__sep">/</span>
+              <a href="../long-term-storage.html" class="path__link hover-link">Длительное хранение</a>
+              <span class="path__sep">/</span>
+              <span>Хранение документов</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="storage-services">
+        <div class="storage-services__container _container">
+          <div class="storage-services__body">
+            <h1 class="storage-services__title h2">Аренда помещений для хранения документов</h1>
+            <div class="storage-services__info">
+              <div class="storage-services__row">
+                <div class="storage-services__text text bg">
+                  <p>Согласно действующему законодательству многие документы, касающиеся бухгалтерского и кадрового
+                    учета
+                    необходимо хранить
+                    не менее 5 лет. Некоторые из них должны лежать по 45-75 лет. Есть и другие документы, которые нужно
+                    хранить довольно
+                    долго. С течением времени у организаций накапливается внушительный архив, для содержания которого
+                    нужно выделять
+                    специальное помещение. Сервис хранения вещей МЕСТО предлагает арендовать для этих целей кладовую в
+                    Москве.</p>
+                </div>
+                <div class="storage-services__img">
+                  <img src="../../img/warehouse.png" alt="Картинка">
+                </div>
+              </div>
+              <div class="storage-services__text text">
+
+                <h3>Преимущества хранения документов в кладовых сервиса МЕСТО</h3>
+                <p>Цены на аренду коммерческой недвижимости довольно высоки. К тому же в помещении, предназначенном для
+                  хранения
+                  документации, необходимо обеспечить стабильный микроклимат, который бы не зависел от погодных условий
+                  и графика
+                  включения и отключения отопления, а также должный уровень безопасности.</p>
+                <p>Стоимость аренды кладовой дешевле, чем офиса или складского помещения. В комплексах МЕСТО все
+                  помещения подходят для
+                  хранения документов, поскольку:</p>
+                <ul>
+                  <li>температура воздуха в боксах – от 15°С до 17°С, а влажность – от 60% до 80%;</li>
+                  <li>персонал постоянно поддерживает необходимый уровень чистоты;</li>
+                  <li>периодически проводится санитарная обработка от грызунов и насекомых;</li>
+                  <li>работают противопожарная сигнализация и комплекс видеокамер;</li>
+                  <li>двери запираются на цифровые или навесные замки.</li>
+                </ul>
+                <p>К хранилищам ведут удобные съезды. Рядом с ними расположены станции метро. Доступ к помещениям с
+                  документами и другими
+                  вещами есть только у арендаторов, и он круглосуточный. В зависимости от объема архива вы можете
+                  выбрать кладовую
+                  площадью 1-9 кв.м.</p>
+                <p>Возле входа в комплекс находится погрузочная зона, на которой легко развернется малотоннажный
+                  грузовик. Для
+                  транспортировки больших объемов грузов внутри зданий есть специальные тележки. Для доступа к верхним
+                  стеллажам можно
+                  взять лестницу. Они хранятся в коридорах.</p>
+                <h3>Как арендовать кладовку</h3>
+                <p>Чтобы арендовать склад хранения документов, оставьте заявку на нашем сайте, отправьте запрос на
+                  электронную почту или
+                  позвоните менеджерам. На портале вы можете оформить заявление на ознакомительное посещение комплекса.
+                  Вход в выбранную
+                  кладовую откроется по ПИН-коду, который поступит в СМС.</p>
+                <p>Чтобы организовать хранение документов в Москве, воспользуйтесь сервисом МЕСТО. Мы гарантируем
+                  сохранность вашей
+                  документации.</p>
+              </div>
+
+            </div>
+
+            <div class="storage-services__wrapper" data-tabs-init="storage-services-tabs">
+              <h2 class="storage-services__heading h2">Услуги хранения</h2>
+              <div class="storage-services__tabs">
+                <a href="../seasonal-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Сезонное
+                    хранение</span></a>
+                <a href="../relocation-renovation.html" class="storage-services__tab button _my-tabs-btn"><span>Переезд
+                    и
+                    ремонт</span></a>
+                <a href="../temporary-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Временное
+                    хранение</span></a>
+                <a href="../long-term-storage.html"
+                  class="storage-services__tab button _my-tabs-btn _tab-btn-active"><span>Длительное
+                    хранение</span></a>
+              </div>
+              <div class="storage-services__content _my-tabs-content grid-col-3 _tab-content-active">
+                @@include('../../html/storage-services/long-term-storages.html',{path:''})
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('../../html/components/_footer.html',{path:'../../'})
+  </div>
+  @@include('../../html/components/_modal.html',{path:'../../'})
+  @@include('../../html/components/_js.html',{path:'../../'})
+</body>
+
+</html>

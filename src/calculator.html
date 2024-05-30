@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('html/components/_head.html',{
+  "title": "@@calculator.title",
+  "description": "@@calculator.description",
+  "path":"@@calculator.path"
+  })
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://mesto-store.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Калькулятор",
+        "item": "https://mesto-store.ru/calculator.html"
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('html/components/_header.html', {'fixed':'',path:''})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="index.html" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <span>Калькулятор</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      @@include('html/section/calculator.html',{path:''})
+      @@include('html/section/map.html',{path:''})
+    </main>
+    @@include('html/components/_footer.html',{path:''})
+  </div>
+  @@include('html/components/_modal.html',{path:''})
+  @@include('html/components/_js.html',{path:''})
+</body>
+
+</html>

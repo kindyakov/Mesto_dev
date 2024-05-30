@@ -1,0 +1,161 @@
+.questions {
+	&__container {
+	}
+
+	&__body {
+		display: flex;
+		@media (max-width: $md3) {
+			flex-direction: column;
+		}
+	}
+
+	&__content {
+		flex: 1 1 45.84%;
+		background-color: $dark-green;
+		padding: 50px 40px;
+		color: $white;
+		display: flex;
+		flex-direction: column;
+		row-gap: 15px;
+		@media (max-width: $md1) {
+			flex: 1 1 55%;
+			padding: 30px 20px;
+		}
+		@media (max-width: $md3) {
+			align-items: center;
+		}
+	}
+
+	&__title {
+		padding: 0;
+	}
+
+	&__subtitle {
+		line-height: 130%;
+	}
+
+	&__form {
+		margin-top: 25px;
+		display: flex;
+		flex-direction: column;
+		max-width: 360px;
+		width: 100%;
+		row-gap: 10px;
+
+		&_wrap-input {
+			position: relative;
+			.just-validate-error-label {
+				position: absolute;
+				top: 4px;
+				right: 4px;
+				font-size: 12px;
+			}
+		}
+
+		&_input {
+			width: 100%;
+			border: 1px solid $green;
+			padding: 20px;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 130%;
+			background-color: transparent;
+			color: $white;
+			transition: 0.2s;
+			&::placeholder {
+				color: #46939c;
+			}
+			&:focus {
+				border-color: $orange;
+			}
+			&.just-validate-error-field {
+				border-color: red;
+			}
+		}
+
+		&_button {
+		}
+
+		&_bottom {
+			display: flex;
+			align-content: center;
+			align-items: center;
+			gap: 10px;
+			margin-top: 30px;
+			.just-validate-error-label {
+				display: none;
+			}
+		}
+
+		&_checkbox-input {
+			display: none;
+			&:checked + .questions__form_checkbox-label {
+				background-color: $orange;
+				.icon {
+					opacity: 1;
+				}
+			}
+			&.just-validate-error-field + .questions__form_checkbox-label {
+				border-color: red;
+				box-shadow: 0 0 4px 2px rgba(255, 0, 0, 0.5);
+			}
+		}
+
+		&_checkbox-label {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border: 1px solid $orange;
+			width: 25px;
+			height: 25px;
+			flex-shrink: 0;
+			cursor: pointer;
+			transition: 0.2s;
+			&::before {
+				display: none !important;
+			}
+			.icon {
+				fill: none;
+				stroke: $white;
+				width: 15px;
+				height: 12px;
+				opacity: 0;
+				transition: 0.2s;
+			}
+		}
+
+		&_text {
+			font-size: 13px;
+			a {
+				color: $orange;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+
+	&__img {
+		flex: 1 1 54.16%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		@media (max-width: $md1) {
+			flex: 1 1 45%;
+		}
+		@media (max-width: $md3) {
+			height: 350px;
+			max-height: 350px;
+		}
+		@media (max-width: $md5) {
+			height: 250px;
+			max-height: 250px;
+		}
+	}
+}

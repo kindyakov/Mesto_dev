@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('html/components/_head.html',{
+  "title": "@@authorization.title",
+  "description": "@@authorization.description",
+  "path":"@@authorization.path"
+  })
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://mesto-store.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Вход в личный кабинет",
+        "item": "https://mesto-store.ru/authorization.html"
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('html/components/_header.html', {'fixed':'',path:''})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="index.html" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <span>Вход в личный кабинет</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="authorization">
+        <div class="authorization__container _container">
+          <div class="authorization__body" data-tabs-init="authorization-tabs">
+            <div class="authorization__tabs">
+              <button class="authorization__tab button _my-tabs-btn btn-authorization"><span>Авторизация</span></button>
+              <button class="authorization__tab button _my-tabs-btn btn-registration"><span>Регистрация</span></button>
+            </div>
+            <div class="authorization__content content-authorization _my-tabs-content">
+              <h2 class="authorization__title h2">Авторизация</h2>
+              <div class="authorization__wrapper">
+                <form class="authorization__form form-authorization">
+                  <div class="authorization__form_wrap-inputs">
+                    <div class="authorization__wrap-input wrap-input">
+                      <input type="tel" name="username" placeholder="Номер телефона" inputmode="tel"
+                        class="authorization__input input">
+                    </div>
+                    <div class="authorization__wrap-input wrap-input">
+                      <input type="password" name="password" placeholder="Пароль" class="authorization__input input">
+                      <svg class='icon icon-eye'>
+                        <use xlink:href='img/svg/sprite.svg#eye'></use>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="authorization__form_info">
+                    У Вас ещё нет аккаунта? <a href="" class="tab-registration">Зарегистрировать новый аккаунт</a>
+                  </div>
+                  <div class="authorization__form_bottom">
+
+                    <button type="submit" class="authorization__form_button button-2"><span>Войти</span></button>
+                    <span class="authorization__form_forgot-password btn-modal-password-recovery-open">Забыли
+                      пароль?</span>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="authorization__content content-registration _my-tabs-content">
+              <h2 class="authorization__title h2">Регистрация</h2>
+              <div class="authorization__wrapper">
+
+                <form class="authorization__form form-send-phone">
+                  <div class="authorization__form_wrap-inputs">
+                    <div class="authorization__wrap-input wrap-input wrap-input-btn">
+                      <input type="tel" name="username" placeholder="Номер телефона" inputmode="tel"
+                        class="authorization__input input">
+                      <button type="submit" class="authorization__form_button-input button button-input"><span>Получить
+                          код</span></button>
+                    </div>
+                  </div>
+                </form>
+
+                <form class="authorization__form form-send-code _disabled">
+                  <div class="authorization__form_wrap-inputs">
+                    <div class="authorization__wrap-input wrap-input wrap-input-btn">
+                      <input type="text" name="code" placeholder="Код из СМС" inputmode="tel"
+                        class="authorization__input input" disabled>
+                      <button type="submit" class="authorization__form_button-input button button-input"
+                        disabled><span>Подтвердить</span></button>
+                    </div>
+                  </div>
+                </form>
+
+                <form class="authorization__form form-registration _disabled">
+                  <div class="authorization__form_wrap-inputs">
+                    <div class="authorization__wrap-input wrap-input">
+                      <input type="email" name="email" placeholder="Электронная почта"
+                        class="authorization__input input" disabled>
+                    </div>
+                    <div class="authorization__wrap-input wrap-input">
+                      <input type="password" name="password" placeholder="Пароль" class="authorization__input input"
+                        disabled>
+                      <svg class='icon icon-eye'>
+                        <use xlink:href='img/svg/sprite.svg#eye'></use>
+                      </svg>
+                    </div>
+                    <div class="authorization__wrap-input wrap-input">
+                      <input type="password" name="repassword" placeholder="Подтвердить пароль"
+                        class="authorization__input input" disabled>
+                      <svg class='icon icon-eye'>
+                        <use xlink:href='img/svg/sprite.svg#eye'></use>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div class="authorization__form_bottom">
+                    <div class="privacy-policy">
+                      <input type="checkbox" name="privacy_policy" id="privacy-policy-1"
+                        class="privacy-policy__input-checkbox input-checkbox" checked>
+                      <label for="privacy-policy-1" class="privacy-policy__label-checkbox label-checkbox">
+                        <svg class='icon icon-check'>
+                          <use xlink:href='img/svg/sprite.svg#check'></use>
+                        </svg>
+                      </label>
+                      <p class="privacy-policy__text">Ознакомлен с <a href="./persdata.html">политикой
+                          конфиденциальности</a></p>
+                    </div>
+                    <button type="submit" class="authorization__form_button button-2"
+                      disabled><span>Зарегистрироваться</span></button>
+                    <div class="authorization__form_info">
+                      Уже зарегистрированы? <a href="" class="tab-authorization">Войти в аккаунт</a>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('html/components/_footer.html',{path:''})
+  </div>
+  @@include('html/components/_modal.html',{path:''})
+  @@include('html/components/_js.html',{path:''})
+</body>
+
+</html>

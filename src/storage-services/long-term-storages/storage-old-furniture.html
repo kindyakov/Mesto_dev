@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('../../html/components/_head.html',{
+  "title": "@@fileName.title",
+  "description": "@@fileName.description",
+  "path":"@@fileName.path"
+  })
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://mesto-store.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Услуги хранения",
+        "item": "https://mesto-store.ru/services.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Длительное хранение",
+        "item": "https://mesto-store.ru/storage-services/long-term-storage.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Хранение старой мебели",
+        "item": "https://mesto-store.ru/storage-services/long-term-storages/fileName.html"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+          {
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": "Хранение старой мебели",
+            "image": "https://mesto-store.ru/img/favicon/logo.svg",
+            "brand": "МЕСТО",
+            "description": "@@fileName.description"
+          }
+        </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('../../html/components/_header.html', {'fixed':'',path:'../../'})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="/" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <a href="../../services.html" class="path__link hover-link">Услуги хранения</a>
+              <span class="path__sep">/</span>
+              <a href="../long-term-storage.html" class="path__link hover-link">Длительное хранение</a>
+              <span class="path__sep">/</span>
+              <span>Хранение старой мебели</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="storage-services">
+        <div class="storage-services__container _container">
+          <div class="storage-services__body">
+            <h1 class="storage-services__title h2">Аренда склада для хранения старой мебели</h1>
+            <div class="storage-services__info">
+              <div class="storage-services__row">
+                <div class="storage-services__text text bg">
+                  <p>Сервис хранения вещей в Москве предлагает арендовать кладовые площадью до 9 кв.м на срок от 1
+                    месяца.
+                    Здания хорошо
+                    проветриваются, при этом там поддерживается постоянная температура 15-17°С, а влажность составляет
+                    60-80%. К комплексам
+                    ведут удобные транспортные развязки, поблизости есть метро.</p>
+                </div>
+                <div class="storage-services__img">
+                  <img src="../../img/warehouse.png" alt="Картинка">
+                </div>
+              </div>
+              <div class="storage-services__text text">
+                <h3>Условия для хранения мебели</h3>
+                <p>Проблема поиска места для хранения старой мебели возникает, если:</p>
+                <ul>
+                  <li>по тем или иным причинам задерживается переезд на новое место жительства или в другой офис;</li>
+                  <li>в помещении проходит ремонт. Тогда временное перемещение предметов обстановки поможет сохранить
+                    вещи и освободить
+                    пространство для выполнения работ;</li>
+                  <li>приобретена и установлена новая мебель, а имеющуюся планируется продать или перевезти на дачу;
+                  </li>
+                  <li>бизнес предполагает сезонность хранения, например, при организации мероприятий, перепродаже и
+                    реставрации антиквариата.</li>
+                </ul>
+                <p>В комплексах МЕТРО всегда светло и чисто, поскольку в коридорах горит свет и регулярно проводятся
+                  уборка и санобработка.
+                  В зданиях и на прилегающих территориях работают пожарная сигнализация и видеонаблюдение. Для удобства
+                  размещения мебели
+                  возле ворот устроена большая зона разгрузки с тележками. Арендаторы могут воспользоваться кладовой в
+                  любое удобное
+                  время: вход открыт круглосуточно, но сами боксы закрыты на надежные цифровые замки.</p>
+                <h3>Как хранить старую мебель</h3>
+                <p>Чтобы организовать хранение старой мебели в Москве, нужно на нашем сайте:</p>
+                <ol>
+                  <li>Составить заявку</li>
+                  <li>Отправить ее.</li>
+                  <li>Оплатить услуги сервиса.</li>
+                  <li>Получить код доступа к цифровому замку.</li>
+                  <li>Поместить вещи в кладовую МЕСТО.</li>
+                </ol>
+                <p>По запросу администратор также предоставит навесной замок. У нас предусмотрена услуга
+                  предварительного осмотра
+                  арендуемых боксов. Она бесплатная. Для этого нужно отправить запрос на ознакомительное посещение на
+                  сайте.</p>
+                <p>На портале работает калькулятор расчета площади помещения для размещения имущества. Пользователь
+                  просто выбирает те
+                  предметы, которые хочет поместить на хранение, и инструмент определяет оптимальный размер бокса. Также
+                  снизить цену
+                  можно за счет заключения долгосрочного договора.</p>
+                <p>Аренда кладовой для старых вещей – возможность освободить место в квартире, доме или офисе и
+                  сохранить имущество.
+                  Позвоните нам, чтобы получить подробную консультацию.</p>
+              </div>
+            </div>
+
+            <div class="storage-services__wrapper" data-tabs-init="storage-services-tabs">
+              <h2 class="storage-services__heading h2">Услуги хранения</h2>
+              <div class="storage-services__tabs">
+                <a href="../seasonal-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Сезонное
+                    хранение</span></a>
+                <a href="../relocation-renovation.html" class="storage-services__tab button _my-tabs-btn"><span>Переезд
+                    и
+                    ремонт</span></a>
+                <a href="../temporary-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Временное
+                    хранение</span></a>
+                <a href="../long-term-storage.html"
+                  class="storage-services__tab button _my-tabs-btn _tab-btn-active"><span>Длительное
+                    хранение</span></a>
+              </div>
+              <div class="storage-services__content _my-tabs-content grid-col-3 _tab-content-active">
+                @@include('../../html/storage-services/long-term-storages.html',{path:''})
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('../../html/components/_footer.html',{path:'../../'})
+  </div>
+  @@include('../../html/components/_modal.html',{path:'../../'})
+  @@include('../../html/components/_js.html',{path:'../../'})
+</body>
+
+</html>

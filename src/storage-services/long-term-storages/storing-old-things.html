@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('../../html/components/_head.html',{
+  "title": "@@fileName.title",
+  "description": "@@fileName.description",
+  "path":"@@fileName.path"
+  })
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://mesto-store.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Услуги хранения",
+        "item": "https://mesto-store.ru/services.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Длительное хранение",
+        "item": "https://mesto-store.ru/storage-services/long-term-storage.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Хранение старых вещей",
+        "item": "https://mesto-store.ru/storage-services/long-term-storages/fileName.html"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+                {
+                  "@context": "https://schema.org/",
+                  "@type": "Product",
+                  "name": "Хранение старых вещей",
+                  "image": "https://mesto-store.ru/img/favicon/logo.svg",
+                  "brand": "МЕСТО",
+                  "description": "@@fileName.description"
+                }
+              </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('../../html/components/_header.html', {'fixed':'',path:'../../'})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="/" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <a href="../../services.html" class="path__link hover-link">Услуги хранения</a>
+              <span class="path__sep">/</span>
+              <a href="../long-term-storage.html" class="path__link hover-link">Длительное хранение</a>
+              <span class="path__sep">/</span>
+              <span>Хранение старых вещей</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="storage-services">
+        <div class="storage-services__container _container">
+          <div class="storage-services__body">
+            <h1 class="storage-services__title h2">Аренда склада для хранения старых вещей</h1>
+            <div class="storage-services__info">
+              <div class="storage-services__row">
+                <div class="storage-services__text text bg">
+                  <p>У каждого есть вещи, которым много лет. Они мешают, занимают место, но избавиться от них
+                    невозможно.
+                    Иногда с ними
+                    связаны теплые воспоминания. Возможно, планируется покупка дачи, которую можно будет обставить
+                    старой
+                    мебелью. Иногда
+                    против расхламления возражает старшее поколение семьи. В любом случае имущество, которым никто не
+                    пользуется, стоит
+                    отправить или в утиль, или в кладовую. Сервис хранения вещей МЕСТО в Москве предлагает в аренду
+                    просторные помещения и
+                    доступные цены.</p>
+                </div>
+                <div class="storage-services__img">
+                  <img src="../../img/warehouse.png" alt="Картинка">
+                </div>
+              </div>
+              <div class="storage-services__text text">
+                <h3>Условия хранения вещей в комплексах МЕСТО</h3>
+                <p>Аренда места для хранения старых вещей в Москве в комплексах МЕСТО – это удобно и надежно, потому что
+                  здесь:</p>
+                <ul>
+                  <li>обеспечивается круглосуточная охрана;</li>
+                  <li>работают системы видеонаблюдения и пожарной безопасности;</li>
+                  <li>в зданиях регулярно проводятся уборка и санобработка;</li>
+                  <li>коридоры широкие и хорошо освещенные;</li>
+                  <li>вход в здания открыт круглосуточно.</li>
+                </ul>
+                <p>Внутри поддерживается постоянная температура воздуха 15-17°С. Уровень влажности находится на уровне
+                  60-80%. В таких
+                  условиях можно долго хранить мебель, изделия из кожи и текстиля, бумаги и металла, оргтехнику и
+                  инструменты.</p>
+                <p>Рядом с комплексами находятся станции метро. К зданиям ведут продуманные развязки. Возле ворот
+                  оборудована просторная
+                  зона для погрузки и разгрузки вещей.</p>
+                <p>Для того чтобы переместить вещи из автомобиля в кладовую, используют грузовые тележки, которые стоят
+                  возле входа.</p>
+                <h3>Как арендовать кладовку</h3>
+                <p>Мы предлагаем арендовать дополнительное место для хранения вещей в Москве. В комплексах есть
+                  компактные кладовки, а также
+                  кладовые площадью 1-9 кв.м.</p>
+                <p>На сайте можно оставить заявку на ознакомительное посещение понравившегося помещения. В ответ на
+                  запрос поступит СМС с
+                  шифром, открывающим цифровой замок. Код одноразовый и действует 1 сутки. По этому же алгоритму
+                  оформляют аренду
+                  кладовой. В этом случае ПИН-код поступит после внесения оплаты.</p>
+                <p>Стоимость аренды определяется пропорционально размеру помещения, а также длительности договора.
+                  Долгосрочное хранение
+                  старых вещей выгоднее. Определить оптимальный размер помещения поможет калькулятор. В таблице
+                  достаточно указать, какие
+                  вещи планируется отправить на хранение и в каком количестве, и инструмент произведет расчет. Более
+                  полную консультацию
+                  по поводу размещения вещей в кладовых МЕСТО вы можете получить у наших менеджеров по телефону.</p>
+              </div>
+            </div>
+
+            <div class="storage-services__wrapper" data-tabs-init="storage-services-tabs">
+              <h2 class="storage-services__heading h2">Услуги хранения</h2>
+              <div class="storage-services__tabs">
+                <a href="../seasonal-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Сезонное
+                    хранение</span></a>
+                <a href="../relocation-renovation.html" class="storage-services__tab button _my-tabs-btn"><span>Переезд
+                    и
+                    ремонт</span></a>
+                <a href="../temporary-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Временное
+                    хранение</span></a>
+                <a href="../long-term-storage.html"
+                  class="storage-services__tab button _my-tabs-btn _tab-btn-active"><span>Длительное
+                    хранение</span></a>
+              </div>
+              <div class="storage-services__content _my-tabs-content grid-col-3 _tab-content-active">
+                @@include('../../html/storage-services/long-term-storages.html',{path:''})
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('../../html/components/_footer.html',{path:'../../'})
+  </div>
+  @@include('../../html/components/_modal.html',{path:'../../'})
+  @@include('../../html/components/_js.html',{path:'../../'})
+</body>
+
+</html>

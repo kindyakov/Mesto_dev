@@ -1,0 +1,76 @@
+import { Accordion } from '../../modules/myAccordion.js'
+import { warehousesResultAccordion } from './html.js';
+import { modalFeedbackForm } from '../modals/modalFeedbackForm.js';
+import { setMinMaxBlocks } from '../../utils/setMinMaxBlocks.js';
+
+class WarehousesResult {
+  constructor(wrapper, options) {
+    let defaultOptions = {
+      onlyWarehouse: false,
+    }
+    if (!wrapper) return console.error('Нет обертки', wrapper);
+    this.options = Object.assign(defaultOptions, options)
+
+    this.wrapper = wrapper
+    this.warehousesResult = null
+    this.accordion = null
+
+    this.init()
+  }
+
+  init() {
+    if (this.warehousesResult) this.warehousesResult.remove()
+    this.wrapper.insertAdjacentHTML('beforeend', `<div class="warehouses-result"></div>`)
+    this.warehousesResult = this.wrapper.querySelector('.warehouses-result')
+
+    if (!this.options.onlyWarehouse) {
+      this.accordion = new Accordion('.warehouses-result', { maxHeight: 218 })
+    }
+  }
+
+  render(warehouse, rangeData) {
+    const isAnim = this.warehousesResult.innerHTML.length ? true : false
+    this.warehousesResult.innerHTML = ''
+
+    if (!warehouse) return
+
+    if (this.options.onlyWarehouse) {
+      warehouse.forEach(_warehouse => {
+        this.warehousesResult.insertAdjacentHTML('beforeend', warehousesResultAccordion({ data: _warehouse, isRooms: false, rangeData }))
+      });
+      setMinMaxBlocks('.warehouses-result__accordion_name-room', { breakpoints: [992] })
+    } else {
+      if (warehouse.rooms?.length) {
+        this.warehousesResult.insertAdjacentHTML('beforeend', warehousesResultAccordion({ data: warehouse, rangeData }))
+        setMinMaxBlocks('.warehouses-result__accordion_name-room', { breakpoints: [992] })
+        setMinMaxBlocks('.warehouses-result__accordion_content-room .area', { breakpoints: [992] })
+        setMinMaxBlocks('.warehouses-result__accordion_content-room .volume', { breakpoints: [992] })
+        setMinMaxBlocks('.warehouses-result__accordion_content-room .dimensions', { breakpoints: [992] })
+        setMinMaxBlocks('.warehouses-result__accordion_content-room .price', { breakpoints: [992] })
+        this.accordion.init()
+      } else {
+        modalFeedbackForm.open()
+      }
+    }
+    const heightWarehousesResult = this.warehousesResult.scrollHeight
+
+    if (warehouse.rooms?.length) {
+      if (!isAnim) {
+        this.warehousesResult
+          .animate([
+            { maxHeight: 0 },
+            { maxHeight: heightWarehousesResult + 'px' },
+          ], { duration: 300, easing: 'ease-in-out' })
+          .addEventListener('finish', () => {
+            this.warehousesResult.scrollIntoView({ behavior: "smooth", block: "center" })
+            this.accordion.open(this.warehousesResult.querySelector('._my-accordion'), this.warehousesResult.querySelector('._my-accordion-content'))
+          })
+      } else {
+        this.warehousesResult.scrollIntoView({ behavior: "smooth", block: "center" })
+        this.accordion.open(this.warehousesResult.querySelector('._my-accordion'), this.warehousesResult.querySelector('._my-accordion-content'))
+      }
+    }
+  }
+}
+
+export default WarehousesResult

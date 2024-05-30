@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('../../html/components/_head.html',{
+  "title": "@@fileName.title",
+  "description": "@@fileName.description",
+  "path":"@@fileName.path"
+  })
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://mesto-store.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Услуги хранения",
+        "item": "https://mesto-store.ru/services.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Сезонное хранение",
+        "item": "https://mesto-store.ru/storage-services/seasonal-storage.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Хранение сезонных вещей",
+        "item": "https://mesto-store.ru/storage-services/seasonal-storage/fileName.html"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+{
+"@context": "https://schema.org/",
+"@type": "Product",
+"name": "Хранение сезонных вещей",
+"image": "https://mesto-store.ru/img/favicon/logo.svg",
+"brand": "МЕСТО",
+"description": "@@fileName.description"
+}
+</script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('../../html/components/_header.html', {'fixed':'',path:'../../'})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="/" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <a href="../../services.html" class="path__link hover-link">Услуги хранения</a>
+              <span class="path__sep">/</span>
+              <a href="../seasonal-storage.html" class="path__link hover-link">Сезонное хранение</a>
+              <span class="path__sep">/</span>
+              <span>Хранение сезонных вещей</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="storage-services">
+        <div class="storage-services__container _container">
+          <div class="storage-services__body">
+            <h1 class="storage-services__title h2">Аренда кладовки для хранения сезонных вещей в Москве</h1>
+            <div class="storage-services__info">
+              <div class="storage-services__row">
+                <div class="storage-services__text text bg">
+                  <p>Есть вещи, которыми пользуются только несколько месяцев в году. Складировать их в городской
+                    квартире
+                    нецелесообразно.
+                    Они занимают место и собирают пыль. Мы предлагаем хранение сезонных вещей в специальных боксах в
+                    охраняемых комплексах.
+                    Кладовые позволят освободить пространство для жизни и обеспечить сохранность имущества.</p>
+                </div>
+                <div class="storage-services__img">
+                  <img src="../../img/warehouse.png" alt="Картинка">
+                </div>
+              </div>
+              <div class="storage-services__text text">
+
+                <h3>Особенности хранения сезонных вещей</h3>
+                <p>Для хранения компактных летних вещей зимой и зимних летом в наших комплексах предусмотрены небольшие
+                  кладовки, которые
+                  используются, например, для складирования верхней одежды и обуви. Там же есть и кладовые площадью от 1
+                  кв.м до 9 кв.м. В
+                  них удобно организовывать постоянное хранение и зимних вещей, и летних, в том числе габаритных:</p>
+                <ul>
+                  <li>садовой мебели и дачных инструментов, включая складные бассейны и батуты, газонокосилки и
+                    культиваторы;</li>
+                  <li>спортивного инвентаря и экипировки – сап бордов, лыж, сноубордов, санок;</li>
+                  <li>экипировки охотника и рыболова, снастей, лодок;</li>
+                  <li>детских игрушек и колясок;</li>
+                  <li>автомобильных комплектующих и материалов.</li>
+                </ul>
+                <h3>Как организовать сезонное хранение вещей</h3>
+                <p>Сервис хранения вещей МЕСТО предлагает боксы и кладовки в комплексах, расположенных в пределах
+                  Москвы.
+                  Рядом удобные
+                  транспортные развязки и станции метро.</p>
+                <p>Вы можете заказать предварительный осмотр понравившейся кладовой. Доступ к ней откроется по
+                  одноразовому паролю. Чтобы
+                  арендовать бокс на длительный срок, оформите бронь на сайте. В комплексах, в которых предусмотрен
+                  администратор, есть
+                  кладовые с навесными замками.</p>
+                <p>Мы гарантируем сохранность вещей, так как:</p>
+                <ul>
+                  <li>в помещениях поддерживаются стабильный уровень температуры и влажности;</li>
+                  <li>комплексы оснащены системами видеонаблюдения и пожарной безопасности;</li>
+                  <li>в просторных коридорах всегда светло и чисто.</li>
+                </ul>
+                <p>Воспользуйтесь нашим складом для хранения сезонных вещей! Позвоните, чтобы узнать подробности, или
+                  оформите аренду на
+                  сайте. Если подать заявку дистанционным способом, то сразу после оплаты вы получите СМС с кодом
+                  доступа в ваш бокс.</p>
+              </div>
+
+            </div>
+
+            <div class="storage-services__wrapper" data-tabs-init="storage-services-tabs">
+              <h2 class="storage-services__heading h2">Услуги хранения</h2>
+              <div class="storage-services__tabs">
+                <a href="../seasonal-storage.html"
+                  class="storage-services__tab button _my-tabs-btn _tab-btn-active"><span>Сезонное
+                    хранение</span></a>
+                <a href="../relocation-renovation.html" class="storage-services__tab button _my-tabs-btn"><span>Переезд
+                    и
+                    ремонт</span></a>
+                <a href="../temporary-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Временное
+                    хранение</span></a>
+                <a href="../long-term-storage.html" class="storage-services__tab button _my-tabs-btn"><span>Длительное
+                    хранение</span></a>
+              </div>
+
+              <div class="storage-services__content _my-tabs-content grid-col-3 _tab-content-active">
+                @@include('../../html/storage-services/seasonal-storages.html',{path:''})
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('../../html/components/_footer.html',{path:'../../'})
+  </div>
+  @@include('../../html/components/_modal.html',{path:'../../'})
+  @@include('../../html/components/_js.html',{path:'../../'})
+</body>
+
+</html>
