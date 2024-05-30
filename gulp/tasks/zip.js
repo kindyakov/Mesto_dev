@@ -29,17 +29,24 @@ export const zipDev = () => {
     ], { base: '.' }) // Указываем базовую директорию для корректной структуры в архиве
       .pipe(zipPlugins(`${app.path.rootFolder}_dev.zip`))
       .pipe(app.gulp.dest('./'))
-      .on('end', () => {
+      .on('end', async () => {
         const gitInstance = git();
-        gitInstance.init()
-          .then(() => gitInstance.add('./*'))
-          .then(() => gitInstance.commit(app.version))
-          // .then(() => gitInstance.addRemote('origin', process.env.REPO_URL))
-          // .then(() => gitInstance.push('origin', 'master', { '--repo': process.env.REPO_URL }))
-          .then(() => gitInstance.push('origin', 'master'))
-          .then(() => console.log(app.plugins.chalk.green('Обновления добавлены')))
-          .catch((err) => console.error('Failed to commit+push', err));
+        await gitInstance.init();
+        await gitInstance.add('./*');
+        await gitInstance.commit(app.version);
+
+        if (app.settings.useExistingRepo) {
+          await gitInstance.push('origin', 'master');
+        } else {
+          await gitInstance.addRemote('origin', process.env.REPO_URL);
+          await gitInstance.push('origin', 'master', { '--repo': process.env.REPO_URL });
+          app.settings.useExistingRepo = true;
+          fs.writeFileSync('settings.json', JSON.stringify(settings, null, 2));
+        }
+
+        console.log(app.plugins.chalk.green('Обновления добавлены'))
       })
-  );
-};
+      .on('error', (err) => console.error('Failed to commit+push', err))
+  )
+}
 

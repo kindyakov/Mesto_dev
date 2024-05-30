@@ -2,6 +2,7 @@ import gulp from 'gulp'
 import { path } from './gulp/config/path.js'
 import plugins from './gulp/config/plugins.js'
 import dotenv from 'dotenv'
+import fs from 'fs'
 
 function generateFileVersion() {
   const date = new Date();
@@ -17,6 +18,8 @@ function generateFileVersion() {
 
 dotenv.config()
 
+const settings = JSON.parse(fs.readFileSync('settings.json', 'utf8'))
+
 // Глобальные переменные
 global.app = {
   path,
@@ -24,7 +27,8 @@ global.app = {
   plugins,
   isBuild: process.argv.includes('--build'),
   isDev: !process.argv.includes('--build'),
-  version: generateFileVersion()
+  version: generateFileVersion(),
+  settings
 }
 
 import copy from './gulp/tasks/copy.js'
