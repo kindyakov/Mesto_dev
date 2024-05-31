@@ -49,6 +49,7 @@ class AccessStorage {
       },
     });
 
+    this.myData = null
     this.clientData = null
     this.formNewAgreement = formNewAgreement
 
@@ -93,13 +94,25 @@ class AccessStorage {
       this.storeroomsSliderWrapper.innerHTML = ''
 
       if (rooms.length) {
-        // Если нет оплаченных ячеек то скрытие вкладки "Выезды"
+        // Если нет оплаченных ячеек с rented: 1 то скрытие вкладки "Выезды"
         if (!isOneRented(rooms)) {
           document.querySelector('[data-tabs-btn="account-tabs-5"]').classList.add('_none')
         }
 
+        // Если ячейка оплачена с rented: 0.45 то скрываю все вкладки кроме "Мои данные"
+        if (!this.clientData.client.user_type && isOneRented(rooms, 0.45)) {
+          document.querySelector('[data-tabs-btn="account-tabs-0"]').classList.add('_none')
+          document.querySelector('[data-tabs-btn="account-tabs-1"]').classList.add('_none')
+          document.querySelector('[data-tabs-btn="account-tabs-2"]').classList.add('_none')
+          document.querySelector('[data-tabs-btn="account-tabs-4"]').classList.add('_none')
+          document.querySelector('[data-tabs-btn="account-tabs-5"]').classList.add('_none')
+          this.myData.isRequiredPassportsData = true
+          this.myData.clientData = data
+          accountTabs.switchTabs(document.querySelector('.account-tabs-btn[data-tabs-btn="account-tabs-3"]'))
+          return
+        }
         // Если нет оплаченных ячеек и нет тестовых ячеек то скрытие  вкладки "Открытие" 
-        if (!isOneRented(rooms) && !isOneRented(test_rooms, 0.25)) {
+        else if (!isOneRented(rooms) && !isOneRented(test_rooms, 0.25)) {
           document.querySelector('[data-tabs-btn="account-tabs-0"]').classList.add('_none')
           accountTabs.switchTabs(document.querySelector('.account-tabs-btn[data-tabs-btn="account-tabs-1"]'))
           return

@@ -158,7 +158,7 @@ class Calculator {
 
     this.range.options.onSlide = (rangeData, currentRange) => {
       const typeRange = currentRange.target.getAttribute('data-type-range')
-      const prise = this.prices[rangeData.volume] ? this.prices[rangeData.volume] : 0
+      let prise = this.prices[rangeData.volume] ? this.prices[rangeData.volume] : 0
 
       this.priceCalculator.textContent = 'от ' + formattingPrice(this.calcDiscount(rangeData.duration, prise, rangeData.volume)) + "/мес";
     }
@@ -179,14 +179,13 @@ class Calculator {
     })
   }
 
-  calcDiscount(month, price, volume) {
-    if (!month || !price) return 0
-    if (volume <= 1.5) return price
+  calcDiscount(month, dataPrice, volume) {
+    if (!month || !dataPrice) return 0
     if (month >= 6 && month <= 10) {
-      return (+price * 0.95)
+      return dataPrice['6']
     } else if (month > 10) {
-      return (+price * 0.9)
-    } else return price
+      return dataPrice['11']
+    } else return dataPrice['1']
   }
 
   async init() {

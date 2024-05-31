@@ -411,7 +411,7 @@
 			color: $white;
 			flex: 1 1 50%;
 			margin: 0;
-			
+
 			&::after {
 				transform: translate(0, 0);
 			}
@@ -530,6 +530,20 @@
 	@media (max-width: $md1) {
 		padding: 20px;
 	}
+	.input {
+		@media (max-width: $md1) {
+			font-size: 14px;
+		}
+		@media (max-width: $md3) {
+			padding: 17px 10px;
+		}
+	}
+	.button-input {
+		@media (min-width: 380px) and (max-width: $md4) {
+			width: 125px;
+		}
+	}
+
 	.mySelect {
 		color: $white;
 		&._active {
@@ -607,6 +621,16 @@
 			font-size: 16px;
 			padding: 20px 10px;
 			color: $black;
+		}
+	}
+	.my-data__content-2__container__grid-inpts {
+		@media (min-width: $md1) {
+			.wrap-input-last {
+				grid-column: span 2;
+			}
+			button {
+				grid-column: span 2;
+			}
 		}
 	}
 }

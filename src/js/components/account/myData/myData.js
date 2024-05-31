@@ -6,6 +6,8 @@ import { apiWithAuth } from "../../../settings/api.js"
 import { outputInfo } from "../../../utils/outputinfo.js"
 
 import { validatesInput } from "../../../settings/validates.js"
+import { validateAgreementConclusion } from "../../rentRoom/validate.js"
+// import { validateUrData } from "./validate.js"
 
 class MyData {
   constructor() {
@@ -22,8 +24,15 @@ class MyData {
 
     this.forms = this.accountMyData.querySelectorAll('.form-account-data')
     this.inputs = this.accountMyData.querySelectorAll('.my-data-input')
+    this.formPassportPhoto = this.accountMyData.querySelector('.form-passport-photo')
     this.inputPhotoPassport = this.accountMyData.querySelector('.input-photo-passport')
+    this.formPassportsData = this.accountMyData.querySelector('.form-passorts-data')
+    this.formUrData = this.accountMyData.querySelector('.form-ur-data')
     this.imgPassport = this.accountMyData.querySelector('.img-passport')
+
+    this.isRequiredPassportsData = false
+    this.imgPassportFile = null
+    this.clientData = null
 
     this.validators = {}
 
@@ -67,7 +76,7 @@ class MyData {
       if (e.target.files.length) {
         const reader = new FileReader()
         const formData = new FormData()
-        let file = e.target.files[0]
+        let file = this.imgPassportFile = e.target.files[0]
 
         reader.onload = e => {
           this.imgPassport.src = e.target.result
@@ -82,13 +91,16 @@ class MyData {
         form.classList.remove('_err')
         form.classList.add('_success')
 
-        this.uploadNewPassportPhoto(formData)
+        if (!this.isRequiredPassportsData) {
+          this.uploadNewPassportPhoto(formData)
+        }
       } else {
         this.isFile = false
         form.classList.add('_err')
         form.classList.remove('_success')
         this.imgPassport.src = ''
         this.imgPassport.alt = ''
+        this.imgPassportFile = null
       }
     })
   }
@@ -112,21 +124,91 @@ class MyData {
         this.imgPassport.closest('form').classList.add('_success')
       }
 
+      const tabInfo = this.accountMyData.querySelector('.btn-tabs-main-information')
+      const tabCon = this.accountMyData.querySelector('.btn-tabs-contacts-data')
       const tabPas = this.accountMyData.querySelector('.my-data-tabs-btn.btn-tabs-passport-data')
       const tabRec = this.accountMyData.querySelector('.my-data-tabs-btn.btn-tabs-requisites')
 
       if (profile?.user_type === 'u') {
         tabPas.classList.add('_none')
         tabRec.classList.remove('_none')
-      } else {
+      } else if (profile?.user_type === 'f') {
         tabPas.classList.remove('_none')
         tabRec.classList.add('_none')
+      } else {
+        tabPas.classList.remove('_none')
+        tabRec.classList.remove('_none')
+      }
+
+      if (this.isRequiredPassportsData) {
+        tabInfo.classList.add('_none')
+        tabCon.classList.add('_none')
+        tabRec.classList.add('_none')
+        this.myDataTabs.switchTabs(tabPas)
+        this.changePassportsData()
       }
     } catch (error) {
       console.error(error);
     } finally {
       this.loader.disable()
     }
+  }
+
+  changePassportsData() {
+    this.formPassportsData.insertAdjacentHTML('afterbegin', `<div class=" wrap-input">
+                    <input type="text" name="familyname" class="input input-agreement-conclusion"
+                      placeholder="Фамилия">
+                  </div>
+                  <div class="wrap-input">
+                    <input type="text" name="firstname" class="input input-agreement-conclusion"
+                      placeholder="Имя">
+                  </div>
+                  <div class="wrap-input">
+                    <input type="text" name="patronymic" class="input input-agreement-conclusion"
+                      placeholder="Отчество">
+                  </div>
+                  <div class=" wrap-input">
+                    <input type="text" name="birthday"
+                      class="input input-agreement-conclusion not-icon-date"
+                      placeholder="Дата рождения" readonly>
+                  </div>
+                  <div class=" wrap-input wrap-input-last">
+                    <input type="text" name="address" class="input input-agreement-conclusion"
+                      placeholder="Адрес регистрации">
+                  </div>`)
+    this.formPassportsData.insertAdjacentHTML('beforeend', `<button class="button-5" type="submit"><span>Сохранить</span></button>`)
+    // this.formUrData.insertAdjacentHTML('beforeend', `<button class="button-5" type="submit"><span>Сохранить</span></button>`)
+
+    const validatorPassport = validateAgreementConclusion(this.formPassportsData)
+
+    // const validatorUrData = validateUrData(this.formUrData)
+    this.formPassportsData.addEventListener('submit', e => {
+      if (validatorPassport.isValid) {
+        const formData = new FormData(e.target)
+
+        if (!this.imgPassportFile) {
+          this.formPassportPhoto.classList.add('_err')
+          this.formPassportPhoto.classList.remove('_success')
+          this.imgPassport.src = ''
+          return
+        }
+
+        const ids = this.clientData.rooms.filter(room => room.rented == 0.45).map(room => room.room_id)
+
+        formData.set('file', this.imgPassportFile)
+        formData.set('room_ids', JSON.stringify(ids))
+        formData.set('user_type', 'f')
+
+        this.formNewAgreement(formData)
+      }
+    })
+
+    // this.formUrData.addEventListener('submit', e => {
+    //   if (validatorUrData.isValid) {
+    //     const formData = new FormData(e.target)
+    //     this.formNewAgreement(formData)
+    //   }
+    // })
   }
 
   async changeData(formData) {
@@ -151,6 +233,23 @@ class MyData {
       outputInfo(response.data)
     } catch (error) {
       console.error(error)
+    } finally {
+      this.loader.disable()
+    }
+  }
+
+  async formNewAgreement(formData) {
+    try {
+      this.loader.enable();
+      const response = await apiWithAuth.post('/_form_new_agreement_', formData)
+
+      if (response.status !== 200) return null
+      outputInfo(response.data)
+      if (response.data.msg_type === 'success') {
+        location.reload()
+      }
+    } catch (error) {
+      console.error(error);
     } finally {
       this.loader.disable()
     }

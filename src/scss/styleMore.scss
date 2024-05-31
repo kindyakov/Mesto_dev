@@ -2671,24 +2671,25 @@ button {
 }
 
 .my-data__content-2__container {
-	display: grid;
-	grid-template-columns: auto auto;
+	display: flex;
 	gap: 10px;
 	margin-top: 40px;
 }
 
 .my-data__content-2__container__grid-inpts {
+	flex: 1 1 auto;
 	display: grid;
 	gap: 10px;
 	grid-template-columns: 1fr 1fr;
-}
-#my-data__content-2__container__grid-inpts__inpt-last {
-	width: calc(200% + 10px);
+	@media (max-width: $md1) {
+		grid-template-columns: 1fr;
+	}
 }
 
 .my-data__content-2__container__block-avatar {
 	display: grid;
 	width: 170px;
+	height: 200px;
 	gap: 15px;
 	justify-content: center;
 	padding: 30px 12px;
@@ -2756,14 +2757,10 @@ button {
 
 @media only screen and (max-width: 768px) {
 	.my-data__content-2__container {
-		grid-template-columns: 1fr;
+		flex-direction: column;
 		margin-top: 26px;
-		gap: 26px;
+		gap: 25px;
 		margin-bottom: 25px;
-	}
-
-	.my-data__content-2__container__grid-inpts {
-		grid-template-columns: 1fr;
 	}
 	#my-data__content-2__container__grid-inpts__inpt-last {
 		width: auto;

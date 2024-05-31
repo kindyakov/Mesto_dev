@@ -3,7 +3,7 @@ import { getCookie, deleteCookie } from '../utils/cookie.js'
 
 const baseURL = 'https://store-mesto.ru'
 
-axios.defaults.timeout = 10000
+axios.defaults.timeout = 15000
 
 const api = axios.create({ baseURL })
 

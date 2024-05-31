@@ -34,6 +34,8 @@ class Account {
     this.paymentMethods = new PaymentMethods()
     this.departure = new Departure()
 
+    this.accessStorage.myData = this.myData
+
     this.loader = new Loader(document.querySelector('.main'), {
       isHidden: false, customSelector: 'custom-loader', position: 'fixed'
     })

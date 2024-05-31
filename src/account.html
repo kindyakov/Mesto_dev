@@ -124,7 +124,8 @@
               </p>
               <p class="assets-storage__row__right-col__desc2">
                 <b>Шаг 3: </b> Откройте дверь и кладовку.<br>
-                Вы можете получить доступ к складу удаленно, как если бы вы находились в кладовой. Вам не нужно физически присутствовать
+                Вы можете получить доступ к складу удаленно, как если бы вы находились в кладовой. Вам не нужно
+                физически присутствовать
                 там, главное иметь подключение к мобильной сети.
               </p>
             </div>
@@ -209,7 +210,7 @@
               <div class="my-data__content-2 my-data-tabs-content">
                 <h2>Паспортные данные</h2>
                 <div class="my-data__content-2__container">
-                  <form class="my-data__content-2__container__block-avatar">
+                  <form class="my-data__content-2__container__block-avatar form-passport-photo">
                     <label>
                       <input type="file" name="file" accept="image/png, image/jpeg, image/jpg"
                         class="input-photo-passport">
@@ -226,30 +227,35 @@
                       паспорта</p>
                     <img src="" alt="" class="img-passport">
                   </form>
-                  <div class="my-data__content-2__container__grid-inpts">
+                  <form class="my-data__content-2__container__grid-inpts form-passorts-data">
                     <div class="wrap-input">
-                      <input type="text" class="input my-data-input" placeholder="Серия паспорта" name="series">
+                      <input type="text" class="input my-data-input" placeholder="Серия паспорта" name="series"
+                        autocomplete="off">
                     </div>
                     <div class="wrap-input">
-                      <input type="text" class="input my-data-input" placeholder="Номер паспорта" name="no">
+                      <input type="text" class="input my-data-input" placeholder="Номер паспорта" name="no"
+                        autocomplete="off">
                     </div>
                     <div class="wrap-input">
-                      <input type="text" class="input my-data-input" placeholder="Дата выдачи" name="issue_date">
+                      <input type="text" class="input my-data-input" placeholder="Дата выдачи" name="issue_date"
+                        autocomplete="off">
                     </div>
                     <div class="wrap-input">
-                      <input type="text" class="input my-data-input" placeholder="Код подразделения" name="subdivision">
+                      <input type="text" class="input my-data-input" placeholder="Код подразделения" name="subdivision"
+                        autocomplete="off">
                     </div>
-                    <div class="wrap-input">
+                    <div class="wrap-input wrap-input-last">
                       <input type="text" class="input my-data-input" placeholder="Кем выдан паспорт" name="issued_by"
-                        id="my-data__content-2__container__grid-inpts__inpt-last">
+                        autocomplete="off">
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>
               <div class="my-data__content-1 my-data-tabs-content">
                 <h2>Реквизиты</h2>
                 <p class="my-data__content-1__desc">Банковские реквизиты для безналичной оплаты</p>
-                <div class="my-data__content-1__block-inpts">
+                <form class="my-data__content-1__block-inpts form-ur-data"
+                  style="display: flex; flex-direction: column; row-gap: 10px;">
                   <div class="my-data__content-1__block-inpts__row col-2">
                     <div class="wrap-input">
                       <input type="text" class="input my-data-input" placeholder="Юридическое наименование"
@@ -280,13 +286,15 @@
                       <input type="text" class="input my-data-input" placeholder="к/с" name="ks">
                     </div>
                   </div>
-                </div>
+                </form>
               </div>
               <div class="my-data__row-bottom">
-                <button class="my-data__row-bottom__btn my-data__row-bottom__btn-1 my-data-tabs-btn button-4">
+                <button
+                  class="my-data__row-bottom__btn my-data__row-bottom__btn-1 my-data-tabs-btn button-4 btn-tabs-main-information">
                   <span>Основная информация</span>
                 </button>
-                <button class="my-data__row-bottom__btn my-data__row-bottom__btn-1 my-data-tabs-btn button-4">
+                <button
+                  class="my-data__row-bottom__btn my-data__row-bottom__btn-1 my-data-tabs-btn button-4 btn-tabs-contacts-data">
                   <span>Контактные данные</span>
                 </button>
                 <button
