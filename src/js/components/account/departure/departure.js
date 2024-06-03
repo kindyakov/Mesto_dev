@@ -204,7 +204,7 @@ class Departure {
           }
         })
       }
-      
+
       this.departuresTabs.init()
       this.departuresTabs.options.onChange = this.onChangeTabs.bind(this)
       this.departuresTabs.switchTabs(this.accountDepartures.querySelector(`${this.departuresTabs.options.btnSelector}[data-tabs-btn="account-tabs-${activeIndexTab}"]`))
@@ -254,7 +254,7 @@ class Departure {
 
         this.accountDeparturesStepTwo.classList.add('_none')
         this.accountDeparturesStepThree.classList.remove('_none')
-        this.watchStepThree.init(currentRoom.rentenddate)
+        this.watchStepThree.init(this.rooms[index].rentenddate)
       }
     } catch (error) {
       console.error(error);

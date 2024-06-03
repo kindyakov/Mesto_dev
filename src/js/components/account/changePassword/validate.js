@@ -10,8 +10,8 @@ export function validate(form) {
     },
     {
       rule: 'minLength',
-      value: 5,
-      errorMessage: 'Пароль должен содержать минимум 5 символов',
+      value: 6,
+      errorMessage: 'Пароль должен содержать минимум 6 символов',
     },
   ]).addField(form.querySelector('input[name="password"]'), [
     {
@@ -20,8 +20,8 @@ export function validate(form) {
     },
     {
       rule: 'minLength',
-      value: 5,
-      errorMessage: 'Пароль должен содержать минимум 5 символов',
+      value: 6,
+      errorMessage: 'Пароль должен содержать минимум 6 символов',
     },
   ]).addField(form.querySelector('input[name="repassword"]'), [
     {
@@ -50,8 +50,8 @@ export function validateCreatePassword(form) {
     },
     {
       rule: 'minLength',
-      value: 5,
-      errorMessage: 'Пароль должен содержать минимум 5 символов',
+      value: 6,
+      errorMessage: 'Пароль должен содержать минимум 6 символов',
     },
   ]).addField(form.querySelector('input[name="repassword"]'), [
     {

@@ -3,7 +3,7 @@ export function cardHtml(data) {
                     <span>${data.bank ? data.bank : ''} ${data.rs ? data.rs : ''}</span>
                     <p>Основной способ</p>
                     <input type="radio" name="requisites" class="rent-room__payment_input-radio input-radio"
-                      id="card-payment-${data.requisites_id ? `${data.requisites_id}-${new Date().getTime()}` : ''}" value="${data.requisites_id ? data.requisites_id : ''}">
+                      id="card-payment-${data.requisites_id ? `${data.requisites_id}-${new Date().getTime()}` : ''}" value="${data.requisites_id ? data.requisites_id : ''}" ${data.active ? 'checked' : ''}>
                     <label for="card-payment-${data.requisites_id ? `${data.requisites_id}-${new Date().getTime()}` : ''}" class="rent-room__payment_label label-radio"></label>
                   </label>`
 }
