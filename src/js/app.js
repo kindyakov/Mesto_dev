@@ -24,7 +24,6 @@ import { modals } from "./components/modals/modals.js"
 import { plug } from './components/plug.js';
 
 import { specialOffer } from "./components/specialOffer/specialOffer.js";
-// import { isTimeInRange } from "./utils/isTimeInRange.js";
 
 updateLinks('.link-update')
 burger()
@@ -151,6 +150,4 @@ const advantagesStorage = document.querySelector('.advantages-storage')
 if (advantagesStorage) {
   const advantagesStorageTabs = new Tabs('advantages-storage-tabs')
 }
-// ======================================================
-
 // ======================================================

@@ -2,6 +2,12 @@ import { Octokit } from "@octokit/rest";
 import fs from 'fs';
 
 export const createRepo = (done) => {
+  if (app.settings.repoUrl) {
+    console.log(app.plugins.chalk.yellow("Репозиторий уже создан:", app.settings.repoUrl))
+    done()
+    return
+  }
+
   const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN,
   });
