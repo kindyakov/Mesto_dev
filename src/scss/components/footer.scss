@@ -172,6 +172,38 @@
 		}
 	}
 
+	&__files {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 20px;
+		border: 1px solid #004d56;
+		border-bottom: none;
+		padding: 20px 30px;
+		> a {
+			color: $white;
+			transition: 0.2s;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 6px;
+
+			.icon {
+				fill: $white;
+				width: 25px;
+				height: 25px;
+			}
+
+			&:hover {
+				color: $orange;
+			}
+		}
+		@media (max-width: $md1) {
+			padding: 15px;
+		}
+	}
+
 	&__bottom {
 		border: 1px solid $green;
 		border-bottom: none;

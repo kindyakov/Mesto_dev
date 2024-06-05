@@ -1,4 +1,4 @@
-import tippy from 'tippy.js'
+// import tippy from 'tippy.js'
 
 import { Tabs } from "../../modules/myTabs.js";
 import { Loader } from "../../modules/myLoader.js"
@@ -483,23 +483,12 @@ class RentRoom {
   }
 
   changePriceSum(priceSum, deposit) {
+    const infoPaymentRentRoom = this.rentRoom.querySelector('.info-payment-rent-room')
+    infoPaymentRentRoom.innerHTML = `<b>${formattingPrice(+priceSum)}</b><span>арендный платеж за первый месяц</span>
+                       <b>${formattingPrice((+deposit))}</b><span>депозит (вернется после окончания аренды)</span>`
+
     this.resultPriceRooms.length && this.resultPriceRooms.forEach((el, i) => {
-      if (i === 1) {
-        el.style.cssText = `display: flex; align-items: center; gap: 6px;`
-        el.innerHTML = `<span>${formattingPrice(+priceSum + +deposit)}</span>` + `<svg class='icon icon-info' style="width: 30px; height: 40px;">
-  <use xlink:href='img/svg/sprite.svg#info'></use>
-</svg>`
-        tippy('.icon-info', {
-          content: `<div style="display: grid; grid-template-columns: auto 1fr; gap: 6px; background-color: #fff; padding: 5px; border: 1px solid #004d56;
-    box-shadow: 4px 4px 5px 0 rgba(0, 0, 0, 0.25); border-radius: 4px; font-size: 12px;">
-          <b>${formattingPrice(+priceSum)}</b><span>арендный платеж за первый месяц</span>
-          <b>${formattingPrice((+deposit))}</b><span>депозит (вернется после окончания аренды)</span></p>
-          </div>`,
-          allowHTML: true,
-        })
-      } else {
-        el.textContent = formattingPrice(+priceSum) + '/мес'
-      }
+      el.textContent = formattingPrice(+priceSum + +deposit) + '/мес'
     })
   }
 }

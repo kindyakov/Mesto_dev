@@ -74,7 +74,7 @@ class Cards {
 
         this.setCheckedInput()
       } else {
-        this.paymentCards.insertAdjacentHTML('afterbegin', `<span style="line-height: normal;">У Вас нет привязанной карты</span>`)
+        this.paymentCards.insertAdjacentHTML('afterbegin', `<span class="payment-cards__is-no-linked-card">У Вас нет привязанной карты</span>`)
       }
 
       if (this.options.isLinkCard) {
