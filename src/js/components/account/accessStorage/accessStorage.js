@@ -8,10 +8,8 @@ import OpenBarrier from "./openBarrier.js"
 import OpenGates from "./openGates.js"
 import OpenDoor from "./openDoor.js"
 
-import { isOneRented } from "../utils/isAllRented.js"
-
 class AccessStorage {
-  constructor({ formNewAgreement }) {
+  constructor() {
     this.assetsStorage = document.querySelector('.account-assets-storage')
     if (!this.assetsStorage) return
 
@@ -49,9 +47,7 @@ class AccessStorage {
       },
     });
 
-    this.myData = null
     this.clientData = null
-    this.formNewAgreement = formNewAgreement
 
     this.openRoom = new OpenRoom({ loader: this.loader })
     this.openBarrier = new OpenBarrier({ loader: this.loader })
@@ -78,76 +74,18 @@ class AccessStorage {
     })
   }
 
-  async render(accountTabs) {
-    try {
-      this.loader.enable()
+  render({ accountTabs, clientTotalData }) {
+    if (!clientTotalData) return
+    const { rooms } = clientTotalData
 
-      const data = await getClientTotalData()
-      if (!data) return
-      const { rooms, test_rooms } = data
-      const accountStoreroomsRooms = document.querySelector('.account-storerooms-rooms')
-      let isPaymentRoom = false
+    this.clientData = clientTotalData
+    this.storeroomsSliderWrapper.innerHTML = ''
 
-      accountStoreroomsRooms.classList.remove('_none')
-
-      this.clientData = this.formNewAgreement.clientData = data
-      this.storeroomsSliderWrapper.innerHTML = ''
-
-      if (rooms.length) {
-        // Если нет оплаченных ячеек с rented: 1 то скрытие вкладки "Выезды"
-        if (!isOneRented(rooms)) {
-          document.querySelector('[data-tabs-btn="account-tabs-5"]').classList.add('_none')
-        }
-
-        // Если ячейка оплачена с rented: 0.45 то скрываю все вкладки кроме "Мои данные"
-        if (!this.clientData.client.user_type && isOneRented(rooms, 0.45)) {
-          document.querySelector('[data-tabs-btn="account-tabs-0"]').classList.add('_none')
-          document.querySelector('[data-tabs-btn="account-tabs-1"]').classList.add('_none')
-          document.querySelector('[data-tabs-btn="account-tabs-2"]').classList.add('_none')
-          document.querySelector('[data-tabs-btn="account-tabs-4"]').classList.add('_none')
-          document.querySelector('[data-tabs-btn="account-tabs-5"]').classList.add('_none')
-          this.myData.isRequiredPassportsData = true
-          this.myData.clientData = data
-          accountTabs.switchTabs(document.querySelector('.account-tabs-btn[data-tabs-btn="account-tabs-3"]'))
-          return
-        }
-        // Если нет оплаченных ячеек и нет тестовых ячеек то скрытие  вкладки "Открытие" 
-        else if (!isOneRented(rooms) && !isOneRented(test_rooms, 0.25)) {
-          document.querySelector('[data-tabs-btn="account-tabs-0"]').classList.add('_none')
-          accountTabs.switchTabs(document.querySelector('.account-tabs-btn[data-tabs-btn="account-tabs-1"]'))
-          return
-        }
-
-        rooms.forEach(room => {
-          // this.assetsStorageRooms.insertAdjacentHTML('beforeend', storageRoomHtml(room))
-          this.storeroomsSliderWrapper.insertAdjacentHTML('beforeend', rooms2Html(room))
-
-          if (room.rented === 0.45 && !isPaymentRoom) {
-            isPaymentRoom = true
-
-            accountTabs.tabsBtns.forEach(btn => {
-              if (!btn.classList.contains('account-tabs-btn-my-data')) {
-                btn.classList.add('_none')
-              }
-            })
-
-            this.accountTabs.switchTabs(this.accountTabs.tabs.querySelector('.account-tabs-btn-my-data'))
-          }
-        });
-      } else {
-        accountStoreroomsRooms.classList.add('_none')
-        document.querySelector('[data-tabs-btn="account-tabs-5"]').classList.add('_none')
-
-        if (!test_rooms.length) {
-          document.querySelector('[data-tabs-btn="account-tabs-0"]').classList.add('_none')
-          accountTabs.switchTabs(document.querySelector('.account-tabs-btn[data-tabs-btn="account-tabs-1"]'))
-        }
-      }
-    } catch (error) {
-      console.error(error)
-    } finally {
-      this.loader.disable()
-    }
+    if (!rooms.length) return
+    rooms.forEach(room => {
+      // this.assetsStorageRooms.insertAdjacentHTML('beforeend', storageRoomHtml(room))
+      this.storeroomsSliderWrapper.insertAdjacentHTML('beforeend', rooms2Html(room))
+    });
   }
 }
 

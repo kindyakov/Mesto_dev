@@ -105,52 +105,44 @@ class MyData {
     })
   }
 
-  async renderMyData(profile) {
-    try {
-      this.loader.enable()
-      const data = await getClientTotalData()
-      if (!data) return
-      const { client } = data
-      this.inputs.length && this.inputs.forEach(input => {
-        if (input.name === 'username') {
-          input.value = profile[input.name] ? profile[input.name].slice(1) : ''
-        } else {
-          input.value = profile[input.name] ? profile[input.name] : ''
-        }
-      })
-
-      if (client.passp_photo_link) {
-        this.imgPassport.src = client.passp_photo_link
-        this.imgPassport.closest('form').classList.add('_success')
-      }
-
-      const tabInfo = this.accountMyData.querySelector('.btn-tabs-main-information')
-      const tabCon = this.accountMyData.querySelector('.btn-tabs-contacts-data')
-      const tabPas = this.accountMyData.querySelector('.my-data-tabs-btn.btn-tabs-passport-data')
-      const tabRec = this.accountMyData.querySelector('.my-data-tabs-btn.btn-tabs-requisites')
-
-      if (profile?.user_type === 'u') {
-        tabPas.classList.add('_none')
-        tabRec.classList.remove('_none')
-      } else if (profile?.user_type === 'f') {
-        tabPas.classList.remove('_none')
-        tabRec.classList.add('_none')
+  renderMyData({ profile, clientTotalData }) {
+    if (!clientTotalData) return
+    const { client } = clientTotalData
+    this.inputs.length && this.inputs.forEach(input => {
+      if (input.name === 'username') {
+        input.value = profile[input.name] ? profile[input.name].slice(1) : ''
       } else {
-        tabPas.classList.remove('_none')
-        tabRec.classList.remove('_none')
+        input.value = profile[input.name] ? profile[input.name] : ''
       }
+    })
 
-      if (this.isRequiredPassportsData) {
-        tabInfo.classList.add('_none')
-        tabCon.classList.add('_none')
-        tabRec.classList.add('_none')
-        this.myDataTabs.switchTabs(tabPas)
-        this.changePassportsData()
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      this.loader.disable()
+    if (client.passp_photo_link) {
+      this.imgPassport.src = client.passp_photo_link
+      this.imgPassport.closest('form').classList.add('_success')
+    }
+
+    const tabInfo = this.accountMyData.querySelector('.btn-tabs-main-information')
+    const tabCon = this.accountMyData.querySelector('.btn-tabs-contacts-data')
+    const tabPas = this.accountMyData.querySelector('.my-data-tabs-btn.btn-tabs-passport-data')
+    const tabRec = this.accountMyData.querySelector('.my-data-tabs-btn.btn-tabs-requisites')
+
+    if (profile?.user_type === 'u') {
+      tabPas.classList.add('_none')
+      tabRec.classList.remove('_none')
+    } else if (profile?.user_type === 'f') {
+      tabPas.classList.remove('_none')
+      tabRec.classList.add('_none')
+    } else {
+      tabPas.classList.remove('_none')
+      tabRec.classList.remove('_none')
+    }
+
+    if (this.isRequiredPassportsData) {
+      tabInfo.classList.add('_none')
+      tabCon.classList.add('_none')
+      tabRec.classList.add('_none')
+      this.myDataTabs.switchTabs(tabPas)
+      this.changePassportsData()
     }
   }
 

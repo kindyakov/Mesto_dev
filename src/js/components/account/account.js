@@ -9,6 +9,8 @@ import Departure from "./departure/departure.js"
 import MyData from "./myData/myData.js"
 import PaymentMethods from "./paymentMethods/paymentMethods.js"
 import FormNewAgreement from "./formNewAgreement.js"
+import { getClientTotalData } from "./request.js"
+import { isOneRented } from "./utils/isAllRented.js"
 
 class Account {
   constructor() {
@@ -27,8 +29,8 @@ class Account {
       // onInit: (tabsBtnActive, tabsContentActive) => this.initTabs(tabsBtnActive, tabsContentActive)
     })
 
-    this.accessStorage = new AccessStorage({ formNewAgreement: this.formNewAgreement })
-    this.storerooms = new Storerooms({ formNewAgreement: this.formNewAgreement })
+    this.accessStorage = new AccessStorage()
+    this.storerooms = new Storerooms()
     this.changePassword = new ChangePassword({ accountTabs: this.accountTabs })
     this.myData = new MyData()
     this.paymentMethods = new PaymentMethods()
@@ -37,7 +39,10 @@ class Account {
     this.accessStorage.myData = this.myData
 
     this.loader = new Loader(document.querySelector('.main'), {
-      isHidden: false, customSelector: 'custom-loader', position: 'fixed'
+      isHidden: false,
+      customSelector: 'custom-loader',
+      position: 'fixed',
+      id: 'account-loader'
     })
 
     this.accountLink = document.querySelector('.account-link-header')
@@ -53,8 +58,7 @@ class Account {
 
   events() {
     if (!this.account) return
-    this.initTabs(this.accountTabs.tabsBtnActive, this.accountTabs.tabsContentActive)
-    this.accountTabs.options.onChange = (nexTabBtn, prevTabBtn, nextTabContent, prevTabContent) => this.initTabs(nexTabBtn, nextTabContent)
+    this.accountTabs.options.onChange = (nexTabBtn, prevTabBtn, nextTabContent, prevTabContent) => this.changeTabs(nexTabBtn, nextTabContent)
 
     this.account.addEventListener('click', e => {
       if (e.target.closest('.btn-complete-lease')) {
@@ -62,7 +66,7 @@ class Account {
         const currentRoomId = btn.getAttribute('data-room-id')
         this.completeLeaseRoomId = +currentRoomId
         this.accountTabs.switchTabs(this.account.querySelector('.account-departures-btn'))
-        this.departure.renderDeparture(currentRoomId)
+        this.departure.renderDeparture({ roomId: currentRoomId })
       }
     })
 
@@ -71,9 +75,11 @@ class Account {
       document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
       document.location.pathname = 'index.html'
     })
+
+    this.changeTabs(this.accountTabs.tabsBtnActive, this.accountTabs.tabsContentActive)
   }
 
-  init() {
+  async init() {
     if (!this.account) return
 
     if (!this.isAuth) {
@@ -91,12 +97,17 @@ class Account {
 			<span>Выйти</span>`
     }
 
-    this.getProfile()
+    try {
+      this.loader.enable()
+      await this.getProfile()
+      await this.initTabs(this.accountTabs.tabsBtnActive, this.accountTabs.tabsContentActive)
+    } catch (error) {
+      this.loader.disable()
+    }
   }
 
   async getProfile() {
     try {
-      this.loader.enable()
       const response = await apiWithAuth.get('/_profile_')
 
       if (response.status !== 200) return
@@ -106,7 +117,7 @@ class Account {
 
       this.profile = user
       this.formNewAgreement.profile = user
-      
+
       if (roomId && num_monthes) {
         this.formNewAgreement.createAgreement({ profile: user, roomId, num_monthes })
       }
@@ -126,31 +137,93 @@ class Account {
     } catch (error) {
       console.error(error);
     } finally {
-      this.loader.disable()
       this.events()
     }
   }
 
-  initTabs(tabsBtnActive, tabsContentActive) {
-    this.storeroomsRooms = document.querySelector('.account-storerooms-rooms')
-    this.storeroomsScheme = document.querySelector('.account-storerooms-scheme')
-    this.storeroomsRooms.classList.add('_none')
-    this.storeroomsScheme.classList.add('_none')
+  async initTabs(tabsBtnActive, tabsContentActive) {
+    try {
+      this.loader.enable()
 
-    if (tabsContentActive.classList.contains('account-assets-storage')) {
-      this.accessStorage.render(this.accountTabs)
-      this.storeroomsRooms.classList.remove('_none')
-    } else if (tabsContentActive.classList.contains('account-storerooms')) {
-      this.storerooms.renderAgreement()
-      this.storeroomsScheme.classList.remove('_none')
-    } else if (tabsContentActive.classList.contains('account-change-password')) {
-      this.changePassword.renderForm()
-    } else if (tabsContentActive.classList.contains('account-my-data')) {
-      this.myData.renderMyData(this.profile)
-    } else if (tabsContentActive.classList.contains('account-payment-methods')) {
-      this.paymentMethods.renderPaymentMethods()
-    } else if (tabsContentActive.classList.contains('account-departures')) {
-      this.departure.renderDeparture()
+      const clientTotalData = await getClientTotalData()
+      const { rooms, test_rooms } = clientTotalData
+
+      const accountStoreroomsRooms = document.querySelector('.account-storerooms-rooms')
+      accountStoreroomsRooms.classList.remove('_none')
+
+      if (rooms.length) {
+        // Если нет оплаченных ячеек с rented: 1 то скрытие вкладки "Выезды"
+        if (!isOneRented(rooms)) {
+          document.querySelector('[data-tabs-btn="account-tabs-5"]').classList.add('_none')
+        }
+
+        // Если ячейка оплачена с rented: 0.45 то скрываю все вкладки кроме "Мои данные"
+        if (!clientTotalData.client.user_type && isOneRented(rooms, 0.45)) {
+          accountTabs.tabsBtns.forEach(btn => {
+            if (!btn.classList.contains('account-tabs-btn-my-data')) {
+              btn.classList.add('_none')
+            }
+          })
+          this.accountTabs.switchTabs(this.accountTabs.tabs.querySelector('.account-tabs-btn-my-data'))
+          return
+        }
+        // Если нет оплаченных ячеек и нет тестовых ячеек то скрытие  вкладки "Открытие" 
+        else if (!isOneRented(rooms) && !isOneRented(test_rooms, 0.25)) {
+          document.querySelector('[data-tabs-btn="account-tabs-0"]').classList.add('_none')
+          this.accountTabs.switchTabs(document.querySelector('.account-tabs-btn[data-tabs-btn="account-tabs-1"]'))
+          return
+        }
+      } else {
+        accountStoreroomsRooms.classList.add('_none')
+        document.querySelector('[data-tabs-btn="account-tabs-5"]').classList.add('_none')
+
+        if (!test_rooms.length) {
+          document.querySelector('[data-tabs-btn="account-tabs-0"]').classList.add('_none')
+          this.accountTabs.switchTabs(document.querySelector('.account-tabs-btn[data-tabs-btn="account-tabs-1"]'))
+        }
+      }
+    } catch (error) {
+      console.error(error)
+    } finally {
+      this.loader.disable()
+    }
+  }
+
+  async changeTabs(tabsBtnActive, tabsContentActive) {
+    try {
+      this.loader.enable()
+      const clientTotalData = await getClientTotalData()
+      const { rooms, test_rooms } = clientTotalData
+
+      this.formNewAgreement.clientData = clientTotalData
+      this.storeroomsRooms = document.querySelector('.account-storerooms-rooms')
+      this.storeroomsScheme = document.querySelector('.account-storerooms-scheme')
+      this.storeroomsRooms.classList.add('_none')
+      this.storeroomsScheme.classList.add('_none')
+
+      if (tabsContentActive.classList.contains('account-assets-storage')) {
+        this.accessStorage.render({ accountTabs: this.accountTabs, clientTotalData })
+        this.storeroomsRooms.classList.remove('_none')
+      } else if (tabsContentActive.classList.contains('account-storerooms')) {
+        this.storerooms.renderAgreement({ clientTotalData, formNewAgreement: this.formNewAgreement })
+        this.storeroomsScheme.classList.remove('_none')
+
+      } else if (tabsContentActive.classList.contains('account-change-password')) {
+        this.changePassword.renderForm()
+
+      } else if (tabsContentActive.classList.contains('account-my-data')) {
+        this.myData.renderMyData({ profile: this.profile, clientTotalData })
+
+      } else if (tabsContentActive.classList.contains('account-payment-methods')) {
+        this.paymentMethods.renderPaymentMethods({ clientTotalData })
+
+      } else if (tabsContentActive.classList.contains('account-departures')) {
+        this.departure.renderDeparture({ clientTotalData })
+      }
+    } catch (error) {
+      console.error(error)
+    } finally {
+      this.loader.disable()
     }
   }
 }

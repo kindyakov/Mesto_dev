@@ -88,10 +88,10 @@ class PaymentMethods {
     }
   }
 
-  async renderPaymentMethods() {
+  async renderPaymentMethods({ clientTotalData }) {
     try {
       this.loader.enable()
-      const [clientTotalData, clientCardsList] = await Promise.all([getClientTotalData(), this.cards.render()])
+      const clientCardsList = await this.cards.render()
 
       if (!clientTotalData) return
       const { client, requisites } = clientTotalData

@@ -180,43 +180,35 @@ class Departure {
     })
   }
 
-  async renderDeparture(roomId = null) {
-    try {
-      this.loader.enable()
-      const data = await getClientTotalData()
-      if (!data) return
-      const { rooms } = data
-      if (!rooms || !rooms?.length) return
-      this.rooms = rooms
+  renderDeparture({ clientTotalData, roomId = null }) {
+    if (!clientTotalData) return
+    const { rooms } = clientTotalData
+    if (!rooms || !rooms?.length) return
+    this.rooms = rooms
 
-      let activeIndexTab = 0
+    let activeIndexTab = 0
 
-      this.accountDeparturesTabs.innerHTML = ''
-      this.accountDeparturesRooms.innerHTML = ''
+    this.accountDeparturesTabs.innerHTML = ''
+    this.accountDeparturesRooms.innerHTML = ''
 
-      if (rooms.length) {
-        rooms.forEach((room, i) => {
-          this.accountDeparturesTabs.insertAdjacentHTML('beforeend', departureTabsHtml(room, i))
-          this.accountDeparturesRooms.insertAdjacentHTML('beforeend', departuresRoomHtml(room))
+    if (rooms.length) {
+      rooms.forEach((room, i) => {
+        this.accountDeparturesTabs.insertAdjacentHTML('beforeend', departureTabsHtml(room, i))
+        this.accountDeparturesRooms.insertAdjacentHTML('beforeend', departuresRoomHtml(room))
 
-          if (roomId && room.room_id === +roomId) {
-            activeIndexTab = i
-          }
-        })
-      }
-
-      this.departuresTabs.init()
-      this.departuresTabs.options.onChange = this.onChangeTabs.bind(this)
-      this.departuresTabs.switchTabs(this.accountDepartures.querySelector(`${this.departuresTabs.options.btnSelector}[data-tabs-btn="account-tabs-${activeIndexTab}"]`))
-
-      this.accountDepartures.querySelectorAll('input[name="leave_date"]').forEach(input => {
-        this.createAirDatepicker(input)
+        if (roomId && room.room_id === +roomId) {
+          activeIndexTab = i
+        }
       })
-    } catch (error) {
-      console.error(error);
-    } finally {
-      this.loader.disable()
     }
+
+    this.departuresTabs.init()
+    this.departuresTabs.options.onChange = this.onChangeTabs.bind(this)
+    this.departuresTabs.switchTabs(this.accountDepartures.querySelector(`${this.departuresTabs.options.btnSelector}[data-tabs-btn="account-tabs-${activeIndexTab}"]`))
+
+    this.accountDepartures.querySelectorAll('input[name="leave_date"]').forEach(input => {
+      this.createAirDatepicker(input)
+    })
   }
 
   async endRent(data) {

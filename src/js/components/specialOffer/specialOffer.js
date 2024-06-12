@@ -25,6 +25,7 @@ export function specialOffer() {
         observeSlideChildren: true,
         observer: true,
         loop: true,
+        autoHeight: true,
         breakpoints: {
           320: {
             slidesPerView: 1.2,

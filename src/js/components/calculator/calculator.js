@@ -168,6 +168,9 @@ class Calculator {
         this.imgPreviewRoom.src = this.images.volume[rangeData.volume]
       }
     }
+
+    this.range.sliders.duration.set(11)
+    this.range.rangeSlide({ handle: 0, unencoded: [11], noUiSlider: this.range.sliders.duration })
   }
 
   renderItems(category = 'living-room') {

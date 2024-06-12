@@ -32,8 +32,9 @@ export function modalArrangeGuestVisit() {
 
     Array.from(formData).forEach(arr => data[arr[0]] = arr[1])
 
-    startCountdown(e.submitter)
-    test_room({ username: data.username, email: data.email, room_id })
+    test_room({ username: data.username, email: data.email, room_id }).then(() => {
+      startCountdown(e.submitter)
+    })
   })
 
   formSendCode.addEventListener('submit', (e) => {
@@ -100,11 +101,12 @@ export function modalArrangeGuestVisit() {
     try {
       loader.enable()
       const response = await api.post('/_test_room_', data)
-      if (response.status !== 200) return
+      if (response.status !== 200) return false
       outputInfo(response.data)
       if (response.data.msg_type === 'success') {
         removeDisabled(formSendCode)
       }
+      return response.data
     } catch (error) {
       console.log(error.message)
       throw error

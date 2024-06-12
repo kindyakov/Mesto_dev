@@ -163,6 +163,47 @@ class RentRoom {
       }
     })
 
+    this.inputMonth && this.inputMonth.addEventListener('input', e => {
+      const itemMonthActive = this.rentRoom.querySelector('.item-month._active')
+      const itemMonthCurrent = this.rentRoom.querySelector(`.item-month[data-month="${this.inputMonth.value}"]`)
+      const value = this.inputMonth.value
+      this.month = value
+
+      // if (flag == 1) {
+      //   if (+value === 0) {
+      //     this.inputMonth.value = ''
+      //   } else if (this.inputMonth.value.length > 1) {
+      //     this.inputMonth.value = value.slice(0, 1)
+      //   } else if (this.inputMonth.value > 3) {
+      //     this.inputMonth.value = 3
+      //   } else {
+      //     this.inputMonth.value = value.replace(/[^0-9]/g, '')
+      //   }
+      // } else {
+      if (+value === 0) {
+        this.inputMonth.value = ''
+      } else if (this.inputMonth.value.length > 2) {
+        this.inputMonth.value = value.slice(0, 2)
+      } else {
+        this.inputMonth.value = value.replace(/[^0-9]/g, '')
+      }
+      // }
+
+      const [price, deposit] = this.calculatePriceAndDepositByMonth(value, this.agreementData)
+
+      if (+value.slice(0, 1) !== 1 && this.inputMonth.value.length === 1 || this.inputMonth.value.length > 1) {
+        e.target.blur()
+        this.payment.scrollIntoView({ behavior: "smooth", block: "start" })
+      }
+
+      this.inputMonth.classList.remove('just-validate-error-field')
+
+      itemMonthActive && itemMonthActive.classList.remove('_active')
+      itemMonthCurrent && itemMonthCurrent.classList.add('_active')
+
+      this.changePriceSum(price, deposit)
+    })
+
     this.formPaymentOnline && this.formPaymentOnline.addEventListener('submit', this.submitPaymentOnline.bind(this))
     this.formPaymentInvoice && this.formPaymentInvoice.addEventListener('submit', this.submitPaymentInvoice.bind(this))
     this.formAgreementConclusion && this.formAgreementConclusion.addEventListener('submit', this.submitAgreementConclusion.bind(this))
@@ -275,7 +316,7 @@ class RentRoom {
 
       Array.from(formData).forEach(arr => data[arr[0]] = arr[1])
 
-      data.price = this.sumPriceDiscCells ? this.sumPriceDiscCells : this.sumPriceCells
+      data.price = this.sumPriceCells
       data.email = this.user.email
       data.fio = `${this.user.familyname} ${this.user.firstname} ${this.user.patronymic}`
 
@@ -335,57 +376,14 @@ class RentRoom {
 
       rooms.forEach(room => {
         // ! Удалить
-        if (room.room_id == 81 || room.room_id == 82) {
-          flag = 1
-          document.querySelector('[data-month="6"]').remove()
-          document.querySelector('[data-month="11"]').remove()
-        }
+        // if (room.room_id == 81 || room.room_id == 82) {
+        //   flag = 1
+        //   document.querySelector('[data-month="6"]').remove()
+        //   document.querySelector('[data-month="11"]').remove()
+        // }
 
         this.rooms.insertAdjacentHTML('beforeend', roomHtml(room))
       });
-
-      // ! Вернуть в events
-      this.inputMonth && this.inputMonth.addEventListener('input', e => {
-        const itemMonthActive = this.rentRoom.querySelector('.item-month._active')
-        const itemMonthCurrent = this.rentRoom.querySelector(`.item-month[data-month="${this.inputMonth.value}"]`)
-        const value = this.inputMonth.value
-        this.month = value
-
-        if (flag == 1) {
-          if (+value === 0) {
-            this.inputMonth.value = ''
-          } else if (this.inputMonth.value.length > 1) {
-            this.inputMonth.value = value.slice(0, 1)
-          } else if (this.inputMonth.value > 3) {
-            this.inputMonth.value = 3
-          } else {
-            this.inputMonth.value = value.replace(/[^0-9]/g, '')
-          }
-        } else {
-          if (+value === 0) {
-            this.inputMonth.value = ''
-          } else if (this.inputMonth.value.length > 2) {
-            this.inputMonth.value = value.slice(0, 2)
-          } else {
-            this.inputMonth.value = value.replace(/[^0-9]/g, '')
-          }
-        }
-
-
-        const [price, deposit] = this.calculatePriceAndDepositByMonth(value, this.agreementData)
-
-        if (+value.slice(0, 1) !== 1 && this.inputMonth.value.length === 1 || this.inputMonth.value.length > 1) {
-          e.target.blur()
-          this.payment.scrollIntoView({ behavior: "smooth", block: "start" })
-        }
-
-        this.inputMonth.classList.remove('just-validate-error-field')
-
-        itemMonthActive && itemMonthActive.classList.remove('_active')
-        itemMonthCurrent && itemMonthCurrent.classList.add('_active')
-
-        this.changePriceSum(price, deposit)
-      })
 
       dataAmount.length && dataAmount.forEach(amount => {
         const itemMonth = amount.closest('.item-month')
@@ -484,8 +482,8 @@ class RentRoom {
 
   changePriceSum(priceSum, deposit) {
     const infoPaymentRentRoom = this.rentRoom.querySelector('.info-payment-rent-room')
-    infoPaymentRentRoom.innerHTML = `<b>${formattingPrice(+priceSum)}</b><span>арендный платеж за первый месяц</span>
-                       <b>${formattingPrice((+deposit))}</b><span>депозит (вернется после окончания аренды)</span>`
+    infoPaymentRentRoom.innerHTML = `<span>Арендный платеж за первый месяц</span><b style="text-align: right;">${formattingPrice(+priceSum)}</b>
+                       <span>Депозит (вернется после окончания аренды)</span><b style="text-align: right;">${formattingPrice((+deposit))}</b>`
 
     this.resultPriceRooms.length && this.resultPriceRooms.forEach((el, i) => {
       el.textContent = formattingPrice(+priceSum + +deposit) + '/мес'

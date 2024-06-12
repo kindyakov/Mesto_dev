@@ -55,7 +55,7 @@ function getMonthDiff(date1, date2) {
 }
 
 class Storerooms {
-  constructor({ formNewAgreement }) {
+  constructor() {
     this.account = document.querySelector('.account')
 
     this.loader = new Loader(document.querySelector('.main'), {
@@ -96,7 +96,6 @@ class Storerooms {
     //   btnSelector: '.tabs-btn-modal-payment',
     //   contentSelector: '.tabs-content-modal-payment-cards'
     // })
-    this.formNewAgreement = formNewAgreement
     this.routeScheme = new RouteScheme()
 
     this.schemeOne = this.account.querySelector('.scheme-1')
@@ -204,7 +203,7 @@ class Storerooms {
       }
       if (e.target.closest('.btn-modal-replace-room')) {
         const btn = e.target.closest('.btn-modal-replace-room')
-        const agrId = btn.getAttribute('data-agr-id')
+        const agrId = btn.getAttribute('data-agreement-id')
         this.rentNewRoom({ agrId })
       }
       if (e.target.closest('.btn-replace-room-modal')) {
@@ -430,9 +429,10 @@ class Storerooms {
         this.modalConfirmReplaceRoom.modal.querySelector('.modal-confirm-replace-room__text').innerHTML = `
           <p>Вы уверены, что хотите заменить<br> Кладовка ${currentOldRoom.room_id} на Кладовка ${currentNewRoom.room_id}?</p>
           <p style="display: flex; align-items: center; gap: 6px;">
-            <b>${this.priceReplaceRoom < 0 ? `Экономия составит  ${formattingPrice(difference)}` : `Доплата составит ${formattingPrice(difference)}`} </b><svg class='icon icon-info icon-info-tippy' style="width: 30px; height: 40px;">
-  <use xlink:href='img/svg/sprite.svg#info'></use>
-</svg></p>`
+            <b>${this.priceReplaceRoom < 0 ? `Экономия составит  ${formattingPrice(-1 * difference)}` : `Доплата составит ${formattingPrice(difference)}`} </b><svg class='icon icon-info  icon-info-tippy' style="width: 30px; height: 40px;">
+            <use xlink:href='img/svg/sprite.svg#info'></use>
+            </svg>
+          </p>`
 
         tippy('.icon-info-tippy', {
           content: `<div style="display: grid; grid-template-columns: auto 1fr; gap: 6px; background-color: #fff; padding: 5px; border: 1px solid #004d56;
@@ -504,37 +504,35 @@ class Storerooms {
     replaceRoomForClient(data, this.loader)
   }
 
-  async renderAgreement() {
+  async renderAgreement({ clientTotalData, formNewAgreement }) {
     try {
       this.loader.enable()
-      const [data, ...warehouses] = await Promise.all([
-        getClientTotalData(),
+      const [...warehouses] = await Promise.all([
         getAgreement(buildQueryParams({ floor: 1 })),
         getAgreement(buildQueryParams({ floor: 2 }))
       ])
 
-      if (!data) return
+      if (!clientTotalData) return
       this.agreements.innerHTML = ''
       this.storeroomsSliderWrapper.innerHTML = ''
 
-      data.agreements.length && data.agreements.forEach(agreement => {
-        this.agreements.insertAdjacentHTML('beforeend', agreementHtml(agreement, data))
+      clientTotalData.agreements.length && clientTotalData.agreements.forEach(agreement => {
+        this.agreements.insertAdjacentHTML('beforeend', agreementHtml(agreement, clientTotalData))
       });
 
-      data.test_rooms.length && data.test_rooms.forEach(room => {
+      clientTotalData.test_rooms.length && clientTotalData.test_rooms.forEach(room => {
         this.agreements.insertAdjacentHTML('beforeend', roomsHtml(room, 'not-close'))
       })
 
-      if (data.rooms.length) {
-        data.rooms[0].rented = 1 // ! Удалить
-        if (isOneRented(data.rooms, 1)) {
+      if (clientTotalData.rooms.length) {
+        if (isOneRented(clientTotalData.rooms, 1)) {
           this.isReplace = true
         }
       } else {
         document.querySelector('.account-storerooms-rooms').style.display = 'none'
       }
 
-      this.clientData = this.formNewAgreement.clientData = data
+      this.clientData = clientTotalData
       this.warehouses = warehouses ? warehouses : null
       this.oldRoomId = null
       this.newRoomId = null
@@ -547,9 +545,9 @@ class Storerooms {
       this.storeroomsTitleAgreement.innerHTML = ''
       this.storeroomsSchemeRooms.innerHTML = ''
 
-      this.formNewAgreement.allRooms = [...this.warehouses[0].rooms, ...this.warehouses[1].rooms]
-      this.renderScheme([...data.rooms, ...data.test_rooms], this.warehouses[0].rooms, this.schemeOne)
-      this.renderScheme([...data.rooms, ...data.test_rooms], this.warehouses[1].rooms, this.schemeTwo)
+      formNewAgreement.allRooms = [...this.warehouses[0].rooms, ...this.warehouses[1].rooms]
+      this.renderScheme([...clientTotalData.rooms, ...clientTotalData.test_rooms], this.warehouses[0].rooms, this.schemeOne)
+      this.renderScheme([...clientTotalData.rooms, ...clientTotalData.test_rooms], this.warehouses[1].rooms, this.schemeTwo)
       setMinMaxBlocks('.room-accordion-control>p span', { breakpoints: [768] })
       setMinMaxBlocks('.room-accordion-control .title-product', { breakpoints: [768], breakpointsNone: 580 })
       setMinMaxBlocks('.agreement-accordion-control .agreement2__row__right-col__title', { breakpoints: [768], breakpointsNone: 480 })
