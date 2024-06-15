@@ -1,7 +1,6 @@
 import { Tabs } from "../../../modules/myTabs.js"
 import { Loader } from "../../../modules/myLoader.js"
 
-import { getClientTotalData } from "../request.js"
 import { apiWithAuth } from "../../../settings/api.js"
 import { outputInfo } from "../../../utils/outputinfo.js"
 
@@ -30,7 +29,7 @@ class MyData {
     this.formUrData = this.accountMyData.querySelector('.form-ur-data')
     this.imgPassport = this.accountMyData.querySelector('.img-passport')
 
-    this.isRequiredPassportsData = false
+    this.isRequiredPassportsData = true
     this.imgPassportFile = null
     this.clientData = null
 
@@ -91,7 +90,7 @@ class MyData {
         form.classList.remove('_err')
         form.classList.add('_success')
 
-        if (!this.isRequiredPassportsData) {
+        if (this.isRequiredPassportsData) {
           this.uploadNewPassportPhoto(formData)
         }
       } else {
@@ -108,6 +107,8 @@ class MyData {
   renderMyData({ profile, clientTotalData }) {
     if (!clientTotalData) return
     const { client } = clientTotalData
+    this.clientData = clientTotalData
+
     this.inputs.length && this.inputs.forEach(input => {
       if (input.name === 'username') {
         input.value = profile[input.name] ? profile[input.name].slice(1) : ''
@@ -137,7 +138,7 @@ class MyData {
       tabRec.classList.remove('_none')
     }
 
-    if (this.isRequiredPassportsData) {
+    if (!this.isRequiredPassportsData) {
       tabInfo.classList.add('_none')
       tabCon.classList.add('_none')
       tabRec.classList.add('_none')

@@ -20,7 +20,7 @@ import { replaceRoomForClient } from "../../../settings/request.js"
 import { outputInfo } from '../../../utils/outputinfo.js'
 
 
-export function addClassRented(rented) {
+function addClassRented(rented) {
   if (rented === 2) {
     return 'my'
   } else if (rented === 0) {

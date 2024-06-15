@@ -292,6 +292,7 @@
 	&__ul {
 		display: flex;
 		align-items: center;
+		flex-wrap: wrap;
 		flex: 1 1 auto;
 		gap: 40px;
 		@media (max-width: $md1) {

@@ -233,49 +233,7 @@
       </section>
 
       @@include('../html/section/calculator.html',{path:'../'})
-
-      <section class="security-stuff section">
-        <div class="security-stuff__container _container">
-          <div class="security-stuff__body">
-            <h2 class="security-stuff__title h2">В наших кладовках Ваши<br>вещи в полной безопасности</h2>
-            <div class="security-stuff__content">
-              <ul class="security-stuff__list list-left">
-                <li class="security-stuff__item">
-                  <img src="../img/icons/fire.png" alt="Иконка">
-                  <span>Система пожарной сигнализации</span>
-                </li>
-                <li class="security-stuff__item">
-                  <img src="../img/icons/mchs.png" alt="Иконка">
-                  <span>Вызов службы быстрого реагирования в экстренных ситуациях</span>
-                </li>
-                <li class="security-stuff__item">
-                  <img src="../img/icons/key-2.png" alt="Иконка">
-                  <span>Электронная система доступа к складу</span>
-                </li>
-              </ul>
-              <picture class="security-stuff__img">
-                <source media="(max-width: 992px)" srcset="../img/security-stuff_mobile.png" type="image/png">
-                <img src="../img/security-stuff.png" alt="Картинка">
-              </picture>
-              <ul class="security-stuff__list list-right">
-                <li class="security-stuff__item">
-                  <img src="../img/icons/camera.png" alt="Иконка">
-                  <span>Внешнее и внутреннее видеонаблюдение</span>
-                </li>
-                <li class="security-stuff__item">
-                  <img src="../img/icons/save.png" alt="Иконка">
-                  <span>Дополнительное страхование имущества</span>
-                </li>
-                <li class="security-stuff__item">
-                  <img src="../img/icons/datchik.png" alt="Иконка">
-                  <span>Система контроля температуры и влажности</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      @@include('../html/section/security-stuff.html',{path:'../'})
       @@include('../html/section/cannot-stored.html',{path:'../'})
       @@include('../html/section/faq.html',{path:'../'})
       @@include('../html/section/map.html',{path:'../'})

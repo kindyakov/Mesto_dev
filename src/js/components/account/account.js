@@ -158,12 +158,13 @@ class Account {
         }
 
         // Если ячейка оплачена с rented: 0.45 то скрываю все вкладки кроме "Мои данные"
-        if (!clientTotalData.client.user_type && isOneRented(rooms, 0.45)) {
-          accountTabs.tabsBtns.forEach(btn => {
+        if (isOneRented(rooms, 0.45)) {
+          this.accountTabs.tabsBtns.forEach(btn => {
             if (!btn.classList.contains('account-tabs-btn-my-data')) {
               btn.classList.add('_none')
             }
           })
+          this.myData.isRequiredPassportsData = false
           this.accountTabs.switchTabs(this.accountTabs.tabs.querySelector('.account-tabs-btn-my-data'))
           return
         }
@@ -193,7 +194,6 @@ class Account {
     try {
       this.loader.enable()
       const clientTotalData = await getClientTotalData()
-      const { rooms, test_rooms } = clientTotalData
 
       this.formNewAgreement.clientData = clientTotalData
       this.storeroomsRooms = document.querySelector('.account-storerooms-rooms')

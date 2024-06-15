@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('html/components/_head.html',{
+  'title': '@@fileName.title',
+  'description': '@@fileName.description',
+  'path':'@@fileName.path'
+  })
+</head>
+
+<body>
+  <div class='wrapper'>
+    @@include('html/components/_header.html', {'path':'@@webRoot/'})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="index.html" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <span>Для вашего бизнеса</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="" id="schemes">
+        <div class="_container">
+          <div class="__body">
+            <div class="warehouse__schemes" data-tabs-init="tabs-warehouse">
+              <ul class="warehouse__schemes_info">
+                <!-- <li class="select">Выбрано</li> -->
+                <li class="free">Свободно</li>
+                <!-- <li class="select-size">Выбранный размер</li> -->
+                <li class="boock">Занято</li>
+              </ul>
+              <div class="warehouse__schemes_tabs">
+                <button class="warehouse__schemes_tab button tabs-btn-schemes"><span>1 ярус</span></button>
+                <button class="warehouse__schemes_tab button tabs-btn-schemes"><span>2 ярус</span></button>
+              </div>
+              <div class="warehouse__schemes_content tabs-content-schemes content-schemes-one">
+                <div class="wrap-scheme">
+                  @@include('html/sсhemes/scheme-1.html',{})
+                </div>
+              </div>
+              <div class="warehouse__schemes_content tabs-content-schemes content-schemes-two">
+                <div class="wrap-scheme">
+                  @@include('html/sсhemes/scheme-2.html',{})
+                </div>
+              </div>
+              <div class="warehouse__schemes_buttons">
+                <button class="warehouse__schemes_button btn-left">
+                  <svg class="icon icon-arrow-left">
+                    <use xlink:href="../img/svg/sprite.svg#arrow-left"></use>
+                  </svg>
+                </button>
+                <button class="warehouse__schemes_button btn-right">
+                  <svg class="icon icon-arrow-right">
+                    <use xlink:href="../img/svg/sprite.svg#arrow-right"></use>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      @@include('html/section/map.html',{path:'../'})
+      @@include('html/section/security-stuff.html',{path:'../'})
+      @@include('html/section/special-offers.html',{path:''})
+      @@include('html/section/questions.html',{path:'../'})
+      @@include('html/section/faq.html',{path:'../'})
+    </main>
+    @@include('html/components/_footer.html',{'path':'@@webRoot/'})
+  </div>
+  @@include('html/components/_js.html',{'path':'@@webRoot/'})
+</body>
+
+</html>

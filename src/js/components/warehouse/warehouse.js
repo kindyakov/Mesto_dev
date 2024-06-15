@@ -12,7 +12,7 @@ import { declOfNum } from "../../utils/declOfNum.js";
 import { setMinMaxBlocks } from "../../utils/setMinMaxBlocks.js";
 import { checkMobile } from "../../utils/checkMobile.js";
 
-export function addClassRented(rented) {
+function addClassRented(rented) {
   if (rented === 0) {
     return 'free'
   } else {
