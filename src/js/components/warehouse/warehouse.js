@@ -159,7 +159,7 @@ class Warehouse {
       // this.titlePage.textContent = warehouseCurrent.warehouse_name
     })
 
-    if (this.pathContent) {
+    if (this.pathContent && !this.pathContent.closest('.path').classList.contains('not')) {
       this.pathContent.innerHTML = `
               <a href="${this.pathPrefix}index.html" class="path__link hover-link">Главная</a>
               <span class="path__sep">/</span>
