@@ -35,7 +35,7 @@
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <div class='wrapper'>
-    @@include('../html/components/_header.html', {'fixed':'',path:'../'})
+    @@include('@@webRoot/html/components/_header.html', {'fixed':'',path:'@@webRoot/'})
     <main class='main'>
       <div class="path">
         <div class="path__container _container">
@@ -54,38 +54,38 @@
             <div class="warehouse__slider swiper slider-warehouse" data-da=".warehouse__content,889,1">
               <div class="warehouse__slider-wrapper swiper-wrapper">
                 <div class="warehouse__slider-slide swiper-slide">
-                  <img src="../img/entrance.jpg" alt="Фото терминала">
+                  <img src="@@webRoot/img/entrance.jpg" alt="Фото терминала">
                 </div>
                 <div class="warehouse__slider-slide swiper-slide">
-                  <img src="../img/client-zone.jpg" alt="Фото терминала">
+                  <img src="@@webRoot/img/client-zone.jpg" alt="Фото терминала">
                 </div>
                 <div class="warehouse__slider-slide swiper-slide">
-                  <img src="../img/trolleys.jpg" alt="Фото терминала">
+                  <img src="@@webRoot/img/trolleys.jpg" alt="Фото терминала">
                 </div>
                 <div class="warehouse__slider-slide swiper-slide">
-                  <img src="../img/corridor.jpg" alt="Фото терминала">
+                  <img src="@@webRoot/img/corridor.jpg" alt="Фото терминала">
                 </div>
                 <div class="warehouse__slider-slide swiper-slide">
-                  <img src="../img/corridor-2.jpg" alt="Фото терминала">
+                  <img src="@@webRoot/img/corridor-2.jpg" alt="Фото терминала">
                 </div>
                 <div class="warehouse__slider-slide swiper-slide">
-                  <img src="../img/castle.jpg" alt="Фото терминала">
+                  <img src="@@webRoot/img/castle.jpg" alt="Фото терминала">
                 </div>
                 <div class="warehouse__slider-slide swiper-slide">
-                  <img src="../img/video-surveillance.jpg" alt="Фото терминала">
+                  <img src="@@webRoot/img/video-surveillance.jpg" alt="Фото терминала">
                 </div>
                 <div class="warehouse__slider-slide swiper-slide">
-                  <img src="../img/warehouse.png" alt="Фото терминала">
+                  <img src="@@webRoot/img/warehouse.png" alt="Фото терминала">
                 </div>
               </div>
               <button class="warehouse__slider-btn btn-slider-prev">
                 <svg class='icon icon-arrow-left'>
-                  <use xlink:href='../img/svg/sprite.svg#arrow-left'></use>
+                  <use xlink:href='@@webRoot/img/svg/sprite.svg#arrow-left'></use>
                 </svg>
               </button>
               <button class="warehouse__slider-btn btn-slider-next">
                 <svg class='icon icon-arrow-right'>
-                  <use xlink:href='../img/svg/sprite.svg#arrow-right'></use>
+                  <use xlink:href='@@webRoot/img/svg/sprite.svg#arrow-right'></use>
                 </svg>
               </button>
             </div>
@@ -106,143 +106,34 @@
               <div class="warehouse__content-bottom">
                 <address class="warehouse__address">
                   <svg class='icon icon-placemark'>
-                    <use xlink:href='../img/svg/sprite.svg#placemark'></use>
+                    <use xlink:href='@@webRoot/img/svg/sprite.svg#placemark'></use>
                   </svg>
                   <span data-warehouse-key="warehouse_address">Москва, Борисовские пруды 22 к4, с1</span>
                 </address>
                 <a href="tel:+74951651565" class="warehouse__phone">
                   <svg class='icon icon-tel'>
-                    <use xlink:href='../img/svg/sprite.svg#tel'></use>
+                    <use xlink:href='@@webRoot/img/svg/sprite.svg#tel'></use>
                   </svg>
                   <span>+7 (495) 165-15-65</span>
                 </a>
               </div>
             </div>
           </div>
-          <div class="warehouse__main">
-            <div class="warehouse__filters">
-              <div class="warehouse__filter">
-                <h4 class="warehouse__filter_title">Размер кладовки:</h4>
-                <div class="warehouse__filter_row-inputs">
-                  <label class="warehouse__filter_wrap-input">
-                    <span class="placeholder">от:</span>
-                    <input type="number" name="volume_start" value="1"
-                      class="warehouse__filter_input input-filter-warehouse" data-type-range="volume" inputmode="tel">
-                    <span class="type">м³</span>
-                  </label>
-                  <label class="warehouse__filter_wrap-input">
-                    <span class="placeholder">до:</span>
-                    <input type="number" name="volume_end" value="9"
-                      class="warehouse__filter_input input-filter-warehouse" data-type-range="volume" inputmode="tel">
-                    <span class="type">м³</span>
-                  </label>
-                </div>
-                <div class="warehouse__filter_range range-filter-warehouse" data-type-range="volume" data-step="1"
-                  data-connect></div>
-                <div class="warehouse__filter_tabs">
-                  <button class="warehouse__filter_tab" data-type-range="volume" data-va="1,1.5">Локер</button>
-                  <button class="warehouse__filter_tab" data-type-range="volume" data-va="1.5,8">Кладовка</button>
-                  <button class="warehouse__filter_tab" data-type-range="volume" data-va="8,16">Хранилище</button>
-                  <button class="warehouse__filter_tab btn-open-modal-feedback-form">Персональный</button>
-                </div>
-              </div>
-
-              <div class="warehouse__filter">
-                <h4 class="warehouse__filter_title">Стоимость:</h4>
-                <div class="warehouse__filter_row-inputs">
-                  <label class="warehouse__filter_wrap-input">
-                    <span class="placeholder">Мин.цена:</span>
-                    <input type="text" name="price_start" value="1"
-                      class="warehouse__filter_input input-filter-warehouse" data-type-range="price" inputmode="tel">
-                    <span class="type">₽</span>
-                  </label>
-                  <label class="warehouse__filter_wrap-input">
-                    <span class="placeholder">Макс.цена:</span>
-                    <input type="text" name="price_end" value="22 000"
-                      class="warehouse__filter_input input-filter-warehouse" data-type-range="price" inputmode="tel">
-                    <span class="type">₽</span>
-                  </label>
-                </div>
-                <div class="warehouse__filter_range range-filter-warehouse" data-type-range="price" data-step="1"
-                  data-connect></div>
-                <p class="warehouse__filter_text text">Идеальная площадь для длительного хранения сезонных вещей, таких
-                  как: книги, стиральная машина, шины, сноуборд,
-                  малогабаритная мебель и прочее. Несмотря на компактные размеры и небольшую цену, такие склады являются
-                  довольно
-                  вместительными.</p>
-              </div>
-            </div>
-
-            <div class="warehouse__schemes" id="schemes">
-              <ul class="warehouse__schemes_info">
-                <li class="select">Выбрано</li>
-                <li class="free">Свободно</li>
-                <li class="select-size">Выбранный размер</li>
-                <li class="boock">Занято</li>
-              </ul>
-              <div class="warehouse__schemes_tabs">
-                <button class="warehouse__schemes_tab button tabs-btn-schemes"><span>1 ярус</span></button>
-                <button class="warehouse__schemes_tab button tabs-btn-schemes"><span>2 ярус</span></button>
-              </div>
-              <div class="warehouse__schemes_content tabs-content-schemes content-schemes-one">
-                <div class="wrap-scheme">
-                  @@include('../html/sсhemes/scheme-1.html',{})
-                </div>
-              </div>
-              <div class="warehouse__schemes_content tabs-content-schemes content-schemes-two">
-                <div class="wrap-scheme">
-                  @@include('../html/sсhemes/scheme-2.html',{})
-                </div>
-              </div>
-              <div class="warehouse__schemes_buttons">
-                <button class="warehouse__schemes_button btn-left">
-                  <svg class="icon icon-arrow-left">
-                    <use xlink:href="../img/svg/sprite.svg#arrow-left"></use>
-                  </svg>
-                </button>
-                <button class="warehouse__schemes_button btn-right">
-                  <svg class="icon icon-arrow-right">
-                    <use xlink:href="../img/svg/sprite.svg#arrow-right"></use>
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <div class="warehouse__rooms">
-              <div class="warehouse__rooms_content content-rooms-warehouse">
-
-              </div>
-              <div class="warehouse__rooms_result">
-                <h5 class="warehouse__rooms_result-title">Итого</h5>
-                <div class="warehouse__rooms_result-info info-result-warehouse">
-                  <span>0 м<sup>3</sup></span>
-                  <span></span>
-                </div>
-                <a href="../room.html"
-                  class="warehouse__rooms_result-link button link-result-warehouse link-rent-storage-room">
-                  <span>Арендовать кладовки</span>
-                </a>
-                <button
-                  class="warehouse__rooms_result-button button-result-warehouse btn-arrange-guest-visit link-rent-storage-room _none"><span>Оформить
-                    гостевой
-                    визит</span></button>
-              </div>
-            </div>
-          </div>
+          @@include('@@webRoot/html/section/warehouse__main.html',{path:'@@webRoot/'})
         </div>
       </section>
 
-      @@include('../html/section/calculator.html',{path:'../'})
-      @@include('../html/section/security-stuff.html',{path:'../'})
-      @@include('../html/section/cannot-stored.html',{path:'../'})
-      @@include('../html/section/faq.html',{path:'../'})
-      @@include('../html/section/map.html',{path:'../'})
-      @@include('../html/section/questions.html',{path:'../'})
+      @@include('@@webRoot/html/section/calculator.html',{path:'@@webRoot/'})
+      @@include('@@webRoot/html/section/security-stuff.html',{path:'@@webRoot/'})
+      @@include('@@webRoot/html/section/cannot-stored.html',{path:'@@webRoot/'})
+      @@include('@@webRoot/html/section/faq.html',{path:'@@webRoot/'})
+      @@include('@@webRoot/html/section/map.html',{path:'@@webRoot/'})
+      @@include('@@webRoot/html/section/questions.html',{path:'@@webRoot/'})
     </main>
-    @@include('../html/components/_footer.html',{path:'../'})
+    @@include('@@webRoot/html/components/_footer.html',{path:'@@webRoot/'})
   </div>
-  @@include('../html/components/_modal.html',{path:'../'})
-  @@include('../html/components/_js.html',{path:'../'})
+  @@include('@@webRoot/html/components/_modal.html',{path:'@@webRoot/'})
+  @@include('@@webRoot/html/components/_js.html',{path:'@@webRoot/'})
 </body>
 
 </html>

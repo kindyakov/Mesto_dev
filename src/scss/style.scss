@@ -95,6 +95,11 @@ body {
 //<ОСНОВНОЙ БЛОК>
 .main {
 	flex: 1 1 auto;
+	&.for-your-business {
+		.questions {
+			padding: 0;
+		}
+	}
 }
 
 .section {
@@ -896,6 +901,9 @@ input[type='date'] {
 @import './pages/persdata/persdata';
 
 @import './pages/not-found/not-found';
+
+@import './pages/business/business';
+@import './pages/business/business-warehouse';
 
 @import './styles/stangers';
 

@@ -307,16 +307,135 @@
 		}
 	}
 
-	// &__li {}
+	&__li {
+		position: relative;
+
+		@media (min-width: $md3) {
+			&:hover {
+				.icon {
+					transform: rotate(0) !important;
+				}
+				.dropdown {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+		}
+
+		.dropdown {
+			padding-top: 20px;
+			position: absolute;
+			z-index: 2;
+			top: 100%;
+			left: 0;
+			min-width: 100%;
+			opacity: 0;
+			visibility: hidden;
+			transition: 0.2s ease-in-out;
+
+			@media (max-width: $md1) {
+				padding-top: 10px;
+			}
+
+			@media (max-width: $md3) {
+				position: relative;
+				left: auto;
+				top: auto;
+				max-height: 0;
+				overflow: hidden;
+				will-change: max-height;
+				opacity: 1;
+				visibility: visible;
+				padding-top: 0;
+				&._dropdown-active {
+					margin-top: 10px;
+				}
+			}
+
+			&__list {
+				background-color: $green;
+				padding: 0 15px;
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				@media (max-width: $md1) {
+					padding: 0 10px;
+				}
+			}
+
+			&__li {
+				border-bottom: 1px solid #46939c;
+				&:last-child {
+					border-bottom: none;
+				}
+			}
+
+			&__link {
+				padding: 15px 5px;
+				white-space: nowrap;
+				font-weight: 400;
+				font-size: 14px;
+				color: $white;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 10px;
+				transition: color 0.2s linear;
+
+				.icon {
+					fill: transparent;
+					stroke: $white;
+					width: 20px;
+					height: 20px;
+				}
+
+				&:hover {
+					color: $orange;
+				}
+			}
+		}
+	}
 
 	&__link {
 		font-weight: 400;
 		font-size: 14px;
 		color: $white;
+
+		&.dropdown-btn {
+			display: flex;
+			align-items: center;
+			gap: 5px;
+			.icon {
+				flex-shrink: 0;
+				fill: none;
+				stroke: $white;
+				width: 15px;
+				height: 15px;
+				transform: rotate(90deg);
+				transition: transform 0.2s linear;
+			}
+			&._dropdown-btn-active {
+				.icon {
+					transform: rotate(0);
+				}
+			}
+			@media (max-width: $md3) {
+				gap: 15px;
+				.icon {
+					stroke: $black;
+					width: 25px;
+					height: 25px;
+				}
+			}
+		}
+
 		@media (max-width: $md3) {
 			font-weight: 600;
 			font-size: 24px;
 			color: $black;
+		}
+		@media (max-width: 380px) {
+			font-size: 20px;
 		}
 	}
 }

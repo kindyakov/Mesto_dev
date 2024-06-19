@@ -14,11 +14,10 @@ export function specialOffer() {
 
       if (!response.ok) return
       const cardsData = await response.json()
-
+      const isFos = window.location.pathname.includes('/for-your-business') ? true : false
       cardsData.length && cardsData.forEach(card => {
-        swiperWrapper.insertAdjacentHTML('beforeend', cardHtml(card))
+        swiperWrapper.insertAdjacentHTML('beforeend', cardHtml(card, isFos))
       })
-
 
       const swiper = new Swiper('.slider-cards', {
         spaceBetween: 10,

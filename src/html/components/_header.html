@@ -40,16 +40,39 @@
 				<ul class="header__ul">
 					<li class="header__li"><a href="calculator.html" class="header__link hover-link link-update">Калькулятор</a>
 					</li>
-					<li class="header__li"><a href="services.html" class="header__link hover-link link-update">Услуги
-							хранения</a>
+					<li class="header__li">
+						<button class="header__link dropdown-btn" data-dropdown-level="1">
+							<span>Услуги хранения</span>
+							<svg class='icon icon-arrow-right'>
+								<use xlink:href='img/svg/sprite.svg#arrow-right'></use>
+							</svg>
+						</button>
+						<div class="dropdown">
+							<ul class="dropdown__list">
+								<li class="dropdown__li">
+									<a href="for-your-business.html" class="dropdown__link link-update">
+										<span>Для вашего бизнеса</span>
+										<svg class='icon icon-arrow-right'>
+											<use xlink:href='img/svg/sprite.svg#arrow-right'></use>
+										</svg>
+									</a>
+								</li>
+								<li class="dropdown__li">
+									<a href="services.html#storage-services-tabs" class="dropdown__link link-update">
+										<span>Для личного хранения</span>
+										<svg class='icon icon-arrow-right'>
+											<use xlink:href='img/svg/sprite.svg#arrow-right'></use>
+										</svg>
+									</a>
+								</li>
+							</ul>
+						</div>
 					</li>
+					<li class="header__li"><a href="faq.html" class="header__link hover-link link-update">Вопрос-ответ</a></li>
 					<li class="header__li"><a href="how-use-storage.html" class="header__link hover-link link-update">Как
 							пользоваться
 							кладовкой</a></li>
-					<li class="header__li"><a href="faq.html" class="header__link hover-link link-update">Вопрос-ответ</a></li>
 					<li class="header__li"><a href="about.html" class="header__link hover-link link-update">О нас</a></li>
-					<li class="header__li"><a href="for-your-business.html" class="header__link hover-link link-update">Для вашего
-							бизнеса</a></li>
 				</ul>
 				<div class="header__nav_block">
 					<a href="tel:+74951651565" class="header__phone">+7 (495) 165-15-65</a>

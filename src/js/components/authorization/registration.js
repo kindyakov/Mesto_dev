@@ -51,8 +51,7 @@ class Registration {
     this.phone = formData.get('username').replace(/[+() -]/g, '')
     formData.set('username', this.phone)
 
-    this.startCountdown(e.submitter)
-    this.getCode(formData)
+    this.getCode(formData, e)
   }
 
   submitFormCode() {
@@ -120,7 +119,7 @@ class Registration {
     }, 1000); // Запускать каждую секунду
   }
 
-  async getCode(formData) {
+  async getCode(formData, e) {
     try {
       this.loader.enable()
       const response = await api.post('/_get_code_register_', formData)
@@ -131,6 +130,7 @@ class Registration {
 
       if (msg_type === 'success') {
         this.removeDisabled(this.formSendCode)
+        this.startCountdown(e.submitter)
       }
     } catch (error) {
       console.error("Ошибка при получение кода", error.message)

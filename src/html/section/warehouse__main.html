@@ -1,0 +1,111 @@
+<div class="warehouse__main">
+  <div class="warehouse__filters">
+    <div class="warehouse__filter">
+      <h4 class="warehouse__filter_title">Размер кладовки:</h4>
+      <div class="warehouse__filter_row-inputs">
+        <label class="warehouse__filter_wrap-input">
+          <span class="placeholder">от:</span>
+          <input type="number" name="volume_start" value="1" class="warehouse__filter_input input-filter-warehouse"
+            data-type-range="volume" inputmode="tel">
+          <span class="type">м³</span>
+        </label>
+        <label class="warehouse__filter_wrap-input">
+          <span class="placeholder">до:</span>
+          <input type="number" name="volume_end" value="9" class="warehouse__filter_input input-filter-warehouse"
+            data-type-range="volume" inputmode="tel">
+          <span class="type">м³</span>
+        </label>
+      </div>
+      <div class="warehouse__filter_range range-filter-warehouse" data-type-range="volume" data-step="1" data-connect>
+      </div>
+      <div class="warehouse__filter_tabs">
+        <button class="warehouse__filter_tab" data-type-range="volume" data-va="1,1.5">Локер</button>
+        <button class="warehouse__filter_tab" data-type-range="volume" data-va="1.5,8">Кладовка</button>
+        <button class="warehouse__filter_tab" data-type-range="volume" data-va="8,16">Хранилище</button>
+        <button class="warehouse__filter_tab btn-open-modal-feedback-form">Персональный</button>
+      </div>
+    </div>
+
+    <div class="warehouse__filter">
+      <h4 class="warehouse__filter_title">Стоимость:</h4>
+      <div class="warehouse__filter_row-inputs">
+        <label class="warehouse__filter_wrap-input">
+          <span class="placeholder">Мин.цена:</span>
+          <input type="text" name="price_start" value="1" class="warehouse__filter_input input-filter-warehouse"
+            data-type-range="price" inputmode="tel">
+          <span class="type">₽</span>
+        </label>
+        <label class="warehouse__filter_wrap-input">
+          <span class="placeholder">Макс.цена:</span>
+          <input type="text" name="price_end" value="22 000" class="warehouse__filter_input input-filter-warehouse"
+            data-type-range="price" inputmode="tel">
+          <span class="type">₽</span>
+        </label>
+      </div>
+      <div class="warehouse__filter_range range-filter-warehouse" data-type-range="price" data-step="1" data-connect>
+      </div>
+      <p class="warehouse__filter_text text">Идеальная площадь для длительного хранения сезонных вещей,
+        таких
+        как: книги, стиральная машина, шины, сноуборд,
+        малогабаритная мебель и прочее. Несмотря на компактные размеры и небольшую цену, такие склады
+        являются
+        довольно
+        вместительными.</p>
+    </div>
+  </div>
+
+  <div class="warehouse__schemes" id="schemes">
+    <ul class="warehouse__schemes_info">
+      <li class="select">Выбрано</li>
+      <li class="free">Свободно</li>
+      <li class="select-size">Выбранный размер</li>
+      <li class="boock">Занято</li>
+    </ul>
+    <div class="warehouse__schemes_tabs">
+      <button class="warehouse__schemes_tab button tabs-btn-schemes"><span>1 ярус</span></button>
+      <button class="warehouse__schemes_tab button tabs-btn-schemes"><span>2 ярус</span></button>
+    </div>
+    <div class="warehouse__schemes_content tabs-content-schemes content-schemes-one">
+      <div class="wrap-scheme">
+        @@include('../sсhemes/scheme-1.html',{})
+      </div>
+    </div>
+    <div class="warehouse__schemes_content tabs-content-schemes content-schemes-two">
+      <div class="wrap-scheme">
+        @@include('../sсhemes/scheme-2.html',{})
+      </div>
+    </div>
+    <div class="warehouse__schemes_buttons">
+      <button class="warehouse__schemes_button btn-left">
+        <svg class="icon icon-arrow-left">
+          <use xlink:href="../img/svg/sprite.svg#arrow-left"></use>
+        </svg>
+      </button>
+      <button class="warehouse__schemes_button btn-right">
+        <svg class="icon icon-arrow-right">
+          <use xlink:href="../img/svg/sprite.svg#arrow-right"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="warehouse__rooms">
+    <div class="warehouse__rooms_content content-rooms-warehouse">
+
+    </div>
+    <div class="warehouse__rooms_result">
+      <h5 class="warehouse__rooms_result-title">Итого</h5>
+      <div class="warehouse__rooms_result-info info-result-warehouse">
+        <span>0 м<sup>3</sup></span>
+        <span></span>
+      </div>
+      <a href="../room.html" class="warehouse__rooms_result-link button link-result-warehouse link-rent-storage-room">
+        <span>Арендовать кладовки</span>
+      </a>
+      <button
+        class="warehouse__rooms_result-button button-result-warehouse btn-arrange-guest-visit link-rent-storage-room _none"><span>Оформить
+          гостевой
+          визит</span></button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+.business-warehouse {
+	margin-top: 55px;
+	&.section {
+		padding: 0;
+	}
+	.warehouse__body {
+		flex-direction: row-reverse;
+		gap: 30px;
+		@media (max-width: $md3) {
+			flex-direction: column-reverse;
+			gap: 15px;
+		}
+	}
+
+	.warehouse__slider {
+		max-height: 280px;
+		min-height: 0;
+	}
+
+	.warehouse__content {
+		gap: 10px;
+		padding: 0;
+		.button-5 {
+			margin-top: auto;
+			max-width: 380px;
+			font-size: 20px;
+			padding: 20px 10px;
+			@media (max-width: $md5) {
+				max-width: none;
+			}
+			@media (max-width: 360px) {
+				font-size: 18px;
+			}
+		}
+	}
+
+	.warehouse__content-bottom {
+		margin-top: 0;
+	}
+
+	.warehouse__address {
+		@media (max-width: $md3) {
+			padding: 0;
+			gap: 10px;
+			.icon {
+				width: 25px;
+				height: 25px;
+			}
+		}
+	}
+}

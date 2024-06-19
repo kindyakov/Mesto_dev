@@ -70,11 +70,11 @@ class FormNewAgreement {
       let price = 0
 
       // ! Заглушка
-      if (isTimeInRange()) {
-        this.modalPaymentsRoom.close()
-        modalOpening.open()
-        return
-      }
+      // if (isTimeInRange()) {
+      //   this.modalPaymentsRoom.close()
+      //   modalOpening.open()
+      //   return
+      // }
 
       // Если кликнули на кнопку "Арендовать" то редирект
       if (btn.classList.contains('btn-rent-room')) {

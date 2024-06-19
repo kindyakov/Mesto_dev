@@ -1,7 +1,7 @@
 import checkSupportWebP from "./utils/checkSupportWebP.js"
 
 import { useDynamicAdapt } from "./utils/dynamicAdapt.js"
-import { burger, updateLinks, scroll } from "./utils/header.js"
+import { burger, updateLinks, scroll, dropdown } from "./utils/header.js"
 import { showPassword } from './utils/showPassword.js';
 import { addBrowserSpecificClass } from './utils/detectBrowser.js';
 
@@ -26,15 +26,17 @@ import { plug } from './components/plug.js';
 import { specialOffer } from "./components/specialOffer/specialOffer.js";
 import { Loader } from "./modules/myLoader.js";
 
+// header
 updateLinks('.link-update')
 burger()
 scroll('.link-scroll', { isHeader: false })
+dropdown({})
+// header
 questions()
 rentOut()
 checkSupportWebP()
 showPassword('.icon-eye')
 specialOffer()
-
 
 const calculator = new Calculator()
 const schemeMobile = new SchemeMobile()
@@ -66,7 +68,7 @@ getWarehousesInfo().then(async ({ warehouses }) => {
     import(`./components/account/account.js`).then(({ default: Account }) => {
       account = new Account();
     });
-  } else if (pathname.includes('/1')) {
+  } else if (pathname.includes('/warehouse') || pathname.includes('/for-your-business')) {
     import(`./components/warehouse/warehouse.js`).then(({ default: Warehouse }) => {
       warehouse = new Warehouse();
       warehouse.renderWarehouses(warehouses)
@@ -107,43 +109,6 @@ getWarehousesInfo().then(async ({ warehouses }) => {
         });
       }
     });
-  } else if (pathname.includes('/for-your-business')) {
-    const tabsScheme = new Tabs('tabs-warehouse', {
-      btnSelector: '.tabs-btn-schemes',
-      contentSelector: '.tabs-content-schemes',
-    })
-
-    const loader = new Loader(document.querySelector('#schemes'))
-    loader.enable()
-
-    function addClassRented(rented) {
-      if (rented === 0) {
-        return 'free'
-      } else {
-        return 'disabled'
-      }
-    }
-
-    api.get(`/_update_floor_for_client_?floor=0`).then(res => {
-      if (res.data) {
-        const { rooms } = res.data
-
-        document.querySelectorAll('.warehouse__svg-cell')?.forEach(cell => {
-          cell.classList.remove('free', 'busy', 'disabled', '_selected', 'select-size')
-        })
-
-        rooms.length && rooms.forEach(room => {
-          const cell = document.querySelector(`.warehouse__svg-cell[data-cell-num="${room.room_id}"]`)
-          if (!cell) return
-
-          cell.setAttribute('data-rented', room.rented)
-          cell.setAttribute('data-room-id', room.room_id)
-          cell.classList.add(addClassRented(+room.rented))
-        })
-      }
-    }).finally(() => {
-      loader.disable()
-    })
   }
 
   calculator && calculator.process(warehouses)
@@ -154,7 +119,7 @@ modals()
 
 useDynamicAdapt()
 addBrowserSpecificClass(['.mySelect__list'])
-plug() // ! Заглушка
+// plug() // ! Заглушка
 // ======================================================
 
 const inputsCheckbox = document.querySelectorAll('input[type="checkbox"]')
@@ -191,3 +156,24 @@ if (advantagesStorage) {
   const advantagesStorageTabs = new Tabs('advantages-storage-tabs')
 }
 // ======================================================
+if (document.querySelector('[data-tabs-init="business-tabs"]')) {
+  const businessTabs = new Tabs('business-tabs', {
+    btnSelector: '._business-tabs-btn',
+    contentSelector: '._business-tabs-content'
+  })
+}
+
+if (document.querySelector('.business__accords')) {
+  const businessAccord = new Accordion('.business__accords')
+}
+
+if (document.querySelector('.business__benefit_swiper ')) {
+  new Swiper('.business__benefit_swiper ', {
+    spaceBetween: 10,
+    autoWidth: true,
+    slidesPerView: 1,
+    autoplay: {
+      delay: 2000,
+    },
+  })
+}

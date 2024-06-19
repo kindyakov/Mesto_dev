@@ -160,7 +160,6 @@ export const dropdown = (
     if (mediaQueryList.matches) {
       // Если условие медиа соответствует, добавляем обработчик
       dropdownButtons.forEach(btn => btn.addEventListener('click', handleClick));
-      console.log('asd');
     } else {
       const dropdownFirstLevel = document.querySelectorAll(selectorDropdown)
       const dropdownsSecondLevel = document.querySelectorAll(selectorSubDropdown)

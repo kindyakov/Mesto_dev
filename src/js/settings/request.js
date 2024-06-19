@@ -72,16 +72,13 @@ export const replaceRoomForClient = async (data, loader) => {
     loader.enable();
     const response = await apiWithAuth.post('/_replace_room_for_client_', data)
     if (response.status !== 200) return null
-
+    outputInfo(response.data)
     if (response.data.msg_type === 'success') {
       if (response.data.payment_url) {
         location.href = response.data.payment_url
       } else if (response.data.bill_id) {
         downloadBill(response.data.bill_id, loader)
-        outputInfo(response.data)
       }
-    } else {
-      outputInfo(response.data)
     }
   } catch (error) {
     console.error(error);

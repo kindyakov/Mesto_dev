@@ -12,66 +12,291 @@
 <body>
   <div class='wrapper'>
     @@include('html/components/_header.html', {'path':'@@webRoot/'})
-    <main class='main'>
-      <div class="path">
+    <main class='main for-your-business'>
+      <div class="path not">
         <div class="path__container _container">
           <div class="path__body">
             <div class="path__content path-content">
               <a href="index.html" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <a href="services.html" class="path__link hover-link">Услуги хранения</a>
               <span class="path__sep">/</span>
               <span>Для вашего бизнеса</span>
             </div>
           </div>
         </div>
       </div>
-      <section class="" id="schemes">
-        <div class="_container">
-          <div class="__body">
-            <div class="warehouse__schemes" data-tabs-init="tabs-warehouse">
-              <ul class="warehouse__schemes_info">
-                <!-- <li class="select">Выбрано</li> -->
-                <li class="free">Свободно</li>
-                <!-- <li class="select-size">Выбранный размер</li> -->
-                <li class="boock">Занято</li>
-              </ul>
-              <div class="warehouse__schemes_tabs">
-                <button class="warehouse__schemes_tab button tabs-btn-schemes"><span>1 ярус</span></button>
-                <button class="warehouse__schemes_tab button tabs-btn-schemes"><span>2 ярус</span></button>
-              </div>
-              <div class="warehouse__schemes_content tabs-content-schemes content-schemes-one">
-                <div class="wrap-scheme">
-                  @@include('html/sсhemes/scheme-1.html',{})
+      <section class="business" id="business">
+        <div class="business__container _container">
+          <div class="business__body">
+            <div class="business__intro">
+              <div class="business__intro_content">
+                <h1 class="business__title h3">Аренда кладовки для Вашего бизнеса</h1>
+                <p>решаем вопрос хранения просто и надежно</p>
+                <div class="business__intro_list">
+                  <p>Актуально хранение товаров в кладовках и на складе:</p>
+                  <ul>
+                    <li>— для интернет-магазинов и фулфилмента</li>
+                    <li>— для ИП в сфере торговли</li>
+                    <li>— для временного хранения грузов при перевозке товаров</li>
+                  </ul>
                 </div>
               </div>
-              <div class="warehouse__schemes_content tabs-content-schemes content-schemes-two">
-                <div class="wrap-scheme">
-                  @@include('html/sсhemes/scheme-2.html',{})
+              <div class="business__intro_img">
+                <img src="./img/warehouse.png" alt="Картинка">
+              </div>
+            </div>
+            <div class="business__tabs" data-tabs-init="business-tabs">
+              <h2 class="business__title h3">Применение кладовки в хранении для бизнеса</h2>
+              <div class="business__tabs_buttons">
+                <button class="business__tabs_button button _business-tabs-btn"><span>Гостиницам</span></button>
+                <button class="business__tabs_button button _business-tabs-btn"><span>Интернет-магазинам</span></button>
+                <button class="business__tabs_button button _business-tabs-btn"><span>Рекламным
+                    агентствам</span></button>
+                <button class="business__tabs_button button _business-tabs-btn"><span>Офисный переезд</span></button>
+              </div>
+              <div class="business__tabs_content _business-tabs-content">
+                @@loop("pageData/business/use-storage-room/html/tabs-item.html",
+                "pageData/business/use-storage-room/data/hotels.json")
+              </div>
+              <div class="business__tabs_content _business-tabs-content">
+                @@loop("pageData/business/use-storage-room/html/tabs-item.html",
+                "pageData/business/use-storage-room/data/online-shopping.json")
+              </div>
+              <div class="business__tabs_content _business-tabs-content">
+                @@loop("pageData/business/use-storage-room/html/tabs-item.html",
+                "pageData/business/use-storage-room/data/advertising-agencies.json")
+              </div>
+              <div class="business__tabs_content _business-tabs-content">
+                @@loop("pageData/business/use-storage-room/html/tabs-item.html",
+                "pageData/business/use-storage-room/data/office-relocation.json")
+              </div>
+              <div class="business__accords">
+                <div class='business__accord _my-accordion'>
+                  <button class='business__accord_control _my-accordion-control'>
+                    <span>Гостиницам</span>
+                    <svg class='icon icon-arrow-right'>
+                      <use xlink:href='img/svg/sprite.svg#arrow-right'></use>
+                    </svg>
+                  </button>
+                  <div class='business__accord_content _my-accordion-content'>
+                    @@loop("pageData/business/use-storage-room/html/accord-content-text.html","pageData/business/use-storage-room/data/hotels.json")
+                  </div>
+                </div>
+                <div class='business__accord _my-accordion'>
+                  <button class='business__accord_control _my-accordion-control'>
+                    <span>Интернет-магазинам</span>
+                    <svg class='icon icon-arrow-right'>
+                      <use xlink:href='img/svg/sprite.svg#arrow-right'></use>
+                    </svg>
+                  </button>
+                  <div class='business__accord_content _my-accordion-content'>
+                    @@loop("pageData/business/use-storage-room/html/accord-content-text.html","pageData/business/use-storage-room/data/online-shopping.json")
+                  </div>
+                </div>
+                <div class='business__accord _my-accordion'>
+                  <button class='business__accord_control _my-accordion-control'>
+                    <span>Рекламным агентствам</span>
+                    <svg class='icon icon-arrow-right'>
+                      <use xlink:href='img/svg/sprite.svg#arrow-right'></use>
+                    </svg>
+                  </button>
+                  <div class='business__accord_content _my-accordion-content'>
+                    @@loop("pageData/business/use-storage-room/html/accord-content-text.html","pageData/business/use-storage-room/data/advertising-agencies.json")
+                  </div>
+                </div>
+                <div class='business__accord _my-accordion'>
+                  <button class='business__accord_control _my-accordion-control'>
+                    <span>Офисный переезд</span>
+                    <svg class='icon icon-arrow-right'>
+                      <use xlink:href='img/svg/sprite.svg#arrow-right'></use>
+                    </svg>
+                  </button>
+                  <div class='business__accord_content _my-accordion-content'>
+                    @@loop("pageData/business/use-storage-room/html/accord-content-text.html","pageData/business/use-storage-room/data/office-relocation.json")
+                  </div>
                 </div>
               </div>
-              <div class="warehouse__schemes_buttons">
-                <button class="warehouse__schemes_button btn-left">
-                  <svg class="icon icon-arrow-left">
-                    <use xlink:href="../img/svg/sprite.svg#arrow-left"></use>
-                  </svg>
-                </button>
-                <button class="warehouse__schemes_button btn-right">
-                  <svg class="icon icon-arrow-right">
-                    <use xlink:href="../img/svg/sprite.svg#arrow-right"></use>
-                  </svg>
-                </button>
+            </div>
+            <div class="business__cost">
+              <h2 class="business__title">Стоимость аренды кладовки в МЕСТО</h2>
+              <div class="business__cost_content">
+                <div class="business__cost_block">
+                  <p>Цена складских и кладовых помещений включает НДС. В стоимость аренды входит:</p>
+                  <ul>
+                    <li>Надежный замок</li>
+                    <li>Охрана</li>
+                    <li>Электричество</li>
+                    <li>Интернет</li>
+                    <li>Тележки</li>
+                    <li>Освещение</li>
+                    <li>Системы видеонаблюдения и пожаротушения</li>
+                  </ul>
+                </div>
+                <div class="business__cost_buttons">
+                  <button class="button btn-book btn-open-modal-feedback-form"><span>Получить
+                      предложение</span></button>
+                  <a href="#schemes" class="button link-scroll"><span>Арендовать on-line</span></a>
+                </div>
+              </div>
+            </div>
+            <div class="business__benefit">
+              <h2 class="business__title">Почему выгоднее арендовать кладовку или склад?</h2>
+              <div class="business__benefit_content">
+                <div class="business__benefit_block">
+                  <ul>
+                    <li>— Включена оплата коммунальных и эксплуатационных расходов</li>
+                    <li>— Найм сотрудников охраны, клининга и администраторов за нами</li>
+                    <li>— Вы в любое время сможете расширить или уменьшить арендованную площадь под потребности вашего
+                      бизнеса</li>
+                    <li>— Бесплатный Wi-fi</li>
+                    <li>— В наличии поргузо-разгрузочное оборудование</li>
+                    <li>— Круглосуточный доступ к товару</li>
+                    <li>— Способ оплаты на выбор (перевод с карты или оплата по счёту)</li>
+                    <li>— Простата оформления аренды склада.<br>Вам достаточно только оплатить, работаем по оферте</li>
+                    <li>— Надежное и безопасное хранение вашего товара.<br>Предоставляем в бесплатное пользование
+                      надежный японский замок
+                      последнего класса защиты, с доступом через личный кабинет.Пожарная сигнализация, видеонаблюдениепо
+                      периметру и внутри
+                      здания.</li>
+                  </ul>
+                </div>
+                <div class="business__benefit_swiper swiper">
+                  <div class="business__benefit_swiper-wrapper swiper-wrapper">
+                    <div class="business__benefit_swiper-slide swiper-slide">
+                      <img src="./img/benefit-1.jpg" alt="Картинка">
+                    </div>
+                    <div class="business__benefit_swiper-slide swiper-slide">
+                      <img src="./img/benefit-2.jpg" alt="Картинка" loading="lazy">
+                    </div>
+                    <div class="business__benefit_swiper-slide swiper-slide">
+                      <img src="./img/benefit-3.jpg" alt="Картинка" loading="lazy">
+                    </div>
+                    <div class="business__benefit_swiper-slide swiper-slide">
+                      <img src="./img/benefit-4.jpg" alt="Картинка" loading="lazy">
+                    </div>
+                    <div class="business__benefit_swiper-slide swiper-slide">
+                      <img src="./img/benefit-5.jpg" alt="Картинка" loading="lazy">
+                    </div>
+                    <div class="business__benefit_swiper-slide swiper-slide">
+                      <img src="./img/benefit-6.jpg" alt="Картинка" loading="lazy">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="business__storage">
+              <h2 class="business__title">Какие товары принимаем на хранение?</h2>
+              <div class="business__storage_content">
+                <div class="business__storage_block">
+                  <h4 class="business__storage_title">Продукты питания</h4>
+                  <ul>
+                    <li>Безалкогольные напитки</li>
+                    <li>Детское питание</li>
+                    <li>Бакалея</li>
+                    <li>Масла растительные</li>
+                    <li>Консервация</li>
+                    <li>Орехи, сухофрукты, приправы</li>
+                    <li>Сахар, соль</li>
+                    <li>Снеки</li>
+                    <li>Чай, кофе, сладости</li>
+                    <li>и прочие товары, не требующие особого температурного режима</li>
+                  </ul>
+                </div>
+                <div class="business__storage_block">
+                  <h4 class="business__storage_title">Непродовольственные товары</h4>
+                  <ul>
+                    <li>Бытовая химия</li>
+                    <li>Товары для детей</li>
+                    <li>Канцтовары и печатная продукция</li>
+                    <li>Косметика и гигиена</li>
+                    <li>Зоотовары</li>
+                    <li>Одежда и обувь</li>
+                    <li>Спортивные товары</li>
+                    <li>Товары для дачи, сада, дома и интерьера</li>
+                    <li>Прочие товары народного потребления</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      @@include('html/section/map.html',{path:'../'})
-      @@include('html/section/security-stuff.html',{path:'../'})
-      @@include('html/section/special-offers.html',{path:''})
-      @@include('html/section/questions.html',{path:'../'})
-      @@include('html/section/faq.html',{path:'../'})
+      <section class="business-warehouse warehouse section" data-tabs-init="tabs-warehouse" data-warehouse-id="1">
+        <div class="warehouse__container _container">
+          <div class="warehouse__body">
+            <div class="warehouse__slider swiper slider-warehouse">
+              <div class="warehouse__slider-wrapper swiper-wrapper">
+                <div class="warehouse__slider-slide swiper-slide">
+                  <img src="@@webRoot/img/entrance.jpg" alt="Фото терминала">
+                </div>
+                <div class="warehouse__slider-slide swiper-slide">
+                  <img src="@@webRoot/img/client-zone.jpg" alt="Фото терминала">
+                </div>
+                <div class="warehouse__slider-slide swiper-slide">
+                  <img src="@@webRoot/img/trolleys.jpg" alt="Фото терминала">
+                </div>
+                <div class="warehouse__slider-slide swiper-slide">
+                  <img src="@@webRoot/img/corridor.jpg" alt="Фото терминала">
+                </div>
+                <div class="warehouse__slider-slide swiper-slide">
+                  <img src="@@webRoot/img/corridor-2.jpg" alt="Фото терминала">
+                </div>
+                <div class="warehouse__slider-slide swiper-slide">
+                  <img src="@@webRoot/img/castle.jpg" alt="Фото терминала">
+                </div>
+                <div class="warehouse__slider-slide swiper-slide">
+                  <img src="@@webRoot/img/video-surveillance.jpg" alt="Фото терминала">
+                </div>
+                <div class="warehouse__slider-slide swiper-slide">
+                  <img src="@@webRoot/img/warehouse.png" alt="Фото терминала">
+                </div>
+              </div>
+              <button class="warehouse__slider-btn btn-slider-prev">
+                <svg class='icon icon-arrow-left'>
+                  <use xlink:href='@@webRoot/img/svg/sprite.svg#arrow-left'></use>
+                </svg>
+              </button>
+              <button class="warehouse__slider-btn btn-slider-next">
+                <svg class='icon icon-arrow-right'>
+                  <use xlink:href='@@webRoot/img/svg/sprite.svg#arrow-right'></use>
+                </svg>
+              </button>
+            </div>
+            <div class="warehouse__content">
+              <div class="warehouse__content-top">
+                <h1 class="warehouse__title" data-warehouse-key="warehouse_name">Кладовки на Борисовских прудах</h1>
+              </div>
+
+              <ul class="warehouse__content-info">
+                <li>Автоматизированный терминал</li>
+                <li>Доступ 24/7</li>
+              </ul>
+              <div class="warehouse__content-bottom">
+                <address class="warehouse__address">
+                  <svg class='icon icon-placemark'>
+                    <use xlink:href='@@webRoot/img/svg/sprite.svg#placemark'></use>
+                  </svg>
+                  <span data-warehouse-key="warehouse_address">Москва, Борисовские пруды 22 к4, с1</span>
+                </address>
+              </div>
+              <a href="./warehouse/1.html" class="button-5">
+                <span>Оформить гостевой визит</span>
+              </a>
+            </div>
+          </div>
+          @@include('@@webRoot/html/section/warehouse__main.html',{path:'@@webRoot/'})
+        </div>
+      </section>
+      @@include('html/section/map.html',{path:'@@webRoot/'})
+      @@include('html/section/advantages-storage.html',{path:'@@webRoot/'})
+      @@include('html/section/special-offers.html',{path:'@@webRoot/'})
+      @@include('html/section/questions.html',{path:'@@webRoot/'})
+      @@include('html/section/faq.html',{path:'@@webRoot/'})
     </main>
     @@include('html/components/_footer.html',{'path':'@@webRoot/'})
   </div>
+  @@include('html/components/_modal.html',{path:'@@webRoot/'})
   @@include('html/components/_js.html',{'path':'@@webRoot/'})
 </body>
 

@@ -107,7 +107,7 @@ class Storerooms {
 
     this.oldRoomId = null
     this.newRoomId = null
-    this.priceReplaceRoom = 0
+    // this.priceReplaceRoom = 0
 
     this.clientData = null
     this.warehouses = null
@@ -275,9 +275,9 @@ class Storerooms {
     }
   }
 
-  calcAdditionalPayment(newRoom, oldRoom) {
-    return Math.round((+newRoom.price - +oldRoom.price) + (12 * +getMonthDiff(oldRoom.rentplanenddate, getCurrentDate())))
-  }
+  // calcAdditionalPayment(newRoom, oldRoom) {
+  //   return Math.round((+newRoom.price - +oldRoom.price) + (12 * +getMonthDiff(oldRoom.rentplanenddate, getCurrentDate())))
+  // }
 
   renderScheme(roomsClient, roomsAll, scheme) {
     scheme.querySelectorAll('.warehouse__svg-cell').forEach(cell => {
@@ -424,12 +424,10 @@ class Storerooms {
 
         const btnModalReplaceRoom = this.modalConfirmReplaceRoom.modal.querySelector('.btn-replace-confirm')
 
-        this.priceReplaceRoom = this.calcAdditionalPayment(currentNewRoom, currentOldRoom)
-
         this.modalConfirmReplaceRoom.modal.querySelector('.modal-confirm-replace-room__text').innerHTML = `
           <p>Вы уверены, что хотите заменить<br> Кладовка ${currentOldRoom.room_id} на Кладовка ${currentNewRoom.room_id}?</p>
           <p style="display: flex; align-items: center; gap: 6px;">
-            <b>${this.priceReplaceRoom < 0 ? `Экономия составит  ${formattingPrice(-1 * difference)}` : `Доплата составит ${formattingPrice(difference)}`} </b><svg class='icon icon-info  icon-info-tippy' style="width: 30px; height: 40px;">
+            <b>${difference < 0 ? `Экономия составит  ${formattingPrice(-1 * difference)}` : `Доплата составит ${formattingPrice(difference)}`} </b><svg class='icon icon-info  icon-info-tippy' style="width: 30px; height: 40px;">
             <use xlink:href='img/svg/sprite.svg#info'></use>
             </svg>
           </p>`
@@ -452,7 +450,7 @@ class Storerooms {
         btnModalReplaceRoom.setAttribute('data-new-room-id', this.newRoomId)
         btnModalReplaceRoom.setAttribute('data-difference', difference)
 
-        if (this.priceReplaceRoom > 0) {
+        if (difference > 0) {
           btnModalReplaceRoom.classList.add('btn-modal-payments-room-open')
           btnModalReplaceRoom.classList.remove('btn-modal-replace-room')
         } else {

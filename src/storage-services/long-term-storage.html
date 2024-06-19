@@ -51,7 +51,7 @@
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <div class='wrapper'>
-    @@include('../html/components/_header.html', {'fixed':'',path:'../'})
+    @@include('@@webRoot/html/components/_header.html', {'fixed':'',path:'@@webRoot/'})
     <main class='main'>
       <div class="path">
         <div class="path__container _container">
@@ -59,7 +59,7 @@
             <div class="path__content path-content">
               <a href="/" class="path__link hover-link">Главная</a>
               <span class="path__sep">/</span>
-              <a href="../services.html" class="path__link hover-link">Услуги хранения</a>
+              <a href="@@webRoot/services.html" class="path__link hover-link">Услуги хранения</a>
               <span class="path__sep">/</span>
               <span>Длительное хранение</span>
             </div>
@@ -86,7 +86,7 @@
                     музыкальных инструментов.</p>
                 </div>
                 <div class="storage-services__img">
-                  <img src="../img/warehouse.png" alt="Картинка">
+                  <img src="@@webRoot/img/warehouse.png" alt="Картинка">
                 </div>
               </div>
               <div class="storage-services__text text">
@@ -140,17 +140,17 @@
                   class="storage-services__tab button _my-tabs-btn _tab-btn-active"><span>Длительное хранение</span></a>
               </div>
               <div class="storage-services__content _my-tabs-content grid-col-3 _tab-content-active">
-                @@include('../html/storage-services/long-term-storages.html',{path:'long-term-storages/'})
+                @@include('@@webRoot/html/storage-services/long-term-storages.html',{path:'long-term-storages/'})
               </div>
             </div>
           </div>
         </div>
       </section>
     </main>
-    @@include('../html/components/_footer.html',{path:'../'})
+    @@include('@@webRoot/html/components/_footer.html',{path:'@@webRoot/'})
   </div>
-  @@include('../html/components/_modal.html',{path:'../'})
-  @@include('../html/components/_js.html',{path:'../'})
+  @@include('@@webRoot/html/components/_modal.html',{path:'@@webRoot/'})
+  @@include('@@webRoot/html/components/_js.html',{path:'@@webRoot/'})
 </body>
 
 </html>
