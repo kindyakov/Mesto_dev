@@ -177,3 +177,34 @@ if (document.querySelector('.business__benefit_swiper ')) {
     },
   })
 }
+
+if (document.querySelector('.special-swiper-offer')) {
+  new Swiper('.special-swiper-offer', {
+    spaceBetween: 10,
+    observeSlideChildren: true,
+    observer: true,
+    // loop: true,
+    // autoHeight: true,
+    breakpoints: {
+      320: {
+        slidesPerView: 1.2,
+      },
+      600: {
+        slidesPerView: 2.2,
+      },
+      992: {
+        slidesPerView: 3.2,
+      },
+      1200: {
+        slidesPerView: 4,
+      }
+    },
+    pagination: {
+      el: '.pagination-cards-slider',
+    },
+    navigation: {
+      nextEl: '.btn-cards-slider-next',
+      prevEl: '.btn-cards-slider-prev',
+    },
+  });
+}

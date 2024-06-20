@@ -3,13 +3,9 @@
 	}
 
 	&__body {
-		padding-left: 40px;
 		display: flex;
 		flex-direction: column;
 		gap: 80px;
-		@media (max-width: $md1) {
-			padding-left: 0;
-		}
 	}
 
 	&__title {
@@ -217,7 +213,7 @@
 		&_content {
 			display: flex;
 			flex-direction: column;
-			gap: 20px;
+			gap: 15px;
 			padding: 0 15px;
 			> p {
 				font-weight: 700;
@@ -286,6 +282,8 @@
 			}
 			@media (max-width: $md3) {
 				margin: 0 auto;
+			}
+			@media (max-width: $md5) {
 			}
 		}
 	}

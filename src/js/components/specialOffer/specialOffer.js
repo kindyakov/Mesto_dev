@@ -3,7 +3,9 @@ import { cardHtml } from './html.js'
 export function specialOffer() {
   const specialOffer = document.querySelector('.special-offer')
   if (!specialOffer) return
+  if (specialOffer.classList.contains('special-offer-swiper')) return
   const swiperWrapper = specialOffer.querySelector('.swiper-wrapper')
+  if (!swiperWrapper) return
   swiperWrapper.innerHTML = ''
 
   getCard()
