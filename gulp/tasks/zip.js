@@ -30,14 +30,19 @@ export const zipDev = () => {
       .pipe(zipPlugins(`${app.path.rootFolder}_dev.zip`))
       .pipe(app.gulp.dest('./'))
       .on('end', async () => {
+        console.log(app.plugins.chalk.blue('Архив создан. Начинаем инициализацию git...'));
         const gitInstance = git();
         await gitInstance.init();
+        console.log(app.plugins.chalk.green('Git инициализирован.'));
         await gitInstance.add('./*');
         await gitInstance.commit(app.version);
+        console.log(app.plugins.chalk.green(`Коммит "${app.version}" создан.`));
 
         if (app.settings.useExistingRepo) {
+          console.log(app.plugins.chalk.blue('Пушим в существующий репозиторий...'));
           await gitInstance.push('origin', 'master');
         } else {
+          console.log(app.plugins.chalk.blue('Добавляем удаленный репозиторий и пушим...'));
           await gitInstance.addRemote('origin', app.settings.repoUrl);
           await gitInstance.push('origin', 'master', { '--repo': app.settings.repoUrl });
           app.settings.useExistingRepo = true;
