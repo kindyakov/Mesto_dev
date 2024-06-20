@@ -227,11 +227,15 @@ class FormNewAgreement {
             old_room_id: this.oldRoomId,
             new_room_id: this.newRoomId,
             autopay: this.inputAutoPayments.checked ? 1 : 0,
-            card_id: formData.get('card_id'),
+            card_id: this.cards.cardId,
             return_url: location.href
           }
 
-          replaceRoomForClient(data, this.loader)
+          replaceRoomForClient(data, this.loader).then(data => {
+            if (data && data.msg_type !== 'success') {
+              this.modalPaymentsRoom.close()
+            }
+          })
         } else if (this.typePayment === 'before') {
           formData.set('return_url', location.href + `?room_id=${this.roomId}&num_monthes=${this.month}`)
           formData.set('room_ids', JSON.stringify([this.roomId]))

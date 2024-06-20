@@ -80,6 +80,7 @@ export const replaceRoomForClient = async (data, loader) => {
         downloadBill(response.data.bill_id, loader)
       }
     }
+    return data
   } catch (error) {
     console.error(error);
   } finally {

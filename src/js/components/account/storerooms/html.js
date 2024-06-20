@@ -37,6 +37,7 @@ export function agreementHtml(agreement, { rooms }) {
   <div class="agreement2__row__right-col__block-desc">
     <p>Стоимость: <span> ${totalPrice ? formattingPrice(totalPrice) : ''}</span></p>
     <p>Осталось дней: <span> ${agreement.days_left ? agreement.days_left : ''}</span></p>
+    <p>Дата следующего платежа: ${agreement.next_payment_date ? agreement.next_payment_date : ''}</p>
     <p>Плановая дата окончания: <span> ${agreement.agrplanenddate ? formattingMonthDDMMYYYY(agreement.agrplanenddate) : ''}</span></p>
   </div>
   <!--<div class="account-storerooms__agreement_row">

@@ -17,7 +17,7 @@ function checkCardIcon(cardNumber) {
 
 export function cardHtml(data) {
   return `<label class="payment-cards__card card-payment">
-                    <img src="img/icons/${checkCardIcon(data.pan)}" alt="Иконка">
+                    <div class="payment-cards__card_img"><img src="img/icons/${checkCardIcon(data.pan)}" alt="Иконка"></div>
                     <span>• • ${data.pan ? data.pan.slice(-4) : ''}</span>
                     <input type="radio" name="card_id" class="rent-room__payment_input-radio input-radio" id="card_id-${data.card_id ? data.card_id : ''}" value="${data.card_id ? data.card_id : ''}">
                     <label for="card_id-${data.card_id ? data.card_id : ''}" class="rent-room__payment_label label-radio"></label>

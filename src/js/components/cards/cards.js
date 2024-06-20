@@ -11,7 +11,7 @@ class Cards {
     this.cardsPayment = []
     this.userType = 'f'
     this.requisites = []
-
+    this.cardId = null
     const defaultOptions = {
       isLinkCard: true
     }
@@ -34,9 +34,21 @@ class Cards {
     }
   }
 
+  event() {
+    if (this.paymentCards) {
+      const inputs = this.paymentCards.querySelectorAll('input[type="radio"]')
+      inputs.length && inputs.forEach(input => {
+        input.addEventListener('change', () => {
+          this.cardId = input.value || null
+        })
+      })
+    }
+  }
+
   getNumberCard(cardId) {
     if (!cardId || !this.cards.length) return
     const [card] = this.cards.filter(card => +card.card_id === +cardId)
+    this.cardId = cardId
     return card ? card.pan : null
   }
 
@@ -47,6 +59,7 @@ class Cards {
 
     if (input) {
       input.checked = true
+      this.cardId = input.value || null
       return input
     } else {
       return null
@@ -73,6 +86,7 @@ class Cards {
         this.cards = cards
 
         this.setCheckedInput()
+        this.event()
       } else {
         this.paymentCards.insertAdjacentHTML('afterbegin', `<span class="payment-cards__is-no-linked-card">У Вас нет привязанной карты</span>`)
       }
