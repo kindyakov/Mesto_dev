@@ -2,10 +2,15 @@
 	margin-top: 55px;
 	&.section {
 		padding: 0;
+		padding-left: 40px;
+		@media (max-width: $md1) {
+			padding-left: 0;
+		}
 	}
 	.warehouse__body {
 		flex-direction: row-reverse;
 		gap: 30px;
+
 		@media (max-width: $md3) {
 			flex-direction: column-reverse;
 			gap: 15px;

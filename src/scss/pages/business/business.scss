@@ -6,6 +6,10 @@
 		display: flex;
 		flex-direction: column;
 		gap: 80px;
+		padding-left: 40px;
+		@media (max-width: $md1) {
+			padding-left: 0;
+		}
 	}
 
 	&__title {
@@ -155,6 +159,12 @@
 			color: $black;
 			border: 1px solid #bfc0c3;
 			line-height: normal;
+
+			&.active {
+				background-color: #7fa5aa;
+				color: #fff;
+			}
+
 			@media (max-width: $md1) {
 				padding: 30px 15px;
 				font-size: 18px;
