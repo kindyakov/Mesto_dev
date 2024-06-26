@@ -89,6 +89,7 @@ export class Range {
 
           if (values.length - 1 === i) {
             value.classList.add('_last')
+            value.innerHTML = value.innerHTML + '+'
           }
         })
       } else if (nameRange === 'price') {
@@ -96,6 +97,11 @@ export class Range {
 
         values.length && values.forEach((value, i) => {
           value.textContent = formatNumberWithSpaces(value.textContent)
+
+          if (values.length - 1 === i) {
+            value.classList.add('_last')
+            value.innerHTML = value.innerHTML + '+'
+          }
         })
       }
 
@@ -146,7 +152,6 @@ export class Range {
       this.rangeData[inputs[handle].name] = value
       inputs[handle].value = value
     }
-
     clearTimeout(this.timerRange)
     this.timerRange = setTimeout(() => {
       inputs[handle].classList.remove('_focus')
@@ -154,6 +159,14 @@ export class Range {
   }
 
   rangeChange(values, handle, unencoded) {
+    if (this.rangeData.volume_end === 16) {
+      this.rangeData.volume_end = 100
+    }
+
+    if (this.rangeData.price_end === this.rangeStartData.price_end) {
+      this.rangeData.price_end = 100000
+    }
+
     this.options.onChange(this.rangeData, values, handle, unencoded)
   }
 

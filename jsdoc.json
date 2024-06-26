@@ -1,0 +1,50 @@
+{
+  "source": {
+    "include": [
+      "src/js/components",
+      "src/js/modules",
+      "src/js/settings",
+      "src/js/utils"
+    ],
+    "includePattern": ".js$",
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "sourceType": "module",
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": [
+      "jsdoc",
+      "closure"
+    ]
+  },
+  "opts": {
+    "destination": "./docs",
+    "recurse": true,
+    "template": "node_modules/better-docs",
+    "tutorials": "./tutorials/"
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": true,
+    "better-docs": {
+      "name": "Документация"
+    }
+  },
+  "better-docs": {
+    "name": "Название",
+    "title": "Заголовок",
+    "navLinks": [
+      {
+        "label": "Github",
+        "href": "https://github.com/SoftwareBrothers/admin-bro"
+      },
+      {
+        "label": "Example Application",
+        "href": "https://admin-bro-example-app-staging.herokuapp.com/admin"
+      }
+    ]
+  }
+}

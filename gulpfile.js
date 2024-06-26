@@ -45,6 +45,7 @@ import ftp from './gulp/tasks/ftp.js'
 import php from './gulp/tasks/php.js'
 import { video } from "./gulp/tasks/video.js";
 import { createRepo } from './gulp/tasks/git.js';
+import jsDoc from './gulp/tasks/jsdoc.js'
 
 function watcher() {
   gulp.watch(path.watch.assets, copy)
@@ -68,8 +69,9 @@ const deployZIP = gulp.series(reset, mainTasks, zip)
 const deployZIP_DEV = gulp.series(zipDev)
 const deployFTP = gulp.series(reset, mainTasks, ftp)
 const deployGIT_DEV = gulp.series(createRepo)
+const docs = gulp.series(jsDoc)
 
 gulp.task('default', dev)
 
 // export сценариев
-export { dev, build, fonts, svgSprite, deployZIP, deployFTP, deployZIP_DEV, deployGIT_DEV }
+export { dev, build, fonts, svgSprite, deployZIP, deployFTP, deployZIP_DEV, deployGIT_DEV, docs }

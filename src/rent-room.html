@@ -171,10 +171,14 @@
                 </div>
 
                 <div class="rent-room__tariffs">
-                  <label class="rent-room__tariffs_wrap-input wrap-input">
+                  <div class="rent-room__tariffs_wrap-input wrap-input">
+                    <input type="text" name="agrbegdate" class="rent-room__tariffs_input input input-date"
+                      placeholder="Дата начала аренды" readonly>
+                  </div>
+                  <div class="rent-room__tariffs_wrap-input wrap-input">
                     <input type="number" name="month" class="rent-room__tariffs_input input input-month"
                       placeholder="Количество месяцев аренды" inputmode="tel" autocomplete="off">
-                  </label>
+                  </div>
                   <ul class="rent-room__tariffs_list-month">
                     <li class="rent-room__tariffs_item item-month" data-month="1">
                       <span>1 месяц</span>

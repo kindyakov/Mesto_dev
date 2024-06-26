@@ -12,7 +12,8 @@
     "zip": "gulp deployZIP --build",
     "zipDev": "gulp deployZIP_DEV",
     "gitDev": "gulp deployGIT_DEV",
-    "deploy": "gulp deployFTP --build"
+    "deploy": "gulp deployFTP --build",
+    "docs": "gulp docs"
   },
   "keywords": [
     "gulp"
@@ -21,7 +22,9 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/preset-env": "^7.24.5",
+    "@jsdoc/salty": "^0.2.8",
     "@octokit/rest": "^20.1.1",
+    "better-docs": "^2.7.3",
     "browser-sync": "^2.28.3",
     "chalk": "^5.3.0",
     "css-loader": "^6.8.1",
@@ -37,6 +40,7 @@
     "gulp-ignore": "^3.0.0",
     "gulp-imagemin": "^8.0.0",
     "gulp-inline-css": "^4.0.0",
+    "gulp-jsdoc3": "^3.0.0",
     "gulp-newer": "^1.4.0",
     "gulp-notify": "^4.0.0",
     "gulp-plumber": "^1.2.1",
@@ -52,6 +56,7 @@
     "gulp-webp-html-nosvg": "^1.1.1",
     "gulp-webpcss": "^1.1.1",
     "gulp-zip": "^5.1.0",
+    "jsdoc": "^4.0.3",
     "prettierrc": "^0.0.0-5",
     "sass": "^1.66.1",
     "simple-git": "^3.24.0",

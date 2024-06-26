@@ -1,0 +1,14 @@
+{
+  "components": {
+    "title": "Компоненты (components)"
+  },
+  "modules": {
+    "title": "Модули (modules)"
+  },
+  "settings": {
+    "title": "Настройки (settings)"
+  },
+  "utils": {
+    "title": "Утилиты (utils)"
+  }
+}

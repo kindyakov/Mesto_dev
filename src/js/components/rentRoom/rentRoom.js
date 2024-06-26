@@ -1,4 +1,4 @@
-// import tippy from 'tippy.js'
+import AirDatepicker from "air-datepicker";
 
 import { Tabs } from "../../modules/myTabs.js";
 import { Loader } from "../../modules/myLoader.js"
@@ -14,12 +14,26 @@ import { roomHtml, formDetailsModal, formInfoModal } from "./html.js";
 
 import { buildQueryParams } from "../../utils/buildQueryParams.js";
 import { formattingPrice } from "../../utils/formattingPrice.js";
+import { getFormattedDate } from "../../utils/getFormattedDate.js";
 import { getCookie } from "../../utils/cookie.js";
 
 import { sendFormAgreementInvoice, sendFormNewAgreement } from "./requests.js";
 import { payBeforeAgreement, downloadBill } from "../../settings/request.js"
 
 import Cards from "../cards/cards.js";
+
+function addDaysToDate(date, days) {
+  const result = new Date(date);
+  result.setDate(date.getDate() + days);
+  return result;
+}
+
+function formatAsYYYYMMDD(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
 
 class RentRoom {
   constructor() {
@@ -78,9 +92,11 @@ class RentRoom {
     this.formAgreementConclusion = this.rentRoom.querySelector('.form-agreement-conclusion')
     this.validatorAgreementConclusion = validateAgreementConclusion(this.formAgreementConclusion)
 
+    this.inputDate = this.rentRoom.querySelector('.input-date')
     this.inputMonth = this.rentRoom.querySelector('.input-month')
 
     this.month = this.urlParams.get('num_monthes') ? JSON.parse(this.urlParams.get('num_monthes')) : null
+    this.agrBegDate = this.urlParams.get('agrbegdate') ? JSON.parse(this.urlParams.get('agrbegdate')) : null
     this.agreementData = null
     this.user = null
     // this.sumPriceDiscCells = null
@@ -163,23 +179,34 @@ class RentRoom {
       }
     })
 
+    if (this.inputDate) {
+      this.inputDate.value = getFormattedDate('DD-MM-YYYY')
+
+      this.agrBegDatePicker = new AirDatepicker(this.inputDate, {
+        dateFormat: 'dd-MM-yyyy',
+        position: 'bottom center',
+        startDate: new Date(),
+        autoClose: true,
+        minDate: formatAsYYYYMMDD(addDaysToDate(new Date(), 0)),
+        maxDate: formatAsYYYYMMDD(addDaysToDate(new Date(), 14)),
+        isMobile: /iPhone|iPad|iPod|Android/i.test(navigator.userAgent),
+        onSelect: ({ date, formattedDate, datepicker }) => {
+          datepicker.$el.classList.remove('just-validate-error-field')
+          this.agrBegDate = getFormattedDate('YYYY-MM-DD', date)
+        }
+      });
+
+      if (!this.agrBegDate) {
+        this.agrBegDate = getFormattedDate('YYYY-MM-DD')
+      }
+    }
+
     this.inputMonth && this.inputMonth.addEventListener('input', e => {
       const itemMonthActive = this.rentRoom.querySelector('.item-month._active')
       const itemMonthCurrent = this.rentRoom.querySelector(`.item-month[data-month="${this.inputMonth.value}"]`)
       const value = this.inputMonth.value
       this.month = value
 
-      // if (flag == 1) {
-      //   if (+value === 0) {
-      //     this.inputMonth.value = ''
-      //   } else if (this.inputMonth.value.length > 1) {
-      //     this.inputMonth.value = value.slice(0, 1)
-      //   } else if (this.inputMonth.value > 3) {
-      //     this.inputMonth.value = 3
-      //   } else {
-      //     this.inputMonth.value = value.replace(/[^0-9]/g, '')
-      //   }
-      // } else {
       if (+value === 0) {
         this.inputMonth.value = ''
       } else if (this.inputMonth.value.length > 2) {
@@ -187,7 +214,6 @@ class RentRoom {
       } else {
         this.inputMonth.value = value.replace(/[^0-9]/g, '')
       }
-      // }
 
       const [price, deposit] = this.calculatePriceAndDepositByMonth(value, this.agreementData)
 
@@ -264,6 +290,14 @@ class RentRoom {
   }
 
   submitPaymentOnline(e) {
+    if (!this.agrBegDate) {
+      this.inputDate.classList.add('just-validate-error-field')
+      this.scrollToErrInput(this.inputDate)
+      return
+    } else {
+      this.inputDate.classList.remove('just-validate-error-field')
+    }
+
     if (!this.month) {
       this.inputMonth.classList.add('just-validate-error-field')
       this.scrollToErrInput(this.inputMonth)
@@ -284,8 +318,9 @@ class RentRoom {
     formData.set('room_ids', JSON.stringify(this.roomIds))
     formData.set('user_type', 'f')
     formData.set('num_monthes', this.month)
+    formData.set('agrbegdate', this.agrBegDate)
     formData.set('autopay', formData.get('auto-payments') ? 1 : 0)
-    formData.set('return_url', location.href + `&step=2&num_monthes=${this.month}`)
+    formData.set('return_url', location.href + `&step=2&num_monthes=${this.month}&agrbegdate=${this.agrBegDate}`)
 
     formData.delete('auto-payments')
 
@@ -294,21 +329,29 @@ class RentRoom {
 
   submitPaymentInvoice(e) {
     e.preventDefault()
+    if (!this.agrBegDate) {
+      this.inputDate.classList.add('just-validate-error-field')
+      this.scrollToErrInput(this.inputDate)
+      return
+    } else {
+      this.inputDate.classList.remove('just-validate-error-field')
+    }
+
+    if (!this.month) {
+      this.inputMonth.classList.add('just-validate-error-field')
+      this.scrollToErrInput(this.inputMonth)
+      return
+    } else {
+      this.inputMonth.classList.remove('just-validate-error-field')
+    }
+
     if (this.validatorPaymentInvoice.isValid) {
-
-      if (!this.month) {
-        this.inputMonth.classList.add('just-validate-error-field')
-        this.scrollToErrInput(this.inputMonth)
-        return
-      } else {
-        this.inputMonth.classList.remove('just-validate-error-field')
-      }
-
       const formData = new FormData(e.target)
       let data = {}
 
       formData.set('room_ids', JSON.stringify(this.roomIds))
       formData.set('num_monthes', this.month)
+      formData.set('agrbegdate', this.agrBegDate)
       formData.set('user_type', 'u')
       formData.set('rent_or_test', 'rent')
 
@@ -347,6 +390,7 @@ class RentRoom {
       formData.set('room_ids', JSON.stringify(this.roomIds))
       formData.set('user_type', 'f')
       formData.set('num_monthes', this.month)
+      formData.set('agrbegdate', this.agrBegDate)
       formData.set('rent_or_test', 'rent')
 
       sendFormNewAgreement(formData, this.loader)

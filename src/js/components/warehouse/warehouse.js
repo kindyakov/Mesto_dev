@@ -134,7 +134,17 @@ class Warehouse {
 
         this.range.setSlider(nameRange, values)
         this.range.updateInputValue(nameRange, values)
+
+        if (this.range.rangeData.volume_end === 16) {
+          this.range.rangeData.volume_end = 100
+        }
+
+        if (this.range.rangeData.price_end === this.range.rangeStartData.price_end) {
+          this.range.rangeData.price_end = 100000
+        }
+
         this.reqData = { floor: this.reqData.floor, warehouse_id: this.reqData.warehouse_id, ...this.range.rangeData }
+
         if (+values[0] == 10) {
           this.reqData.area_start = 10
           delete this.reqData['area_end']
