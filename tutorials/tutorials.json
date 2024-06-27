@@ -1,14 +1,30 @@
 {
   "components": {
-    "title": "Компоненты (components)"
+    "title": "components",
+    "children": {
+      "account": {
+        "title": "account",
+        "path": "components/account.md"
+      }
+    },
+    "path": "components.md"
   },
   "modules": {
-    "title": "Модули (modules)"
+    "title": "modules",
+    "path": "modules.md"
   },
   "settings": {
-    "title": "Настройки (settings)"
+    "title": "settings",
+    "path": "settings.md"
   },
   "utils": {
-    "title": "Утилиты (utils)"
+    "title": "utils",
+    "children": {
+      "addClassRented": {
+        "title": "Добавление класса аренды",
+        "path": "utils/addClassRented.md"
+      }
+    },
+    "path": "utils.md"
   }
 }

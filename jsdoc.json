@@ -4,7 +4,8 @@
       "src/js/components",
       "src/js/modules",
       "src/js/settings",
-      "src/js/utils"
+      "src/js/utils",
+      "src/js/app.js"
     ],
     "includePattern": ".js$",
     "excludePattern": "(node_modules/|docs)"
