@@ -24,15 +24,15 @@ import { specialOffer } from "./components/specialOffer/specialOffer.js";
 /**
  * Обновление ссылок в шапке сайта.
  * @function
- * @memberof module:app
+ * @memberof category:utils
  * @see {@link module:utils/header~updateLinks}
  */
-updateLinks('.link-update');
+// updateLinks('.link-update');
 
 /** 
  * Инициализация бургер-меню.
  * @function
- * @memberof module:app
+ * @memberof category:utils
  * @see {@link module:utils/header~burger}
  */
 burger();
@@ -42,7 +42,7 @@ burger();
  * @function
  * @param {string} selector - Селектор для прокрутки.
  * @param {Object} options - Опции для прокрутки.
- * @memberof module:app
+ * @memberof category:utils
  * @see {@link module:utils/header~scroll}
  */
 scroll('.link-scroll', { isHeader: false });
@@ -51,7 +51,7 @@ scroll('.link-scroll', { isHeader: false });
  * Инициализация выпадающего меню.
  * @function
  * @param {Object} options - Опции для выпадающего меню.
- * @memberof module:app
+ * @memberof category:utils
  * @see {@link module:utils/header~dropdown}
  */
 dropdown({});
@@ -59,7 +59,7 @@ dropdown({});
 /**
  * Часто задаваемые вопросы.
  * @function
- * @memberof module:app
+ * @memberof category:utils
  * @see {@link module:components/questions~questions}
  */
 questions();
@@ -67,7 +67,7 @@ questions();
 /**
  * Функция сдачи в аренду.
  * @function
- * @memberof module:app
+ * @memberof category:components
  * @see {@link module:components/rentOut~rentOut}
  */
 rentOut();
@@ -75,7 +75,7 @@ rentOut();
 /**
  * Проверка поддержки формата WebP в браузере.
  * @function
- * @memberof module:app
+ * @memberof category:utils
  * @see {@link module:utils/checkSupportWebP~checkSupportWebP}
  */
 checkSupportWebP();
@@ -84,7 +84,7 @@ checkSupportWebP();
  * Показывает или скрывает пароль.
  * @function
  * @param {string} selector - Селектор для иконки показа пароля.
- * @memberof module:app
+ * @memberof category:utils
  * @see {@link module:utils/showPassword~showPassword}
  */
 showPassword('.icon-eye');
@@ -92,7 +92,7 @@ showPassword('.icon-eye');
 /**
  * Специальное предложение.
  * @function
- * @memberof module:app
+ * @memberof category:components
  * @see {@link module:components/specialOffer~specialOffer}
  */
 specialOffer();
@@ -299,5 +299,19 @@ if (document.querySelector('.business__benefit_swiper ')) {
 if (document.querySelector('.special-swiper-offer')) {
   new Swiper('.special-swiper-offer', {
     spaceBetween: 10,
+    breakpoints: {
+      320: {
+        slidesPerView: 1.2,
+      },
+      630: {
+        slidesPerView: 2.2,
+      },
+      910: {
+        slidesPerView: 3.2,
+      },
+      1200: {
+        slidesPerView: 4,
+      }
+    },
   });
 }

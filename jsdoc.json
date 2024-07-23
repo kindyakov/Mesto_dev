@@ -25,7 +25,8 @@
     "tutorials": "./tutorials/"
   },
   "plugins": [
-    "plugins/markdown"
+    "plugins/markdown",
+    "node_modules/better-docs/category"
   ],
   "templates": {
     "cleverLinks": true,

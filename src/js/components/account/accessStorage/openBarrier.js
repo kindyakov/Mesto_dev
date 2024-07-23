@@ -35,7 +35,6 @@ class OpenBarrier {
       this.loader.enable()
       const response = await apiWithAuth.get('/_open_barrier_')
       if (response.status !== 200) return
-      console.log(response.data)
       outputInfo(response.data)
     } catch (error) {
       console.error(error)

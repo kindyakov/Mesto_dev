@@ -1,6 +1,5 @@
 import { Loader } from "../../../modules/myLoader.js"
 
-import { getClientTotalData } from "../request.js"
 import { rooms2Html } from "./html.js"
 
 import OpenRoom from "./openRoom.js"

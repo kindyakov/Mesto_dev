@@ -2,6 +2,11 @@ import { apiWithAuth } from "../../settings/api.js"
 import { cardHtml, linkCardHtml } from "./html.js"
 import { cardHtml as requisiteCardHtml } from "../account/paymentMethods/html.js"
 
+/**
+ * Модуль для вывода банковских карточек.
+ * @module Cards
+ */
+
 class Cards {
   constructor(wrapper, options) {
     if (!wrapper) return
@@ -17,10 +22,6 @@ class Cards {
     }
 
     this.options = Object.assign(defaultOptions, options)
-
-    if (this.options.isLinkCard) {
-      // this.paymentCardsAccordion = new Accordion('body', {})
-    }
 
     this.init()
   }

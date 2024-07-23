@@ -346,9 +346,6 @@ class FormNewAgreement {
       formData.set('rs', profile.rs)
       formData.set('ks', profile.ks)
     }
-
-    console.log(Array.from(formData))
-
     // this.formNewAgreement(formData)
   }
 

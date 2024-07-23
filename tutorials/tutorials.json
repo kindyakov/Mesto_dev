@@ -5,6 +5,10 @@
       "account": {
         "title": "account",
         "path": "components/account.md"
+      },
+      "authorization": {
+        "title": "authorization",
+        "path": "components/authorization.md"
       }
     },
     "path": "components.md"
@@ -21,7 +25,7 @@
     "title": "utils",
     "children": {
       "addClassRented": {
-        "title": "Добавление класса аренды",
+        "title": "addClassRented",
         "path": "utils/addClassRented.md"
       }
     },

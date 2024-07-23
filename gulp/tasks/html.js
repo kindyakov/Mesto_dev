@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import cheerio from 'cheerio'
 import through2 from 'through2';
 import fileinclude from "gulp-file-include"
 import webpHtmlNosvg from "gulp-webp-html-nosvg"
@@ -60,6 +61,38 @@ const html = () => {
         }
         cb(null, file);
       }))
+      .pipe(app.plugins.if(app.isBuild, through2.obj(function (file, _, cb) {
+        if (file.isBuffer()) {
+          let fileContents = file.contents.toString();
+          const $ = cheerio.load(fileContents);
+          const baseURL = "https://mesto-store.ru/";
+
+          $('a[href]').each(function () {
+            let href = $(this).attr('href');
+
+            // Проверяем, является ли ссылка относительной
+            if (!/^(http|https|\/)/.test(href)) {
+              // Получаем директорию текущего файла
+              let currentDir = path.dirname(file.relative);
+
+              // Создаем абсолютный путь для ссылки
+              let absoluteHref = path.resolve(currentDir, href);
+
+              // Получаем относительный путь от корневого каталога
+              let relativeHref = path.relative('.', absoluteHref);
+
+              // Убираем расширение .html и заменяем слэши на URL-формат
+              let newHref = baseURL + relativeHref.replace(/\\/g, '/').replace(/\.html$/, '');
+
+              $(this).attr('href', newHref);
+            }
+          });
+
+          fileContents = $.html();
+          file.contents = Buffer.from(fileContents);
+        }
+        cb(null, file);
+      })))
       // .pipe(app.plugins.replace(/@img\//g, 'img/'))
       // .pipe(app.plugins.if(app.isBuild, webpHtmlNosvg()))
       .pipe(app.plugins.if(app.isBuild, versionNumber({

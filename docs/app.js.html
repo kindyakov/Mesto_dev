@@ -67,19 +67,19 @@
                         <div class="dropdown-content">
                         
                             <a class="dropdown-item" href="tutorial-components.html">
-                                Компоненты (components)
+                                components
                             </a>
                         
                             <a class="dropdown-item" href="tutorial-modules.html">
-                                Модули (modules)
+                                modules
                             </a>
                         
                             <a class="dropdown-item" href="tutorial-settings.html">
-                                Настройки (settings)
+                                settings
                             </a>
                         
                             <a class="dropdown-item" href="tutorial-utils.html">
-                                Утилиты (utils)
+                                utils
                             </a>
                         
                         </div>
@@ -100,7 +100,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-app.html">app</a></li></ul><h3>Global</h3><ul><li><a href="global.html#useDynamicAdapt">useDynamicAdapt</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-Account.html">Account</a></li><li><a href="module-app.html">app</a></li><li><a href="module-Cards.html">Cards</a></li></ul><h3>Global</h3><ul><li><a href="global.html#useDynamicAdapt">useDynamicAdapt</a></li></ul></div><div class="category"><h2>components</h2><h3>Classes</h3><ul><li><a href="Account.html">Account</a></li></ul></div>
                 
             </nav>
         </div>
@@ -143,7 +143,7 @@ import { specialOffer } from "./components/specialOffer/specialOffer.js";
 /**
  * Обновление ссылок в шапке сайта.
  * @function
- * @memberof module:app
+ * @memberof category:utils
  * @see {@link module:utils/header~updateLinks}
  */
 updateLinks('.link-update');
@@ -151,7 +151,7 @@ updateLinks('.link-update');
 /** 
  * Инициализация бургер-меню.
  * @function
- * @memberof module:app
+ * @memberof category:utils
  * @see {@link module:utils/header~burger}
  */
 burger();
@@ -161,7 +161,7 @@ burger();
  * @function
  * @param {string} selector - Селектор для прокрутки.
  * @param {Object} options - Опции для прокрутки.
- * @memberof module:app
+ * @memberof category:utils
  * @see {@link module:utils/header~scroll}
  */
 scroll('.link-scroll', { isHeader: false });
@@ -170,7 +170,7 @@ scroll('.link-scroll', { isHeader: false });
  * Инициализация выпадающего меню.
  * @function
  * @param {Object} options - Опции для выпадающего меню.
- * @memberof module:app
+ * @memberof category:utils
  * @see {@link module:utils/header~dropdown}
  */
 dropdown({});
@@ -178,7 +178,7 @@ dropdown({});
 /**
  * Часто задаваемые вопросы.
  * @function
- * @memberof module:app
+ * @memberof category:utils
  * @see {@link module:components/questions~questions}
  */
 questions();
@@ -186,7 +186,7 @@ questions();
 /**
  * Функция сдачи в аренду.
  * @function
- * @memberof module:app
+ * @memberof category:components
  * @see {@link module:components/rentOut~rentOut}
  */
 rentOut();
@@ -194,7 +194,7 @@ rentOut();
 /**
  * Проверка поддержки формата WebP в браузере.
  * @function
- * @memberof module:app
+ * @memberof category:utils
  * @see {@link module:utils/checkSupportWebP~checkSupportWebP}
  */
 checkSupportWebP();
@@ -203,7 +203,7 @@ checkSupportWebP();
  * Показывает или скрывает пароль.
  * @function
  * @param {string} selector - Селектор для иконки показа пароля.
- * @memberof module:app
+ * @memberof category:utils
  * @see {@link module:utils/showPassword~showPassword}
  */
 showPassword('.icon-eye');
@@ -211,7 +211,7 @@ showPassword('.icon-eye');
 /**
  * Специальное предложение.
  * @function
- * @memberof module:app
+ * @memberof category:components
  * @see {@link module:components/specialOffer~specialOffer}
  */
 specialOffer();

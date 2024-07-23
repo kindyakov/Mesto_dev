@@ -1,0 +1,42 @@
+# Базовые настройки
+RewriteEngine on
+RewriteBase /
+
+# Исключить обработку серверной части
+RewriteCond %{REQUEST_URI} ^/(_send_mail_|.*)$
+RewriteRule ^ - [L]
+
+# Устранение повторяющихся слешей
+RewriteCond %{REQUEST_URI} ^(.*)/{2,}(.*)$
+RewriteRule ^ %1/%2 [R=301,L]
+
+# Редирект с www на без него
+RewriteCond %{HTTP_HOST} ^www\.mesto-store\.ru$ [NC]
+RewriteRule ^(.*)$ https://mesto-store.ru/$1 [R=301,L]
+
+# Редирект главной страницы с /index на корень
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.(html|php|htm)\ HTTP/
+RewriteRule ^index\.(html|php|htm)$ https://mesto-store.ru/ [R=301,L]
+
+# Редирект страниц со слешем в конце на аналогичные без слеша
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)/$ https://mesto-store.ru/$1 [R=301,L]
+
+# Удалить .html на конце ссылки
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^.]+)\.html\ HTTP
+RewriteRule ^([^.]+)\.html$ /$1 [R=301,L]
+RewriteCond %{REQUEST_URI} !(\.[^./]+)$
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule (.*) /$1.html [L]
+
+# Редирект страниц со слешем в конце на аналогичные без слеша
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)/$ /$1 [R=301,L]
+
+# Исключить слеш в конце при директории
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} (.*)/$
+RewriteRule ^ %1 [R=301,L]

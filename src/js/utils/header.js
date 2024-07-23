@@ -201,7 +201,9 @@ export function updateLinks(linkSelector = '.link') {
   links.length && links.forEach(link => {
     const href = link.getAttribute('href');
     if (href && !href.startsWith('http')) {
-      link.setAttribute('href', domain + '/' + href);
+      // link.setAttribute('href', domain + '/' + href);
+      console.log(href.replace('.html', ''))
+
     }
   });
 }

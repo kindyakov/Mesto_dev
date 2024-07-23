@@ -39,8 +39,8 @@
 		overflow: hidden;
 		img {
 			width: 100%;
-			height: 100%;
-			object-fit: cover;
+			max-height: 100%;
+			object-fit: contain;
 		}
 	}
 
@@ -358,7 +358,7 @@
 			display: none;
 		}
 	}
-	
+
 	&__schemes {
 		display: flex;
 		flex-direction: column;

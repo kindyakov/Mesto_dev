@@ -141,7 +141,6 @@ class Storerooms {
       // if (schemeRooms.length) {
       if (window.innerWidth > 768) {
         // const maxHeight = Math.max(...schemeRooms.map(room => room.offsetHeight))
-        // console.log(maxHeight)
         // this.storeroomsSchemeRooms.style.maxHeight = `${maxHeight}px`
         this.isMobile = false
       } else {
