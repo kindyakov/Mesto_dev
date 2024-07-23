@@ -825,12 +825,18 @@ input[type='date'] {
 	line-height: normal;
 
 	&__title {
+		@include adaptiv-font(28, 20, 1);
 	}
 
 	&__content {
 		display: flex;
 		flex-direction: column;
 		row-gap: 15px;
+
+		h3 {
+			@include adaptiv-font(24, 18, 1);
+			font-weight: bold;
+		}
 
 		ul {
 			display: flex;
@@ -852,6 +858,7 @@ input[type='date'] {
 
 		p {
 			text-align: justify;
+			@include adaptiv-font(16, 14, 1);
 		}
 	}
 }
