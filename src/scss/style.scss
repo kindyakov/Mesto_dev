@@ -824,11 +824,53 @@ input[type='date'] {
 	font-size: 18px;
 	line-height: normal;
 
+	&.expand-text {
+		position: relative;
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 90px;
+			transition: height 0.3s;
+			background: linear-gradient(
+				to top,
+				rgba(255, 255, 255, 0.7) 24%,
+				rgba(255, 255, 255, 0)
+			);
+			pointer-events: none;
+		}
+
+		.texts__full {
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.4s ease-in-out;
+		}
+
+		&.active {
+			&::after {
+				opacity: 0;
+				visibility: hidden;
+			}
+
+			.texts__full {
+				max-height: 100vh;
+			}
+
+			.texts__expand-button {
+				transform: translate(0, 100%);
+			}
+		}
+	}
+
 	&__title {
 		@include adaptiv-font(28, 20, 1);
 	}
 
-	&__content {
+	&__content,
+	&__full {
 		display: flex;
 		flex-direction: column;
 		row-gap: 15px;
@@ -859,6 +901,19 @@ input[type='date'] {
 		p {
 			text-align: justify;
 			@include adaptiv-font(16, 14, 1);
+		}
+	}
+
+	&__expand-button {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		font-size: 16px;
+		font-weight: 500;
+		color: $orange;
+		transition: 0.2s;
+		&:hover {
+			opacity: 0.8;
 		}
 	}
 }

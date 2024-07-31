@@ -315,3 +315,16 @@ if (document.querySelector('.special-swiper-offer')) {
     },
   });
 }
+
+// ==============================================>
+const expandableTexts = document.querySelectorAll('.expand-text');
+
+expandableTexts.length && expandableTexts.forEach(textBlock => {
+  const expandButton = textBlock.querySelector('.texts__expand-button');
+  const fullText = textBlock.querySelector('.texts__full');
+
+  expandButton.addEventListener('click', () => {
+    textBlock.classList.toggle('active');
+    expandButton.textContent = fullText.classList.contains('active') ? 'Свернуть текст' : 'Развернуть текст';
+  });
+});

@@ -71,6 +71,14 @@ class AccessStorage {
         this.openDoor.modalConfirmOpenDoor.open()
       }
     })
+
+    this.storeroomsSliderWrapper.addEventListener('click', e => {
+      if (e.target.closest('.btn-open-room-modal')) {
+        const btn = e.target.closest('.btn-open-room-modal')
+        const roomId = btn.getAttribute('data-room-id')
+        roomId && this.openRoom.sendRequest(roomId)
+      }
+    })
   }
 
   render({ accountTabs, clientTotalData }) {

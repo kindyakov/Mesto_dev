@@ -188,7 +188,7 @@ class Account {
       accountStoreroomsRooms.classList.remove('_none');
 
       if (rooms.length) {
-        if (!isOneRented(rooms)) {
+        if (!isOneRented(rooms) && !isOneRented(rooms, 0.75)) {
           btnTabs5.classList.add('_none');
         }
 
