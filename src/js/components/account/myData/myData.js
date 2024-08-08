@@ -5,7 +5,7 @@ import { apiWithAuth } from "../../../settings/api.js"
 import { outputInfo } from "../../../utils/outputinfo.js"
 
 import { validatesInput } from "../../../settings/validates.js"
-import { validateAgreementConclusion } from "../../rentRoom/validate.js"
+import { validateAgreementConclusion, validatePassports } from "../../rentRoom/validate.js"
 // import { validateUrData } from "./validate.js"
 
 class MyData {
@@ -102,6 +102,39 @@ class MyData {
         this.imgPassportFile = null
       }
     })
+
+    const validatorPassport = this.isRequiredPassportsData ? validatePassports(this.formPassportsData) : validateAgreementConclusion(this.formPassportsData)
+
+    this.formPassportsData.addEventListener('submit', e => {
+      e.preventDefault()
+      if (validatorPassport.isValid) {
+        const formData = new FormData(e.target)
+
+        if (!this.imgPassportFile && !this.isRequiredPassportsData) {
+          this.formPassportPhoto.classList.add('_err')
+          this.formPassportPhoto.classList.remove('_success')
+          this.imgPassport.src = ''
+          return
+        }
+
+
+        formData.set('user_type', 'f')
+
+        if (this.isRequiredPassportsData) {
+          let data = {}
+          Array.from(formData).forEach(arr => data[arr[0]] = arr[1])
+
+          this.editClient(data)
+        } else {
+          const ids = this.clientData.rooms.filter(room => room.rented == 0.45).map(room => room.room_id)
+
+          formData.set('file', this.imgPassportFile)
+          formData.set('room_ids', JSON.stringify(ids))
+
+          this.formNewAgreement(formData)
+        }
+      }
+    })
   }
 
   renderMyData({ profile, clientTotalData }) {
@@ -145,6 +178,9 @@ class MyData {
       this.myDataTabs.switchTabs(tabPas)
       this.changePassportsData()
     }
+
+    // this.changePassportsData()
+
   }
 
   changePassportsData() {
@@ -169,32 +205,9 @@ class MyData {
                     <input type="text" name="address" class="input input-agreement-conclusion"
                       placeholder="Адрес регистрации">
                   </div>`)
-    this.formPassportsData.insertAdjacentHTML('beforeend', `<button class="button-5" type="submit"><span>Сохранить</span></button>`)
     // this.formUrData.insertAdjacentHTML('beforeend', `<button class="button-5" type="submit"><span>Сохранить</span></button>`)
 
-    const validatorPassport = validateAgreementConclusion(this.formPassportsData)
-
     // const validatorUrData = validateUrData(this.formUrData)
-    this.formPassportsData.addEventListener('submit', e => {
-      if (validatorPassport.isValid) {
-        const formData = new FormData(e.target)
-
-        if (!this.imgPassportFile) {
-          this.formPassportPhoto.classList.add('_err')
-          this.formPassportPhoto.classList.remove('_success')
-          this.imgPassport.src = ''
-          return
-        }
-
-        const ids = this.clientData.rooms.filter(room => room.rented == 0.45).map(room => room.room_id)
-
-        formData.set('file', this.imgPassportFile)
-        formData.set('room_ids', JSON.stringify(ids))
-        formData.set('user_type', 'f')
-
-        this.formNewAgreement(formData)
-      }
-    })
 
     // this.formUrData.addEventListener('submit', e => {
     //   if (validatorUrData.isValid) {
@@ -241,6 +254,20 @@ class MyData {
       if (response.data.msg_type === 'success') {
         location.reload()
       }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      this.loader.disable()
+    }
+  }
+
+  async editClient(data) {
+    try {
+      this.loader.enable()
+      const response = await apiWithAuth.post('/_edit_client_by_client_', { client: data })
+
+      if (response.status !== 200) return null
+      outputInfo(response.data)
     } catch (error) {
       console.error(error);
     } finally {

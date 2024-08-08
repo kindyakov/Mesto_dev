@@ -316,3 +316,88 @@ export function validateAgreementConclusion(form) {
 
   return validator
 }
+
+export function validatePassports(form) {
+  if (!form) return
+  const validator = new JustValidate(form, {
+    errorLabelStyle: {
+      color: '#FF0505'
+    }
+  });
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  const inputSeries = form.querySelector('input[name="series"]')
+  const inputNo = form.querySelector('input[name="no"]')
+  const inputIssueDate = form.querySelector('input[name="issue_date"]')
+  const inputSubdivision = form.querySelector('input[name="subdivision"]')
+
+  Inputmask.default("9999").mask(inputSeries)
+  Inputmask.default("999999").mask(inputNo)
+  // Inputmask.default("99-99-9999").mask(inputIssueDate)
+  Inputmask.default("999-999").mask(inputSubdivision)
+
+  const dataPickerIssueDate = new AirDatepicker(inputIssueDate, {
+    dateFormat: 'yyyy-MM-dd',
+    position: 'bottom center',
+    autoClose: true,
+    // maxDate: calculateMinDate(),
+    isMobile: isMobile,
+  });
+
+  validator.addField(inputSeries, [
+    {
+      rule: 'required',
+      errorMessage: 'Заполните поле',
+    },
+    {
+      validator: value => {
+        const unmaskInput = Inputmask.default.unmask(value, { mask: "9999" });
+        return Boolean(Number(unmaskInput) && unmaskInput.length === 4)
+      },
+      errorMessage: 'Неверный формат',
+    }
+  ]).addField(inputNo, [
+    {
+      rule: 'required',
+      errorMessage: 'Заполните поле',
+    },
+    {
+      validator: value => {
+        const unmaskInput = Inputmask.default.unmask(value, { mask: "999999" });
+        return Boolean(Number(unmaskInput) && unmaskInput.length === 6)
+      },
+      errorMessage: 'Неверный формат',
+    }
+  ]).addField(inputIssueDate, [
+    {
+      rule: 'required',
+      errorMessage: 'Заполните поле',
+    },
+    {
+      plugin: JustValidatePluginDate((fields) => ({
+        required: true,
+        format: 'yyyy-MM-dd',
+      })),
+      errorMessage: 'Неверный формат',
+    }
+  ]).addField(inputSubdivision, [
+    {
+      rule: 'required',
+      errorMessage: 'Заполните поле',
+    },
+    {
+      validator: value => {
+        const unmaskInput = Inputmask.default.unmask(value, { mask: "999-999" });
+        return Boolean(Number(unmaskInput) && unmaskInput.length === 6)
+      },
+      errorMessage: 'Неверный формат',
+    }
+  ]).addField(form.querySelector('input[name="issued_by"]'), [
+    {
+      rule: 'required',
+      errorMessage: 'Заполните поле',
+    },
+  ])
+
+  return validator
+}

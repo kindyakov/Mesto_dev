@@ -325,6 +325,6 @@ expandableTexts.length && expandableTexts.forEach(textBlock => {
 
   expandButton.addEventListener('click', () => {
     textBlock.classList.toggle('active');
-    expandButton.textContent = fullText.classList.contains('active') ? 'Свернуть текст' : 'Развернуть текст';
+    expandButton.textContent = textBlock.classList.contains('active') ? 'Свернуть текст' : 'Развернуть текст';
   });
 });
