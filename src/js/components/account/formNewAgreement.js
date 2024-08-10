@@ -245,7 +245,9 @@ class FormNewAgreement {
           formData.set('return_url', location.href)
           formData.set('agrid', this.agrId)
 
-          payAfterAgreement(formData, this.loader)
+          payAfterAgreement(formData, this.loader).finally(() => {
+            this.modalPaymentsRoom.close()
+          })
         }
       } else if (this.clientData.client.user_type === 'u') {
         if (this.typePayment === 'replace') {
@@ -302,7 +304,7 @@ class FormNewAgreement {
     this.priceResult.innerHTML = formattingPrice(price)
 
     if (this.agrId) {
-      this.modalPaymentsRoom.modal.querySelector('.rent-room__tariffs').classList.add('_none')
+      this.month && this.modalPaymentsRoom.modal.querySelector('.rent-room__tariffs').classList.add('_none')
     } else {
       this.modalPaymentsRoom.modal.querySelector('.rent-room__tariffs').classList.remove('_none')
     }
