@@ -7,10 +7,10 @@ import { formattingPrice } from "../../utils/formattingPrice.js"
 import { apiWithAuth } from "../../settings/api.js"
 import { outputInfo } from "../../utils/outputinfo.js"
 import { payAfterAgreement, payBeforeAgreement } from "../../settings/request.js"
-import { validateLinkNewBankingDetails } from "./paymentMethods/validate.js"
+// import { validateLinkNewBankingDetails } from "./paymentMethods/validate.js"
 
-import { modalOpening } from "../modals/modalOpening.js"
-import { isTimeInRange } from "../../utils/isTimeInRange.js"
+// import { modalOpening } from "../modals/modalOpening.js"
+// import { isTimeInRange } from "../../utils/isTimeInRange.js"
 import { replaceRoomForClient } from "../../settings/request.js"
 
 class FormNewAgreement {

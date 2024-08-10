@@ -64,7 +64,7 @@ const html = () => {
       .pipe(app.plugins.if(app.isBuild, through2.obj(function (file, _, cb) {
         if (file.isBuffer()) {
           let fileContents = file.contents.toString();
-          const $ = cheerio.load(fileContents);
+          const $ = cheerio.load(fileContents, { decodeEntities: false });
           const baseURL = "https://mesto-store.ru/";
 
           $('a[href]').each(function () {
