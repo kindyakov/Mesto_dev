@@ -205,7 +205,7 @@ class FormNewAgreement {
 
     this.btnPaymentModal.addEventListener('click', e => {
       e.preventDefault()
-      if (!this.month && this.typePayment !== 'replace') {
+      if (!this.month && this.typePayment !== 'replace' && this.typePayment !== 'after') {
         this.inputMonth.classList.add('just-validate-error-field')
         return
       }
@@ -304,7 +304,7 @@ class FormNewAgreement {
     this.priceResult.innerHTML = formattingPrice(price)
 
     if (this.agrId) {
-      this.month && this.modalPaymentsRoom.modal.querySelector('.rent-room__tariffs').classList.add('_none')
+      this.modalPaymentsRoom.modal.querySelector('.rent-room__tariffs').classList.add('_none')
     } else {
       this.modalPaymentsRoom.modal.querySelector('.rent-room__tariffs').classList.remove('_none')
     }
