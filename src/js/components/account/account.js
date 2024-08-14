@@ -199,6 +199,8 @@ class Account {
             }
           });
           this.myData.isRequiredPassportsData = false;
+          this.myData.validator.destroy()          
+          this.myData.setValidator()
           this.accountTabs.switchTabs(this.accountTabs.tabs.querySelector('.account-tabs-btn-my-data'));
           return;
         } else if (!isOneRented(rooms) && !isOneRented(test_rooms, 0.25) && !isOneRented(rooms, 0.75)) {

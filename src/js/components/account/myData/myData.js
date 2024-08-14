@@ -6,6 +6,7 @@ import { outputInfo } from "../../../utils/outputinfo.js"
 
 import { validatesInput } from "../../../settings/validates.js"
 import { validateAgreementConclusion, validatePassports } from "../../rentRoom/validate.js"
+import { getFormattedDate } from "../../../utils/getFormattedDate.js"
 // import { validateUrData } from "./validate.js"
 
 class MyData {
@@ -49,8 +50,6 @@ class MyData {
   }
 
   events() {
-    // this.myDataTabs.options.onChange = (nexTabBtn) => {}
-
     this.forms.length && this.forms.forEach(form => {
 
       form.addEventListener('submit', e => {
@@ -103,50 +102,70 @@ class MyData {
       }
     })
 
-    const validatorPassport = this.isRequiredPassportsData ? validatePassports(this.formPassportsData) : validateAgreementConclusion(this.formPassportsData)
+    this.setValidator()
 
-    this.formPassportsData.addEventListener('submit', e => {
-      e.preventDefault()
-      if (validatorPassport.isValid) {
-        const formData = new FormData(e.target)
+    this.formPassportsData.addEventListener('submit', e => this.handleSubmit(e))
+  }
 
-        if (!this.imgPassportFile && !this.isRequiredPassportsData) {
-          this.formPassportPhoto.classList.add('_err')
-          this.formPassportPhoto.classList.remove('_success')
-          this.imgPassport.src = ''
-          return
-        }
+  handleSubmit(e) {
+    this.validator.revalidate().then(isValid => {
+      if (!isValid) return
+      const formData = new FormData(e.target)
 
+      if (!this.imgPassportFile && !this.isRequiredPassportsData) {
+        this.formPassportPhoto.classList.add('_err')
+        this.formPassportPhoto.classList.remove('_success')
+        this.imgPassport.src = ''
+        return
+      }
 
-        formData.set('user_type', 'f')
+      formData.set('user_type', 'f')
 
-        if (this.isRequiredPassportsData) {
-          let data = {}
-          Array.from(formData).forEach(arr => data[arr[0]] = arr[1])
+      if (this.isRequiredPassportsData) {
+        let data = {}
 
-          this.editClient(data)
-        } else {
-          const ids = this.clientData.rooms.filter(room => room.rented == 0.45).map(room => room.room_id)
+        formData.set('issue_date', getFormattedDate('YYYY-MM-DD', new Date(formData.get('issue_date'))))
+        Array.from(formData).forEach(arr => data[arr[0]] = arr[1])
 
-          formData.set('file', this.imgPassportFile)
-          formData.set('room_ids', JSON.stringify(ids))
+        this.editClient(data)
+      } else {
+        const ids = this.clientData.rooms.filter(room => room.rented == 0.45).map(room => room.room_id)
 
-          this.formNewAgreement(formData)
-        }
+        formData.set('file', this.imgPassportFile)
+        formData.set('room_ids', JSON.stringify(ids))
+        formData.set('birthday', getFormattedDate('YYYY-MM-DD', new Date(formData.get('birthday'))))
+        formData.set('issue_date', getFormattedDate('YYYY-MM-DD', new Date(formData.get('issue_date'))))
+
+        this.formNewAgreement(formData)
       }
     })
   }
 
-  renderMyData({ profile, clientTotalData }) {
+  renderMyData({ profile = null, clientTotalData = null }) {
     if (!clientTotalData) return
-    const { client } = clientTotalData
-    this.clientData = clientTotalData
+    const { client } = this.clientData = clientTotalData
+    const tabInfo = this.accountMyData.querySelector('.btn-tabs-main-information')
+    const tabCon = this.accountMyData.querySelector('.btn-tabs-contacts-data')
+    const tabRec = this.accountMyData.querySelector('.my-data-tabs-btn.btn-tabs-requisites')
+    const tabPas = this.accountMyData.querySelector('.my-data-tabs-btn.btn-tabs-passport-data')
+
+    if (!this.isRequiredPassportsData) {
+      tabInfo.classList.add('_none')
+      tabCon.classList.add('_none')
+      tabRec.classList.add('_none')
+      this.myDataTabs.switchTabs(tabPas)
+    }
 
     this.inputs.length && this.inputs.forEach(input => {
+      const value = profile[input.name] ? profile[input.name] : ''
+
       if (input.name === 'username') {
-        input.value = profile[input.name] ? profile[input.name].slice(1) : ''
-      } else {
-        input.value = profile[input.name] ? profile[input.name] : ''
+        input.value = value ? value.slice(1) : ''
+      } else if (input.classList.contains('input-date')) {
+        input.value = value ? getFormattedDate('DD-MM-YYYY', new Date(value)) : ''
+      }
+      else {
+        input.value = value
       }
     })
 
@@ -154,11 +173,6 @@ class MyData {
       this.imgPassport.src = client.passp_photo_link
       this.imgPassport.closest('form').classList.add('_success')
     }
-
-    const tabInfo = this.accountMyData.querySelector('.btn-tabs-main-information')
-    const tabCon = this.accountMyData.querySelector('.btn-tabs-contacts-data')
-    const tabPas = this.accountMyData.querySelector('.my-data-tabs-btn.btn-tabs-passport-data')
-    const tabRec = this.accountMyData.querySelector('.my-data-tabs-btn.btn-tabs-requisites')
 
     if (profile?.user_type === 'u') {
       tabPas.classList.add('_none')
@@ -170,51 +184,39 @@ class MyData {
       tabPas.classList.remove('_none')
       tabRec.classList.remove('_none')
     }
+  }
 
+  setValidator() {
     if (!this.isRequiredPassportsData) {
-      tabInfo.classList.add('_none')
-      tabCon.classList.add('_none')
-      tabRec.classList.add('_none')
-      this.myDataTabs.switchTabs(tabPas)
       this.changePassportsData()
     }
-
-    // this.changePassportsData()
-
+    this.validator = this.isRequiredPassportsData ? validatePassports(this.formPassportsData) : validateAgreementConclusion(this.formPassportsData)
   }
 
   changePassportsData() {
     this.formPassportsData.insertAdjacentHTML('afterbegin', `<div class=" wrap-input">
-                    <input type="text" name="familyname" class="input input-agreement-conclusion"
+                    <input type="text" name="familyname" class="input input-agreement-conclusion my-data-input"
                       placeholder="Фамилия">
                   </div>
                   <div class="wrap-input">
-                    <input type="text" name="firstname" class="input input-agreement-conclusion"
+                    <input type="text" name="firstname" class="input input-agreement-conclusion my-data-input"
                       placeholder="Имя">
                   </div>
                   <div class="wrap-input">
-                    <input type="text" name="patronymic" class="input input-agreement-conclusion"
+                    <input type="text" name="patronymic" class="input input-agreement-conclusion my-data-input"
                       placeholder="Отчество">
                   </div>
                   <div class=" wrap-input">
                     <input type="text" name="birthday"
-                      class="input input-agreement-conclusion not-icon-date"
-                      placeholder="Дата рождения" readonly>
+                      class="input input-agreement-conclusion not-icon-date input-date my-data-input"
+                      placeholder="Дата рождения">
                   </div>
                   <div class=" wrap-input wrap-input-last">
-                    <input type="text" name="address" class="input input-agreement-conclusion"
+                    <input type="text" name="address" class="input input-agreement-conclusion my-data-input"
                       placeholder="Адрес регистрации">
                   </div>`)
-    // this.formUrData.insertAdjacentHTML('beforeend', `<button class="button-5" type="submit"><span>Сохранить</span></button>`)
 
-    // const validatorUrData = validateUrData(this.formUrData)
-
-    // this.formUrData.addEventListener('submit', e => {
-    //   if (validatorUrData.isValid) {
-    //     const formData = new FormData(e.target)
-    //     this.formNewAgreement(formData)
-    //   }
-    // })
+    this.inputs = this.accountMyData.querySelectorAll('.my-data-input')
   }
 
   async changeData(formData) {

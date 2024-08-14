@@ -181,11 +181,12 @@ export function validateAgreementConclusion(form) {
 
   Inputmask.default("9999").mask(inputSeries)
   Inputmask.default("999999").mask(inputNo)
-  // Inputmask.default("99-99-9999").mask(inputIssueDate)
+  Inputmask.default("99-99-9999").mask(inputIssueDate)
+  Inputmask.default("99-99-9999").mask(inputBirthday)
   Inputmask.default("999-999").mask(inputSubdivision)
 
   const dataPickerBirthday = new AirDatepicker(inputBirthday, {
-    dateFormat: 'yyyy-MM-dd',
+    dateFormat: 'dd-MM-yyyy',
     position: 'bottom center',
     autoClose: true,
     maxDate: calculateMinDate(),
@@ -193,7 +194,7 @@ export function validateAgreementConclusion(form) {
   });
 
   const dataPickerIssueDate = new AirDatepicker(inputIssueDate, {
-    dateFormat: 'yyyy-MM-dd',
+    dateFormat: 'dd-MM-yyyy',
     position: 'bottom center',
     autoClose: true,
     // maxDate: calculateMinDate(),
@@ -289,10 +290,12 @@ export function validateAgreementConclusion(form) {
       errorMessage: 'Заполните поле',
     },
     {
-      plugin: JustValidatePluginDate((fields) => ({
-        required: true,
-        format: 'yyyy-MM-dd',
-      })),
+      plugin: JustValidatePluginDate(fields => {
+        return {
+          format: 'dd-MM-yyyy',
+          required: true,
+        }
+      }),
       errorMessage: 'Неверный формат',
     }
   ]).addField(inputSubdivision, [
@@ -333,11 +336,11 @@ export function validatePassports(form) {
 
   Inputmask.default("9999").mask(inputSeries)
   Inputmask.default("999999").mask(inputNo)
-  // Inputmask.default("99-99-9999").mask(inputIssueDate)
+  Inputmask.default("99-99-9999").mask(inputIssueDate)
   Inputmask.default("999-999").mask(inputSubdivision)
 
   const dataPickerIssueDate = new AirDatepicker(inputIssueDate, {
-    dateFormat: 'yyyy-MM-dd',
+    dateFormat: 'dd-MM-yyyy',
     position: 'bottom center',
     autoClose: true,
     // maxDate: calculateMinDate(),
@@ -376,7 +379,7 @@ export function validatePassports(form) {
     {
       plugin: JustValidatePluginDate((fields) => ({
         required: true,
-        format: 'yyyy-MM-dd',
+        format: 'dd-MM-yyyy'
       })),
       errorMessage: 'Неверный формат',
     }
