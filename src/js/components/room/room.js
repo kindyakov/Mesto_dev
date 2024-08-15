@@ -69,7 +69,7 @@ class Room {
 
         if (this.pathContent && currentWarehouse) {
           this.pathContent.innerHTML = `
-            <a href="index.html" class="path__link hover-link">Главная</a>
+            <a href="${location.origin}" class="path__link hover-link">Главная</a>
             <span class="path__sep">/</span>
             <a href="calculator.html" class="path__link hover-link">Калькулятор</a>
             <span class="path__sep">/</span>
