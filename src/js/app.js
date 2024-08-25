@@ -16,7 +16,7 @@ import mapInit from "./components/map/map.js";
 import questions from "./components/questions/questions.js";
 import rentOut from "./components/rentOut/rentOut.js";
 import Calculator from "./components/calculator/calculator.js";
-import SchemeMobile from './components/schemeMobile/schemeMobile.js';
+// import SchemeMobile from './components/schemeMobile/schemeMobile.js';
 import ModalQuiz from "./components/modals/modalQuiz/modalQuiz.js";
 import { modals } from "./components/modals/modals.js";
 import { specialOffer } from "./components/specialOffer/specialOffer.js";
@@ -98,7 +98,7 @@ showPassword('.icon-eye');
 specialOffer();
 
 const calculator = new Calculator();
-const schemeMobile = new SchemeMobile();
+// const schemeMobile = new SchemeMobile();
 const isAuth = checkAuth();
 
 let warehouse, room, rentRoom, account;

@@ -118,7 +118,7 @@
 		&_wrap-inputs {
 			display: flex;
 			flex-direction: column;
-			gap: 10px;
+			gap: 15px;
 			width: 100%;
 		}
 
@@ -197,6 +197,11 @@
 			top: 50%;
 			transform: translate(0, -50%);
 			text-align: right;
+			@media (max-width: $md4) {
+				top: 100%;
+				right: 0;
+				transform: translate(0, 25%);
+			}
 		}
 		&.wrap-input-btn {
 			.just-validate-error-label {
