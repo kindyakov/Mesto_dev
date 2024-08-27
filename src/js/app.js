@@ -328,3 +328,31 @@ expandableTexts.length && expandableTexts.forEach(textBlock => {
     expandButton.textContent = textBlock.classList.contains('active') ? 'Свернуть текст' : 'Развернуть текст';
   });
 });
+// ==============================================>
+function getCurrentDayAndMonth() {
+  const today = new Date();
+  const currentDay = today.getDate();
+
+  // Получаем последний день текущего месяца
+  const lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+
+  // Названия месяцев
+  const monthNames = [
+    "января", "февраля", "марта", "апреля", "мая", "июня",
+    "июля", "августа", "сентября", "октября", "ноября", "декабря"
+  ];
+
+  // Получаем название текущего месяца
+  const currentMonthName = monthNames[today.getMonth()];
+
+  // Определяем день, который нужно вернуть
+  const dayToReturn = currentDay <= 15 ? currentDay : lastDayOfMonth;
+
+  // Возвращаем строку с числом и полным названием месяца
+  return `${dayToReturn} ${currentMonthName}`;
+}
+
+const dateDiscountIntro = document.querySelector('.date-discount-intro')
+if (dateDiscountIntro) {
+  dateDiscountIntro.textContent = getCurrentDayAndMonth()
+}

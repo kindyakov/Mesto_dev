@@ -188,7 +188,7 @@ class RentRoom {
         startDate: new Date(),
         autoClose: true,
         minDate: formatAsYYYYMMDD(addDaysToDate(new Date(), 0)),
-        maxDate: formatAsYYYYMMDD(addDaysToDate(new Date(), 14)),
+        maxDate: formatAsYYYYMMDD(addDaysToDate(new Date(), 30)),
         isMobile: /iPhone|iPad|iPod|Android/i.test(navigator.userAgent),
         onSelect: ({ date, formattedDate, datepicker }) => {
           datepicker.$el.classList.remove('just-validate-error-field')
