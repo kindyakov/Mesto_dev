@@ -1,8 +1,3 @@
-/**
- * Главный модуль приложения.
- * @module app
- */
-
 import checkSupportWebP from "./utils/checkSupportWebP.js";
 import { useDynamicAdapt } from "./utils/dynamicAdapt.js";
 import { burger, updateLinks, scroll, dropdown } from "./utils/header.js";
@@ -11,7 +6,7 @@ import { addBrowserSpecificClass } from './utils/detectBrowser.js';
 import { Accordion } from "./modules/myAccordion.js";
 import { Tabs } from "./modules/myTabs.js";
 import { getWarehousesInfo } from "./settings/request.js";
-import api, { checkAuth } from "./settings/api.js";
+import { checkAuth } from "./settings/api.js";
 import mapInit from "./components/map/map.js";
 import questions from "./components/questions/questions.js";
 import rentOut from "./components/rentOut/rentOut.js";
@@ -21,80 +16,21 @@ import ModalQuiz from "./components/modals/modalQuiz/modalQuiz.js";
 import { modals } from "./components/modals/modals.js";
 import { specialOffer } from "./components/specialOffer/specialOffer.js";
 
-/**
- * Обновление ссылок в шапке сайта.
- * @function
- * @memberof category:utils
- * @see {@link module:utils/header~updateLinks}
- */
+const depth = location.pathname.split('/').filter(el => el).length - 1
+const pathPrefix = depth > 0 ? '../'.repeat(depth) : ''
+
+window.app = {
+  pathPrefix
+}
+
 // updateLinks('.link-update');
-
-/** 
- * Инициализация бургер-меню.
- * @function
- * @memberof category:utils
- * @see {@link module:utils/header~burger}
- */
 burger();
-
-/**
- * Инициализация прокрутки по якорям.
- * @function
- * @param {string} selector - Селектор для прокрутки.
- * @param {Object} options - Опции для прокрутки.
- * @memberof category:utils
- * @see {@link module:utils/header~scroll}
- */
 scroll('.link-scroll', { isHeader: false });
-
-/**
- * Инициализация выпадающего меню.
- * @function
- * @param {Object} options - Опции для выпадающего меню.
- * @memberof category:utils
- * @see {@link module:utils/header~dropdown}
- */
 dropdown({});
-
-/**
- * Часто задаваемые вопросы.
- * @function
- * @memberof category:utils
- * @see {@link module:components/questions~questions}
- */
 questions();
-
-/**
- * Функция сдачи в аренду.
- * @function
- * @memberof category:components
- * @see {@link module:components/rentOut~rentOut}
- */
 rentOut();
-
-/**
- * Проверка поддержки формата WebP в браузере.
- * @function
- * @memberof category:utils
- * @see {@link module:utils/checkSupportWebP~checkSupportWebP}
- */
 checkSupportWebP();
-
-/**
- * Показывает или скрывает пароль.
- * @function
- * @param {string} selector - Селектор для иконки показа пароля.
- * @memberof category:utils
- * @see {@link module:utils/showPassword~showPassword}
- */
 showPassword('.icon-eye');
-
-/**
- * Специальное предложение.
- * @function
- * @memberof category:components
- * @see {@link module:components/specialOffer~specialOffer}
- */
 specialOffer();
 
 const calculator = new Calculator();
@@ -103,13 +39,7 @@ const isAuth = checkAuth();
 
 let warehouse, room, rentRoom, account;
 
-/**
- * Получает информацию о складах и инициализирует различные компоненты в зависимости от текущего пути.
- * @function
- * @memberof module:app
- * @see {@link module:settings/request~getWarehousesInfo}
- */
-getWarehousesInfo().then(async ({ warehouses }) => {
+getWarehousesInfo().then(({ warehouses }) => {
   const pathname = window.location.pathname;
 
   if (pathname === '/' || pathname.includes('/index')) {
@@ -181,29 +111,10 @@ getWarehousesInfo().then(async ({ warehouses }) => {
 });
 
 modals();
-
-/**
- * Инициализация адаптации динамического контента.
- * @function
- * @memberof module:app
- * @see {@link module:utils/dynamicAdapt~useDynamicAdapt}
- */
 useDynamicAdapt();
-
-/**
- * Добавляет классы для специфических браузеров.
- * @function
- * @param {Array<string>} selectors - Список селекторов для элементов.
- * @memberof module:app
- * @see {@link module:utils/detectBrowser~addBrowserSpecificClass}
- */
 addBrowserSpecificClass(['.mySelect__list']);
 
-/**
- * Генерирует уникальные ID для всех checkbox и radio input и обновляет соответствующие label.
- * @function
- * @memberof module:app
- */
+
 const inputsCheckbox = document.querySelectorAll('input[type="checkbox"]');
 const inputsRadio = document.querySelectorAll('input[type="radio"]');
 const inputs = [...inputsCheckbox, ...inputsRadio];
@@ -216,11 +127,6 @@ inputs.length && inputs.forEach((input, i) => {
   label && label.setAttribute('for', newId);
 });
 
-/**
- * Обновляет padding-top у элемента .intro в зависимости от высоты шапки.
- * @function
- * @memberof module:app
- */
 const intro = document.querySelector('.intro');
 const header = document.querySelector('.header');
 if (intro && header) {
@@ -231,37 +137,17 @@ if (intro && header) {
   });
 }
 
-/**
- * Инициализирует вкладки и аккордеон для FAQ.
- * @function
- * @memberof module:app
- * @see {@link module:modules/myTabs~Tabs}
- * @see {@link module:modules/myAccordion~Accordion}
- */
 const faq = document.querySelector('.faq');
 if (faq) {
   const faqTabs = new Tabs('faq-tabs');
   const faqAccordion = new Accordion('.faq__body');
 }
 
-/**
- * Инициализирует вкладки для элемента .advantages-storage.
- * @function
- * @memberof module:app
- * @see {@link module:modules/myTabs~Tabs}
- */
 const advantagesStorage = document.querySelector('.advantages-storage');
 if (advantagesStorage) {
   const advantagesStorageTabs = new Tabs('advantages-storage-tabs');
 }
 
-/**
- * Инициализирует вкладки для бизнеса и аккордеон.
- * @function
- * @memberof module:app
- * @see {@link module:modules/myTabs~Tabs}
- * @see {@link module:modules/myAccordion~Accordion}
- */
 if (document.querySelector('[data-tabs-init="business-tabs"]')) {
   const businessTabs = new Tabs('business-tabs', {
     btnSelector: '._business-tabs-btn',
@@ -273,12 +159,6 @@ if (document.querySelector('.business__accords')) {
   const businessAccord = new Accordion('.business__accords');
 }
 
-/**
- * Инициализирует слайдер для бизнес-предложений.
- * @function
- * @memberof module:app
- * @see {@link https://swiperjs.com/}
- */
 if (document.querySelector('.business__benefit_swiper ')) {
   new Swiper('.business__benefit_swiper ', {
     spaceBetween: 10,
@@ -288,14 +168,8 @@ if (document.querySelector('.business__benefit_swiper ')) {
       delay: 2000,
     },
   });
-}
+};
 
-/**
- * Инициализирует слайдер для специальных предложений.
- * @function
- * @memberof module:app
- * @see {@link https://swiperjs.com/}
- */
 if (document.querySelector('.special-swiper-offer')) {
   new Swiper('.special-swiper-offer', {
     spaceBetween: 10,
@@ -314,14 +188,13 @@ if (document.querySelector('.special-swiper-offer')) {
       }
     },
   });
-}
+};
 
 // ==============================================>
 const expandableTexts = document.querySelectorAll('.expand-text');
 
 expandableTexts.length && expandableTexts.forEach(textBlock => {
   const expandButton = textBlock.querySelector('.texts__expand-button');
-  const fullText = textBlock.querySelector('.texts__full');
 
   expandButton.addEventListener('click', () => {
     textBlock.classList.toggle('active');
@@ -346,7 +219,7 @@ function getCurrentDayAndMonth() {
   const currentMonthName = monthNames[today.getMonth()];
 
   // Определяем день, который нужно вернуть
-  const dayToReturn = currentDay <= 15 ? currentDay : lastDayOfMonth;
+  const dayToReturn = currentDay <= 15 ? 15 : lastDayOfMonth;
 
   // Возвращаем строку с числом и полным названием месяца
   return `${dayToReturn} ${currentMonthName}`;
@@ -355,4 +228,4 @@ function getCurrentDayAndMonth() {
 const dateDiscountIntro = document.querySelector('.date-discount-intro')
 if (dateDiscountIntro) {
   dateDiscountIntro.textContent = getCurrentDayAndMonth()
-}
+};

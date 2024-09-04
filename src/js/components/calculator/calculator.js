@@ -1,8 +1,10 @@
+import CalculatorAreaSlider from '../noUiSliders/Calculator/CalculatorAreaSlider.js'
+import CalculatorMonthSlider from '../noUiSliders/Calculator/CalculatorMonthSlider.js'
+
 import { Tabs } from '../../modules/myTabs.js'
 import { Select } from '../../modules/mySelect.js'
 import { Loader } from '../../modules/myLoader.js'
 
-import { Range } from './range.js'
 import { thing } from './html.js'
 
 import api from '../../settings/api.js'
@@ -11,29 +13,28 @@ import { buildQueryParams } from '../../utils/buildQueryParams.js'
 
 import WarehousesResult from '../warehousesResult/warehousesResult.js'
 
-import { formattingPrice } from "../../utils/formattingPrice.js"
 import { executeOnceOnScroll } from '../../utils/executeOnceOnScroll.js'
+import { formattingPrice } from "../../utils/formattingPrice.js"
 
 class Calculator {
   constructor() {
     this.calculator = document.querySelector('#calculator')
     if (!this.calculator) return
-
-    this.depth = location.pathname.split('/').filter(el => el).length - 1
-    this.pathPrefix = this.depth > 0 ? '../'.repeat(this.depth) : ''
-
+    this.app = window.app
     this.calculatorBody = this.calculator.querySelector('.calculator__body')
 
     this.tabCalculator = new Tabs('calculator-tabs', {})
     this.selectCalculator = new Select('.select-calculator', {
-      inputHtml: `<svg class='icon icon-arrow-left'><use xlink:href='${this.pathPrefix}img/svg/sprite.svg#arrow-left'></use></svg>`,
+      inputHtml: `<svg class='icon icon-arrow-left'><use xlink:href='${this.app.pathPrefix}img/svg/sprite.svg#arrow-left'></use></svg>`,
       selectCustom: 'select-custom-calculator',
     })
     this.selectAreaCalculator = new Select('.select-area-calculator', {
-      inputHtml: `<svg class='icon icon-arrow-left'><use xlink:href='${this.pathPrefix}img/svg/sprite.svg#arrow-left'></use></svg>`,
+      inputHtml: `<svg class='icon icon-arrow-left'><use xlink:href='${this.app.pathPrefix}img/svg/sprite.svg#arrow-left'></use></svg>`,
       selectCustom: 'select-custom-area-calculator'
     })
-    this.range = new Range('.range-calculator', { pathPrefix: this.pathPrefix })
+
+    this.sliderArea = new CalculatorAreaSlider(this.calculator.querySelector('.range-calculator[data-type-range="area"]'))
+    this.sliderMonth = new CalculatorMonthSlider(this.calculator.querySelector('.range-calculator[data-type-range="duration"]'))
 
     this.select = this.calculator.querySelector('.select-calculator[name="warehouse_id"]')
 
@@ -43,33 +44,15 @@ class Calculator {
     this.itemSizes = this.calculator.querySelectorAll('.item-sizes')
     this.sizeResult = this.calculator.querySelector('.size-result')
     this.categoryCurrent = this.calculator.querySelector('.category-current')
-    this.priceCalculator = this.calculator.querySelector('.price-calculator')
     this.things = this.calculator.querySelector('.calculator__things')
-    this.imgPreviewRoom = this.calculator.querySelector('.img-preview-room')
+    this.priceCalculator = this.calculator.querySelector('.price-calculator')
 
-    this.reqData = { ...this.range.rangeData, warehouse_id: this.select.value }
+    this.reqData = { warehouse_id: this.select.value } // ...this.range.rangeData,
     this.loader = new Loader(this.calculator)
 
-    this.prices = null
     this.storageItems = null
 
     this.warehousesResult = new WarehousesResult(this.calculatorBody)
-
-    this.images = {
-      volume: {
-        '1': `${this.pathPrefix}img/rooms/1_kub.png`,
-        '1.5': `${this.pathPrefix}img/rooms/1.5_kub.png`,
-        '3': `${this.pathPrefix}img/rooms/1_kv_m.png`,
-        '4': `${this.pathPrefix}img/rooms/2_kv_m.png`,
-        '6': `${this.pathPrefix}img/rooms/3_kv_m.png`,
-        '8': `${this.pathPrefix}img/rooms/4_kv_m.png`,
-        '10': `${this.pathPrefix}img/rooms/5_kv_m.png`,
-        '12': `${this.pathPrefix}img/rooms/6_kv_m.png`,
-        '14': `${this.pathPrefix}img/rooms/7_kv_m.png`,
-        '16': `${this.pathPrefix}img/rooms/8_kv_m.png`,
-        '20': `${this.pathPrefix}img/rooms/9_kv_m.png`,
-      }
-    }
 
     this.itemSizes.length && this.itemSizes.forEach(item => {
       const span = item.querySelector('span');
@@ -89,12 +72,16 @@ class Calculator {
   events() {
     this.calculator.addEventListener('click', e => {
       if (e.target.closest('.btn-cost-calculator')) {
-        this.reqData = { ...this.range.rangeData, warehouse_id: this.select.value }
-        this.getCalculatorResult(buildQueryParams(this.reqData), this.range.rangeData)
+        this.reqData = {
+          volume: this.sliderArea.getValue(),
+          duration: this.sliderMonth.getValue(),
+          warehouse_id: this.select.value
+        }
+        this.getCalculatorResult(this.reqData)
       }
 
       if (e.target.closest('.btn-area-calculator')) {
-        this.getCalculatorResult(buildQueryParams(this.reqData), this.range.rangeData)
+        this.getCalculatorResult(this.reqData)
       }
 
       if (e.target.closest('.item-category')) {
@@ -156,21 +143,8 @@ class Calculator {
       this.renderItems(this.category)
     }
 
-    this.range.options.onSlide = (rangeData, currentRange) => {
-      const typeRange = currentRange.target.getAttribute('data-type-range')
-      let prise = this.prices[rangeData.volume] ? this.prices[rangeData.volume] : 0
-
-      this.priceCalculator.textContent = 'от ' + formattingPrice(this.calcDiscount(rangeData.duration, prise, rangeData.volume)) + "/мес";
-    }
-
-    this.range.options.onChange = (e, rangeData) => {
-      if (rangeData.volume) {
-        this.imgPreviewRoom.src = this.images.volume[rangeData.volume]
-      }
-    }
-
-    this.range.sliders.duration.set(11)
-    this.range.rangeSlide({ handle: 0, unencoded: [11], noUiSlider: this.range.sliders.duration })
+    this.sliderArea.onSlide = params => this.changePrice(params)
+    this.sliderMonth.onSlide = params => this.changePrice(params)
   }
 
   renderItems(category = 'living-room') {
@@ -178,28 +152,33 @@ class Calculator {
     if (!this.storageItems[category] && !this.storageItems[category]?.length) return
 
     this.storageItems[category].forEach(item => {
-      this.things.insertAdjacentHTML('beforeend', thing(item, this.pathPrefix))
+      const imgPathWebp = item.img.replace('.png', '.webp')
+      const img = new Image()
+      if (location.hostname !== "localhost") {
+        img.src = imgPathWebp
+        img.onload = () => item.img = imgPathWebp;
+      }
+      this.things.insertAdjacentHTML('beforeend', thing(item, this.app.pathPrefix))
     })
   }
 
-  calcDiscount(month, dataPrice, volume) {
-    if (!month || !dataPrice) return 0
-    if (month >= 6 && month <= 10) {
-      return dataPrice['6']
-    } else if (month > 10) {
-      return dataPrice['11']
-    } else return dataPrice['1']
+  changePrice({ noUiSlider }) {
+    const area = parseInt(this.sliderArea.getValue())
+    const month = parseInt(this.sliderMonth.getValue())
+    const dataPrice = this.prices[area - 1]
+    const price = this.sliderArea.calcDiscount(month, dataPrice)
+    this.priceCalculator.textContent = formattingPrice(price) + '/мес'
   }
 
   async init() {
     try {
       this.loader.enable()
 
-      const [prices, items] = await Promise.all([this.getPrices(), this.getStorageItems()])
+      const [prices, items] = await Promise.all([this.getDataJson('calculatorPrices'), this.getDataJson('items')])
 
       this.prices = prices
       this.storageItems = items
-
+      // Предзагрузка картинок 
       executeOnceOnScroll(() => {
         for (const type in this.images) {
           if (Object.hasOwnProperty.call(this.images, type)) {
@@ -219,10 +198,6 @@ class Calculator {
 
         this.renderItems()
       })
-
-      this.imgPreviewRoom.src = this.images.volume['1']
-      this.priceCalculator.textContent = 'от ' + formattingPrice(this.calcDiscount(1, this.prices['1'])) + "/мес";
-
       this.events()
     } catch (error) {
       console.error(error)
@@ -231,15 +206,15 @@ class Calculator {
     }
   }
 
-  async getCalculatorResult(queryParams = '', rangeData) {
+  async getCalculatorResult(reqData) {
     try {
       this.loader.enable()
 
-      const response = await api.get(`/_get_calculator_result_${queryParams}`)
+      const response = await api.get(`/_get_calculator_result_${buildQueryParams(reqData)}`)
       if (response.status !== 200) return
 
       ym(97074608, 'reachGoal', 'podobrat')
-      this.warehousesResult.render(response.data, rangeData)
+      this.warehousesResult.render(response.data, reqData)
     } catch (error) {
       console.error(error.message)
       throw error;
@@ -262,21 +237,9 @@ class Calculator {
     }
   }
 
-  async getPrices() {
+  async getDataJson(name) {
     try {
-      const response = await fetch('../assets/data/calculatorPrices.json')
-      if (!response.ok) return null
-      const data = await response.json()
-      return data
-    } catch (error) {
-      console.log(error)
-      throw error
-    }
-  }
-
-  async getStorageItems() {
-    try {
-      const response = await fetch('../assets/data/items.json')
+      const response = await fetch(`../assets/data/${name}.json`)
       if (!response.ok) return null
       const data = await response.json()
       return data

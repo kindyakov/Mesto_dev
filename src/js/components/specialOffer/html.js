@@ -1,7 +1,7 @@
 export function cardHtml(data, isFos = false) {
   return `<div class="special-offer__slider-slide cards-slider__slide swiper-slide">
   <div class="cards-slider__slide_img">
-    <img src="${data.img}" alt="Фото кладовки" width="${data.imgW}" height="${data.imgH}">
+    <img src="${data.img}" alt="Фото кладовки" width="${data.imgW}" height="${data.imgH}" loading="lazy">
   </div>
   <div class="cards-slider__slide_content">
     <div class="cards-slider__slide_row">
