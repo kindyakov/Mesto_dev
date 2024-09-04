@@ -73,7 +73,7 @@ class Calculator {
     this.calculator.addEventListener('click', e => {
       if (e.target.closest('.btn-cost-calculator')) {
         this.reqData = {
-          volume: this.sliderArea.getValue(),
+          volume: this.sliderArea.getValueVolume(),
           duration: this.sliderMonth.getValue(),
           warehouse_id: this.select.value
         }
@@ -162,9 +162,9 @@ class Calculator {
     })
   }
 
-  changePrice({ noUiSlider }) {
-    const area = parseInt(this.sliderArea.getValue())
-    const month = parseInt(this.sliderMonth.getValue())
+  changePrice() {
+    const area = this.sliderArea.getValue()
+    const month = this.sliderMonth.getValue()
     const dataPrice = this.prices[area - 1]
     const price = this.sliderArea.calcDiscount(month, dataPrice)
     this.priceCalculator.textContent = formattingPrice(price) + '/мес'

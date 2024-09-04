@@ -1,8 +1,28 @@
 import CalculatorSlider from "./CalculatorSlider.js";
 
+function calcIndex(value) {
+  const integerPart = Math.floor(value);
+  const decimalPart = value - integerPart;
+  let val = '', i = 0
+
+  if (value > 1 && value <= 2) {
+    val = 1.5
+  } else if (decimalPart === 0) {
+    val = integerPart;
+  } else if (decimalPart <= 0.5) {
+    val = integerPart + 0.5;
+  } else {
+    val = Math.ceil(value);
+  }
+
+  i = (val < 2 ? val - 1 : val - 1.5) / 0.5
+
+  return i
+}
+
 class CalculatorAreaSlider extends CalculatorSlider {
   constructor(range) {
-    const replaceValue = ['1м³', '1.5м³', '2.2м³', '4.4м³', '5.5м³', '6.6м³', '7.7м³', '8.8м³', '9.9м³', '11м³', '12.1м³', '13.2м³', '14.3м³', '15.4м³', '16.5м³', '17.6м³', '18.7м³', '19.8м³', '20.9м³', '22м³']
+    const valuesVolume = ['1м³', '1.5м³', '2.2м³', '4.4м³', '5.5м³', '6.6м³', '7.7м³', '8.8м³', '9.9м³', '11м³', '12.1м³', '13.2м³', '14.3м³', '15.4м³', '16.5м³', '17.6м³', '18.7м³', '19.8м³', '20.9м³', '22м³']
 
     const options = {
       range: {
@@ -10,25 +30,7 @@ class CalculatorAreaSlider extends CalculatorSlider {
         'max': 11,
       },
       format: {
-        to: value => {
-          const integerPart = Math.floor(value);
-          const decimalPart = value - integerPart;
-          let val = '', i = 0
-
-          if (value > 1 && value <= 2) {
-            val = 1.5
-          } else if (decimalPart === 0) {
-            val = integerPart;
-          } else if (decimalPart <= 0.5) {
-            val = integerPart + 0.5;
-          } else {
-            val = Math.ceil(value);
-          }
-
-          i = (val < 2 ? val - 1 : val - 1.5) / 0.5
-
-          return replaceValue[i]
-        },
+        to: value => valuesVolume[calcIndex(value)],
         from: value => parseFloat(value)
       },
       pips: {
@@ -38,6 +40,7 @@ class CalculatorAreaSlider extends CalculatorSlider {
 
     super(range, options)
     // console.log(this.slider.get('values'))
+    this.valuesVolume = valuesVolume
     this.imgPreviewRoom = document.querySelector('.img-preview-room')
 
     this.images = [
@@ -83,6 +86,11 @@ class CalculatorAreaSlider extends CalculatorSlider {
     } else {
       this.imgPreviewRoom.src = this.images[i]
     }
+  }
+
+  getValueVolume() {
+    const value = this.slider.get('value')
+    return parseFloat(this.valuesVolume[calcIndex(value)])
   }
 }
 

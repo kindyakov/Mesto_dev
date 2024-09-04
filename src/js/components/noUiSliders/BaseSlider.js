@@ -28,7 +28,7 @@ class BaseSlider {
     this.app = window.app
     this.options = merge({}, defaultOptions, options)
     this.slider = noUiSlider.create(range, this.options)
-    
+
     this.slider.on('slide', (values, handle, unencoded, tap, positions, noUiSlider) => {
       this.slide({ values, handle, unencoded, tap, positions, noUiSlider })
     });
@@ -46,7 +46,7 @@ class BaseSlider {
   onInit() { }
 
   getValue() {
-    return this.slider.get('value')
+    return parseInt(this.slider.get('value'))
   }
 
   slide(params) {
