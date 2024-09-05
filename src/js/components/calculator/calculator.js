@@ -166,7 +166,7 @@ class Calculator {
   onSlide({ noUiSlider }) {
     if (noUiSlider.target.getAttribute('data-type-range') == 'area') {
       const textContent = this.calculator.querySelector('.calculator__preview_text')
-      textContent.innerHTML = this.texts[this.sliderArea.getValue()]
+      textContent.innerHTML = this.texts[this.sliderArea.getValue() - 1]
     }
 
     const volumeIndex = this.sliderArea.getVolumeIndex()
