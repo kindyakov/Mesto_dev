@@ -51,6 +51,7 @@ class Calculator {
     this.loader = new Loader(this.calculator)
 
     this.storageItems = null
+    this.texts = null
 
     this.warehousesResult = new WarehousesResult(this.calculatorBody)
 
@@ -143,8 +144,8 @@ class Calculator {
       this.renderItems(this.category)
     }
 
-    this.sliderArea.onSlide = params => this.changePrice(params)
-    this.sliderMonth.onSlide = params => this.changePrice(params)
+    this.sliderArea.onSlide = params => this.onSlide(params)
+    this.sliderMonth.onSlide = params => this.onSlide(params)
   }
 
   renderItems(category = 'living-room') {
@@ -162,7 +163,12 @@ class Calculator {
     })
   }
 
-  changePrice() {
+  onSlide({ noUiSlider }) {
+    if (noUiSlider.target.getAttribute('data-type-range') == 'area') {
+      const textContent = this.calculator.querySelector('.calculator__preview_text')
+      textContent.innerHTML = this.texts[this.sliderArea.getValue()]
+    }
+
     const volumeIndex = this.sliderArea.getVolumeIndex()
     const month = this.sliderMonth.getValue()
     const dataPrice = this.prices[volumeIndex]
@@ -174,10 +180,12 @@ class Calculator {
     try {
       this.loader.enable()
 
-      const [prices, items] = await Promise.all([this.getDataJson('calculatorPrices'), this.getDataJson('items')])
+      const [prices, items, texts] = await Promise.all([this.getDataJson('calculatorPrices'), this.getDataJson('items'), this.getDataJson('calculatorTexts')])
 
       this.prices = prices
       this.storageItems = items
+      this.texts = texts
+
       // Предзагрузка картинок 
       executeOnceOnScroll(() => {
         for (const type in this.images) {

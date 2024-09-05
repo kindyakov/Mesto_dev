@@ -19,11 +19,9 @@ export function specialOffer() {
       const isFos = location.pathname.includes('/for-your-business') ? true : false
       cardsData.length && cardsData.forEach(card => {
         const imgPathWebp = card.img.replace('.png', '.webp')
-        const img = new Image();
 
         if (location.hostname !== "localhost") {
-          img.src = imgPathWebp
-          img.onload = () => card.img = imgPathWebp;
+          card.img = imgPathWebp;
         }
 
         swiperWrapper.insertAdjacentHTML('beforeend', cardHtml(card, isFos))
