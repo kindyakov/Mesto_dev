@@ -163,9 +163,9 @@ class Calculator {
   }
 
   changePrice() {
-    const area = this.sliderArea.getValue()
+    const volumeIndex = this.sliderArea.getVolumeIndex()
     const month = this.sliderMonth.getValue()
-    const dataPrice = this.prices[area - 1]
+    const dataPrice = this.prices[volumeIndex]
     const price = this.sliderArea.calcDiscount(month, dataPrice)
     this.priceCalculator.textContent = formattingPrice(price) + '/мес'
   }

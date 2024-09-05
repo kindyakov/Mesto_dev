@@ -22,7 +22,7 @@ function calcIndex(value) {
 
 class CalculatorAreaSlider extends CalculatorSlider {
   constructor(range) {
-    const valuesVolume = ['1м³', '1.5м³', '2.2м³', '4.4м³', '5.5м³', '6.6м³', '7.7м³', '8.8м³', '9.9м³', '11м³', '12.1м³', '13.2м³', '14.3м³', '15.4м³', '16.5м³', '17.6м³', '18.7м³', '19.8м³', '20.9м³', '22м³']
+    const valuesVolume = ['1м³', '1.5м³', '3.3м³', '4.4м³', '5.5м³', '6.6м³', '7.7м³', '8.8м³', '9.9м³', '11м³', '12.1м³', '13.2м³', '14.3м³', '15.4м³', '16.5м³', '17.6м³', '18.7м³', '19.8м³', '20.9м³', '22м³']
 
     const options = {
       range: {
@@ -41,6 +41,7 @@ class CalculatorAreaSlider extends CalculatorSlider {
     super(range, options)
     // console.log(this.slider.get('values'))
     this.valuesVolume = valuesVolume
+    this.calcIndex = calcIndex
     this.imgPreviewRoom = document.querySelector('.img-preview-room')
 
     this.images = [
@@ -86,6 +87,11 @@ class CalculatorAreaSlider extends CalculatorSlider {
     } else {
       this.imgPreviewRoom.src = this.images[i]
     }
+  }
+
+  getVolumeIndex() {
+    const value = this.slider.get('value')
+    return calcIndex(value)
   }
 
   getValueVolume() {
