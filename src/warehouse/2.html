@@ -22,7 +22,7 @@
         "@type": "ListItem",
         "position": 2,
         "name": "Борисовские Пруды",
-        "item": "https://mesto-store.ru/warehouse/1"
+        "item": "https://mesto-store.ru/warehouse/2"
       }
     ]
   }
@@ -48,7 +48,7 @@
           </div>
         </div>
       </div>
-      <section class="warehouse section" data-tabs-init="tabs-warehouse" data-warehouse-id="1">
+      <section class="warehouse section" data-tabs-init="tabs-warehouse" data-warehouse-id="2">
         <div class="warehouse__container _container">
           <div class="warehouse__body">
             <div class="warehouse__slider swiper slider-warehouse" data-da=".warehouse__content,889,1">
@@ -119,7 +119,25 @@
               </div>
             </div>
           </div>
-          @@include('@@webRoot/html/section/warehouse__main.html',{path:'@@webRoot/',schemes:'1'})
+          <div class="warehouse__main">
+            @@include('@@webRoot/html/section/warehouse/filters.html',{path:'@@webRoot/'})
+            <div class="warehouse__schemes" id="schemes">
+              <ul class="warehouse__schemes_info">
+                <li class="select">Выбрано</li>
+                <li class="free">Свободно</li>
+                <li class="select-size">Выбранный размер</li>
+                <li class="boock">Занято</li>
+              </ul>
+
+              <div class="warehouse__schemes_content" style="display: block;">
+                <div class="wrap-scheme">
+                  @@include('@@webRoot/html/sсhemes/2/scheme-1.html',{path:'@@webRoot/'})
+                </div>
+              </div>
+
+            </div>
+            @@include('@@webRoot/html/section/warehouse/rooms.html',{path:'@@webRoot/'})
+          </div>
         </div>
       </section>
 

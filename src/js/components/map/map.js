@@ -65,7 +65,7 @@ const mapInit = async (warehouses) => {
     {
       location: {
         center: [warehouses[0].y, warehouses[0].x],
-        zoom: 15
+        zoom: 10
       },
       showScaleInCopyrights: true,
       behaviors
@@ -152,7 +152,7 @@ const mapInit = async (warehouses) => {
 
     warehousesListMap.insertAdjacentHTML('beforeend', warehouseList(warehouse, pathPrefix))
 
-    warehousesModal.insertAdjacentHTML('beforeend', modalWarehouse(warehouse, pathPrefix))
+    warehousesModal.insertAdjacentHTML('beforeend', modalWarehouse(warehouse, pathPrefix)) // warehouses
 
     markerElement.addEventListener('click', () => handlerClickMarker(markerElement, warehouse))
   });

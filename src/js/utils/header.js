@@ -89,7 +89,7 @@ export const scroll = (selectorLinks = '.link-scroll', { isHeader = true } = {})
     const topPos = rect.top + document.documentElement.scrollTop - (headerBody && isHeader ? headerBody.clientHeight + 20 : 0);
 
     window.scrollTo({ top: topPos, behavior: 'smooth' });
-    history.replaceState(null, null, id);
+    // history.replaceState(null, null, id);
   }
 
   links.length && links.forEach(link => {
@@ -100,7 +100,10 @@ export const scroll = (selectorLinks = '.link-scroll', { isHeader = true } = {})
     })
   })
 
-  if (location.hash) scrollToSection(location.hash)
+  if (location.hash) {
+    const [id, params] = location.hash.split('?')
+    scrollToSection(id)
+  }
 }
 
 export const dropdown = (

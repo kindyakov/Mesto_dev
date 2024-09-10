@@ -316,7 +316,7 @@ class FormNewAgreement {
     }
 
     this.cards.userType = this.clientData.client.user_type
-    this.cards.requisites = this.clientData.requisites
+    this.cards.requisites = this.clientData.client.requisites
     this.cards.render(this.loader)
   }
 

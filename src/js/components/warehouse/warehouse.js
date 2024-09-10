@@ -20,12 +20,18 @@ function addClassRented(rented) {
   }
 }
 
+function getSearchParams() {
+  const [href, params = ''] = location.href.split('?')
+  return params
+}
+
 class Warehouse {
   constructor() {
     this.warehouse = document.querySelector('.warehouse')
     if (!this.warehouse) return
 
-    this.urlParams = new URLSearchParams(window.location.search)
+    this.urlParams = new URLSearchParams(getSearchParams())
+
     // this.warehouseId = +this.urlParams.get('id')
     this.warehouseId = +this.warehouse.getAttribute('data-warehouse-id')
 
@@ -178,12 +184,12 @@ class Warehouse {
   }
 
   renderScheme(filtered_rooms, rooms) {
-    this.schemeActive.querySelectorAll('.warehouse__svg-cell')?.forEach(cell => {
+    this.warehouse.querySelectorAll('.warehouse__svg-cell')?.forEach(cell => {
       cell.classList.remove('free', 'busy', 'disabled', '_selected', 'select-size')
     })
 
     filtered_rooms.length && filtered_rooms.forEach(room => {
-      const cell = this.schemeActive.querySelector(`.warehouse__svg-cell[data-cell-num="${room.room_id}"]`)
+      const cell = this.warehouse.querySelector(`.warehouse__svg-cell[data-cell-num="${room.room_id}"]`)
       if (!cell) return
 
       cell.setAttribute('data-rented', room.rented)
@@ -192,7 +198,7 @@ class Warehouse {
     })
 
     rooms.length && rooms.forEach(room => {
-      const cell = this.schemeActive.querySelector(`.warehouse__svg-cell[data-cell-num="${room.room_id}"]`)
+      const cell = this.warehouse.querySelector(`.warehouse__svg-cell[data-cell-num="${room.room_id}"]`)
       if (!cell) return
 
       cell.setAttribute('data-rented', room.rented)
@@ -319,15 +325,6 @@ class Warehouse {
   }
 
   scrollToRoom(room) {
-    // const rect = document.querySelector('.content-cells-tab-content-scheme').getBoundingClientRect();
-    // const topPos = rect.top + document.documentElement.scrollTop - (document.querySelector('.header__container')?.clientHeight + 10);
-
-    // window.scrollTo({
-    //   top: topPos,
-    //   left: 0,
-    //   behavior: 'smooth'
-    // })
-
     if (this.contentRoomsWarehouse.scrollHeight >= this.contentRoomsWarehouse.offsetHeight && room) {
       this.contentRoomsWarehouse.scrollTo({
         top: room.offsetTop - this.contentRoomsWarehouse.offsetTop,

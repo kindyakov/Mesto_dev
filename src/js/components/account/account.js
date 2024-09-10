@@ -12,32 +12,8 @@ import FormNewAgreement from "./formNewAgreement.js";
 import { getClientTotalData } from "./request.js";
 import { isOneRented } from "./utils/isAllRented.js";
 
-/**
- * Класс для управления аккаунтом пользователя.
- * @class
- * @category components
- */
+
 class Account {
-  /**
-   * Создает экземпляр Account.
-   * @property {HTMLElement} account - Общая обертка личного кабинета.
-   * @property  {URLSearchParams} urlParams - Поисковые параметры из URL.
-   * @property {Object} formNewAgreement - Экземпляр для создания новой формы.
-   * @property {Object} accountTabs - Экземпляр вкладок аккаунта.
-   * @property {Object} accessStorage - Экземпляр
-   * @property {Object} storerooms - Экземпляр
-   * @property {Object} changePassword - Экземпляр
-   * @property {Object} myData - Экземпляр
-   * @property {Object} paymentMethods - Экземпляр
-   * @property {Object} departure - Экземпляр
-   * @property {Object} loader - Экземпляр загрузчика.
-   * @property {HTMLElement} accountLink - Ссылка для выхода из аккаунта.
-   * @property {boolean} isAuth - Проверка авторизации пользователя.
-   * @property {Object|null} profile - Данные профиля пользователя.
-   * @property {Object|null} user - Полные данные пользователя.
-   * @property {number|null} completeLeaseRoomId - ID завершения аренды комнаты.
-   * @constructor
-   */
   constructor() {
     this.account = document.querySelector('.account');
     if (!this.account) return;
@@ -74,9 +50,6 @@ class Account {
     this.init();
   }
 
-  /**
-   * Обрабатывает события на странице аккаунта.
-   */
   events() {
     if (!this.account) return;
     this.accountTabs.options.onChange = (nexTabBtn, prevTabBtn, nextTabContent, prevTabContent) => this.changeTabs(nexTabBtn, nextTabContent);
@@ -100,9 +73,6 @@ class Account {
     this.changeTabs(this.accountTabs.tabsBtnActive, this.accountTabs.tabsContentActive);
   }
 
-  /**
-   * Инициализирует аккаунт.
-   */
   async init() {
     if (!this.account) return;
 
@@ -130,9 +100,6 @@ class Account {
     }
   }
 
-  /**
-   * Получает профиль пользователя.
-   */
   async getProfile() {
     try {
       const response = await apiWithAuth.get('/_profile_');
@@ -168,11 +135,6 @@ class Account {
     }
   }
 
-  /**
-   * Инициализирует вкладки. Срабатывает при загрузки страницы.
-   * @param {HTMLElement} tabsBtnActive - Активная кнопка вкладки.
-   * @param {HTMLElement} tabsContentActive - Активное содержимое вкладки.
-   */
   async initTabs(tabsBtnActive, tabsContentActive) {
     try {
       this.loader.enable();
@@ -224,11 +186,6 @@ class Account {
     }
   }
 
-  /**
-   * Обрабатывает изменение вкладок. Сработает в том случае если переключилась вкладка.
-   * @param {HTMLElement} tabsBtnActive - Активная кнопка вкладки.
-   * @param {HTMLElement} tabsContentActive - Активное содержимое вкладки.
-   */
   async changeTabs(tabsBtnActive, tabsContentActive) {
     try {
       this.loader.enable();
@@ -263,7 +220,4 @@ class Account {
   }
 }
 
-/**
- * @exports Account
- */
 export default Account;

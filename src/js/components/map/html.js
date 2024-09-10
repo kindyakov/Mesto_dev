@@ -1,6 +1,8 @@
 import { declOfNum } from "../../utils/declOfNum.js"
 import { formattingPrice } from "../../utils/formattingPrice.js"
 
+const expansionFile = location.hostname == 'localhost' ? '.html' : ''
+
 export function markerContent(data, pathPrefix) {
   return `
   <div class="marker__content">
@@ -31,7 +33,7 @@ export function modalWarehouse(data, pathPrefix) {
         ${data.cnt_free && declOfNum(data.cnt_free, ['свободная', 'свободных', 'свободных'])} 
         ${data.cnt_free && declOfNum(data.cnt_free, ['кладовка', 'кладовки', 'кладовок'])}
       </span>
-      <a href="/warehouse/1.html" class="map__modal_warehouse-link button">
+      <a href="/warehouse/${data.warehouse_id}${expansionFile}" class="map__modal_warehouse-link button">
         <span>${data.min_price ? 'от ' + formattingPrice(data.min_price) : 'Нет данных'}</span>
       </a>
     </div>
@@ -66,7 +68,7 @@ export function modalWarehouseCurrent(data) {
   </ul>
 
   <div class="modal-info-warehouse__bottom">
-    <a href="/warehouse/1.html" class="modal-info-warehouse__link button">
+    <a href="/warehouse/${data.warehouse_id}${expansionFile}" class="modal-info-warehouse__link button">
       <span>Выбрать кладовку</span>
     </a>
   </div>`
@@ -91,7 +93,7 @@ export function warehouseList(data, pathPrefix) {
         ${data.cnt_free && declOfNum(data.cnt_free, ['свободная', 'свободных', 'свободных'])}
       </span>
     </div>
-    <a href="/warehouse/1.html" class="map__warehouse_link button">
+    <a href="/warehouse/${data.warehouse_id}${expansionFile}" class="map__warehouse_link button">
       <span>${data.min_price ? 'от ' + formattingPrice(data.min_price) : 'Нет данных'}</span>
     </a>
   </div>`
