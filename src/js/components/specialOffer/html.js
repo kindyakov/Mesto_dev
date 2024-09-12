@@ -5,10 +5,8 @@ export function cardHtml(data, isFos = false) {
   </div>
   <div class="cards-slider__slide_content">
     <div class="cards-slider__slide_row">
-      <h5 class="cards-slider__slide_title">${data.title}</h5>
-      <svg class='icon icon-arrow-cos'>
-        <use xlink:href='img/svg/sprite.svg#arrow-cos'></use>
-      </svg>
+      <h5 class="cards-slider__slide_title">${data.volume || ''}</h5>
+      <h5 class="cards-slider__slide_title">${data.area || ''}</h5>
     </div>
     <div class="cards-slider__slide_prices">
       <span class="cards-slider__slide_price price-count">${data.priceCount}</span>
@@ -18,3 +16,7 @@ export function cardHtml(data, isFos = false) {
   </div>
 </div>`
 }
+
+// <svg class='icon icon-arrow-cos'>
+// <use xlink:href='img/svg/sprite.svg#arrow-cos'></use>
+// </svg>

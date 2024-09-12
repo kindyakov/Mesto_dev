@@ -33,7 +33,7 @@ export function warehousesResultAccordion({ data, isRooms = true, rangeData }) {
 				<use xlink:href='${pathPrefix}img/svg/sprite.svg#arrow-right'></use>
 			</svg>
 		</div>
-		<a href="${pathPrefix}warehouse/1.html${queryParams}" class="warehouses-result__accordion_button button-2" data-warehouse-id="${data.warehouse_id ? data.warehouse_id : ''}"><span>Выбрать кладовку</span></a>
+		<a href="${pathPrefix}warehouse/${data.warehouse_id}.html${queryParams}" class="warehouses-result__accordion_button button-2" data-warehouse-id="${data.warehouse_id ? data.warehouse_id : ''}"><span>Выбрать кладовку</span></a>
 		${isRooms ? `
 		<div class="warehouses-result__accordion_content _my-accordion-content">
       ${data.rooms?.length ? data.rooms.map(room => warehousesResultRoom(room, pathPrefix)).join('') : ''}

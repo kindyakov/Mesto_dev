@@ -73,9 +73,9 @@ class Room {
             <span class="path__sep">/</span>
             <a href="calculator.html" class="path__link hover-link">Калькулятор</a>
             <span class="path__sep">/</span>
-            <a href="./warehouse/1.html?id=${currentWarehouse.warehouse_id}" class="path__link hover-link">${currentWarehouse.warehouse_name}</a>
+            <a href="./warehouse/${currentWarehouse.warehouse_id}.html" class="path__link hover-link">${currentWarehouse.warehouse_name}</a>
             <span class="path__sep">/</span>
-            <span class="path__link">Кладовка ${room.room_id}</span>`
+            <span class="path__link">Кладовка ${room.room_name}</span>`
         }
       }
 

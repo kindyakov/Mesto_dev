@@ -20,17 +20,12 @@ function addClassRented(rented) {
   }
 }
 
-function getSearchParams() {
-  const [href, params = ''] = location.href.split('?')
-  return params
-}
-
 class Warehouse {
   constructor() {
     this.warehouse = document.querySelector('.warehouse')
     if (!this.warehouse) return
 
-    this.urlParams = new URLSearchParams(getSearchParams())
+    this.urlParams = new URLSearchParams(this.getSearchParams())
 
     // this.warehouseId = +this.urlParams.get('id')
     this.warehouseId = +this.warehouse.getAttribute('data-warehouse-id')
@@ -40,18 +35,7 @@ class Warehouse {
 
     if (!this.warehouseId) return
 
-    this.titlePage = document.querySelector('title')
-
-    this.slider = new Swiper('.slider-warehouse', {
-      slidesPerView: 1,
-      observeSlideChildren: true,
-      observer: true,
-      loop: true,
-      navigation: {
-        nextEl: '.warehouse__slider-btn.btn-slider-next',
-        prevEl: '.warehouse__slider-btn.btn-slider-prev',
-      },
-    });
+    this.slider = this.initSlider();
 
     this.warehouseElements = this.warehouse.querySelectorAll('[data-warehouse-key]')
 
@@ -62,6 +46,7 @@ class Warehouse {
 
     this.range = new Range('.range-filter-warehouse', {
       selectorInput: '.input-filter-warehouse',
+      warehouse_id: this.warehouseId
     })
 
     this.loader = new Loader(document.querySelector('.main'), {
@@ -85,6 +70,24 @@ class Warehouse {
     this.init()
   }
 
+  getSearchParams() {
+    const [href, params = ''] = location.href.split('?');
+    return params;
+  }
+
+  initSlider() {
+    return new Swiper('.slider-warehouse', {
+      slidesPerView: 1,
+      observeSlideChildren: true,
+      observer: true,
+      loop: true,
+      navigation: {
+        nextEl: '.warehouse__slider-btn.btn-slider-next',
+        prevEl: '.warehouse__slider-btn.btn-slider-prev',
+      },
+    });
+  }
+
   init() {
     const volume_start = +this.urlParams.get('volume_start')
     const volume_end = +this.urlParams.get('volume_end')
@@ -92,7 +95,7 @@ class Warehouse {
     this.range.setSlider('volume', [volume_start, volume_end])
     this.range.updateInputValue('volume', [volume_start, volume_end])
 
-    this.reqData = { ...this.range.rangeData, floor: 1 }
+    this.reqData = { ...this.range.rangeData, warehouse_id: this.warehouseId, floor: 1 }
 
     this.events()
     this.process()
@@ -100,19 +103,14 @@ class Warehouse {
 
   events() {
     this.tabsScheme.options.onChange = (nexTabBtn, prevTabBtn, nextTabContent, prevTabContent) => {
-      if (nextTabContent.classList.contains('content-schemes-one')) {
-        this.schemeActive = this.schemeOne
-        this.reqData.floor = 1
-      } else if (nextTabContent.classList.contains('content-schemes-two')) {
-        this.schemeActive = this.schemeTwo
-        this.reqData.floor = 2
-      }
+      this.schemeActive = nextTabContent.classList.contains('content-schemes-one') ? this.schemeOne : this.schemeTwo;
+      this.reqData.floor = this.schemeActive === this.schemeOne ? 1 : 2;
 
       this.process(buildQueryParams(this.reqData))
     }
 
     this.range.options.onChange = (rangeData) => {
-      this.reqData = { floor: this.reqData.floor, warehouse_id: this.reqData.warehouse_id, ...rangeData }
+      this.reqData = { ...  this.reqData, floor: this.reqData.floor, ...rangeData }
       this.process(buildQueryParams(this.reqData))
     }
 
@@ -149,7 +147,7 @@ class Warehouse {
           this.range.rangeData.price_end = 100000
         }
 
-        this.reqData = { floor: this.reqData.floor, warehouse_id: this.reqData.warehouse_id, ...this.range.rangeData }
+        this.reqData = { ...this.reqData, floor: this.reqData.floor, ...this.range.rangeData }
 
         if (+values[0] == 10) {
           this.reqData.area_start = 10
@@ -170,9 +168,8 @@ class Warehouse {
     this.reqData.warehouse_id = warehouseCurrent.warehouse_id
 
     this.warehouseElements.length && this.warehouseElements.forEach(el => {
-      const key = el.getAttribute('data-warehouse-key')
-      el.textContent = warehouseCurrent[key]
-      // this.titlePage.textContent = warehouseCurrent.warehouse_name
+      const [key, text] = el.getAttribute('data-warehouse-key').split(',')
+      el.textContent = text ? `${text} ${warehouseCurrent[key]}` : warehouseCurrent[key]
     })
 
     if (this.pathContent && !this.pathContent.closest('.path').classList.contains('not')) {
@@ -189,7 +186,7 @@ class Warehouse {
     })
 
     filtered_rooms.length && filtered_rooms.forEach(room => {
-      const cell = this.warehouse.querySelector(`.warehouse__svg-cell[data-cell-num="${room.room_id}"]`)
+      const cell = this.warehouse.querySelector(`.warehouse__svg-cell[data-cell-num="${room.room_name}"]`)
       if (!cell) return
 
       cell.setAttribute('data-rented', room.rented)
@@ -198,7 +195,7 @@ class Warehouse {
     })
 
     rooms.length && rooms.forEach(room => {
-      const cell = this.warehouse.querySelector(`.warehouse__svg-cell[data-cell-num="${room.room_id}"]`)
+      const cell = this.warehouse.querySelector(`.warehouse__svg-cell[data-cell-num="${room.room_name}"]`)
       if (!cell) return
 
       cell.setAttribute('data-rented', room.rented)
@@ -239,8 +236,8 @@ class Warehouse {
       this.renderRooms(filtered_rooms)
 
       this.resultRoomsData.rooms.length && this.resultRoomsData.rooms.forEach(room => {
-        const cell = this.warehouse.querySelector(`.warehouse__svg-cell[data-room-id="${room.room_id}"]`)
-        const roomWarehouse = this.warehouse.querySelector(`.room-warehouse[data-room-id="${room.room_id}"]`)
+        const cell = this.warehouse.querySelector(`.warehouse__svg-cell[data-room-id="${room.room_name}"]`)
+        const roomWarehouse = this.warehouse.querySelector(`.room-warehouse[data-room-id="${room.room_name}"]`)
 
         cell && cell.classList.add('_selected')
         if (roomWarehouse) {
@@ -269,32 +266,30 @@ class Warehouse {
       return
     }
 
-    if (cell.classList.contains('_selected')) {
-      cell && cell.classList.remove('_selected')
-      roomWarehouse && roomWarehouse.classList.remove('_selected')
+    const isSelected = cell && cell.classList.contains('_selected');
+    const volumeChange = isSelected ? -currentRoom.volume : currentRoom.volume;
+    const priceChange = isSelected ? -currentRoom.price_11m : currentRoom.price_11m;
 
-      this.resultRoomsData.volume = +(this.resultRoomsData.volume - +currentRoom.volume).toFixed(1)
-      this.resultRoomsData.price_11m = +(this.resultRoomsData.price_11m - +currentRoom.price_11m).toFixed(0)
-      this.resultRoomsData.ids = this.resultRoomsData.ids.filter(id => id !== currentRoom.room_id)
-      this.resultRoomsData.rooms = this.resultRoomsData.rooms.filter(rooms => +rooms.room_id !== +currentRoom.room_id)
-      this.resultRoomsData.count_rooms -= 1
+    cell?.classList.toggle('_selected', !isSelected);
+    roomWarehouse?.classList.toggle('_selected', !isSelected);
+
+    if (isSelected) {
+      roomWarehouse?.classList.remove('_selected');
+      this.resultRoomsData.ids = this.resultRoomsData.ids.filter(id => id !== currentRoom.room_id);
+      this.resultRoomsData.rooms = this.resultRoomsData.rooms.filter(room => +room.room_id !== +currentRoom.room_id);
+      this.resultRoomsData.count_rooms -= 1;
     } else {
-      const notFilteredRooms = this.warehouse.querySelector('.not-filtered-rooms')
+      this.warehouse.querySelector('.not-filtered-rooms')?.remove();
+      roomWarehouse?.remove();
+      this.contentRoomsWarehouse.prepend(roomWarehouse);
 
-      if (notFilteredRooms) {
-        notFilteredRooms.remove()
-      }
-
-      cell && cell.classList.add('_selected')
-      roomWarehouse && roomWarehouse.remove()
-      this.contentRoomsWarehouse.insertAdjacentHTML('afterbegin', warehouseRoom(currentRoom, true))
-
-      this.resultRoomsData.volume = +(this.resultRoomsData.volume + +currentRoom.volume).toFixed(1)
-      this.resultRoomsData.price_11m = +(this.resultRoomsData.price_11m + +currentRoom.price_11m).toFixed(0)
-      this.resultRoomsData.ids.push(currentRoom.room_id)
-      this.resultRoomsData.rooms.push(currentRoom)
-      this.resultRoomsData.count_rooms += 1
+      this.resultRoomsData.ids.push(currentRoom.room_id);
+      this.resultRoomsData.rooms.push(currentRoom);
+      this.resultRoomsData.count_rooms += 1;
     }
+
+    this.resultRoomsData.volume = +(this.resultRoomsData.volume + volumeChange).toFixed(1);
+    this.resultRoomsData.price_11m = +(this.resultRoomsData.price_11m + priceChange).toFixed(0);
 
     if (this.resultRoomsData.count_rooms == 1) {
       this.buttonResultWarehouse.setAttribute('data-room-id', this.resultRoomsData.ids[0])
@@ -303,11 +298,6 @@ class Warehouse {
       this.buttonResultWarehouse.setAttribute('data-room-id', '')
       this.buttonResultWarehouse.classList.add('_none')
     }
-
-    setMinMaxBlocks('.warehouse__rooms_room-num', { breakpointsNone: 576 })
-    setMinMaxBlocks('.warehouse__rooms_room-area', { breakpoints: [1215, 576] })
-    setMinMaxBlocks('.warehouse__rooms_room-block.dimensions', { breakpoints: [1215, 576] })
-    setMinMaxBlocks('.warehouse__rooms_room-link', { breakpoints: [576, 370] })
 
     this.infoResultWarehouse.innerHTML = `<span>${this.resultRoomsData.volume} м<sup>3</sup></span><span>от ${formattingPrice(this.resultRoomsData.price_11m)}</span>`
     this.linkResultWarehouse.innerHTML = `<span>Арендовать ${this.resultRoomsData.count_rooms}

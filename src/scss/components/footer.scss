@@ -168,7 +168,18 @@
 			flex-shrink: 0;
 		}
 		@media (max-width: $md2) {
+			.icon {
+				width: 15px;
+				height: 15px;
+			}
+			font-size: 14px;
 			max-width: 200px;
+		}
+		@media (max-width: $md3) {
+			max-width: none;
+		}
+		@media (max-width: $md5) {
+			font-size: 12px;
 		}
 	}
 

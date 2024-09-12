@@ -106,7 +106,7 @@ class ModalQuiz {
 
     if (Array.from(fromData).length) {
       if (this.sliderQuiz.activeIndex === this.sliderQuiz.slides.length - 1) {
-        this.nextSlideMain()
+        this.nextSlideMain(fromData.get('warehouse'))
       } else {
         this.sliderQuiz.slideNext()
       }
@@ -122,7 +122,6 @@ class ModalQuiz {
 
       this.isMobile && currentLabels[0].scrollIntoView({ behavior: 'smooth', block: 'center' })
     }
-
   }
 
   backSlide() {
@@ -133,8 +132,9 @@ class ModalQuiz {
     this.updateProgressBar(this.sliderQuiz.activeIndex, this.sliderQuiz.slides.length)
   }
 
-  nextSlideMain() {
-    this.warehousesResult.render(this.warehouses)
+  nextSlideMain(warehouseId) {
+    const warehouses = warehouseId ? this.warehouses.filter(obj => obj.warehouse_id == +warehouseId) : this.warehouses
+    this.warehousesResult.render(warehouses)
     this.setMaxHeight(this.sliderWrapperMain, this.sliderMain.slides[this.sliderMain.activeIndex])
     this.sliderMain.slideNext()
   }
@@ -142,7 +142,7 @@ class ModalQuiz {
   setMaxHeight(wrapper, slide) {
     if (!wrapper || !slide) return
     setTimeout(() => {
-      wrapper.style.maxHeight = slide.scrollHeight + 'px'
+      wrapper.style.minHeight = slide.scrollHeight + 'px'
     })
   }
 

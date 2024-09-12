@@ -1,7 +1,7 @@
 import { declOfNum } from "../../utils/declOfNum.js"
 import { formattingPrice } from "../../utils/formattingPrice.js"
 
-const expansionFile = location.hostname == 'localhost' ? '.html' : ''
+const expansionFile = '.html'
 
 export function markerContent(data, pathPrefix) {
   return `
