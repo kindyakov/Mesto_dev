@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getCookie, deleteCookie } from '../utils/cookie.js'
 
-const baseURL = 'https://store-demo-test.ru' // store-mesto.ru 
+const baseURL = 'https://store-mesto.ru'
 
 axios.defaults.timeout = 30000
 

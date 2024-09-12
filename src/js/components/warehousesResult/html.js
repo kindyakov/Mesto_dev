@@ -47,7 +47,7 @@ export function warehousesResultRoom(data, pathPrefix = '') {
 		<div class="warehouses-result__accordion_icon-room">
 			<img src="${pathPrefix}img/icons/warehouses-icon-room.png" alt="Иконка">
 		</div>
-		<h5 class="warehouses-result__accordion_name-room">${data.room_id ? 'Кладовка ' + data.room_id : ''}</h5>
+		<h5 class="warehouses-result__accordion_name-room">${data.room_name ? 'Кладовка ' + data.room_name : ''}</h5>
 		<ul class="warehouses-result__accordion_content-room">
 			<li class="volume">
 				<span>Объем</span>

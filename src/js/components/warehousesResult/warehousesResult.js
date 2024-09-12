@@ -34,6 +34,11 @@ class WarehousesResult {
 
     if (!warehouse) return
 
+    if (warehouse.show_popup) {
+      modalFeedbackForm.open()
+      return
+    }
+
     if (this.options.onlyWarehouse) {
       warehouse.forEach(_warehouse => {
         this.warehousesResult.insertAdjacentHTML('beforeend', warehousesResultAccordion({ data: _warehouse, isRooms: false, rangeData }))
