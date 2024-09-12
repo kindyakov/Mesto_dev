@@ -71,7 +71,12 @@ class Warehouse {
   }
 
   getSearchParams() {
-    const [href, params = ''] = location.href.split('?');
+    let params = null
+
+    if (location.href.includes('?')) {
+      [params = null] = location.href.split('?')?.[1]?.split('#')
+    }
+
     return params;
   }
 
@@ -91,9 +96,14 @@ class Warehouse {
   init() {
     const volume_start = +this.urlParams.get('volume_start')
     const volume_end = +this.urlParams.get('volume_end')
+    const price_start = +this.urlParams.get('price_start')
+    const price_end = +this.urlParams.get('price_end')
 
     this.range.setSlider('volume', [volume_start, volume_end])
+    this.range.setSlider('price', [price_start, price_end])
+
     this.range.updateInputValue('volume', [volume_start, volume_end])
+    this.range.updateInputValue('price', [price_start, price_end])
 
     this.reqData = { ...this.range.rangeData, warehouse_id: this.warehouseId, floor: 1 }
 

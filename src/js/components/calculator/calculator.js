@@ -153,12 +153,6 @@ class Calculator {
     if (!this.storageItems[category] && !this.storageItems[category]?.length) return
 
     this.storageItems[category].forEach(item => {
-      const imgPathWebp = item.img.replace('.png', '.webp')
-      const img = new Image()
-      if (location.hostname !== "localhost") {
-        img.src = imgPathWebp
-        img.onload = () => item.img = imgPathWebp;
-      }
       this.things.insertAdjacentHTML('beforeend', thing(item, this.app.pathPrefix))
     })
   }

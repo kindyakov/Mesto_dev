@@ -35,7 +35,7 @@ export class Range {
     this.rangeStartData = {
       volume_start: 1, volume_end: 17, price_start: 1, price_end: 22000,
     }
-    this.rangeData = { ...this.rangeStartData, volume_end: 16 }
+    this.rangeData = { ...this.rangeStartData, volume_end: 16, price_end: 1000000 }
 
     this.areaDifference = this.rangeStartData.volume_end - this.rangeData.volume_end
 
@@ -160,11 +160,11 @@ export class Range {
 
   rangeChange(values, handle, unencoded) {
     if (this.rangeData.volume_end === 16) {
-      this.rangeData.volume_end = 100
+      this.rangeData.volume_end = 1000
     }
 
     if (this.rangeData.price_end === this.rangeStartData.price_end) {
-      this.rangeData.price_end = 100000
+      this.rangeData.price_end = 1000000
     }
 
     this.options.onChange(this.rangeData, values, handle, unencoded)
@@ -224,16 +224,19 @@ export class Range {
 
   updateInputValue(nameRange, values) {
     const inputs = document.querySelectorAll(`${this.options.selectorInput}[data-type-range="${nameRange}"]`)
+    let [firstValue, lastValue] = values
+    const vStart = nameRange + '_start'
+    const vEnd = nameRange + '_end'
 
-    if (!values[0]) {
-      values[0] = this.rangeStartData.volume_start
+    if (!firstValue) {
+      firstValue = this.rangeStartData[vStart]
     }
 
-    if (!values[1]) {
-      values[1] = this.rangeData.volume_end
+    if (!lastValue) {
+      lastValue = this.rangeStartData[vEnd]
     }
 
-    const [firstValue, lastValue] = values
+    values = [firstValue, lastValue]
 
     inputs.length && inputs.forEach((input, i) => {
       const valueType = input.parentElement.querySelector('.type')
@@ -269,32 +272,32 @@ export class Range {
   }
 
   setSlider(nameRange, values) {
+    let [firstValue, lastValue] = values
+    const vStart = nameRange + '_start'
+    const vEnd = nameRange + '_end'
+
+    let isFirstValue = true
+
+    if (!firstValue) {
+      isFirstValue = false
+      firstValue = this.rangeStartData[vStart]
+    }
+
+    if (!lastValue) {
+      lastValue = this.rangeData[vEnd]
+    }
+
     if (nameRange === 'volume') {
-      let [firstValue, lastValue] = values
-      let isFirstValue = true
-
-      if (!firstValue) {
-        isFirstValue = false
-        firstValue = this.rangeStartData.volume_start
-      }
-
-      if (!lastValue) {
-        lastValue = this.rangeData.volume_end
-      }
-
       if (+firstValue == 1 && +lastValue == 1.5) {
         this.sliders[nameRange].set([1, 2])
-
-        this.rangeData.volume_start = +firstValue
-        this.rangeData.volume_end = +lastValue
       } else {
         this.sliders[nameRange].set([isFirstValue ? +firstValue + this.areaDifference : +firstValue, +lastValue + this.areaDifference])
-
-        this.rangeData.volume_start = +firstValue
-        this.rangeData.volume_end = +lastValue
       }
     } else {
-      this.sliders[nameRange].set(values)
+      this.sliders[nameRange].set([+firstValue, +lastValue])
     }
+
+    this.rangeData[vStart] = +firstValue
+    this.rangeData[vEnd] = +lastValue
   }
 }

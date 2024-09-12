@@ -1,8 +1,16 @@
 export function thing(data, pathPrefix) {
+  let imgSrc = pathPrefix + data.img
+  const imgPathWebp = imgSrc.replace('.png', '.webp')
+  const img = new Image()
+
+  if (location.hostname !== "localhost") {
+    img.src = imgPathWebp
+    img.onload = () => imgSrc = imgPathWebp;
+  }
   return `
   <div class="calculator__thing thing-calculator" data-thing-id=${data.id}>
     <div class="calculator__thing_img">
-      <img src="${pathPrefix}${data.img}" alt="Иконка">
+      <img src="${imgSrc}" alt="Иконка">
     </div>
     <span class="calculator__thing_name">${data.title}</span>
     <div class="calculator__thing_counter">
