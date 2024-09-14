@@ -245,6 +245,11 @@ class Warehouse {
       this.renderScheme(filtered_rooms, rooms)
       this.renderRooms(filtered_rooms)
 
+      if (this.warehouseId == 2) {
+        this.warehouse.querySelector('.btn-open-modal-feedback-form').setAttribute('data-warehouse-id', this.warehouseId)
+        this.warehouse.querySelector('.btn-open-modal-feedback-form span').textContent = 'Скоро открытие'
+      }
+
       this.resultRoomsData.rooms.length && this.resultRoomsData.rooms.forEach(room => {
         const cell = this.warehouse.querySelector(`.warehouse__svg-cell[data-room-id="${room.room_name}"]`)
         const roomWarehouse = this.warehouse.querySelector(`.room-warehouse[data-room-id="${room.room_name}"]`)

@@ -1,3 +1,5 @@
+import images from './warehousesImages.json'
+
 import { Loader } from "../../modules/myLoader.js"
 
 import api from "../../settings/api.js";
@@ -79,13 +81,10 @@ class Room {
         }
       }
 
-      if (rooms && rooms.length && this.cardsSliderWrapper) {
-        // this.cardsSliderWrapper.innerHTML = ''
+      const swiperWrapper = this.room.querySelector('.room__slider-wrapper')
 
-        // rooms.forEach(_room => {
-        // this.cardsSliderWrapper.insertAdjacentHTML('beforeend', roomSlide(_room))
-        // })
-      }
+      swiperWrapper.innerHTML = images[room.warehouse_id - 1].map(img => `<div class="room__slider-slide swiper-slide">
+        <img src="${window.app.pathPrefix}${img}" alt="Фото терминала"></div>`).join('')
     } catch (error) {
       console.error(error)
       throw error

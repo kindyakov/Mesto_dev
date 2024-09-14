@@ -29,20 +29,21 @@ export function modalWarehouse(data, pathPrefix) {
     </div>
     <div class="map__modal_warehouse-block">
       <span>
-        ${data.cnt_free ? data.cnt_free : 'Нет данных'}
+      ${data.warehouse_id == 2 ? 'скоро открытие' :
+      ` ${data.cnt_free ? data.cnt_free : 'Нет данных'}
         ${data.cnt_free && declOfNum(data.cnt_free, ['свободная', 'свободных', 'свободных'])} 
-        ${data.cnt_free && declOfNum(data.cnt_free, ['кладовка', 'кладовки', 'кладовок'])}
+        ${data.cnt_free && declOfNum(data.cnt_free, ['кладовка', 'кладовки', 'кладовок'])}`}
       </span>
-      <a href="/warehouse/${data.warehouse_id}${expansionFile}" class="map__modal_warehouse-link button">
-        <span>${data.min_price ? 'от ' + formattingPrice(data.min_price) : 'Нет данных'}</span>
-      </a>
+    <a href="/warehouse/${data.warehouse_id}${expansionFile}" class="map__modal_warehouse-link button">
+      <span>${data.min_price ? 'от ' + formattingPrice(data.min_price) : 'Нет данных'}</span>
+    </a>
     </div>
   </div>`
 }
 
 export function modalWarehouseCurrent(data) {
   return `
-  <div class="map__modal_close modal__close">
+    <div class="map__modal_close modal__close">
     <span></span>
     <span></span>
   </div>
@@ -77,7 +78,7 @@ export function modalWarehouseCurrent(data) {
 
 export function warehouseList(data, pathPrefix) {
   return `
-  <div class="map__warehouse">
+    <div class="map__warehouse">
     <div class="map__warehouse_top">
       <h6 class="map__warehouse_metro">${data.warehouse_metro ? data.warehouse_metro : 'Скоро открытие'}</h6>
       <address class="map__warehouse_address">${data.warehouse_address ? data.warehouse_address : 'Адрес уточняется'}</address>

@@ -118,7 +118,7 @@ export class Accordion {
     this.isAnim = true
 
     accordionTarget.classList.add('_open')
-    const animation = accordionContent.animate(
+    const animation = accordionContent?.animate(
       this.options.anim(contentHeight),
       {
         duration: this.options.duration,
@@ -127,7 +127,7 @@ export class Accordion {
       }
     );
 
-    animation.addEventListener('finish', () => {
+    animation?.addEventListener('finish', () => {
       accordionContent.style.maxHeight = (+contentHeight + +addHeight) + 'px';
       this.isAnim = false
       setTimeout(() => {

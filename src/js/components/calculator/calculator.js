@@ -215,7 +215,9 @@ class Calculator {
       const response = await api.get(`/_get_calculator_result_${buildQueryParams(reqData)}`)
       if (response.status !== 200) return
 
-      ym(97074608, 'reachGoal', 'podobrat')
+      if (ym) {
+        ym(97074608, 'reachGoal', 'podobrat')
+      }
       this.warehousesResult.render(response.data, reqData)
     } catch (error) {
       console.error(error.message)
@@ -228,7 +230,7 @@ class Calculator {
   async process(warehouses) {
     try {
       if (!this.calculator) return
-      this.select.innerHTML = ''
+      // this.select.innerHTML = ''
 
       warehouses.length && warehouses.forEach(warehouse => {
         this.select.insertAdjacentHTML('beforeend', `<option value="${warehouse.warehouse_id}">${warehouse.warehouse_address}</option>`)

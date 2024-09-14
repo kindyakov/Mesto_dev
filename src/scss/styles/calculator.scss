@@ -248,6 +248,7 @@
 			box-shadow: 4px 4px 5px 2px rgba(0, 0, 0, 0.25);
 			background-color: rgba(13, 53, 55, 0.5);
 			backdrop-filter: blur(20px);
+			z-index: 3;
 			&.safari {
 				background-color: rgba(13, 53, 55, 1);
 				box-shadow: 4px 4px 5px 2px rgba(0, 0, 0, 0.35);

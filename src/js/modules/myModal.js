@@ -74,7 +74,7 @@ export class Modal {
       this.disableScroll()
 
       this.isOpen = true
-      this.options.onOpen(e)
+      this.options.onOpen(e, this)
     }, 0)
   }
 
@@ -96,7 +96,8 @@ export class Modal {
   }
 
   lockPadding() {
-    const paddingOffset = window.innerWidth - document.body.offsetWidth
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const paddingOffset = isMobile ? 0 : 8
     this.modal.style.paddingRight = paddingOffset ? paddingOffset + 'px' : 'none'
     document.querySelector('.wrapper').style.paddingRight = paddingOffset + 'px'
   }

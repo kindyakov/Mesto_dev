@@ -35,11 +35,21 @@ class WarehousesResult {
     if (!warehouse) return
 
     if (warehouse.show_popup) {
+      const title = modalFeedbackForm.modal.querySelector('.h2')
+      const subTitle = modalFeedbackForm.modal.querySelector('.questions__subtitle')
+      title.textContent = rangeData.warehouse_id == 2 ? 'Скоро открытие' : 'Персональное предложение'
+      subTitle.textContent = rangeData.warehouse_id == 2 ? 'Для бронирования кладовки оставьте заявку и мы с Вами свяжемся' : 'Оставьте заявку и мы свяжемся с Вами'
+
       modalFeedbackForm.open()
       return
     }
 
-    if (this.options.onlyWarehouse) {
+    if (warehouse.warehouses?.length) {
+      warehouse.warehouses.forEach(_warehouse => {
+        _warehouse.cnt_free = _warehouse.num_of_rooms
+        this.warehousesResult.insertAdjacentHTML('beforeend', warehousesResultAccordion({ data: _warehouse, isRooms: false, rangeData }))
+      });
+    } else if (this.options.onlyWarehouse) {
       warehouse.forEach(_warehouse => {
         this.warehousesResult.insertAdjacentHTML('beforeend', warehousesResultAccordion({ data: _warehouse, isRooms: false, rangeData }))
       });
@@ -57,9 +67,10 @@ class WarehousesResult {
         modalFeedbackForm.open()
       }
     }
+
     const heightWarehousesResult = this.warehousesResult.scrollHeight
 
-    if (warehouse.rooms?.length) {
+    if (warehouse.rooms?.length || warehouse.warehouses?.length) {
       if (!isAnim) {
         this.warehousesResult
           .animate([
@@ -68,11 +79,11 @@ class WarehousesResult {
           ], { duration: 300, easing: 'ease-in-out' })
           .addEventListener('finish', () => {
             this.warehousesResult.scrollIntoView({ behavior: "smooth", block: "center" })
-            this.accordion.open(this.warehousesResult.querySelector('._my-accordion'), this.warehousesResult.querySelector('._my-accordion-content'))
+            this.accordion?.open(this.warehousesResult.querySelector('._my-accordion'), this.warehousesResult.querySelector('._my-accordion-content'))
           })
       } else {
         this.warehousesResult.scrollIntoView({ behavior: "smooth", block: "center" })
-        this.accordion.open(this.warehousesResult.querySelector('._my-accordion'), this.warehousesResult.querySelector('._my-accordion-content'))
+        this.accordion?.open(this.warehousesResult.querySelector('._my-accordion'), this.warehousesResult.querySelector('._my-accordion-content'))
       }
     }
   }
