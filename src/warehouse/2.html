@@ -21,7 +21,7 @@
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "Борисовские Пруды",
+        "name": "Катукова",
         "item": "https://mesto-store.ru/warehouse/2"
       }
     ]
@@ -43,7 +43,7 @@
             <div class="path__content path-content">
               <a href="/" class="path__link hover-link">Главная</a>
               <span class="path__sep">/</span>
-              <span class="path__link">Борисовские Пруды</span>
+              <span class="path__link">Катукова</span>
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@
             </div>
             <div class="warehouse__content">
               <div class="warehouse__content-top">
-                <h1 class="warehouse__title" data-warehouse-key="warehouse_name,Кладовки на">Кладовки на Катукова</h1>
+                <h1 class="warehouse__title">Кладовки на Катукова</h1>
                 <span class="warehouse__subtitle">скоро открытие</span>
               </div>
 
@@ -88,15 +88,15 @@
                 <li>Доступ 24/7</li>
                 <li>Лучшее предложение на маленькие кладовки</li>
               </ul>
-              <button class="button-5 btn-open-modal-feedback-form">
-                <span>Получить выгоду</span>
+              <button class="button-5 btn-open-modal-feedback-form" data-warehouse-id="2">
+                <span>Скоро открытие</span>
               </button>
               <div class="warehouse__content-bottom">
                 <address class="warehouse__address">
                   <svg class='icon icon-placemark'>
                     <use xlink:href='@@webRoot/img/svg/sprite.svg#placemark'></use>
                   </svg>
-                  <span data-warehouse-key="warehouse_address">Москва, Борисовские пруды 22 к4, с1</span>
+                  <span>Маршала Катукова, 9А</span>
                 </address>
                 <a href="tel:+74951651565" class="warehouse__phone">
                   <svg class='icon icon-tel'>
@@ -124,7 +124,29 @@
               </div>
 
             </div>
-            @@include('@@webRoot/html/section/warehouse/rooms.html',{path:'@@webRoot/'})
+
+            <div class="warehouse__rooms">
+              <div class="warehouse__rooms_content content-rooms-warehouse">
+
+              </div>
+              <div class="warehouse__rooms_result">
+                <h5 class="warehouse__rooms_result-title">Итого</h5>
+                <div class="warehouse__rooms_result-info info-result-warehouse">
+                  <span>0 м<sup>3</sup></span>
+                  <span></span>
+                </div>
+                <a href="../room.html"
+                  class="warehouse__rooms_result-link button link-result-warehouse link-rent-storage-room btn-open-modal-feedback-form"
+                  data-warehouse-id="2">
+                  <span>Забронировать</span>
+                </a>
+                <button
+                  class="warehouse__rooms_result-button button-result-warehouse btn-arrange-guest-visit link-rent-storage-room _none"><span>Оформить
+                    гостевой
+                    визит</span></button>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -192,7 +214,12 @@
     </main>
     @@include('@@webRoot/html/components/_footer.html',{path:'@@webRoot/'})
   </div>
-  @@include('@@webRoot/html/components/_modal.html',{path:'@@webRoot/'})
+
+  @@include('../html/modals/modal-arrange-guest-visit.html',{path:'@@webRoot/'})
+  @@include('../html/modals/modal-feedback-form.html',{path:'@@webRoot/'})
+  @@include('../html/modals/modal-information-warehouse.html',{path:'@@webRoot/'})
+  @@include('../html/modals/modal-quiz.html',{path:'@@webRoot/'})
+
   @@include('@@webRoot/html/components/_js.html',{path:'@@webRoot/'})
 </body>
 

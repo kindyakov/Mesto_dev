@@ -1,0 +1,51 @@
+<div class="modal modal-arrange-guest-visit">
+  <div class="modal__content">
+    <div class="modal__body">
+      <div class="modal__close">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="modal-arrange-guest-visit__content">
+        <h3 class="modal-arrange-guest-visit__title modal__title">Оформить гостевой визит</h3>
+        <p class="modal-arrange-guest-visit__text">Пожалуйста, укажите номер телефона, и мы вышлем на него одноразовый
+          код доступа для посещения кладовки.
+        </p>
+        <div class="modal-arrange-guest-visit__from_wrap-inputs">
+
+          <form class="modal-password-recovery__form form-send-phone" data-tag-form="Гостевой доступ">
+            <div class="modal-arrange-guest-visit__from_wrap-input wrap-input">
+              <input type="email" name="email" class="modal-arrange-guest-visit__from_input input" placeholder="Почта">
+            </div>
+            <div class="modal-password-recovery__wrap-input wrap-input wrap-input-btn">
+              <input type="tel" name="username" placeholder="Номер телефона" inputmode="tel"
+                class="modal-password-recovery__input input">
+              <button type="submit" class="modal-password-recovery__button-input button button-input"><span>Получить
+                  код</span></button>
+            </div>
+          </form>
+          <form class="modal-arrange-guest-visit__form modal__form form-arrange-guest-visit form-send-code _disabled"
+            data-tag-form="Гостевой доступ">
+            <div class="modal-password-recovery__wrap-input wrap-input wrap-input-btn">
+              <input type="text" name="code" placeholder="Код из СМС" inputmode="tel"
+                class="modal-password-recovery__input input" disabled>
+              <button type="submit" class="modal-password-recovery__button-input button button-input" disabled>
+                <span>Подтвердить</span>
+              </button>
+            </div>
+            <div class="modal-arrange-guest-visit__form_bottom form__bottom">
+              <input type="checkbox" name="personal_data" id="personal-data-1"
+                class="form__checkbox-input input-checkbox" checked>
+              <label for="personal-data-1" class="form__checkbox-label label-checkbox">
+                <svg class="icon icon-check">
+                  <use xlink:href="@@pathimg/svg/sprite.svg#check"></use>
+                </svg>
+              </label>
+              <p class="form__text text">Я согласен с <a href="@@pathpersdata.html" target="_blank">правилами</a>
+                обработки персональных данных</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

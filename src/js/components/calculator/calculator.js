@@ -243,7 +243,7 @@ class Calculator {
 
   async getDataJson(name) {
     try {
-      const response = await fetch(`../assets/data/${name}.json`)
+      const response = await fetch(`${location.origin}/assets/data/${name}.json`)
       if (!response.ok) return null
       const data = await response.json()
       return data

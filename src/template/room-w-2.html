@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('../html/components/_head.html',{
+  "title": "Кладовка $$$room_name",
+  "description": "@@fileName.description",
+  "path":"../../"
+  })
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://mesto-store.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Калькулятор",
+          "item": "https://mesto-store.ru/calculator"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "$$warehouse_name",
+          "item": "https://mesto-store.ru/warehouse/$$warehouse_id"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Кладовка $$room_name",
+          "item": "https://mesto-store.ru/calculator/$$warehouse_id/room-$$room_name"
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('../html/components/_header.html', {'fixed':'',path:'../../'})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="../../" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <a href="../../calculator.html" class="path__link hover-link">Калькулятор</a>
+              <span class="path__sep">/</span>
+              <a href="../../warehouse/$$warehouse_id.html" class="path__link hover-link">$$warehouse_name</a>
+              <span class="path__sep">/</span>
+              <span class="path__link">Кладовка $$room_name</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="room section">
+        <div class="room__container _container">
+          <div class="room__body">
+            <div class="room__slider swiper slider-room" data-da=".room__content,889,1">
+              <div class="room__slider-wrapper swiper-wrapper">
+                <div class="room__slider-slide swiper-slide">
+                  <img src="../../img/warehouse-2-1.jpeg" alt="Фото терминала">
+                </div>
+                <div class="room__slider-slide swiper-slide">
+                  <img src="../../img/warehouse-2-2.jpeg" alt="Фото терминала">
+                </div>
+                <div class="room__slider-slide swiper-slide">
+                  <img src="../../img/warehouse-2-3.jpeg" alt="Фото терминала">
+                </div>
+                <div class="room__slider-slide swiper-slide">
+                  <img src="../../img/warehouse-2-4.jpeg" alt="Фото терминала">
+                </div>
+              </div>
+              <button class="room__slider-btn btn-slider-prev">
+                <svg class='icon icon-arrow-left'>
+                  <use xlink:href='../../img/svg/sprite.svg#arrow-left'></use>
+                </svg>
+              </button>
+              <button class="room__slider-btn btn-slider-next">
+                <svg class='icon icon-arrow-right'>
+                  <use xlink:href='../../img/svg/sprite.svg#arrow-right'></use>
+                </svg>
+              </button>
+            </div>
+            <div class="room__content">
+              <div class="room__row">
+                <div class="room__block">
+                  <h3 class="room__name">Кладовка $$room_name<b data-room="room_name"></b></h3>
+                  <span>от <span data-room="price">$$price</span>/мес.</span>
+                </div>
+                <button class="button btn-open-modal-feedback-form" style="padding: 20px 10px; flex: 1 1 auto;"
+                  data-da=".room__content,889,2" data-room-id="$$room_id"><span>Получить выгоду</span></button>
+              </div>
+              <button class="room__button button-room btn-arrange-guest-visit link-rent-storage-room"
+                data-room-id="$$room_id">
+                <span>Оформить гостевой визит</span>
+              </button>
+              <ul class="room__characteristic">
+                <li>
+                  <span>Площадь</span>
+                  <b><b data-room="area">$$area</b> м<sup>2</sup></b>
+                </li>
+                <li>
+                  <span>Объём</span>
+                  <b><b data-room="volume">$$volume</b> м<sup>3</sup></b>
+                </li>
+                <li>
+                  <span>Размер кладовки (ДхШхВ)</span>
+                  <b><b data-room="dimensions">$$dimensions</b> м</b>
+                </li>
+                <li>
+                  <span>Этаж</span>
+                  <b data-room="floor">$$floor</b>
+                </li>
+              </ul>
+              <div class="room__faq">
+                <a href="../../faq.html">Доставка вещей</a>
+                <a href="../../faq.html">Как оплатить?</a>
+                <a href="../../how-use-storage.html#what-cant-be-stored">Что нельзя хранить?</a>
+                <a href="#map" class="link-scroll">Как проехать?</a>
+              </div>
+              <a href="../../rent-room.html?ids=[$$room_id]"
+                class="room__link button-5 link-room link-rent-storage-room btn-open-modal-feedback-form"
+                data-warehouse-id="2"><span>Забронировать</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="special-offer cards-slider section">
+        <div class="special-offer__container cards-slider__container _container">
+          <div class="special-offer__body cards-slider__body">
+            <h2 class="special-offer__title cards-slider__title h2">Специальные предложения</h2>
+            <div class="special-offer__slider cards-slider__slider slider-cards swiper">
+              <div class="special-offer__slider-wrapper cards-slider__wrapper swiper-wrapper">
+
+              </div>
+            </div>
+            <div class="cards-slider__bottom">
+              <button class="cards-slider__button btn-cards-slider-prev">
+                <svg class='icon icon-arrow-left'>
+                  <use xlink:href='../../img/svg/sprite.svg#arrow-left'></use>
+                </svg>
+              </button>
+              <div class="cards-slider__pagination pagination-cards-slider"></div>
+              <button class="cards-slider__button btn-cards-slider-next">
+                <svg class='icon icon-arrow-right'>
+                  <use xlink:href='../../img/svg/sprite.svg#arrow-right'></use>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="how-rent cannot-stored section">
+        <div class="how-rent__container _container">
+          <div class="how-rent__body">
+            <h2 class="how-rent__title h2">Что нельзя хранить?</h2>
+            <div class="how-rent__wrap-text">
+              <p class="how-rent__text text">Оформляя договор аренды, вы соглашаетесь с этими условиями и берёте на
+                себя полную ответственность за содержимое своего</p>
+            </div>
+            <div class="how-rent__items">
+              <div class="how-rent__item">
+                <div class="how-rent__item_top">
+                  <img src="../../img/icons/rad.png" alt="Иконка">
+                </div>
+                <p class="how-rent__item_text text">Токсичные и радиоактивные вещества</p>
+              </div>
+              <div class="how-rent__item">
+                <div class="how-rent__item_top">
+                  <img src="../../img/icons/apple.png" alt="Иконка">
+                </div>
+                <p class="how-rent__item_text text">Продукты питания</p>
+              </div>
+              <div class="how-rent__item">
+                <div class="how-rent__item_top">
+                  <img src="../../img/icons/dog.png" alt="Иконка">
+                </div>
+                <p class="how-rent__item_text text">Растения и животные</p>
+              </div>
+              <div class="how-rent__item">
+                <div class="how-rent__item_top">
+                  <img src="../../img/icons/z.png" alt="Иконка">
+                </div>
+                <p class="how-rent__item_text text">Запрещенные к обороту на территории РФ предметы</p>
+              </div>
+              <div class="how-rent__item">
+                <div class="how-rent__item_top">
+                  <img src="../../img/icons/mony.png" alt="Иконка">
+                </div>
+                <p class="how-rent__item_text text">Деньги и ценные бумаги</p>
+              </div>
+              <div class="how-rent__item">
+                <div class="how-rent__item_top">
+                  <img src="../../img/icons/gun.png" alt="Иконка">
+                </div>
+                <p class="how-rent__item_text text">Оружие и взрывоопасные вещества</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      @@include('../html/section/map.html',{path:'../../'})
+      @@include('../html/section/questions.html',{path:'../../'})
+    </main>
+    @@include('../html/components/_footer.html',{path:'../../'})
+  </div>
+
+  @@include('../html/modals/modal-arrange-guest-visit.html',{path:'../../'})
+  @@include('../html/modals/modal-feedback-form.html',{path:'../../'})
+  @@include('../html/modals/modal-information-warehouse.html',{path:'../../'})
+  @@include('../html/modals/modal-quiz.html',{path:'../../'})
+
+  @@include('../html/components/_js.html',{path:'../../'})
+</body>
+
+</html>

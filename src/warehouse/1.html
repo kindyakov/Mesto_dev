@@ -91,7 +91,7 @@
             </div>
             <div class="warehouse__content">
               <div class="warehouse__content-top">
-                <h1 class="warehouse__title" data-warehouse-key="warehouse_name">Кладовки на Борисовских прудах</h1>
+                <h1 class="warehouse__title">Кладовки на Борисовских прудах</h1>
                 <span class="warehouse__subtitle">для личных вещей & товаров</span>
               </div>
 
@@ -108,7 +108,7 @@
                   <svg class='icon icon-placemark'>
                     <use xlink:href='@@webRoot/img/svg/sprite.svg#placemark'></use>
                   </svg>
-                  <span data-warehouse-key="warehouse_address">Москва, Борисовские пруды 22 к4, с1</span>
+                  <span>Борисовские Пруды, 22к4с1</span>
                 </address>
                 <a href="tel:+74951651565" class="warehouse__phone">
                   <svg class='icon icon-tel'>
@@ -187,7 +187,12 @@
     </main>
     @@include('@@webRoot/html/components/_footer.html',{path:'@@webRoot/'})
   </div>
-  @@include('@@webRoot/html/components/_modal.html',{path:'@@webRoot/'})
+
+  @@include('../html/modals/modal-arrange-guest-visit.html',{path:'@@webRoot/'})
+  @@include('../html/modals/modal-feedback-form.html',{path:'@@webRoot/'})
+  @@include('../html/modals/modal-information-warehouse.html',{path:'@@webRoot/'})
+  @@include('../html/modals/modal-quiz.html',{path:'@@webRoot/'})
+
   @@include('@@webRoot/html/components/_js.html',{path:'@@webRoot/'})
 </body>
 

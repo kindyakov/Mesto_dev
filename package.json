@@ -13,7 +13,8 @@
     "zipDev": "gulp deployZIP_DEV",
     "gitDev": "gulp deployGIT_DEV",
     "deploy": "gulp deployFTP --build",
-    "docs": "gulp docs"
+    "docs": "gulp docs",
+    "genTemplatePages": "gulp genTemplatePages"
   },
   "keywords": [
     "gulp"

@@ -12,7 +12,7 @@ export function specialOffer() {
 
   async function getCard() {
     try {
-      const response = await fetch('../assets/data/special-offer-slide.json')
+      const response = await fetch(`${location.origin}/assets/data/special-offer-slide.json`)
 
       if (!response.ok) return
       const cardsData = await response.json()
@@ -23,6 +23,9 @@ export function specialOffer() {
         if (location.hostname !== "localhost") {
           card.img = imgPathWebp;
         }
+
+        card.img = `${location.origin}/${card.img}`
+        card.href = `${location.origin}/${card.href}`
 
         swiperWrapper.insertAdjacentHTML('beforeend', cardHtml(card, isFos))
       })

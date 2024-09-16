@@ -1,5 +1,5 @@
-export function thing(data, pathPrefix) {
-  let imgSrc = pathPrefix + data.img
+export function thing(data) {
+  let imgSrc = `${location.origin}/${data.img}`
   const imgPathWebp = imgSrc.replace('.png', '.webp')
   const img = new Image()
 
@@ -7,6 +7,7 @@ export function thing(data, pathPrefix) {
     img.src = imgPathWebp
     img.onload = () => imgSrc = imgPathWebp;
   }
+
   return `
   <div class="calculator__thing thing-calculator" data-thing-id=${data.id}>
     <div class="calculator__thing_img">

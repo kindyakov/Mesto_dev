@@ -7,7 +7,7 @@ import { Modal } from "../../modules/myModal.js"
 import { markerContent, modalWarehouse, modalWarehouseCurrent, warehouseList } from "./html.js"
 async function getStyleMap() {
   try {
-    const response = await fetch('../assets/customization.json')
+    const response = await fetch(`${location.origin}/assets/customization.json`)
     if (!response.ok) return false
     const data = await response.json()
     return data

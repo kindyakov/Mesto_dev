@@ -37,8 +37,6 @@ class Warehouse {
 
     this.slider = this.initSlider();
 
-    this.warehouseElements = this.warehouse.querySelectorAll('[data-warehouse-key]')
-
     this.tabsScheme = new Tabs('tabs-warehouse', {
       btnSelector: '.tabs-btn-schemes',
       contentSelector: '.tabs-content-schemes',
@@ -176,18 +174,6 @@ class Warehouse {
     if (!warehouses.length || !this.warehouse || !this.warehouseId) return
     const [warehouseCurrent] = warehouses.filter(warehouse => +warehouse.warehouse_id === this.warehouseId)
     this.reqData.warehouse_id = warehouseCurrent.warehouse_id
-
-    this.warehouseElements.length && this.warehouseElements.forEach(el => {
-      const [key, text] = el.getAttribute('data-warehouse-key').split(',')
-      el.textContent = text ? `${text} ${warehouseCurrent[key]}` : warehouseCurrent[key]
-    })
-
-    if (this.pathContent && !this.pathContent.closest('.path').classList.contains('not')) {
-      this.pathContent.innerHTML = `
-              <a href="${location.origin}" class="path__link hover-link">Главная</a>
-              <span class="path__sep">/</span>
-              <span class="path__link">${warehouseCurrent.warehouse_name}</span>`
-    }
   }
 
   renderScheme(filtered_rooms, rooms) {
@@ -244,11 +230,6 @@ class Warehouse {
       this.rooms = rooms
       this.renderScheme(filtered_rooms, rooms)
       this.renderRooms(filtered_rooms)
-
-      if (this.warehouseId == 2) {
-        this.warehouse.querySelector('.btn-open-modal-feedback-form').setAttribute('data-warehouse-id', this.warehouseId)
-        this.warehouse.querySelector('.btn-open-modal-feedback-form span').textContent = 'Скоро открытие'
-      }
 
       this.resultRoomsData.rooms.length && this.resultRoomsData.rooms.forEach(room => {
         const cell = this.warehouse.querySelector(`.warehouse__svg-cell[data-room-id="${room.room_name}"]`)
@@ -317,7 +298,7 @@ class Warehouse {
     this.infoResultWarehouse.innerHTML = `<span>${this.resultRoomsData.volume} м<sup>3</sup></span><span>от ${formattingPrice(this.resultRoomsData.price_11m)}</span>`
     this.linkResultWarehouse.innerHTML = `<span>Арендовать ${this.resultRoomsData.count_rooms}
     ${declOfNum(this.resultRoomsData.count_rooms, ['кладовку', 'кладовки', 'кладовок'])}</span>`
-    this.linkResultWarehouse.href = `../rent-room.html?ids=${encodeURIComponent(JSON.stringify(this.resultRoomsData.ids))}`
+    this.linkResultWarehouse.href = `${location.origin}/rent-room.html?ids=${encodeURIComponent(JSON.stringify(this.resultRoomsData.ids))}`
     // this.scrollToRoom(roomWarehouse)
     document.querySelector('.warehouse__rooms').scrollIntoView({ behavior: "smooth", block: "center" })
     setTimeout(() => {

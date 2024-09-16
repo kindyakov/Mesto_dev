@@ -71,7 +71,6 @@ getWarehousesInfo().then(({ warehouses }) => {
   } else if (pathname.includes('/room')) {
     import(`./components/room/room.js`).then(({ default: Room }) => {
       room = new Room();
-      room.renderRoom(warehouses);
     });
   } else if (pathname.includes('/authorization')) {
     const authorizationImport = import(`./components/authorization/authorization.js`).then(({ default: Authorization }) => {

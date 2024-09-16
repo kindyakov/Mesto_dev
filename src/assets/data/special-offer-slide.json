@@ -1,91 +1,52 @@
 [
   {
-    "img": "./img/rooms/1_kub.png",
+    "img": "img/rooms/1_kub.png",
     "imgW": 290,
     "imgH": 200,
     "volume": "1 м³",
     "area": "1 м²",
-    "priceCount": "895 ₽",
+    "priceCount": "2 500 ₽",
     "priceOld": "3 000 ₽",
-    "href": "./warehouse/1.html?volume_start=1&volume_end=1.5#schemes"
+    "href": "warehouse/1.html?volume_start=1&volume_end=1.5&price_start=1&price_end=1000000#schemes"
   },
   {
-    "img": "./img/rooms/1.5_kub.png",
-    "imgW": 290,
-    "imgH": 200,
-    "volume": "1.5 м³",
-    "priceCount": "4 500 ₽",
-    "priceOld": "4 800 ₽",
-    "href": "./warehouse/1.html?volume_start=1&volume_end=1.5#schemes"
-  },
-  {
-    "img": "./img/rooms/1_kv_m.png",
+    "img": "img/rooms/1_kv_m.png",
     "imgW": 290,
     "imgH": 200,
     "volume": "3.3 м³",
-    "area": "1 м²",
-    "priceCount": "3 360 ₽",
+    "area": "1.5 м²",
+    "priceCount": "3 900 ₽",
     "priceOld": "5 325 ₽",
-    "href": "./warehouse/1.html?volume_start=3&volume_end=5#schemes"
+    "href": "warehouse/1.html?volume_start=3&volume_end=5&price_start=1&price_end=1000000#schemes"
   },
   {
-    "img": "./img/rooms/2_kv_m.png",
-    "imgW": 290,
-    "imgH": 200,
-    "volume": "4.5 м³",
-    "area": "1 м²",
-    "priceCount": "4 480 ₽",
-    "priceOld": "7 100 ₽",
-    "href": "./warehouse/1.html?volume_start=4&volume_end=5#schemes"
-  },
-  {
-    "img": "./img/rooms/3_kv_m.png",
-    "imgW": 290,
-    "imgH": 200,
-    "volume": "6.6 м³",
-    "area": "1 м²",
-    "priceCount": "6 580 ₽",
-    "priceOld": "10 350 ₽",
-    "href": "./warehouse/1.html?volume_start=6&volume_end=10#schemes"
-  },
-  {
-    "img": "./img/rooms/4_kv_m.png",
-    "imgW": 290,
-    "imgH": 200,
-    "volume": "8.8 м³",
-    "area": "1 м²",
-    "priceCount": "8 750 ₽",
-    "priceOld": "13 800 ₽",
-    "href": "./warehouse/1.html?volume_start=8&volume_end=10#schemes"
-  },
-  {
-    "img": "./img/rooms/5_kv_m.png",
-    "imgW": 290,
-    "imgH": 200,
-    "volume": "11 м³",
-    "area": "1 м²",
-    "priceCount": "10 080 ₽",
-    "priceOld": "16 000 ₽",
-    "href": "./warehouse/1.html?volume_start=11&volume_end=16#schemes"
-  },
-  {
-    "img": "./img/rooms/6_kv_m.png",
+    "img": "img/rooms/6_kv_m.png",
     "imgW": 290,
     "imgH": 200,
     "volume": "13.2 м³",
-    "area": "1 м²",
-    "priceCount": "12 110 ₽",
+    "area": "6.0 м²",
+    "priceCount": "14 400 ₽",
     "priceOld": "19 200 ₽",
-    "href": "./warehouse/1.html?volume_start=13&volume_end=16#schemes"
+    "href": "warehouse/1.html?volume_start=13&volume_end=16&price_start=1&price_end=1000000#schemes"
   },
   {
-    "img": "./img/rooms/7_kv_m.png",
+    "img": "img/rooms/7_kv_m.png",
     "imgW": 290,
     "imgH": 200,
-    "volume": "15.4 м³",
-    "area": "1 м²",
-    "priceCount": "12 740 ₽",
-    "priceOld": "21 700 ₽",
-    "href": "./warehouse/1.html?volume_start=15&volume_end=16#schemes"
+    "volume": "199 м³",
+    "area": "71 м²",
+    "priceCount": "134 900 ₽",
+    "priceOld": "190 200 ₽",
+    "href": "warehouse/1.html?volume_start=100&volume_end=1600&price_start=1&price_end=1000000#schemes"
+  },
+  {
+    "img": "img/rooms/7_kv_m.png",
+    "imgW": 290,
+    "imgH": 200,
+    "volume": "230 м³",
+    "area": "82 м²",
+    "priceCount": "155 800 ₽",
+    "priceOld": "220 000 ₽",
+    "href": "warehouse/1.html?volume_start=100&volume_end=1600&price_start=1&price_end=1000000#schemes"
   }
 ]

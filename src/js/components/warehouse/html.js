@@ -15,7 +15,7 @@ export function warehouseRoom(data, isSelected = false) {
         <b>${data.floor ? data.floor : ''}</b>
       </div>
     </div>
-    <a href="../room.html?id=${data.room_id}" class="warehouse__rooms_room-link button link-rent-storage-room">
+    <a href="${location.origin}/calculator/${data.warehouse_id}/room-${data.room_name}.html" class="warehouse__rooms_room-link button link-rent-storage-room">
       <span>${data.price_11m ? 'от ' + formattingPrice(data.price_11m) : ''}</span>
     </a>
   </div>`

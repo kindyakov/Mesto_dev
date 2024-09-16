@@ -6,8 +6,8 @@ const expansionFile = '.html'
 export function markerContent(data, pathPrefix) {
   return `
   <div class="marker__content">
-    <img src="${pathPrefix}img/icons/map-marker.png" alt="Иконка" class="marker__img img-default">
-    <img src="${pathPrefix}img/icons/map-marker-2.png" alt="Иконка" class="marker__img img-active">
+    <img src="${location.origin}/img/icons/map-marker.png" alt="Иконка" class="marker__img img-default">
+    <img src="${location.origin}/img/icons/map-marker-2.png" alt="Иконка" class="marker__img img-active">
     <span class="marker__price">от ${formattingPrice(data.min_price)}</span>
     <span class="marker__rooms">${data.cnt_free}</span>
   </div>`
@@ -20,7 +20,7 @@ export function modalWarehouse(data, pathPrefix) {
       <h6 class="map__modal_warehouse-name">
         <span>${data.warehouse_metro ? data.warehouse_metro : 'Скоро открытие'}</span>
         <div class="map__modal_warehouse-distance">
-          <img src="${pathPrefix}img/icons/m.png" alt="Иконка">
+          <img src="${location.origin}/img/icons/m.png" alt="Иконка">
           <span>1 км</span>
         </div>
       </h6>
@@ -34,7 +34,7 @@ export function modalWarehouse(data, pathPrefix) {
         ${data.cnt_free && declOfNum(data.cnt_free, ['свободная', 'свободных', 'свободных'])} 
         ${data.cnt_free && declOfNum(data.cnt_free, ['кладовка', 'кладовки', 'кладовок'])}`}
       </span>
-    <a href="/warehouse/${data.warehouse_id}${expansionFile}" class="map__modal_warehouse-link button">
+    <a href="${location.origin}/warehouse/${data.warehouse_id}${expansionFile}" class="map__modal_warehouse-link button">
       <span>${data.min_price ? 'от ' + formattingPrice(data.min_price) : 'Нет данных'}</span>
     </a>
     </div>
@@ -69,7 +69,7 @@ export function modalWarehouseCurrent(data) {
   </ul>
 
   <div class="modal-info-warehouse__bottom">
-    <a href="/warehouse/${data.warehouse_id}${expansionFile}" class="modal-info-warehouse__link button">
+    <a href="${location.origin}/warehouse/${data.warehouse_id}${expansionFile}" class="modal-info-warehouse__link button">
       <span>Выбрать кладовку</span>
     </a>
   </div>`
@@ -85,7 +85,7 @@ export function warehouseList(data, pathPrefix) {
     </div>
     <div class="map__warehouse_row">
       <div class="map__warehouse_location">
-        <img src="${pathPrefix}img/icons/m-2.png" alt="Иконка">
+        <img src="${location.origin}/img/icons/m-2.png" alt="Иконка">
         <span>1 км</span>
       </div>
       <span class="map__warehouse_rooms">
@@ -94,7 +94,7 @@ export function warehouseList(data, pathPrefix) {
         ${data.cnt_free && declOfNum(data.cnt_free, ['свободная', 'свободных', 'свободных'])}
       </span>
     </div>
-    <a href="/warehouse/${data.warehouse_id}${expansionFile}" class="map__warehouse_link button">
+    <a href="${location.origin}/warehouse/${data.warehouse_id}${expansionFile}" class="map__warehouse_link button">
       <span>${data.min_price ? 'от ' + formattingPrice(data.min_price) : 'Нет данных'}</span>
     </a>
   </div>`

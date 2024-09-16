@@ -20,6 +20,12 @@ dotenv.config()
 
 const settings = JSON.parse(fs.readFileSync('settings.json', 'utf8'))
 
+const log = {
+  error: (...args) => console.log(plugins.chalk.bold.red(...args)),
+  warning: (...args) => console.log(plugins.chalk.hex('#FFA500')(...args)),
+  success: (...args) => console.log(plugins.chalk.bold.green(...args)),
+  info: (...args) => console.log(plugins.chalk.blue(...args)),
+}
 // Глобальные переменные
 global.app = {
   path,
@@ -28,12 +34,17 @@ global.app = {
   isBuild: process.argv.includes('--build'),
   isDev: !process.argv.includes('--build'),
   version: generateFileVersion(),
-  settings
+  settings,
+  dataFileName: '#pageData.json',
+  log,
 }
+
+process.env.NODE_ENV = app.isBuild ? 'production' : 'development';
+process.env.APP_VERSION = app.version;
 
 import copy from './gulp/tasks/copy.js'
 import reset from './gulp/tasks/reset.js'
-import html, { htmlReplaceExtensionImg, generateHtmlData } from './gulp/tasks/html.js'
+import html, { htmlReplaceExtensionImg, generateHtmlData } from './gulp/tasks/html/html.js'
 import server from './gulp/tasks/server.js'
 import scss, { insertCriticalCss } from './gulp/tasks/scss.js'
 import js from './gulp/tasks/js.js'
@@ -46,6 +57,9 @@ import php from './gulp/tasks/php.js'
 import { video } from "./gulp/tasks/video.js";
 import { createRepo } from './gulp/tasks/git.js';
 import jsDoc from './gulp/tasks/jsdoc.js'
+
+import genPages from './gulp/tasks/html/gen/genPages.js'
+import genTemplatePages from './gulp/tasks/html/genTemplatePages.js'
 
 function watcher() {
   gulp.watch(path.watch.assets, copy)
@@ -60,8 +74,17 @@ function watcher() {
 // Последовательная обработка шрифтов 
 const fonts = gulp.series(otfToTtf, ttfToWoff, fontsStyle, iconsfonts)
 // Основные задачи
-const mainTasks = gulp.series(video, gulp.parallel(copy, gulp.series(insertCriticalCss, html, htmlReplaceExtensionImg, js), scss, images, php))
-const devTasks = gulp.series(video, gulp.parallel(copy, gulp.series(generateHtmlData, insertCriticalCss, html), scss, js, images, php))
+const mainTasks = gulp.series(video,
+  gulp.parallel(copy,
+    gulp.series(insertCriticalCss, html, genTemplatePages, genPages, htmlReplaceExtensionImg, js),
+    scss, images, php))
+
+const devTasks = gulp.series(
+  video,
+  gulp.parallel(copy,
+    gulp.series(generateHtmlData, insertCriticalCss, html, genTemplatePages, genPages),
+    scss, js, images, php))
+
 // Сценарий выполнения задач 
 const dev = gulp.series(reset, devTasks, gulp.parallel(watcher, server))
 const build = gulp.series(reset, mainTasks)
@@ -74,4 +97,4 @@ const docs = gulp.series(jsDoc)
 gulp.task('default', dev)
 
 // export сценариев
-export { dev, build, fonts, svgSprite, deployZIP, deployFTP, deployZIP_DEV, deployGIT_DEV, docs }
+export { dev, build, fonts, svgSprite, deployZIP, deployFTP, deployZIP_DEV, deployGIT_DEV, docs, }

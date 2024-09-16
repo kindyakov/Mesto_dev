@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  <title>Кладовка $$room_name</title>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="Yyx7DTDT7mHL0xiOHn3f8FN6TBngMfwxkUK4idqcyZ0">
+<meta name="description" content="@@room-w-2.description">
+<link rel="shortcut icon" href="../../img/favicon/logo.svg">
+
+<link rel="stylesheet" href="../../assets/libs/air-datepicker/air-datepicker.min.css">
+<link rel="stylesheet" href="../../assets/libs/swiper/swiper-bundle.css">
+<link rel="stylesheet" href="../../assets/libs/nouislider/nouislider.min.css">
+<link rel="stylesheet" href="../../css/style.min.css">
+
+
+<script type="text/javascript" defer>
+	function loadYandexMetrica() {
+		(function (m, e, t, r, i, k, a) {
+			m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+			m[i].l = 1 * new Date();
+			for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+			k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+		})
+			(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+		ym(97074608, "init", {
+			clickmap: true,
+			trackLinks: true,
+			accurateTrackBounce: true,
+			webvisor: true
+		});
+	}
+
+	function handleScrollEvent() {
+		loadYandexMetrica();
+		window.removeEventListener('scroll', handleScrollEvent);
+	}
+
+	if (window.location.pathname.includes('/rent-room')) {
+		loadYandexMetrica()
+	} else {
+		window.addEventListener('load', function () {
+			window.addEventListener('scroll', handleScrollEvent);
+		});
+	}
+</script>
+<noscript>
+	<div><img src="https://mc.yandex.ru/watch/97074608" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
+
+
+<script defer>
+	function loadGoogleTagManager() {
+		(function (w, d, s, l, i) {
+			w[l] = w[l] || []; w[l].push({
+				'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+			}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-TWGX9N9L');
+	}
+
+	function handleScrollForGoogleTagManager() {
+		loadGoogleTagManager();
+		window.removeEventListener('scroll', handleScrollForGoogleTagManager);
+	}
+
+	window.addEventListener('load', function () {
+		window.addEventListener('scroll', handleScrollForGoogleTagManager);
+	});
+</script>
+
+
+<script defer>
+	function loadCalltouchScript() {
+		(function (w, d, n, c) { w.CalltouchDataObject = n; w[n] = function () { w[n]["callbacks"].push(arguments) }; if (!w[n]["callbacks"]) { w[n]["callbacks"] = [] } w[n]["loaded"] = false; if (typeof c !== "object") { c = [c] } w[n]["counters"] = c; for (var i = 0; i < c.length; i += 1) { p(c[i]) } function p(cId) { var a = d.getElementsByTagName("script")[0], s = d.createElement("script"), i = function () { a.parentNode.insertBefore(s, a) }, m = typeof Array.prototype.find === 'function', n = m ? "init-min.js" : "init.js"; s.async = true; s.src = "https://mod.calltouch.ru/" + n + "?id=" + cId; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", i, false) } else { i() } } })(window, document, "ct", "ssr2n41b");
+	}
+	function handleScrollForCalltouch() {
+		loadCalltouchScript();
+		window.removeEventListener('scroll', handleScrollForCalltouch);
+	}
+
+	window.addEventListener('load', function () {
+		// window.addEventListener('scroll', handleScrollForCalltouch);
+		loadCalltouchScript()
+	});
+</script>
+
+<script src="https://api-maps.yandex.ru/v3/?apikey=b756749a-c9d8-4f04-a6c7-2653f5d9d0b7&lang=ru_RU" defer></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://mesto-store.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Калькулятор",
+          "item": "https://mesto-store.ru/calculator"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "$$warehouse_name",
+          "item": "https://mesto-store.ru/warehouse/$$warehouse_id"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Кладовка $$room_name",
+          "item": "https://mesto-store.ru/calculator/$$warehouse_id/room-$$room_name"
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+  
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  
+  <div class='wrapper'>
+    <header class="header ">
+	<div class="header__body">
+		<div class="header__container _container">
+			<div class="header__content">
+				<a href="/" class="header__logo">
+					<svg class='icon icon-logo'>
+						<use xlink:href='../../img/svg/sprite.svg#logo'></use>
+					</svg>
+				</a>
+				<div class="header__operating-mode" data-da=".header__nav_block,576,first">
+					<b>24/7</b>
+					<span>Доступ к вашей кладовке круглосуточный</span>
+				</div>
+				<div class="header__contacts">
+					<div class="">
+						<a href="tel:+74951651565" class="header__phone">+7 (495) 165-15-65</a>
+						<address data-da=".header__nav_block,576,last">
+							<span>Борисовские пруды 22 к4, с1</span>
+						</address>
+						<address data-da=".header__nav_block,576,last">
+							<span>Маршала Катукова, 9А</span>
+						</address>
+					</div>
+					<button class="button-3 btn-open-modal-feedback-form"><span>Заказать звонок</span></button>
+				</div>
+				<a href="../../authorization.html" class="header__account account-link-header link-update">
+					<i>
+						<svg class='icon icon-account'>
+							<use xlink:href='../../img/svg/sprite.svg#account'></use>
+						</svg>
+					</i>
+					<span>Личный кабинет</span>
+				</a>
+				<div class="header-wrapper-burger">
+					<div class="header-burger">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+			</div>
+			<nav class="header__nav">
+				<ul class="header__ul">
+					<li class="header__li"><a href="../../calculator.html"
+							class="header__link hover-link link-update">Калькулятор</a>
+					</li>
+					<li class="header__li">
+						<button class="header__link dropdown-btn" data-dropdown-level="1">
+							<span>Услуги хранения</span>
+							<svg class='icon icon-arrow-right'>
+								<use xlink:href='../../img/svg/sprite.svg#arrow-right'></use>
+							</svg>
+						</button>
+						<div class="dropdown">
+							<ul class="dropdown__list">
+								<li class="dropdown__li">
+									<a href="../../for-your-business.html" class="dropdown__link link-update">
+										<span>Для вашего бизнеса</span>
+										<svg class='icon icon-arrow-right'>
+											<use xlink:href='../../img/svg/sprite.svg#arrow-right'></use>
+										</svg>
+									</a>
+								</li>
+								<li class="dropdown__li">
+									<a href="../../services.html#storage-services-tabs" class="dropdown__link link-update">
+										<span>Для личного хранения</span>
+										<svg class='icon icon-arrow-right'>
+											<use xlink:href='../../img/svg/sprite.svg#arrow-right'></use>
+										</svg>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="header__li"><a href="../../faq.html" class="header__link hover-link link-update">Вопрос-ответ</a>
+					</li>
+					<li class="header__li"><a href="../../how-use-storage.html" class="header__link hover-link link-update">Как
+							пользоваться
+							кладовкой</a></li>
+					<li class="header__li"><a href="../../about.html" class="header__link hover-link link-update">О нас</a></li>
+				</ul>
+				<div class="header__nav_block">
+					<a href="tel:+74951651565" class="header__phone">+7 (495) 165-15-65</a>
+					<button class="header__nav_btn-call btn-open-modal-feedback-form"><span>Заказать обратный
+							звонок</span></button>
+				</div>
+			</nav>
+		</div>
+	</div>
+</header>
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="../../" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <a href="../../calculator.html" class="path__link hover-link">Калькулятор</a>
+              <span class="path__sep">/</span>
+              <a href="../../warehouse/$$warehouse_id.html" class="path__link hover-link">$$warehouse_name</a>
+              <span class="path__sep">/</span>
+              <span class="path__link">Кладовка $$room_name</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="room section">
+        <div class="room__container _container">
+          <div class="room__body">
+            <div class="room__slider swiper slider-room" data-da=".room__content,889,1">
+              <div class="room__slider-wrapper swiper-wrapper">
+                <div class="room__slider-slide swiper-slide">
+                  <img src="../../img/warehouse-2-1.jpeg" alt="Фото терминала">
+                </div>
+                <div class="room__slider-slide swiper-slide">
+                  <img src="../../img/warehouse-2-2.jpeg" alt="Фото терминала">
+                </div>
+                <div class="room__slider-slide swiper-slide">
+                  <img src="../../img/warehouse-2-3.jpeg" alt="Фото терминала">
+                </div>
+                <div class="room__slider-slide swiper-slide">
+                  <img src="../../img/warehouse-2-4.jpeg" alt="Фото терминала">
+                </div>
+              </div>
+              <button class="room__slider-btn btn-slider-prev">
+                <svg class='icon icon-arrow-left'>
+                  <use xlink:href='../../img/svg/sprite.svg#arrow-left'></use>
+                </svg>
+              </button>
+              <button class="room__slider-btn btn-slider-next">
+                <svg class='icon icon-arrow-right'>
+                  <use xlink:href='../../img/svg/sprite.svg#arrow-right'></use>
+                </svg>
+              </button>
+            </div>
+            <div class="room__content">
+              <div class="room__row">
+                <div class="room__block">
+                  <h3 class="room__name">Кладовка $$room_name<b data-room="room_name"></b></h3>
+                  <span>от <span data-room="price">$$price</span>/мес.</span>
+                </div>
+                <button class="button btn-open-modal-feedback-form" style="padding: 20px 10px; flex: 1 1 auto;"
+                  data-da=".room__content,889,2" data-room-id="$$room_id"><span>Получить выгоду</span></button>
+              </div>
+              <button class="room__button button-room btn-arrange-guest-visit link-rent-storage-room"
+                data-room-id="$$room_id">
+                <span>Оформить гостевой визит</span>
+              </button>
+              <ul class="room__characteristic">
+                <li>
+                  <span>Площадь</span>
+                  <b><b data-room="area">$$area</b> м<sup>2</sup></b>
+                </li>
+                <li>
+                  <span>Объём</span>
+                  <b><b data-room="volume">$$volume</b> м<sup>3</sup></b>
+                </li>
+                <li>
+                  <span>Размер кладовки (ДхШхВ)</span>
+                  <b><b data-room="dimensions">$$dimensions</b> м</b>
+                </li>
+                <li>
+                  <span>Этаж</span>
+                  <b data-room="floor">$$floor</b>
+                </li>
+              </ul>
+              <div class="room__faq">
+                <a href="../../faq.html">Доставка вещей</a>
+                <a href="../../faq.html">Как оплатить?</a>
+                <a href="../../how-use-storage.html#what-cant-be-stored">Что нельзя хранить?</a>
+                <a href="#map" class="link-scroll">Как проехать?</a>
+              </div>
+              <a href="../../rent-room.html?ids=[$$room_id]"
+                class="room__link button-5 link-room link-rent-storage-room btn-open-modal-feedback-form"
+                data-warehouse-id="2"><span>Забронировать</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="special-offer cards-slider section">
+        <div class="special-offer__container cards-slider__container _container">
+          <div class="special-offer__body cards-slider__body">
+            <h2 class="special-offer__title cards-slider__title h2">Специальные предложения</h2>
+            <div class="special-offer__slider cards-slider__slider slider-cards swiper">
+              <div class="special-offer__slider-wrapper cards-slider__wrapper swiper-wrapper">
+
+              </div>
+            </div>
+            <div class="cards-slider__bottom">
+              <button class="cards-slider__button btn-cards-slider-prev">
+                <svg class='icon icon-arrow-left'>
+                  <use xlink:href='../../img/svg/sprite.svg#arrow-left'></use>
+                </svg>
+              </button>
+              <div class="cards-slider__pagination pagination-cards-slider"></div>
+              <button class="cards-slider__button btn-cards-slider-next">
+                <svg class='icon icon-arrow-right'>
+                  <use xlink:href='../../img/svg/sprite.svg#arrow-right'></use>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="how-rent cannot-stored section">
+        <div class="how-rent__container _container">
+          <div class="how-rent__body">
+            <h2 class="how-rent__title h2">Что нельзя хранить?</h2>
+            <div class="how-rent__wrap-text">
+              <p class="how-rent__text text">Оформляя договор аренды, вы соглашаетесь с этими условиями и берёте на
+                себя полную ответственность за содержимое своего</p>
+            </div>
+            <div class="how-rent__items">
+              <div class="how-rent__item">
+                <div class="how-rent__item_top">
+                  <img src="../../img/icons/rad.png" alt="Иконка">
+                </div>
+                <p class="how-rent__item_text text">Токсичные и радиоактивные вещества</p>
+              </div>
+              <div class="how-rent__item">
+                <div class="how-rent__item_top">
+                  <img src="../../img/icons/apple.png" alt="Иконка">
+                </div>
+                <p class="how-rent__item_text text">Продукты питания</p>
+              </div>
+              <div class="how-rent__item">
+                <div class="how-rent__item_top">
+                  <img src="../../img/icons/dog.png" alt="Иконка">
+                </div>
+                <p class="how-rent__item_text text">Растения и животные</p>
+              </div>
+              <div class="how-rent__item">
+                <div class="how-rent__item_top">
+                  <img src="../../img/icons/z.png" alt="Иконка">
+                </div>
+                <p class="how-rent__item_text text">Запрещенные к обороту на территории РФ предметы</p>
+              </div>
+              <div class="how-rent__item">
+                <div class="how-rent__item_top">
+                  <img src="../../img/icons/mony.png" alt="Иконка">
+                </div>
+                <p class="how-rent__item_text text">Деньги и ценные бумаги</p>
+              </div>
+              <div class="how-rent__item">
+                <div class="how-rent__item_top">
+                  <img src="../../img/icons/gun.png" alt="Иконка">
+                </div>
+                <p class="how-rent__item_text text">Оружие и взрывоопасные вещества</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="map section" id="map">
+
+  <div class="map__container _container">
+    <div class="map__body" data-tabs-init="map-tabs">
+      <div class="map__header">
+        <h2 class="map__title h2">Адрес кладовки МЕСТО</h2>
+        <div class="map__tabs">
+          <button class="map__tab _my-tabs-btn _tabs-bnt-active button"><span>На карте</span></button>
+          <button class="map__tab _my-tabs-btn button"><span>Списком</span></button>
+        </div>
+      </div>
+      <div class="map__content _my-tabs-content" id="yandex-map">
+        <div class="wpLoader map-loader _load">
+          <span class="loader"></span>
+        </div>
+        <div class="map__modal modal-info-all-warehouses _active">
+          <select name="rooms" class="map__modalselect select-map"></select>
+          <div class="map__modal_warehouses warehouses-modal-map">
+
+          </div>
+        </div>
+
+        <div class="map__modal modal-info-warehouse">
+        </div>
+      </div>
+      <div class="map__warehouses-list _my-tabs-content warehouses-list-map">
+
+      </div>
+    </div>
+  </div>
+</section>
+      <section class="questions section">
+  <div class="questions__container _container">
+    <div class="questions__body">
+      <div class="questions__content">
+        <h2 class="questions__title h2">Остались вопросы?</h2>
+        <span class="questions__subtitle">Оставьте заявку и мы свяжемся с Вами</span>
+        <form class="questions__form form-questions do-not-wait-server-response" data-tag-form="Остались вопросы"
+          data-res-msg="Контактные данные записаны">
+          <label class="questions__form_wrap-input">
+            <input type="tel" name="username" class="questions__form_input" placeholder="Номер телефона"
+              inputmode="tel">
+          </label>
+          <label class="questions__form_wrap-input">
+            <input type="text" name="firstname" class="questions__form_input" placeholder="Имя">
+          </label>
+          <button type="submit" class="questions__form_button button">
+            <span>Отправить</span>
+          </button>
+          <div class="questions__form_bottom">
+            <input type="checkbox" name="personal_data" id="personal-data-0" class="questions__form_checkbox-input"
+              checked>
+            <label for="personal-data-0" class="questions__form_checkbox-label">
+              <svg class='icon icon-check'>
+                <use xlink:href='../../img/svg/sprite.svg#check'></use>
+              </svg>
+            </label>
+            <p class="questions__form_text text">Согласие на <a href="./persdata.html" class="">обработку
+                персональных данных</a></p>
+          </div>
+        </form>
+      </div>
+      <div class="questions__img">
+        <img src="../../img/questions.jpg" alt="Картинка" loading="lazy" width="650" height="500">
+      </div>
+    </div>
+  </div>
+</section>
+    </main>
+    <footer class="footer">
+	<div class="footer__container _container">
+		<div class="footer__body">
+			<div class="footer__content">
+				<div class="footer__block">
+					<a href="tel:+74951651565" class="footer__phone">+7 (495) 165-15-65</a>
+					<button class="footer__button button-2 btn-open-modal-feedback-form"><span>Заказать звонок</span></button>
+				</div>
+				<div class="footer__block data-da">
+					<a href="mailto:info@mesto-store.ru" class="footer__mail">info@mesto-store.ru</a>
+					<span>Клиентская служба</span>
+				</div>
+				<div class="footer__block">
+					<div class="footer__messengers" data-da=".footer__block.data-da,992,last">
+						<a href="https://vk.com/mesto_kladovki" class="footer__messenger" target="_blank">
+							<svg class='icon icon-vk'>
+								<use xlink:href='../../img/svg/sprite.svg#vk'></use>
+							</svg>
+						</a>
+						<a href="https://wa.me/79690190864" class="footer__messenger" target="_blank">
+							<svg class='icon icon-whatsapp'>
+								<use xlink:href='../../img/svg/sprite.svg#whatsapp'></use>
+							</svg>
+						</a>
+						<a href="https://t.me/MestoKladovki" class="footer__messenger" target="_blank">
+							<svg class='icon icon-telegram'>
+								<use xlink:href='../../img/svg/sprite.svg#telegram'></use>
+							</svg>
+						</a>
+					</div>
+					<span data-da=".footer__block.data-da,992,last">Мы в соцсетях</span>
+				</div>
+				<div class="footer__block" style="align-items: flex-start;">
+					<address class="footer__address">
+						<svg class='icon icon-placemark'>
+							<use xlink:href='../../img/svg/sprite.svg#placemark'></use>
+						</svg>
+						<span>Борисовские пруды 22 к4, с1</span>
+					</address>
+					<address class="footer__address">
+						<svg class='icon icon-placemark'>
+							<use xlink:href='../../img/svg/sprite.svg#placemark'></use>
+						</svg>
+						<span>Маршала Катукова, 9А</span>
+					</address>
+				</div>
+				<div class="footer__block info-u">
+					<span>ИП Брысина Е.А.</span>
+					<p>
+						<span>ИНН 771921821260</span>
+						<span>ОГРН 321774600399092</span>
+					</p>
+				</div>
+			</div>
+			<div class="footer__files">
+				<a href="../../assets/files/Oferta_Fizlitsa.pdf" target="_blank">
+					<span>Оферта для физ.лица</span>
+					<svg class='icon icon-pdf'>
+						<use xlink:href='../../img/svg/sprite.svg#pdf'></use>
+					</svg>
+				</a>
+				<a href="../../assets/files/Oferta_Yurlitsa.pdf" target="_blank">
+					<span>Оферта для юр.лица</span>
+					<svg class='icon icon-pdf'>
+						<use xlink:href='../../img/svg/sprite.svg#pdf'></use>
+					</svg>
+				</a>
+				<a href="../../assets/files/Agreement-on-autopayments.pdf" target="_blank">
+					<span>Соглашение об автоплатежах</span>
+					<svg class='icon icon-pdf'>
+						<use xlink:href='../../img/svg/sprite.svg#pdf'></use>
+					</svg>
+				</a>
+				<a href="../../assets/files/Rules-conduct.pdf" target="_blank">
+					<span>Правила поведения</span>
+					<svg class='icon icon-pdf'>
+						<use xlink:href='../../img/svg/sprite.svg#pdf'></use>
+					</svg>
+				</a>
+			</div>
+			<div class="footer__bottom">
+				<p>Обращаем ваше внимание на то, что данный Интернет-сайт носит исключительно информационный характер и ни при
+					каких
+					условиях не является публичной офертой, определяемой положениями Статьи 437 Гражданского кодекса Российской
+					Федерации.
+					Для получения подробной информации о стоимости аренды боксов, сопутствующих товаров, транспортных услугах и
+					страховании,
+					обращайтесь к менеджерам по продажам. Права на сайт принадлежат ИП Брысина Е.А. (ИНН 771921821260, ОГРН
+					321774600399092) тел. +7 (495) 165-15-65, адрес эл. почты info@mesto-store.ru</p>
+				<p>© Все права защищены ИП Брысина Е.А.</p>
+			</div>
+		</div>
+	</div>
+</footer>
+  </div>
+
+  <div class="modal modal-arrange-guest-visit">
+  <div class="modal__content">
+    <div class="modal__body">
+      <div class="modal__close">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="modal-arrange-guest-visit__content">
+        <h3 class="modal-arrange-guest-visit__title modal__title">Оформить гостевой визит</h3>
+        <p class="modal-arrange-guest-visit__text">Пожалуйста, укажите номер телефона, и мы вышлем на него одноразовый
+          код доступа для посещения кладовки.
+        </p>
+        <div class="modal-arrange-guest-visit__from_wrap-inputs">
+
+          <form class="modal-password-recovery__form form-send-phone" data-tag-form="Гостевой доступ">
+            <div class="modal-arrange-guest-visit__from_wrap-input wrap-input">
+              <input type="email" name="email" class="modal-arrange-guest-visit__from_input input" placeholder="Почта">
+            </div>
+            <div class="modal-password-recovery__wrap-input wrap-input wrap-input-btn">
+              <input type="tel" name="username" placeholder="Номер телефона" inputmode="tel"
+                class="modal-password-recovery__input input">
+              <button type="submit" class="modal-password-recovery__button-input button button-input"><span>Получить
+                  код</span></button>
+            </div>
+          </form>
+          <form class="modal-arrange-guest-visit__form modal__form form-arrange-guest-visit form-send-code _disabled"
+            data-tag-form="Гостевой доступ">
+            <div class="modal-password-recovery__wrap-input wrap-input wrap-input-btn">
+              <input type="text" name="code" placeholder="Код из СМС" inputmode="tel"
+                class="modal-password-recovery__input input" disabled>
+              <button type="submit" class="modal-password-recovery__button-input button button-input" disabled>
+                <span>Подтвердить</span>
+              </button>
+            </div>
+            <div class="modal-arrange-guest-visit__form_bottom form__bottom">
+              <input type="checkbox" name="personal_data" id="personal-data-1"
+                class="form__checkbox-input input-checkbox" checked>
+              <label for="personal-data-1" class="form__checkbox-label label-checkbox">
+                <svg class="icon icon-check">
+                  <use xlink:href="../../img/svg/sprite.svg#check"></use>
+                </svg>
+              </label>
+              <p class="form__text text">Я согласен с <a href="../../persdata.html" target="_blank">правилами</a>
+                обработки персональных данных</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="modal modal-feedback-form">
+  <div class="modal__content">
+    <div class="modal__body">
+      <div class="modal__close">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="questions__body">
+        <div class="questions__content">
+          <h2 class="questions__title h2">Персональное предложение</h2>
+          <span class="questions__subtitle">Оставьте заявку и мы свяжемся с Вами</span>
+          <form class="questions__form form-questions" data-tag-form="Персональное предложение">
+            <label class="questions__form_wrap-input">
+              <input type="tel" name="username" class="questions__form_input" placeholder="Номер телефона"
+                inputmode="tel">
+            </label>
+            <label class="questions__form_wrap-input">
+              <input type="text" name="firstname" class="questions__form_input" placeholder="Имя">
+            </label>
+            <button type="submit" class="questions__form_button button">
+              <span>Отправить</span>
+            </button>
+            <div class="questions__form_bottom">
+              <input type="checkbox" name="personal_data" id="personal-data-2" class="questions__form_checkbox-input"
+                checked>
+              <label for="personal-data-2" class="questions__form_checkbox-label">
+                <svg class='icon icon-check'>
+                  <use xlink:href='../../img/svg/sprite.svg#check'></use>
+                </svg>
+              </label>
+              <p class="questions__form_text text">Согласие на <a href="./">обработку персональных данных</a>
+              </p>
+            </div>
+          </form>
+        </div>
+        <div class="questions__img">
+          <img src="../../img/questions.jpg" alt="Картинка">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="modal modal-information-warehouse">
+  <div class="modal__content">
+    <div class="modal__body">
+      <div class="modal__close">
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="modal-info-warehouse__top">
+        <h6 class="modal-info-warehouse__metro">Борисово</h6>
+        <address class="modal-info-warehouse__address">Борисовские Пруды, 22к4с1</address>
+      </div>
+
+      <ul class="modal-info-warehouse__location">
+        <li>м. м. Борисово (1 км)</li>
+      </ul>
+
+      <a href="tel:74951651565" class="modal-info-warehouse__phone">+7 (495) 165-15-65</a>
+
+      <ul class="modal-info-warehouse__info">
+        <li>
+          58
+          свободных
+          кладовок
+        </li>
+        <li>Круглосуточно</li>
+        <li>Без выходных</li>
+      </ul>
+
+      <div class="modal-info-warehouse__bottom">
+        <a href="/warehouse/1.html" class="modal-info-warehouse__link button">
+          <span>Выбрать кладовку</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="modal modal-quiz">
+  <div class="modal__content">
+    <div class="modal__body">
+      <div class="modal__close">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="modal-quiz__slider-main slider-main-modal-quiz swiper">
+        <div class="modal-quiz__wrapper wrapper-slider-modal-quiz swiper-wrapper">
+          <div class="modal-quiz__slide slide-modal-quiz swiper-slide">
+            <div class="modal-quiz__body">
+              <div class="modal-quiz__slider slider-modal-quiz swiper">
+                <div class="modal-quiz__slider_wrapper swiper-wrapper">
+                  <div class="modal-quiz__slider_slide swiper-slide">
+                    <div class="modal-quiz__slider_slide-content">
+                      <h3 class="modal-quiz__slider_slide-title">Для чего вы ищите кладовку?</h3>
+                      <form class="modal-quiz__slider_slide-form form-modal-quiz">
+                        <div class="modal-quiz__slider_slide-row">
+                          <label class="modal-quiz__slider_slide-label">
+                            <input type="radio" name="for-what-current" value="Для личных вещей" class="input-radio"
+                              id="for-what-current-0">
+                            <label for="for-what-current-0" class="label-radio"></label>
+                            <span>Для личных вещей</span>
+                          </label>
+                          <label class="modal-quiz__slider_slide-label">
+                            <input type="radio" name="for-what-current" value="Для бизнеса" class="input-radio"
+                              id="for-what-current-1">
+                            <label for="for-what-current-1" class="label-radio"></label>
+                            <span>Для бизнеса</span>
+                          </label>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-quiz__slider_slide-col">
+                      <div class="modal-quiz__img">
+                        <img src="../../img/rooms.jpg" alt="Картинка" class="img-modal-quiz">
+                      </div>
+                      <div class="modal-quiz__hint">
+                        <div class="modal-quiz__hint_top">
+                          <div class="modal-quiz__hint_img">
+                            <img src="../../img/administrator.png" alt="Картинка">
+                          </div>
+                          <div class="modal-quiz__hint_block-text">
+                            <b>Ульяна</b>
+                            <span>Администратор</span>
+                          </div>
+                        </div>
+                        <div class="modal-quiz__hint_content">
+                          Вы можете выбрать кладовку любой площади, начиная с 1 м<sup>3</sup>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-quiz__slider_slide swiper-slide">
+                    <div class="modal-quiz__slider_slide-content">
+                      <h3 class="modal-quiz__slider_slide-title">Для чего вы ищите кладовку?</h3>
+                      <form class="modal-quiz__slider_slide-form form-modal-quiz">
+                        <label class="modal-quiz__slider_slide-label">
+                          <input type="radio" name="for-what" value="Для хранения товара" class="input-radio"
+                            id="for-what-1">
+                          <label for="for-what-1" class="label-radio"></label>
+                          <span>Для хранения товара</span>
+                        </label>
+                        <label class="modal-quiz__slider_slide-label">
+                          <input type="radio" name="for-what" value="Для архива" class="input-radio" id="for-what-2">
+                          <label for="for-what-2" class="label-radio"></label>
+                          <span>Для архива</span>
+                        </label>
+                        <label class="modal-quiz__slider_slide-label">
+                          <input type="radio" name="for-what" value="На время ремонта/переезда офиса"
+                            class="input-radio" id="for-what-3">
+                          <label for="for-what-3" class="label-radio"></label>
+                          <span>На время ремонта/переезда офиса</span>
+                        </label>
+                        <label class="modal-quiz__slider_slide-label">
+                          <input type="radio" name="for-what" value="Для интернет-магазина" class="input-radio"
+                            id="for-what-4">
+                          <label for="for-what-4" class="label-radio"></label>
+                          <span>Для интернет-магазина</span>
+                        </label>
+                        <label class="modal-quiz__slider_slide-label">
+                          <input type="radio" name="for-what" value="Нужен офис + кладовка" class="input-radio"
+                            id="for-what-5">
+                          <label for="for-what-5" class="label-radio"></label>
+                          <span>Нужен офис + кладовка</span>
+                        </label>
+                        <label class="modal-quiz__slider_slide-label">
+                          <input type="radio" name="for-what" value="Для интернет-магазина" class="input-radio"
+                            id="for-what-6">
+                          <label for="for-what-6" class="label-radio"></label>
+                          <span>Для интернет-магазина</span>
+                        </label>
+                        <label class="modal-quiz__slider_slide-label">
+                          <input type="radio" name="for-what" value="Другое" class="input-radio" id="for-what-7">
+                          <label for="for-what-7" class="label-radio"></label>
+                          <span>Другое</span>
+                        </label>
+                      </form>
+                    </div>
+                    <div class="modal-quiz__slider_slide-col">
+                      <div class="modal-quiz__img">
+                        <img src="../../img/rooms.jpg" alt="Картинка" class="img-modal-quiz">
+                      </div>
+                      <div class="modal-quiz__hint">
+                        <div class="modal-quiz__hint_top">
+                          <div class="modal-quiz__hint_img">
+                            <img src="../../img/administrator.png" alt="Картинка">
+                          </div>
+                          <div class="modal-quiz__hint_block-text">
+                            <b>Ульяна</b>
+                            <span>Администратор</span>
+                          </div>
+                        </div>
+                        <div class="modal-quiz__hint_content">
+                          На терминалах осуществляется контроль над постоянным уровнем температурного режима и режима
+                          влажности - вещи будут
+                          храниться в идеальных условиях
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-quiz__slider_slide swiper-slide">
+                    <div class="modal-quiz__slider_slide-content">
+                      <h3 class="modal-quiz__slider_slide-title">Выберите кладовку</h3>
+                      <div class="modal-quiz__slider_slide-tabs">
+                        <div class="modal-quiz__slider_slide-tab button-4">
+                          <span>выберите одну <br>или несколько</span>
+                        </div>
+                        <button class="modal-quiz__slider_slide-tab button-4 btn-slide-skip">
+                          <span>пропустить</span>
+                        </button>
+                      </div>
+                      <form class="modal-quiz__slider_slide-form form-modal-quiz form-modal-quiz-warehouses">
+                        <label class="modal-quiz__slider_slide-label">
+                          <input type="checkbox" name="select-room" value="" class="input-radio" id="select-room-0">
+                          <label for="select-room-0" class="label-radio"></label>
+                          <span>м. Борисово</span>
+                        </label>
+                      </form>
+                    </div>
+                    <div class="modal-quiz__slider_slide-col">
+                      <div class="modal-quiz__img">
+                        <img src="../../img/rooms.jpg" alt="Картинка" class="img-modal-quiz">
+                      </div>
+                      <div class="modal-quiz__hint">
+                        <div class="modal-quiz__hint_top">
+                          <div class="modal-quiz__hint_img">
+                            <img src="../../img/administrator.png" alt="Картинка">
+                          </div>
+                          <div class="modal-quiz__hint_block-text">
+                            <b>Ульяна</b>
+                            <span>Администратор</span>
+                          </div>
+                        </div>
+                        <div class="modal-quiz__hint_content">
+                          На терминалах осуществляется контроль над постоянным уровнем температурного режима и режима
+                          влажности - вещи будут
+                          храниться в идеальных условиях
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-quiz__control">
+                <div class="modal-quiz__control_content">
+                  <span>Готово: <b class="progress-percent-modal-quiz">0%</b></span>
+                  <div class="modal-quiz__control_progress">
+                    <div class="progress-bar-modal-quiz"></div>
+                  </div>
+                </div>
+                <div class="modal-quiz__control_buttons">
+                  <button class="modal-quiz__control_button btn-back"><span></span></button>
+                  <button class="modal-quiz__control_button button btn-further"><span>Далее</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-quiz__slide slide-modal-quiz swiper-slide">
+            <div class="modal-quiz__leave-request">
+              <h3 class="modal-quiz__slider_slide-title">Оставьте заявку</h3>
+              <p>администратор свяжется с вами и назовет точную стоимость</p>
+              <form class="modal-quiz__form form-leave-request-modal-quiz" data-tag-form="Опрос">
+                <div class="wrap-input">
+                  <input type="text" name="firstname" class="input" placeholder="Имя">
+                </div>
+                <div class="wrap-input">
+                  <input type="tel" name="username" class="input" placeholder="Номер телефона">
+                </div>
+                <button type="submit" class="button-2"><span>Отправить запрос</span></button>
+                <div class="form-bottom">
+                  <input type="checkbox" name="personal_data" id="0000" class="input-checkbox" checked>
+                  <label for="0000" class="label-checkbox">
+                    <svg class="icon icon-check">
+                      <use xlink:href="../../img/svg/sprite.svg#check"></use>
+                    </svg>
+                  </label>
+                  <p class="text">Ознакомлен с <a href="">политикой конфиденциальности</a></p>
+                </div>
+              </form>
+              <h3 class="modal-quiz__slider_slide-title">Арендуйте кладовку онлайн</h3>
+              <div class="modal-quiz__warehouses warehouses-wrapper-modal-quiz">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="../../assets/libs/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/libs/nouislider/nouislider.min.js"></script>
+<script src="../../js/app.min.20240916230910.js"></script>
+</body>
+
+</html>
