@@ -21,7 +21,7 @@ async function genRoomPages() {
       fs.mkdirSync(calculatorDirPath, { recursive: true });
     }
 
-    const response = await axios.get('https://store-demo-test.ru/_get_all_rooms_')
+    const response = await axios.get('https://mesto-store.ru/_get_all_rooms_')
 
     if (response.status !== 200) throw new Error(response.statusText);
     const { rooms } = response.data;

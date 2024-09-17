@@ -76,13 +76,13 @@ const fonts = gulp.series(otfToTtf, ttfToWoff, fontsStyle, iconsfonts)
 // Основные задачи
 const mainTasks = gulp.series(video,
   gulp.parallel(copy,
-    gulp.series(insertCriticalCss, html, genTemplatePages, genPages, htmlReplaceExtensionImg, js),
+    gulp.series(insertCriticalCss, html, htmlReplaceExtensionImg, js), // genTemplatePages, genPages,
     scss, images, php))
 
 const devTasks = gulp.series(
   video,
   gulp.parallel(copy,
-    gulp.series(generateHtmlData, insertCriticalCss, html, genTemplatePages, genPages),
+    gulp.series(generateHtmlData, insertCriticalCss, html,), // genTemplatePages, genPages
     scss, js, images, php))
 
 // Сценарий выполнения задач 
