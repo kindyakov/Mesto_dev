@@ -1,211 +1,259 @@
-// .intro {
-// 	width: 100%;
-// 	background-color: $dark-green;
+.intro {
+	width: 100%;
+	background-color: $dark-green;
 
-// 	display: flex;
-// 	overflow: hidden;
+	display: flex;
+	overflow: hidden;
 
-// 	@media (max-width: 1920px) {
-// 		min-height: 100vh;
-// 	}
+	@media (max-width: 1920px) {
+		min-height: 100vh;
+	}
 
-// 	@media (max-width: $md5) {
-// 		min-height: 0;
-// 	}
+	@media (max-width: $md5) {
+		min-height: 0;
+	}
 
-// 	&__container {
-// 		min-height: 100%;
-// 		width: 100%;
-// 		@media (max-width: $md1) {
-// 			padding: 0;
-// 		}
-// 	}
+	&__container {
+		min-height: 100%;
+		width: 100%;
+		@media (max-width: $md1) {
+			padding: 0 !important;
+		}
+	}
 
-// 	&__body {
-// 		@include adaptiv-value('padding-top', 70, 40, 1);
-// 		width: 100%;
-// 		height: 100%;
-// 		display: flex;
-// 		flex-direction: column;
-// 		justify-content: center;
-// 		row-gap: 75px;
-// 		@media (max-width: $md4) {
-// 			row-gap: 40px;
-// 		}
-// 	}
+	&__body {
+		@include adaptiv-value('padding-top', 70, 40, 1);
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		row-gap: 75px;
+		@media (max-width: $md4) {
+			row-gap: 40px;
+		}
+	}
 
-// 	&__content-mobile {
-// 		width: 100%;
-// 		display: none;
-// 		position: relative;
-// 		height: 180px;
-// 		@media (max-width: $md4) {
-// 			display: flex;
-// 			background: url('../img/intro-bg_mobile.png') no-repeat center/cover !important;
-// 			.intro__bg {
-// 				display: block;
-// 				height: 260px;
-// 				z-index: 1;
-// 			}
-// 		}
-// 	}
+	&__content-mobile {
+		width: 100%;
+		display: none;
+		position: relative;
+		height: 180px;
+		// @media (max-width: $md4) {
+		// 	display: flex;
+		// 	background: url('img/intro-bg_mobile.png') no-repeat center/cover !important;
+		// 	.intro__bg {
+		// 		display: block;
+		// 		height: 260px;
+		// 		z-index: 1;
+		// 	}
+		// }
+	}
 
-// 	&__content {
-// 		display: flex;
-// 		flex-direction: column;
-// 		row-gap: 40px;
-// 		padding: 50px 40px;
-// 		position: relative;
-// 		background: url('../img/intro-bg.png') no-repeat center/cover;
+	&__content {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		row-gap: 40px;
+		padding: 50px 40px;
+		position: relative;
+		background: url('../img/intro-bg.png') no-repeat center / cover;
 
-// 		@media (max-width: $md1) {
-// 			padding: 50px 15px;
-// 		}
-// 		@media (max-width: $md4) {
-// 			padding: 0 20px;
-// 			overflow: hidden;
-// 			background: none !important;
-// 		}
-// 		@media (max-width: 380px) {
-// 			padding: 0 10px;
-// 		}
-// 	}
+		@media (min-width: $md1) {
+			min-height: 430px;
+		}
 
-// 	&__picture-bg {
-// 		position: absolute;
-// 		top: 50%;
-// 		left: 50%;
-// 		transform: translate(-50%, -50%);
-// 		min-width: 100%;
-// 		min-height: 100%;
-// 	}
+		@media (max-width: $md1) {
+			padding: 50px 15px;
+		}
+		@media (max-width: $md4) {
+			padding: 90px 20px 30px 20px;
+			overflow: hidden;
+			background: url('../img/intro-bg_mobile.png') no-repeat center / cover;
+		}
+		@media (max-width: 380px) {
+			padding: 90px 10px 30px 10px;
+		}
+	}
 
-// 	&__bg {
-// 		position: absolute;
-// 		z-index: 11;
-// 		right: 0;
-// 		top: 50%;
-// 		transform: translate(0, -50%);
-// 		max-width: 100%;
-// 		max-height: 625px;
-// 		width: auto;
-// 		object-fit: cover;
-// 		@media (max-width: $md1) {
-// 			min-height: 0;
-// 			max-height: 630px;
-// 		}
-// 		@media (max-width: $md2) {
-// 			height: 540px;
-// 		}
-// 		@media (max-width: $md3) {
-// 			display: none;
-// 		}
-// 	}
+	&__picture-bg {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		min-width: 100%;
+		min-height: 100%;
+	}
 
-// 	&__block-text {
-// 		display: flex;
-// 		flex-direction: column;
-// 		row-gap: 25px;
-// 		max-width: 650px;
-// 		@media (max-width: $md1) {
-// 			max-width: 500px;
-// 		}
-// 		@media (min-width: $md5) {
-// 			position: relative;
-// 			z-index: 1;
-// 		}
-// 	}
+	&__bg {
+		position: absolute;
+		z-index: 11;
+		right: 0;
+		top: 50%;
+		transform: translate(0, -50%);
+		max-width: 100%;
+		max-height: 625px;
+		width: auto;
+		object-fit: cover;
+		@media (max-width: $md1) {
+			min-height: 0;
+			max-height: 630px;
+		}
+		@media (max-width: $md2) {
+			height: 540px;
+		}
+		@media (max-width: $md3) {
+			display: none;
+		}
+	}
 
-// 	&__title {
-// 		color: $white;
-// 	}
+	&__block-text {
+		display: flex;
+		flex-direction: column;
+		row-gap: 25px;
+		max-width: 800px;
 
-// 	&__text {
-// 		color: $white;
-// 		max-width: 650px;
-// 	}
+		@media (max-width: $md2) {
+			max-width: 520px;
+		}
+		@media (min-width: $md5) {
+			position: relative;
+			z-index: 1;
+		}
+	}
 
-// 	&__wrap-button {
-// 		display: flex;
-// 		gap: 20px;
-// 		@media (max-width: $md4) {
-// 			gap: 10px;
-// 		}
-// 		@media (min-width: $md5) {
-// 			position: relative;
-// 			z-index: 1;
-// 		}
-// 	}
+	&__title {
+		color: $white;
+		font-weight: 400 !important;
+		line-height: 120% !important;
+		b {
+			background: #ffd495;
+			color: $dark-green;
+			padding: 0 15px 0 25px;
+		}
+		@media (min-width: $md2) {
+			br {
+				display: none;
+			}
+		}
+		@media (max-width: $md4) {
+			b {
+				padding: 0 10px 0 15px;
+			}
+		}
+	}
 
-// 	&__button {
-// 		&.btn-book {
-// 		}
-// 		&.btn-more {
-// 			color: $orange;
-// 			&::after,
-// 			&::before {
-// 				display: none;
-// 			}
-// 		}
-// 		@media (max-width: $md4) {
-// 			padding: 20px 10px;
-// 			flex: 1 1 auto;
-// 		}
-// 	}
+	&__list-info {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		li {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			p {
+				font-weight: 400;
+				font-size: 22px;
+				color: $white;
+			}
+		}
+	}
 
-// 	&__list {
-// 		width: 100%;
-// 		display: flex;
-// 		@media (max-width: $md1) {
-// 			padding: 0 15px;
-// 		}
-// 		@media (max-width: $md4) {
-// 			padding: 0 20px;
-// 		}
-// 		@media (max-width: $md3) {
-// 			display: grid;
-// 			grid-template-columns: repeat(2, 1fr);
-// 		}
-// 		@media (max-width: 380px) {
-// 			padding: 0 10px;
-// 		}
-// 	}
+	&__text {
+		color: $white;
+		max-width: 650px;
+	}
 
-// 	&__item {
-// 		flex: 1 1 auto;
-// 		padding: 40px;
-// 		padding-right: 10px;
-// 		border: 1px solid #004d56;
-// 		border-right: none;
-// 		display: flex;
-// 		align-items: center;
-// 		gap: 10px;
-// 		color: $white;
-// 		font-weight: 400;
-// 		@include adaptiv-font(16, 13, 1);
+	&__wrap-button {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		max-width: 510px;
 
-// 		img {
-// 			object-fit: contain;
-// 			max-width: 100%;
-// 			max-height: 100%;
-// 		}
+		@media (max-width: $md4) {
+			gap: 10px;
+		}
+		@media (min-width: $md5) {
+			position: relative;
+			z-index: 1;
+		}
+	}
 
-// 		&:last-child {
-// 			border-right: 1px solid #004d56;
-// 		}
+	&__button {
+		&.btn-book {
+			width: 100%;
+			max-width: 430px;
+		}
+		&.btn-more {
+			color: $orange;
+			&::after,
+			&::before {
+				display: none;
+			}
+		}
+		@media (max-width: $md4) {
+			padding: 20px 10px;
+			flex: 1 1 auto;
+		}
+	}
 
-// 		@media (max-width: $md1) {
-// 			padding: 15px;
-// 			border-bottom: 1px solid #004d56;
-// 		}
-// 		@media (max-width: $md3) {
-// 			&:nth-child(even) {
-// 				border-right: 1px solid #004d56;
-// 			}
-// 		}
-// 		@media (max-width: $md5) {
-// 			flex-direction: column;
-// 			text-align: center;
-// 		}
-// 	}
-// }
+	&__list {
+		width: 100%;
+		display: flex;
+		@media (max-width: $md1) {
+			padding: 0 15px;
+		}
+		@media (max-width: $md4) {
+			padding: 0 20px;
+		}
+		@media (max-width: $md3) {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@media (max-width: 380px) {
+			padding: 0 10px;
+		}
+	}
+
+	&__item {
+		flex: 1 1 auto;
+		padding: 40px;
+		padding-right: 10px;
+		border: 1px solid #004d56;
+		border-right: none;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		color: $white;
+		font-weight: 400;
+		@include adaptiv-font(16, 13, 1);
+
+		img {
+			object-fit: contain;
+			max-width: 100%;
+			max-height: 100%;
+		}
+
+		&:last-child {
+			border-right: 1px solid #004d56;
+		}
+
+		@media (max-width: $md1) {
+			padding: 15px;
+			border-bottom: 1px solid #004d56;
+			img {
+				max-width: 40px;
+				max-height: 40px;
+			}
+		}
+		@media (max-width: $md3) {
+			&:nth-child(even) {
+				border-right: 1px solid #004d56;
+			}
+		}
+		@media (max-width: $md5) {
+			flex-direction: column;
+			text-align: center;
+		}
+	}
+}

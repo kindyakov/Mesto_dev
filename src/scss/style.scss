@@ -919,18 +919,16 @@ input[type='date'] {
 }
 
 .not-filtered-rooms {
+	padding: 20px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	min-height: 191px;
-	font-size: 26px;
+	@include adaptiv-font(24, 18, 1);
+	line-height: normal;
 	font-weight: 700;
 	text-align: center;
-	text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
-
-	@media (max-width: $md3) {
-		font-size: 20px;
-	}
+	border: 1px solid #004d56;
 }
 
 @import 'components/header';

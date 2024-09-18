@@ -201,15 +201,14 @@ class Warehouse {
   }
 
   renderRooms(rooms) {
-    if (!rooms.length) {
+    if (!rooms.length && this.warehouseId !== 2) {
       this.contentRoomsWarehouse.innerHTML = `<div class="not-filtered-rooms"><span>Нет свободных ячеек по заданным параметрам</span></div>`
       return
+    } else {
+      rooms.forEach(room => {
+        this.contentRoomsWarehouse.insertAdjacentHTML('beforeend', warehouseRoom(room))
+      })
     }
-    this.contentRoomsWarehouse.innerHTML = ''
-
-    rooms.length && rooms.forEach(room => {
-      this.contentRoomsWarehouse.insertAdjacentHTML('beforeend', warehouseRoom(room))
-    })
 
     setMinMaxBlocks('.warehouse__rooms_room-num', { breakpointsNone: 576 })
     setMinMaxBlocks('.warehouse__rooms_room-area', { breakpoints: [1215, 576] })

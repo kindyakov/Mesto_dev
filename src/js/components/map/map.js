@@ -3,7 +3,6 @@ import { Tabs } from "../../modules/myTabs.js"
 import { fullScreen } from "./fullScreen.js"
 import { Modal } from "../../modules/myModal.js"
 
-
 import { markerContent, modalWarehouse, modalWarehouseCurrent, warehouseList } from "./html.js"
 async function getStyleMap() {
   try {
@@ -61,15 +60,14 @@ const mapInit = async (warehouses) => {
 
   const behaviors = ['drag', 'pinchZoom', 'dblClick', 'mouseTilt', 'mouseRotate', 'multiTouch']
 
-  const map = new YMap(document.getElementById('yandex-map'),
-    {
-      location: {
-        center: [warehouses[0].y, warehouses[0].x],
-        zoom: 10
-      },
-      showScaleInCopyrights: true,
-      behaviors
+  const map = new YMap(document.getElementById('yandex-map'), {
+    location: {
+      center: [warehouses[0].y, warehouses[0].x],
+      zoom: 10
     },
+    showScaleInCopyrights: true,
+    behaviors
+  },
     [
       new YMapDefaultSchemeLayer({ customization: customization }),
       new YMapDefaultFeaturesLayer({})

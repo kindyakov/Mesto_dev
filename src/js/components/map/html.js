@@ -53,7 +53,7 @@ export function modalWarehouseCurrent(data) {
   </div>
 
   <ul class="modal-info-warehouse__location">
-    <li>м. ${data.warehouse_metro ? `м. ${data.warehouse_metro} (1 км)` : ''}</li>
+    <li>м. ${data.warehouse_metro ? `${data.warehouse_metro} (1 км)` : ''}</li>
   </ul>
 
   <a href="tel:74951651565" class="modal-info-warehouse__phone">+7 (495) 165-15-65</a>

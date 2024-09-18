@@ -35,12 +35,10 @@ class WarehousesResult {
     if (!warehouse) return
 
     if (warehouse.show_popup) {
-      const title = modalFeedbackForm.modal.querySelector('.h2')
-      const subTitle = modalFeedbackForm.modal.querySelector('.questions__subtitle')
-      title.textContent = rangeData.warehouse_id == 2 ? 'Скоро открытие' : 'Персональное предложение'
-      subTitle.textContent = rangeData.warehouse_id == 2 ? 'Для бронирования кладовки оставьте заявку и мы с Вами свяжемся' : 'Оставьте заявку и мы свяжемся с Вами'
-
-      modalFeedbackForm.open()
+      const btn = document.createElement('button')
+      btn.classList.add('btn-open-modal-feedback-form')
+      btn.setAttribute('data-warehouse-id', rangeData.warehouse_id)
+      modalFeedbackForm.open({ target: btn })
       return
     }
 
