@@ -3,7 +3,7 @@ import { formattingPrice } from "../../utils/formattingPrice.js"
 
 const expansionFile = '.html'
 
-export function markerContent(data, pathPrefix) {
+export function markerContent(data) {
   return `
   <div class="marker__content">
     <img src="${location.origin}/img/icons/map-marker.png" alt="Иконка" class="marker__img img-default">
@@ -13,7 +13,7 @@ export function markerContent(data, pathPrefix) {
   </div>`
 }
 
-export function modalWarehouse(data, pathPrefix) {
+export function modalWarehouse(data) {
   return `
   <div class="map__modal_warehouse">
     <div class="map__modal_warehouse-content">
@@ -35,7 +35,7 @@ export function modalWarehouse(data, pathPrefix) {
         ${data.cnt_free && declOfNum(data.cnt_free, ['кладовка', 'кладовки', 'кладовок'])}`}
       </span>
     <a href="${location.origin}/warehouse/${data.warehouse_id}${expansionFile}" class="map__modal_warehouse-link button">
-      <span>${data.min_price ? 'от ' + formattingPrice(data.min_price) : 'Нет данных'}</span>
+      <span>${data.min_price ? 'от ' + formattingPrice(data.min_price) : 'Забронировать'}</span>
     </a>
     </div>
   </div>`
@@ -76,7 +76,7 @@ export function modalWarehouseCurrent(data) {
 }
 // <span class="modal-info-warehouse__rating">4.4 балла из 5</span>
 
-export function warehouseList(data, pathPrefix) {
+export function warehouseList(data) {
   return `
     <div class="map__warehouse">
     <div class="map__warehouse_top">

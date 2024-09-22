@@ -2,6 +2,8 @@ import { Select } from "../../modules/mySelect.js"
 import { Tabs } from "../../modules/myTabs.js"
 import { fullScreen } from "./fullScreen.js"
 import { Modal } from "../../modules/myModal.js"
+import { setMinMaxBlocks } from "../../utils/setMinMaxBlocks.js";
+
 
 import { markerContent, modalWarehouse, modalWarehouseCurrent, warehouseList } from "./html.js"
 async function getStyleMap() {
@@ -139,7 +141,7 @@ const mapInit = async (warehouses) => {
     const markerElement = document.createElement('div');
     markerElement.className = 'marker';
     markerElement.setAttribute('data-warehouse-id', warehouse.warehouse_id)
-    markerElement.innerHTML = markerContent(warehouse, pathPrefix)
+    markerElement.innerHTML = markerContent(warehouse)
 
     const marker = new YMapMarker(
       { coordinates: [warehouse.y, warehouse.x] },
@@ -148,11 +150,13 @@ const mapInit = async (warehouses) => {
     // Добавляем маркер на карту
     map.addChild(marker);
 
-    warehousesListMap.insertAdjacentHTML('beforeend', warehouseList(warehouse, pathPrefix))
+    warehousesListMap.insertAdjacentHTML('beforeend', warehouseList(warehouse))
 
-    warehousesModal.insertAdjacentHTML('beforeend', modalWarehouse(warehouse, pathPrefix)) // warehouses
+    warehousesModal.insertAdjacentHTML('beforeend', modalWarehouse(warehouse)) // warehouses
 
     markerElement.addEventListener('click', () => handlerClickMarker(markerElement, warehouse))
+    
+    setMinMaxBlocks('.map__modal_warehouse-link.button')
   });
 
   mediaQueryList.addEventListener('change', handleMediaChange);
