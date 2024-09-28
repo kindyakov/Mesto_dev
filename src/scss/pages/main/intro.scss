@@ -131,11 +131,6 @@
 			color: $dark-green;
 			padding: 0 15px 0 25px;
 		}
-		@media (min-width: $md2) {
-			br {
-				display: none;
-			}
-		}
 		@media (max-width: $md4) {
 			b {
 				padding: 0 10px 0 15px;

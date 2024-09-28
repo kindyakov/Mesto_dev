@@ -22,18 +22,8 @@ import { payBeforeAgreement, downloadBill } from "../../settings/request.js"
 
 import Cards from "../cards/cards.js";
 
-function addDaysToDate(date, days) {
-  const result = new Date(date);
-  result.setDate(date.getDate() + days);
-  return result;
-}
-
-function formatAsYYYYMMDD(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-}
+import { addDaysToDate, formatAsYYYYMMDD } from "./dateUtils.js";
+import PromoCode from "./PromoCode.js";
 
 class RentRoom {
   constructor() {
@@ -50,15 +40,11 @@ class RentRoom {
     })
 
     this.authorizationTabs = new Tabs('authorization-rent-room-tabs', { activeIndexTab: 1 })
-
     this.authorization = new Authorization({ wrapperSelector: '.authorization-rent-room' })
     this.registration = new Registration({ wrapperSelector: '.authorization-rent-room' })
+    this.promoCode = new PromoCode({ loader: this.loader, roomIds: this.roomIds })
 
-    this.modalCheckingDetailsForm = new Modal('.modal-checking-details-form', { modalBtnClose: '.btn-modal-close' })
-    this.modalCheckingInfoForm = new Modal('.modal-checking-info-form', {
-      modalBtnClose: '.btn-modal-close',
-    })
-
+    this.initModals()
     this.cards = new Cards(this.rentRoom.querySelector('.form-payment-online'))
 
     this.isAuth = checkAuth()
@@ -68,18 +54,7 @@ class RentRoom {
     this.activeIndexStep = 0
     this.scaleValues = [35, 65, 100]
 
-    this.roomsSlider = new Swiper('.rooms-slider-rent-room', {
-      spaceBetween: 10,
-      observeSlideChildren: true,
-      observer: true,
-      pagination: {
-        el: '.paging-slider-rent-rooms',
-      },
-      navigation: {
-        nextEl: '.btn-slider-rent-rooms-next',
-        prevEl: '.btn-slider-rent-rooms-prev',
-      },
-    })
+    this.initSwiper()
 
     this.rooms = this.rentRoom.querySelector('.rooms-rent-room')
 
@@ -92,29 +67,69 @@ class RentRoom {
     this.formAgreementConclusion = this.rentRoom.querySelector('.form-agreement-conclusion')
     this.validatorAgreementConclusion = validateAgreementConclusion(this.formAgreementConclusion)
 
-    this.inputDate = this.rentRoom.querySelector('.input-date')
-    this.inputMonth = this.rentRoom.querySelector('.input-month')
-
     this.month = this.urlParams.get('num_monthes') ? JSON.parse(this.urlParams.get('num_monthes')) : null
     this.agrBegDate = this.urlParams.get('agrbegdate') ? JSON.parse(this.urlParams.get('agrbegdate')) : null
     this.agreementData = null
     this.user = null
-    // this.sumPriceDiscCells = null
     this.formDataPaymentInvoice = null
 
     this.payment = this.rentRoom.querySelector('.payment-rent-room')
     this.paymentTabs = new Tabs('payment-rent-room-tabs')
     this.inputFile = this.rentRoom.querySelector('.input-file')
 
-    this.event = new Event('submit', {
-      cancelable: true
-    })
+    this.event = new Event('submit', { cancelable: true })
 
     this.resultPriceRooms = this.rentRoom.querySelectorAll('.result-price-room')
-    this.sumPriceCells = 0
 
+    this.initDatePickers()
     this.events()
     this.init()
+  }
+
+  initModals() {
+    this.modalCheckingDetailsForm = new Modal('.modal-checking-details-form', { modalBtnClose: '.btn-modal-close' })
+    this.modalCheckingInfoForm = new Modal('.modal-checking-info-form', { modalBtnClose: '.btn-modal-close', })
+  }
+
+  initSwiper() {
+    this.roomsSlider = new Swiper('.rooms-slider-rent-room', {
+      spaceBetween: 10,
+      observeSlideChildren: true,
+      observer: true,
+      pagination: {
+        el: '.paging-slider-rent-rooms',
+      },
+      navigation: {
+        nextEl: '.btn-slider-rent-rooms-next',
+        prevEl: '.btn-slider-rent-rooms-prev',
+      },
+    })
+  }
+
+  initDatePickers() {
+    this.inputDate = this.rentRoom.querySelector('.input-date');
+    this.inputMonth = this.rentRoom.querySelector('.input-month');
+
+    if (this.inputDate) {
+      this.inputDate.value = getFormattedDate('DD-MM-YYYY');
+      this.agrBegDatePicker = new AirDatepicker(this.inputDate, {
+        dateFormat: 'dd-MM-yyyy',
+        position: 'bottom center',
+        startDate: new Date(),
+        autoClose: true,
+        minDate: formatAsYYYYMMDD(addDaysToDate(new Date(), 0)),
+        maxDate: formatAsYYYYMMDD(addDaysToDate(new Date(), 30)),
+        isMobile: /iPhone|iPad|iPod|Android/i.test(navigator.userAgent),
+        onSelect: ({ date, datepicker }) => {
+          datepicker.$el.classList.remove('just-validate-error-field');
+          this.agrBegDate = getFormattedDate('YYYY-MM-DD', date);
+        }
+      });
+
+      if (!this.agrBegDate) {
+        this.agrBegDate = getFormattedDate('YYYY-MM-DD')
+      }
+    }
   }
 
   events() {
@@ -179,28 +194,6 @@ class RentRoom {
       }
     })
 
-    if (this.inputDate) {
-      this.inputDate.value = getFormattedDate('DD-MM-YYYY')
-
-      this.agrBegDatePicker = new AirDatepicker(this.inputDate, {
-        dateFormat: 'dd-MM-yyyy',
-        position: 'bottom center',
-        startDate: new Date(),
-        autoClose: true,
-        minDate: formatAsYYYYMMDD(addDaysToDate(new Date(), 0)),
-        maxDate: formatAsYYYYMMDD(addDaysToDate(new Date(), 30)),
-        isMobile: /iPhone|iPad|iPod|Android/i.test(navigator.userAgent),
-        onSelect: ({ date, formattedDate, datepicker }) => {
-          datepicker.$el.classList.remove('just-validate-error-field')
-          this.agrBegDate = getFormattedDate('YYYY-MM-DD', date)
-        }
-      });
-
-      if (!this.agrBegDate) {
-        this.agrBegDate = getFormattedDate('YYYY-MM-DD')
-      }
-    }
-
     this.inputMonth && this.inputMonth.addEventListener('input', e => {
       const itemMonthActive = this.rentRoom.querySelector('.item-month._active')
       const itemMonthCurrent = this.rentRoom.querySelector(`.item-month[data-month="${this.inputMonth.value}"]`)
@@ -234,19 +227,21 @@ class RentRoom {
     this.formPaymentInvoice && this.formPaymentInvoice.addEventListener('submit', this.submitPaymentInvoice.bind(this))
     this.formAgreementConclusion && this.formAgreementConclusion.addEventListener('submit', this.submitAgreementConclusion.bind(this))
 
-    this.authorization.options.onAuth = () => {
-      apiWithAuth.defaults.headers.Authorization = getCookie('token')
-      ym(97074608, 'reachGoal', 'auth')
-      this.swapStep(this.activeIndexStep = 1)
-      this.getUser()
-    }
+    this.authorization.options.onAuth = () => this.onAuth()
+    this.registration.options.onReg = () => this.onAuth('register')
 
-    this.registration.options.onReg = () => {
-      apiWithAuth.defaults.headers.Authorization = getCookie('token')
-      ym(97074608, 'reachGoal', 'register')
-      this.swapStep(this.activeIndexStep = 1)
-      this.getUser()
+    this.promoCode.onApply = (data) => {
+      this.updatePriceDisplay(data)
+      this.changePriceSum(data.amount_1m, data.deposit_1m)
+      this.promocode = data.promocode
     }
+  }
+
+  onAuth(auth = 'auth') {
+    apiWithAuth.defaults.headers.Authorization = getCookie('token');
+    ym(97074608, 'reachGoal', auth)
+    this.swapStep(this.activeIndexStep = 1);
+    this.getUser();
   }
 
   init() {
@@ -322,6 +317,10 @@ class RentRoom {
     formData.set('autopay', formData.get('auto-payments') ? 1 : 0)
     formData.set('return_url', location.href + `&step=2&num_monthes=${this.month}&agrbegdate=${this.agrBegDate}`)
 
+    if (this.promocode) {
+      formData.set('promocode', this.promocode)
+    }
+
     formData.delete('auto-payments')
 
     payBeforeAgreement(formData, this.loader)
@@ -354,6 +353,10 @@ class RentRoom {
       formData.set('agrbegdate', this.agrBegDate)
       formData.set('user_type', 'u')
       formData.set('rent_or_test', 'rent')
+
+      if (this.promocode) {
+        formData.set('promocode', this.promocode)
+      }
 
       formData.delete('privacy-policy')
 
@@ -393,6 +396,10 @@ class RentRoom {
       formData.set('agrbegdate', this.agrBegDate)
       formData.set('rent_or_test', 'rent')
 
+      if (this.promocode) {
+        formData.set('promocode', this.promocode)
+      }
+
       sendFormNewAgreement(formData, this.loader)
     } else {
       this.scrollToErrInput(this.formAgreementConclusion.querySelector('.input.just-validate-error-field'))
@@ -409,45 +416,34 @@ class RentRoom {
       const { rooms, amount_1m, deposit_1m } = response.data
       const bottomRoomsSlider = this.rentRoom.querySelector('.bottom-rooms-slider-rent-room')
 
-      const dataAmount = this.rentRoom.querySelectorAll('[data-amount]')
-
       if (!rooms || !rooms?.length) return
       this.rooms.innerHTML = ''
 
-      this.sumPriceCells = amount_1m
-
-      let flag = 2
-
       rooms.forEach(room => {
-        // ! Удалить
-        // if (room.room_id == 81 || room.room_id == 82) {
-        //   flag = 1
-        //   document.querySelector('[data-month="6"]').remove()
-        //   document.querySelector('[data-month="11"]').remove()
-        // }
-
         this.rooms.insertAdjacentHTML('beforeend', roomHtml(room))
       });
-
-      dataAmount.length && dataAmount.forEach(amount => {
-        const itemMonth = amount.closest('.item-month')
-        const price = response.data[amount.getAttribute('data-amount')]
-
-        itemMonth.setAttribute('data-price', price)
-        amount.textContent = `от ${formattingPrice(price)}`
-      })
 
       if (bottomRoomsSlider && rooms.length === 1) {
         bottomRoomsSlider.classList.add('_none')
       }
 
-      // this.renderItemsMonth(this.sumPriceCells)
-      this.changePriceSum(this.sumPriceCells, deposit_1m)
+      this.updatePriceDisplay(response.data)
+      this.changePriceSum(amount_1m, deposit_1m)
     } catch (error) {
       console.error(error)
     } finally {
       this.loader.disable()
     }
+  }
+
+  updatePriceDisplay(data) {
+    const dataAmount = this.rentRoom.querySelectorAll('[data-amount]');
+    dataAmount.length && dataAmount.forEach(amount => {
+      const itemMonth = amount.closest('.item-month');
+      const price = data[amount.getAttribute('data-amount')];
+      itemMonth.setAttribute('data-price', price);
+      amount.textContent = `от ${formattingPrice(price)}`;
+    });
   }
 
   async getUser() {

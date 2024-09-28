@@ -21,25 +21,28 @@ class RouteScheme {
   }
 
   renderingPath(cell, { rectX, rectY, rectW, rectH }) {
+    return
     if (cell.classList.contains('_path')) return
     cell.classList.add('_path')
 
     const scheme = cell.closest('.scheme')
     const entrance = scheme.querySelector('.entrance')
 
-    const sector = cell.closest('.sector')
-    const sectorNum = +sector.getAttribute('data-sector')
+    // const sector = cell.closest('.sector')
+    // const sectorNum = +sector.getAttribute('data-sector')
 
-    const group = cell.closest('.group')
-    const groupLocation = group.getAttribute('data-type-location')
+    // const group = cell.closest('.group')
+    const groupLocation = cell.getAttribute('data-location-entrance')
     const cellLocation = cell.getAttribute('data-type-location')
 
-    let entranceX = +entrance.getAttribute('x')
-    let entranceY = +entrance.getAttribute('y')
+    let entranceX = +entrance?.getAttribute('x') || 1100
+    let entranceY = +entrance?.getAttribute('y') || 0
     let entranceW = 41
 
     const path = this.createPath(cell)
     const d = this.getPathD(groupLocation, cellLocation, { entranceX, entranceY, entranceW, rectX, rectY, rectW, rectH })
+    console.log(path, d)
+
     path.setAttributeNS(null, "d", d)
 
     let animation = anime({
@@ -56,7 +59,7 @@ class RouteScheme {
     switch (groupLocation) {
       case 'up':
         return `M ${entranceX + entranceW} ${entranceY} L ${entranceX + entranceW} ${rectY - this.roadCenter} L ${rectX + rectW / 2} ${rectY - this.roadCenter} L ${rectX + rectW / 2} ${rectY}`
-      case 'bottom':
+      case 'down':
         return `M ${entranceX + entranceW} ${entranceY} L ${entranceX + entranceW} ${rectY + rectH + this.roadCenter} L ${rectX + rectW / 2} ${rectY + rectH + this.roadCenter} L ${rectX + rectW / 2} ${rectY + rectH}`
       case 'left':
         return `M ${entranceX + entranceW} ${entranceY} L ${entranceX + entranceW} -${this.roadCenter} L ${rectX - this.roadCenter} -${this.roadCenter} L ${rectX - this.roadCenter} ${rectY + rectH / 2} L ${rectX} ${rectY + rectH / 2}`

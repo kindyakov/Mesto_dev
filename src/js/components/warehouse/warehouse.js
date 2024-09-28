@@ -200,6 +200,13 @@ class Warehouse {
     })
   }
 
+  setSizeBlocks() {
+    setMinMaxBlocks('.warehouse__rooms_room-num', { breakpointsNone: 576 })
+    setMinMaxBlocks('.warehouse__rooms_room-area', { breakpoints: [1215, 576] })
+    setMinMaxBlocks('.warehouse__rooms_room-block.dimensions', { breakpoints: [1215, 576] })
+    setMinMaxBlocks('.warehouse__rooms_room-link', { breakpoints: [576, 370] })
+  }
+
   renderRooms(rooms) {
     if (!rooms.length && this.warehouseId !== 2) {
       this.contentRoomsWarehouse.innerHTML = `<div class="not-filtered-rooms"><span>Нет свободных ячеек по заданным параметрам</span></div>`
@@ -210,10 +217,7 @@ class Warehouse {
       })
     }
 
-    setMinMaxBlocks('.warehouse__rooms_room-num', { breakpointsNone: 576 })
-    setMinMaxBlocks('.warehouse__rooms_room-area', { breakpoints: [1215, 576] })
-    setMinMaxBlocks('.warehouse__rooms_room-block.dimensions', { breakpoints: [1215, 576] })
-    setMinMaxBlocks('.warehouse__rooms_room-link', { breakpoints: [576, 370] })
+    this.setSizeBlocks()
   }
 
   async process(queryParams = buildQueryParams(this.reqData)) {
@@ -252,8 +256,8 @@ class Warehouse {
     const element = e.target.closest('[data-room-id]')
     const roomId = +element.getAttribute('data-room-id')
     if (!roomId) return
-    const cell = this.warehouse.querySelector(`.warehouse__svg-cell[data-room-id="${roomId}"]`)
-    const roomWarehouse = this.warehouse.querySelector(`.room-warehouse[data-room-id="${roomId}"]`)
+    let cell = this.warehouse.querySelector(`.warehouse__svg-cell[data-room-id="${roomId}"]`)
+    let roomWarehouse = this.warehouse.querySelector(`.room-warehouse[data-room-id="${roomId}"]`)
     const [currentRoom] = rooms.filter(room => +room.room_id === roomId)
 
     if (!currentRoom) {
@@ -275,8 +279,13 @@ class Warehouse {
       this.resultRoomsData.count_rooms -= 1;
     } else {
       this.warehouse.querySelector('.not-filtered-rooms')?.remove();
-      roomWarehouse?.remove();
-      this.contentRoomsWarehouse.prepend(roomWarehouse);
+      if (roomWarehouse) {
+        roomWarehouse?.remove();
+        this.contentRoomsWarehouse.prepend(roomWarehouse);
+      } else {
+        this.contentRoomsWarehouse.insertAdjacentHTML('afterbegin', warehouseRoom(currentRoom, true))
+        this.setSizeBlocks()
+      }
 
       this.resultRoomsData.ids.push(currentRoom.room_id);
       this.resultRoomsData.rooms.push(currentRoom);

@@ -931,6 +931,29 @@ input[type='date'] {
 	border: 1px solid #004d56;
 }
 
+.btn-promo-code {
+	span:last-child {
+		display: none;
+	}
+
+	&._applied {
+		background-color: #139901;
+		color: #fff;
+		cursor: auto;
+		&::after,
+		&::before {
+			display: none;
+		}
+
+		span:first-child {
+			display: none;
+		}
+		span:last-child {
+			display: inline-block;
+		}
+	}
+}
+
 @import 'components/header';
 @import 'components/footer';
 @import 'components/modal';

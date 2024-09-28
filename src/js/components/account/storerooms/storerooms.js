@@ -30,30 +30,6 @@ function addClassRented(rented) {
   }
 }
 
-function getCurrentDate() {
-  const currentDate = new Date();
-  const year = currentDate.getFullYear();
-  const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // добавляем ведущий ноль, если месяц < 10
-  const day = String(currentDate.getDate()).padStart(2, '0'); // добавляем ведущий ноль, если день < 10
-  return `${year}-${month}-${day}`;
-}
-
-function getMonthDiff(date1, date2) {
-  // Разбиваем строки на компоненты (год, месяц, день)
-  const [year1, month1, day1] = date1.split('-').map(Number);
-  const [year2, month2, day2] = date2.split('-').map(Number);
-
-  // Вычисляем разницу в годах, месяцах и днях
-  const yearDiff = year1 - year2;
-  const monthDiff = month1 - month2;
-  const dayDiff = day1 - day2;
-
-  // Преобразуем разницу в месяцах
-  const monthsDiff = yearDiff * 12 + monthDiff + (dayDiff < 0 ? -1 : 0);
-
-  return monthsDiff;
-}
-
 class Storerooms {
   constructor() {
     this.account = document.querySelector('.account')
@@ -92,10 +68,7 @@ class Storerooms {
       btnSelector: '.tabs-btn-schemes',
       contentSelector: '.tabs-content-schemes',
     })
-    // this.paymentModalTabs = new Tabs('modal-payments-tabs', {
-    //   btnSelector: '.tabs-btn-modal-payment',
-    //   contentSelector: '.tabs-content-modal-payment-cards'
-    // })
+
     this.routeScheme = new RouteScheme()
 
     this.schemeOne = this.account.querySelector('.scheme-1')
@@ -107,7 +80,6 @@ class Storerooms {
 
     this.oldRoomId = null
     this.newRoomId = null
-    // this.priceReplaceRoom = 0
 
     this.clientData = null
     this.warehouses = null
@@ -137,18 +109,11 @@ class Storerooms {
     })
 
     window.addEventListener('resize', (e) => {
-      const schemeRooms = Array.from(this.storeroomsSchemeRooms.querySelectorAll('.scheme-room'))
-      // if (schemeRooms.length) {
       if (window.innerWidth > 768) {
-        // const maxHeight = Math.max(...schemeRooms.map(room => room.offsetHeight))
-        // this.storeroomsSchemeRooms.style.maxHeight = `${maxHeight}px`
         this.isMobile = false
       } else {
         this.isMobile = true
-        // const maxHeight = schemeRooms.reduce((accumulator, room) => accumulator + room.offsetHeight, 10);
-        // this.storeroomsSchemeRooms.style.maxHeight = `${maxHeight}px`
       }
-      // }
     })
 
     document.addEventListener('click', e => {
@@ -376,7 +341,6 @@ class Storerooms {
       this.oldRoomId = null
       this.routeScheme.deletePath(cell)
     } else {
-      // const [currentRoom] = this.warehouses[this.targetFloor - 1].rooms.filter(room => +room.room_id === +roomId)
       const [currentRoom] = this.clientData.rooms.filter(room => +room.room_id === +roomId)
       const cellSelect = this.account.querySelector('.warehouse__svg-cell.my._selected')
 
@@ -494,8 +458,6 @@ class Storerooms {
 
     if (this.clientData.client.user_type === 'f') {
       data.return_url = location.href
-      // data.card_id = null
-      // data.autopay = 1
     }
 
     replaceRoomForClient(data, this.loader)
@@ -567,29 +529,6 @@ class Storerooms {
       this.loader.disable()
     }
   }
-
-  // async downloadAgr(roomId) {
-  //   try {
-  //     this.loader.enable();
-  //     const response = await api.get(`/download_agr/${roomId}`, { responseType: 'blob' });
-
-  //     if (response.status !== 200) return;
-
-  //     const blob = new Blob([response.data], { type: response.headers['content-type'] });
-  //     const url = window.URL.createObjectURL(blob);
-
-  //     const link = document.createElement('a');
-  //     link.href = url;
-  //     link.setAttribute('download', `template_agreement-${new Date().getTime()}.docx`);
-  //     document.body.appendChild(link);
-  //     link.click();
-  //     document.body.removeChild(link);
-  //   } catch (error) {
-  //     console.error(error);
-  //   } finally {
-  //     this.loader.disable()
-  //   }
-  // }
 }
 
 export default Storerooms

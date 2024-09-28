@@ -56,16 +56,13 @@ export const updateLinks = () => {
         let href = $(this).attr('href');
 
         // Проверяем, является ли ссылка относительной
-        if (!/^(http|https|\/)/.test(href)) {
+        if (!/^(http|https|\/)/.test(href) && (href.includes('.html') || href.includes('.pdf'))) {
           // Получаем директорию текущего файла
           let currentDir = path.dirname(file.relative);
-
           // Создаем абсолютный путь для ссылки
           let absoluteHref = path.resolve(currentDir, href);
-
           // Получаем относительный путь от корневого каталога
           let relativeHref = path.relative('.', absoluteHref);
-
           // Убираем расширение .html и заменяем слэши на URL-формат
           let newHref = baseURL + relativeHref.replace(/\\/g, '/').replace(/\.html$/, '');
 

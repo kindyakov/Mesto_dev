@@ -222,15 +222,15 @@
 		width: 100%;
 		display: flex;
 		flex-direction: column;
+
 		row-gap: 20px;
-		p {
-			font-weight: 400;
-			font-size: 14px;
-			text-align: justify;
-			line-height: normal;
-			color: #46939c;
-			max-width: 970px;
-		}
+		font-weight: 400;
+		font-size: 14px;
+		text-align: justify;
+		line-height: normal;
+		color: #46939c;
+		max-width: 970px;
+
 		@media (max-width: $md1) {
 			padding: 15px;
 		}
