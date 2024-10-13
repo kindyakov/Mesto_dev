@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('html/components/_head.html',{
+  "title": "Страница не найдена",
+  "description": "",
+  "path":""
+  })
+</head>
+
+<body>
+  <div class='wrapper'>
+    @@include('html/components/_header.html', {'fixed':'',path:''})
+    <main class='main'>
+      <section class="not-found section">
+        <div class="not-found__container _container">
+          <div class="not-found__body">
+            <div class="not-found__content">
+              <div class="not-found__block">
+                <h1 class="not-found__title">Запрашиваемая страница не найдена</h1>
+                <p class="not-found__text text">Неправильно набран адрес, или такой страницы на сайте больше не
+                  существует</p>
+                <a href="/" class="not-found__link button-3">
+                  <svg width="14" height="22" viewBox="0 0 14 22" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="icon">
+                    <path d="M12 20L2 11L12 2" stroke="white" stroke-width="2" stroke-linecap="square" />
+                  </svg>
+                  <span>На главную</span>
+                </a>
+              </div>
+              <div class="not-found__err-text">
+                <p>Ошибка</p>
+                <span data-da=".not-found__block,768,1" class="not-found__err-type">404</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('html/components/_footer.html',{path:''})
+  </div>
+  @@include('html/components/_js.html',{path:''})
+</body>
+
+</html>

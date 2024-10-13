@@ -1,0 +1,35 @@
+<svg width="54" height="74" viewBox="0 0 54 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_2782_40748)">
+<line x1="6" y1="1.63354e-07" x2="6" y2="76.05" stroke="#F59100" stroke-width="6"/>
+<line x1="47" y1="1.63354e-07" x2="47" y2="76.05" stroke="#F59100" stroke-width="6"/>
+<rect y="2" width="54" height="69" fill="#004D56"/>
+<rect y="2" width="54" height="69" stroke="#F59100"/>
+<rect y="2" width="54" height="69" stroke="#F59100"/>
+<rect y="2" width="54" height="69" stroke="#F59100"/>
+<rect y="2" width="54" height="69" stroke="#F59100"/>
+<rect y="2" width="54" height="69" stroke="#F59100"/>
+<rect x="5" y="66.0469" width="58" height="44" transform="rotate(-90 5 66.0469)" fill="#003537"/>
+<rect x="5" y="66.0469" width="58" height="44" transform="rotate(-90 5 66.0469)" fill="#003537"/>
+<rect x="5" y="66.0469" width="58" height="44" transform="rotate(-90 5 66.0469)" fill="#003537"/>
+<rect x="5" y="66.0469" width="58" height="44" transform="rotate(-90 5 66.0469)" fill="#003537"/>
+<rect x="30" y="28.0469" width="33" height="5" transform="rotate(90 30 28.0469)" fill="#003537"/>
+<rect x="30" y="28.0469" width="33" height="5" transform="rotate(90 30 28.0469)" fill="#003537"/>
+<rect x="30" y="28.0469" width="33" height="5" transform="rotate(90 30 28.0469)" fill="#003537"/>
+<rect x="30" y="28.0469" width="33" height="5" transform="rotate(90 30 28.0469)" fill="#004D56"/>
+<rect x="1" y="28.0469" width="51" height="5" fill="#003537"/>
+<rect x="1" y="28.0469" width="51" height="5" fill="#003537"/>
+<rect x="1" y="28.0469" width="51" height="5" fill="#003537"/>
+<rect x="1" y="28.0469" width="51" height="5" fill="#004D56"/>
+<circle cx="26.5" cy="53.5469" r="3.5" fill="#003537"/>
+<circle cx="26.5" cy="53.5469" r="3.5" fill="#003537"/>
+<circle cx="9" cy="24.0469" r="2" fill="#F59100"/>
+<circle cx="9" cy="37.0469" r="2" fill="#F59100"/>
+<circle cx="45" cy="24.0469" r="2" fill="#F59100"/>
+<circle cx="45" cy="37.0469" r="2" fill="#F59100"/>
+</g>
+<defs>
+<clipPath id="clip0_2782_40748">
+<rect width="54" height="74" fill="white"/>
+</clipPath>
+</defs>
+</svg>

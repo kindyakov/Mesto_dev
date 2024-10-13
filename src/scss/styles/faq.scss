@@ -1,0 +1,192 @@
+.faq {
+	&.section-faq {
+		padding-top: 0;
+	}
+
+	&__container {
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		row-gap: 30px;
+	}
+
+	// &__title {}
+
+	&__tabs {
+		display: flex;
+		justify-content: space-between;
+		gap: 10px;
+		background-color: #f5f5f5;
+		padding: 10px;
+		@media (max-width: $md3) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	&__tab {
+		flex: 1 1 33.333%;
+		color: $black;
+		border: 1px solid transparent;
+		background-color: #f5f5f5;
+		padding: 20px 10px;
+		&::before,
+		&::after {
+			background-color: $green;
+		}
+
+		&::after {
+			transform: translate(-101%, -50%);
+			width: 50%;
+		}
+		&::before {
+			transform: translate(101%, -50%);
+			width: 50%;
+		}
+
+		&:hover {
+			color: $green;
+			border-color: $green;
+		}
+
+		&._tab-btn-active {
+			color: $white;
+			&::after {
+				width: 51%;
+				transform: translate(0, -50%);
+			}
+			&::before {
+				width: 51%;
+				transform: translate(0, -50%);
+			}
+		}
+
+		@media (max-width: $md3) {
+			&:last-child {
+				grid-column: span 2;
+			}
+		}
+		@media (max-width: $md4) {
+			padding: 15px 10px;
+		}
+	}
+
+	&__content {
+		display: flex;
+		gap: 10px;
+		align-items: flex-start;
+		&._my-tabs-content {
+			display: none;
+			&._tab-content-active {
+				display: flex;
+			}
+		}
+
+		@media (max-width: $md3) {
+			flex-direction: column;
+		}
+	}
+
+	&__col {
+		flex: 1 1 50%;
+		display: flex;
+		flex-direction: column;
+		row-gap: 15px;
+	}
+
+	&__accordion {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+
+		&._open {
+			.faq__accordion_control {
+				background: rgba(247, 147, 37, 0.1);
+			}
+			.faq__accordion_btn {
+				background-color: $black;
+				&::before {
+					transform: translate(-50%, -50%) rotate(90deg);
+				}
+			}
+			.faq__accordion_content {
+				padding: 0 40px 15px 40px;
+				@media (max-width: $md1) {
+					padding: 0 20px 20px 20px;
+				}
+			}
+		}
+
+		&_control {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			background: rgba(0, 0, 0, 0.02);
+			padding: 20px 30px 20px 40px;
+			gap: 20px;
+			cursor: pointer;
+			transition: 0.3s;
+
+			@media (max-width: $md1) {
+				padding: 20px;
+			}
+		}
+
+		&_title {
+			font-weight: 700;
+			@include adaptiv-font(20, 16, 1);
+			line-height: 150%;
+		}
+
+		&_btn {
+			background-color: $orange;
+			width: 45px;
+			height: 45px;
+			border-radius: 50%;
+			position: relative;
+			transition: 0.3s;
+			flex-shrink: 0;
+
+			&::before,
+			&::after {
+				content: '';
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				background-color: $white;
+				transition: 0.3s;
+			}
+			&::before {
+				width: 9%;
+				height: 40%;
+			}
+			&::after {
+				width: 40%;
+				height: 9%;
+			}
+
+			@media (max-width: $md4) {
+				width: 35px;
+				height: 35px;
+			}
+		}
+
+		&_content {
+			background: rgba(247, 147, 37, 0.1);
+			transition: 0.5s;
+			padding: 0 40px;
+			@media (max-width: $md1) {
+				padding: 0 20px;
+			}
+		}
+
+		&_text {
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 214%;
+		}
+	}
+}

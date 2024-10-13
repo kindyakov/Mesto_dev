@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('html/components/_head.html',{
+  "title": "@@faq.title",
+  "description": "@@faq.description",
+  "path":"@@faq.path"
+  })
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://mesto-store.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Вопрос-ответ",
+        "item": "https://mesto-store.ru/faq.html"
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWGX9N9L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class='wrapper'>
+    @@include('html/components/_header.html', {'fixed':'',path:''})
+    <main class='main'>
+      <div class="path">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="index.html" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <span>Вопрос-ответ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="faq section section-faq">
+        <div class="faq__container _container">
+          <div class="faq__body" data-tabs-init="faq-tabs">
+            <h1 class="faq__title h2">Остались вопросы?</h1>
+            <div class="faq__tabs">
+              <button class="faq__tab button _my-tabs-btn"><span>О кладовках</span></button>
+              <button class="faq__tab button _my-tabs-btn"><span>Доступ в кладовку</span></button>
+              <button class="faq__tab button _my-tabs-btn"><span>Договор аренды и оплаты</span></button>
+            </div>
+            <div class="faq__content _my-tabs-content">
+              <div class="faq__col">
+                <!-- @@loop("pageData/faq/accordion.html", "pageData/faq/accordions/aboutStoreroomsData.json") -->
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Как устроены склады индивидуального хранения?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Все кладовки МЕСТО – это тёплые и сухие помещения
+                      кладовок разных размеров, которые можно арендовать для хранения вещей на срок от одного месяца.
+                    </p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Какие условия хранения поддерживаются в кладовых?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Во всех кладовках МЕСТО хорошее освещение, поддержание
+                      температуры и уровня влажности</p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Какие меры безопасности соблюдаются в кладовках?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">
+                      Соблюдаются общие правила техники безопасности, а также специфические требования к сотрудникам и
+                      оборудованию.
+                      Запрещается употребление алкоголя, курение в неположенных местах и подключение личных
+                      электроприборов.</p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Каких размеров кладовки можно арендовать?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">
+                      Размеры боксов для аренды могут быть разными. Обычно минимальная площадь составляет 1 квадратный
+                      метр, а максимальная —
+                      обговаривается индивидульно с каждым клиентом.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="faq__col">
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Что нельзя хранить в кладовке?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">
+                      Нельзя хранить вещества, опасные для жизни и здоровья окружающих, например, радиоактивные,
+                      легковоспламеняющиеся, взрывоопасные,
+                      летучие и токсичные материалы. Также запрещено оставлять в боксах животных и растения, оружие и
+                      боеприпасы, скоропортящиеся товары
+                      и продукты питания, а также предметы,
+                      запрещённые к обороту на территории Российской Федерации.</p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Что такое антресольное хранение?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Это кладовка, расположенная выше уровня пола,
+                      обычно на высоте около 2 метров. Чтобы попасть туда, нужно воспользоваться
+                      передвижной лестницей-площадкой, доступной для всех арендаторов.</p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Как перевезти, погрузить и разгрузить вещи?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Вы можете перевезти вещи самостоятельно или обратиться к нам за
+                      услугой доставки. Рассмотрите альтернативные варианты
+                      доставки: Яндекс Go — закажите грузовое такси для быстрой и надёжной перевозки ваших вещей;
+                      Яндекс.Драйв —
+                      воспользуйтесь услугами грузового каршеринга для самостоятельной перевозки.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="faq__content _my-tabs-content">
+              <div class="faq__col">
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Как осуществляется доступ к кладовке?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Доступ к кладовке осуществляется с помощью электронной системы
+                      доступа через личный кабинет. Вам нужно только
+                      зарегистрироваться на сайте и выбрать подходящую кладовку. Прежде чем заключать договор аренды, Вы
+                      можете посетить
+                      комплекс по гостевому достуту. При посещении обязательно возьмите с собой телефон и зайдите в
+                      личный кабинет на сайте. В
+                      разделе "Открыть" нажмите поэтапно на кнопки "Открыть шлагбаум" , "Открыть ворота", "Открыть
+                      дверь", "Открыть кладовку".
+                      Воспользуйтесь подсказками при каждом шаге. Если у вас возникли сложности, позвоните по номеру +7
+                      (495) 165-15-65</p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Как осуществляется доступ к терминалу?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Доступ к складскому комплексу осуществляется с помощью
+                      электронной системы доступа через личный кабинет. Вам нужно
+                      только зарегистрироваться на сайте и выбрать подходящую кладовку. При посещении обязательно
+                      возьмите с собой телефон и
+                      зайдите в личный кабинет на сайте. В разделе "Открыть" нажмите поэтапно на кнопки "Открыть
+                      шлагбаум" , "Открыть ворота",
+                      "Открыть дверь", "Открыть кладовку". Воспользуйтесь подсказками при каждом шаге. Если у вас
+                      возникли сложности,
+                      позвоните по номеру +7 (495) 165-15-65</p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">В какое время можно воспользоваться арендованной кладовкой и
+                      попасть на терминал?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Время работы компании МЕСТО.Кладовки —
+                      24 часа в сутки, 7 дней в неделю, 365 дней в году.</p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Что произойдет, если я забуду свой пароль от Личного кабинета?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Если вы
+                      забудете пароль от Личного кабинета, то сможете восстановить его, используя номер телефона,
+                      указанные при регистрации.
+                    </p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Могу ли я посмотреть кладовку перед заключением договора аренды?
+                    </h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Перед заключением договора аренды, Вы можете посетить комплекс
+                      по гостевому доступу. При посещении обязательно возьмите
+                      с собой телефон и зайдите в личный кабинет на сайте. В разделе "Открыть"нажмите поэтапно на кнопки
+                      "Открыть шлагбаум", "Открыть ворота", "Открыть дверь", "Открыть кладовку". Воспользуйтесь
+                      подсказками при каждом шаге.
+                      Если у вас возникли
+                      сложности, позвоните по номеру +7 (495) 165-15-65
+                    </p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Могу ли я разрешить другим лицам доступ к моему боксу?
+                    </h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">В МЕСТО Вы можете использовать кладовки совместно с другими
+                      людьми. Например, члены семьи, коллеги или друзья. Вам
+                      необходимо предоставить доступ к ключу от навесного замка или пин-коду от электромеханического
+                      замка. Не забудьте также
+                      сообщить данные от личного кабинета.
+                    </p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Могу ли я поменять пароль от своего личного кабинета?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Конечно! В Личном кабинете, в разделе "Смена пароля"</p>
+                  </div>
+                </div>
+              </div>
+              <div class="faq__col">
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Как арендовать помещение для хранения?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Чтобы арендовать помещение для хранения, определите свои
+                      потребности: размер помещения, срок аренды. Выберите подходящую
+                      кладовку. Оплатите аренду за 1 месяц. Готово!</p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Какие документы необходимы для заключения договора аренды?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Для заключения договора аренды вам понадобятся: для физических
+                      лиц- паспорт; для юридических лиц реквизиты организации.</p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Нужно ли оплачивать весь срок аренды сразу?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Нет, оплата происходит помесячно.</p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">От чего зависит размер арендной ставки?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Размер арендной ставки зависит от долгосрочности арендных
+                      соглашений. Чем дольше срок аренды, тем дешевле ежемесячная
+                      стоимость.</p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Как и когда можно расторгнуть договор аренды?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Договор аренды можно расторгнуть по соглашению сторон или в
+                      одностороннем порядке. В одностороннем порядке договор
+                      расторгается, если арендатор существенно нарушил его, не платит за аренду. Арендатор может
+                      досрочно расторгнуть договор,
+                      в личном кабинете уведомив арендадателя за 14 дней.</p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Срочно нужно увеличить площадь. Как быть?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Чтобы увеличить площадь кладовки вы можете воспользоваться
+                      подбором в разделе Калькулятор и подобрать необходимую
+                      площадь.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="faq__content _my-tabs-content">
+              <div class="faq__col">
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Как арендовать помещение для хранения?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Чтобы арендовать помещение для хранения, определите свои
+                      потребности: размер помещения, срок аренды. Выберите подходящую
+                      кладовку. Оплатите аренду за 1 месяц. Готово!</p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Какие документы необходимы для заключения договора аренды?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Для заключения договора аренды вам понадобятся:
+                      для физических лиц- паспорт;
+                      для юридических лиц реквизиты организации.</p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Нужно ли оплачивать весь срок аренды сразу?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Нет, оплата происходит помеcячно.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="faq__col">
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">От чего зависит размер арендной ставки?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Размер арендной ставки зависит от долгосрочности арендных
+                      соглашений. Чем дольше срок аренды, тем дешевле ежемесячная
+                      стоимость.</p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Как и когда можно расторгнуть договор аренды?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Договор аренды можно расторгнуть по соглашению сторон или в
+                      одностороннем порядке. В одностороннем порядке договор
+                      расторгается, если арендатор существенно нарушил его, не платит за аренду. Арендатор может
+                      досрочно расторгнуть договор,
+                      в личном кабинете уведомив арендадателя за 14 дней.</p>
+                  </div>
+                </div>
+                <div class="faq__accordion _my-accordion">
+                  <div class="faq__accordion_control _my-accordion-control">
+                    <h4 class="faq__accordion_title">Срочно нужно увеличить площадь. Как быть?</h4>
+                    <button class="faq__accordion_btn"></button>
+                  </div>
+                  <div class="faq__accordion_content _my-accordion-content">
+                    <p class="faq__accordion_text text">Чтобы увеличить площадь кладовки вы можете воспользоваться
+                      подбором в разделе Калькулятор и подобрать необходимую
+                      площадь.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('html/components/_footer.html',{path:''})
+  </div>
+  @@include('html/components/_modal.html',{path:''})
+  @@include('html/components/_js.html',{path:''})
+</body>
+
+</html>

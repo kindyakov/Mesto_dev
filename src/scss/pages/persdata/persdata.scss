@@ -1,0 +1,66 @@
+.persdata {
+	&__container {
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		row-gap: 30px;
+	}
+
+	&__title {
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		row-gap: 15px;
+
+		> div {
+			display: flex;
+			flex-direction: column;
+			row-gap: 15px;
+		}
+
+		h3 {
+			@include adaptiv-font(22, 16, 1);
+			line-height: normal;
+			text-align: center;
+			font-weight: 700;
+		}
+
+		p {
+			font-size: 16px;
+			font-weight: 600;
+			line-height: 125%;
+			letter-spacing: -0.01em;
+			color: #8d8686;
+			text-align: justify;
+			@media (max-width: $md5) {
+				font-size: 14px;
+			}
+		}
+
+		ul {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+
+			li {
+				font-size: 16px;
+				font-weight: 600;
+				line-height: 125%;
+				letter-spacing: -0.01em;
+				color: #8d8686;
+				text-align: justify;
+				&::before {
+					content: '—';
+					margin-right: 8px;
+				}
+				@media (max-width: $md5) {
+					font-size: 14px;
+				}
+			}
+		}
+	}
+}

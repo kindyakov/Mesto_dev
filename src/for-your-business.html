@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+  @@include('html/components/_head.html',{
+  'title': '@@fileName.title',
+  'description': '@@fileName.description',
+  'path':'@@fileName.path'
+  })
+</head>
+
+<body>
+  <div class='wrapper'>
+    @@include('html/components/_header.html', {'path':'@@webRoot/'})
+    <main class='main for-your-business'>
+      <div class="path not">
+        <div class="path__container _container">
+          <div class="path__body">
+            <div class="path__content path-content">
+              <a href="/" class="path__link hover-link">Главная</a>
+              <span class="path__sep">/</span>
+              <a href="services.html" class="path__link hover-link">Услуги хранения</a>
+              <span class="path__sep">/</span>
+              <span>Для вашего бизнеса</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="business" id="business">
+        <div class="business__container _container">
+          <div class="business__body">
+            <div class="business__intro">
+              <div class="business__intro_content">
+                <h1 class="business__title h3">Аренда кладовки для Вашего бизнеса</h1>
+                <p>решаем вопрос хранения просто и надежно</p>
+                <div class="business__intro_list">
+                  <p>Актуально хранение товаров в кладовках и на складе:</p>
+                  <ul>
+                    <li>— для интернет-магазинов и фулфилмента</li>
+                    <li>— для ИП в сфере торговли</li>
+                    <li>— для временного хранения грузов при перевозке товаров</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="business__intro_img">
+                <img src="./img/warehouse.png" alt="Картинка">
+              </div>
+            </div>
+            <div class="business__tabs" data-tabs-init="business-tabs">
+              <h2 class="business__title h3">Применение кладовки в хранении для бизнеса</h2>
+              <div class="business__tabs_buttons">
+                <button class="business__tabs_button button _business-tabs-btn"><span>Гостиницам</span></button>
+                <button class="business__tabs_button button _business-tabs-btn"><span>Интернет-магазинам</span></button>
+                <button class="business__tabs_button button _business-tabs-btn"><span>Рекламным
+                    агентствам</span></button>
+                <button class="business__tabs_button button _business-tabs-btn"><span>Офисный переезд</span></button>
+              </div>
+              <div class="business__tabs_content _business-tabs-content">
+                <div class="business__tabs_item">
+                  <p>Хранение товаров для интернет-магазина и фулфилмента</p>
+                </div>
+                <div class="business__tabs_item active">
+                  <p>Хранение столовых приборов</p>
+                </div>
+                <div class="business__tabs_item active">
+                  <p>Хранение мебели для гостиниц</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение строительных материалов</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение оргтехники</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение архива документов</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение медицинского оборудования</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение рекламных материалов</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение офисной мебели</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение коробок на время ремонта</p>
+                </div>
+                <div class="business__tabs_item active">
+                  <p>Хранение мебели ресепшен</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение шкафов витирин для бизнеса</p>
+                </div>
+              </div>
+              <div class="business__tabs_content _business-tabs-content">
+                <div class="business__tabs_item active">
+                  <p>Хранение товаров для интернет-магазина и фулфилмента</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение столовых приборов</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение мебели для гостиниц</p>
+                </div>
+                <div class="business__tabs_item active">
+                  <p>Хранение строительных материалов</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение оргтехники</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение архива документов</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение медицинского оборудования</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение рекламных материалов</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение офисной мебели</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение коробок на время ремонта</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение мебели ресепшен</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение шкафов витирин для бизнеса</p>
+                </div>
+              </div>
+              <div class="business__tabs_content _business-tabs-content">
+                <div class="business__tabs_item">
+                  <p>Хранение товаров для интернет-магазина и фулфилмента</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение столовых приборов</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение мебели для гостиниц</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение строительных материалов</p>
+                </div>
+                <div class="business__tabs_item active">
+                  <p>Хранение оргтехники</p>
+                </div>
+                <div class="business__tabs_item active">
+                  <p>Хранение архива документов</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение медицинского оборудования</p>
+                </div>
+                <div class="business__tabs_item active">
+                  <p>Хранение рекламных материалов</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение офисной мебели</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение коробок на время ремонта</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение мебели ресепшен</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение шкафов витирин для бизнеса</p>
+                </div>
+              </div>
+              <div class="business__tabs_content _business-tabs-content">
+                <div class="business__tabs_item">
+                  <p>Хранение товаров для интернет-магазина и фулфилмента</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение столовых приборов</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение мебели для гостиниц</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение строительных материалов</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение оргтехники</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение архива документов</p>
+                </div>
+                <div class="business__tabs_item active">
+                  <p>Хранение медицинского оборудования</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение рекламных материалов</p>
+                </div>
+                <div class="business__tabs_item active">
+                  <p>Хранение офисной мебели</p>
+                </div>
+                <div class="business__tabs_item active">
+                  <p>Хранение коробок на время ремонта</p>
+                </div>
+                <div class="business__tabs_item">
+                  <p>Хранение мебели ресепшен</p>
+                </div>
+                <div class="business__tabs_item active">
+                  <p>Хранение шкафов витирин для бизнеса</p>
+                </div>
+              </div>
+              <div class="business__accords">
+                <div class='business__accord _my-accordion'>
+                  <button class='business__accord_control _my-accordion-control'>
+                    <span>Гостиницам</span>
+                    <svg class='icon icon-arrow-right'>
+                      <use xlink:href='img/svg/sprite.svg#arrow-right'></use>
+                    </svg>
+                  </button>
+                  <div class='business__accord_content _my-accordion-content'>
+                    <p>Хранение мебели для гостиниц</p>
+                    <p>Хранение мебели ресепшен</p>
+                    <p>Хранение столовых приборов</p>
+                  </div>
+                </div>
+                <div class='business__accord _my-accordion'>
+                  <button class='business__accord_control _my-accordion-control'>
+                    <span>Интернет-магазинам</span>
+                    <svg class='icon icon-arrow-right'>
+                      <use xlink:href='img/svg/sprite.svg#arrow-right'></use>
+                    </svg>
+                  </button>
+                  <div class='business__accord_content _my-accordion-content'>
+                    <p>Хранение товаров для интернет-магазина и фулфилмента</p>
+                    <p>Хранение строительных материалов</p>
+                  </div>
+                </div>
+                <div class='business__accord _my-accordion'>
+                  <button class='business__accord_control _my-accordion-control'>
+                    <span>Рекламным агентствам</span>
+                    <svg class='icon icon-arrow-right'>
+                      <use xlink:href='img/svg/sprite.svg#arrow-right'></use>
+                    </svg>
+                  </button>
+                  <div class='business__accord_content _my-accordion-content'>
+                    <p>Хранение оргтехники</p>
+                    <p>Хранение рекламных материалов</p>
+                    <p>Хранение архива документов</p>
+                  </div>
+                </div>
+                <div class='business__accord _my-accordion'>
+                  <button class='business__accord_control _my-accordion-control'>
+                    <span>Офисный переезд</span>
+                    <svg class='icon icon-arrow-right'>
+                      <use xlink:href='img/svg/sprite.svg#arrow-right'></use>
+                    </svg>
+                  </button>
+                  <div class='business__accord_content _my-accordion-content'>
+                    <p>Хранение офисной мебели</p>
+                    <p>Хранение шкафов витирин для бизнеса</p>
+                    <p>Хранение коробок на время ремонта</p>
+                    <p>Хранение медицинского оборудования</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="business__cost">
+              <h2 class="business__title">Стоимость аренды кладовки в МЕСТО</h2>
+              <div class="business__cost_content">
+                <div class="business__cost_block">
+                  <p>Цена складских и кладовых помещений включает НДС. В стоимость аренды входит:</p>
+                  <ul>
+                    <li><a href="./reliable-lock.html">Надежный замок</a></li>
+                    <li>Охрана</li>
+                    <li>Электричество</li>
+                    <li>Интернет</li>
+                    <li>Тележки</li>
+                    <li>Освещение</li>
+                    <li>Системы видеонаблюдения и пожаротушения</li>
+                  </ul>
+                </div>
+                <div class="business__cost_buttons">
+                  <button class="button btn-book btn-open-modal-feedback-form"><span>Получить
+                      предложение</span></button>
+                  <a href="warehouse/1.html" class="button link-scroll"><span>Арендовать on-line</span></a>
+                </div>
+              </div>
+            </div>
+            <div class="business__benefit">
+              <h2 class="business__title">Почему выгоднее арендовать кладовку или склад?</h2>
+              <div class="business__benefit_content">
+                <div class="business__benefit_block">
+                  <ul>
+                    <li>— Включена оплата коммунальных и эксплуатационных расходов</li>
+                    <li>— Найм сотрудников охраны, клининга и администраторов за нами</li>
+                    <li>— Вы в любое время сможете расширить или уменьшить арендованную площадь под потребности вашего
+                      бизнеса</li>
+                    <li>— Бесплатный Wi-fi</li>
+                    <li>— В наличии поргузо-разгрузочное оборудование</li>
+                    <li>— Круглосуточный доступ к товару</li>
+                    <li>— Способ оплаты на выбор (перевод с карты или оплата по счёту)</li>
+                    <li>— Простата оформления аренды склада.<br>Вам достаточно только оплатить, работаем по оферте</li>
+                    <li>— Надежное и безопасное хранение вашего товара.<br>Предоставляем в бесплатное пользование
+                      надежный японский замок
+                      последнего класса защиты, с доступом через личный кабинет.Пожарная сигнализация, видеонаблюдениепо
+                      периметру и внутри
+                      здания.</li>
+                  </ul>
+                </div>
+                <div class="business__benefit_swiper swiper">
+                  <div class="business__benefit_swiper-wrapper swiper-wrapper">
+                    <div class="business__benefit_swiper-slide swiper-slide">
+                      <img src="./img/benefit-1.jpg" alt="Картинка">
+                    </div>
+                    <div class="business__benefit_swiper-slide swiper-slide">
+                      <img src="./img/benefit-2.jpg" alt="Картинка" loading="lazy">
+                    </div>
+                    <div class="business__benefit_swiper-slide swiper-slide">
+                      <img src="./img/benefit-3.jpg" alt="Картинка" loading="lazy">
+                    </div>
+                    <div class="business__benefit_swiper-slide swiper-slide">
+                      <img src="./img/benefit-4.jpg" alt="Картинка" loading="lazy">
+                    </div>
+                    <div class="business__benefit_swiper-slide swiper-slide">
+                      <img src="./img/benefit-5.jpg" alt="Картинка" loading="lazy">
+                    </div>
+                    <div class="business__benefit_swiper-slide swiper-slide">
+                      <img src="./img/benefit-6.jpg" alt="Картинка" loading="lazy">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="business__storage">
+              <h2 class="business__title">Какие товары принимаем на хранение?</h2>
+              <div class="business__storage_content">
+                <div class="business__storage_block">
+                  <h4 class="business__storage_title">Продукты питания</h4>
+                  <ul>
+                    <li>Безалкогольные напитки</li>
+                    <li>Детское питание</li>
+                    <li>Бакалея</li>
+                    <li>Масла растительные</li>
+                    <li>Консервация</li>
+                    <li>Орехи, сухофрукты, приправы</li>
+                    <li>Сахар, соль</li>
+                    <li>Снеки</li>
+                    <li>Чай, кофе, сладости</li>
+                    <li>и прочие товары, не требующие особого температурного режима</li>
+                  </ul>
+                </div>
+                <div class="business__storage_block">
+                  <h4 class="business__storage_title">Непродовольственные товары</h4>
+                  <ul>
+                    <li>Бытовая химия</li>
+                    <li>Товары для детей</li>
+                    <li>Канцтовары и печатная продукция</li>
+                    <li>Косметика и гигиена</li>
+                    <li>Зоотовары</li>
+                    <li>Одежда и обувь</li>
+                    <li>Спортивные товары</li>
+                    <li>Товары для дачи, сада, дома и интерьера</li>
+                    <li>Прочие товары народного потребления</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="business-warehouse warehouse section" data-tabs-init="tabs-warehouse" data-warehouse-id="1">
+        <div class="warehouse__container _container">
+          <div class="warehouse__body">
+            <div class="warehouse__slider swiper slider-warehouse">
+              <div class="warehouse__slider-wrapper swiper-wrapper">
+                <div class="warehouse__slider-slide swiper-slide">
+                  <img src="@@webRoot/img/business-1.jpg" alt="Фото терминала">
+                </div>
+                <div class="warehouse__slider-slide swiper-slide">
+                  <img src="@@webRoot/img/business-2.jpg" alt="Фото терминала">
+                </div>
+                <div class="warehouse__slider-slide swiper-slide">
+                  <img src="@@webRoot/img/business-3.jpg" alt="Фото терминала">
+                </div>
+                <div class="warehouse__slider-slide swiper-slide">
+                  <img src="@@webRoot/img/business-4.jpg" alt="Фото терминала">
+                </div>
+              </div>
+              <button class="warehouse__slider-btn btn-slider-prev">
+                <svg class='icon icon-arrow-left'>
+                  <use xlink:href='@@webRoot/img/svg/sprite.svg#arrow-left'></use>
+                </svg>
+              </button>
+              <button class="warehouse__slider-btn btn-slider-next">
+                <svg class='icon icon-arrow-right'>
+                  <use xlink:href='@@webRoot/img/svg/sprite.svg#arrow-right'></use>
+                </svg>
+              </button>
+            </div>
+            <div class="warehouse__content">
+              <div class="warehouse__content-top">
+                <h1 class="warehouse__title" data-warehouse-key="warehouse_name">Кладовки на Борисовских прудах</h1>
+              </div>
+
+              <ul class="warehouse__content-info">
+                <li>Автоматизированный терминал</li>
+                <li>Доступ 24/7</li>
+              </ul>
+              <div class="warehouse__content-bottom">
+                <address class="warehouse__address">
+                  <svg class='icon icon-placemark'>
+                    <use xlink:href='@@webRoot/img/svg/sprite.svg#placemark'></use>
+                  </svg>
+                  <span data-warehouse-key="warehouse_address">Москва, Борисовские пруды 22 к4, с1</span>
+                </address>
+              </div>
+              <a href="./warehouse/1.html" class="button-5">
+                <span>Оформить гостевой визит</span>
+              </a>
+            </div>
+          </div>
+          @@include('@@webRoot/html/section/warehouse__main.html',{path:'@@webRoot/'})
+        </div>
+      </section>
+      @@include('html/section/special-offer-swiper.html',{path:'@@webRoot/'})
+      @@include('html/section/map.html',{path:'@@webRoot/'})
+      @@include('html/section/advantages-storage.html',{path:'@@webRoot/'})
+      @@include('html/section/special-offer-swiper.html',{path:'@@webRoot/'})
+      @@include('html/section/questions.html',{path:'@@webRoot/'})
+      @@include('html/section/faq.html',{path:'@@webRoot/'})
+    </main>
+    @@include('html/components/_footer.html',{'path':'@@webRoot/'})
+  </div>
+  @@include('html/components/_modal.html',{path:'@@webRoot/'})
+  @@include('html/components/_js.html',{'path':'@@webRoot/'})
+</body>
+
+</html>
