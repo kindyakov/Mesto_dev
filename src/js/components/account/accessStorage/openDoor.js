@@ -32,7 +32,7 @@ class OpenDoor {
   async openDoor() {
     try {
       this.loader.enable()
-      const response = await apiWithAuth.post('/_open_door_?warehouse_id=1')
+      const response = await apiWithAuth.get('/_open_door_?warehouse_id=1')
       if (response.status !== 200) return
       outputInfo(response.data)
     } catch (error) {
