@@ -1,20 +1,24 @@
-import { Modal } from "../../../modules/myModal.js"
+import { Modal } from '../../../modules/myModal.js'
 
 class OpenGates {
-  constructor({ loader }) {
-    this.modalConfirmOpenGates = new Modal('.modal-confirm-open-gates', {
-      modalBtnClose: '.btn-modal-close'
-    })
+	constructor({ loader }) {
+		this.modalConfirmOpenGates = new Modal('.modal-confirm-open-gates', {
+			modalBtnClose: '.btn-modal-close',
+		})
 
-    this.loader = loader
-  }
+		this.loader = loader
+		this.warehouse = null
+	}
 
-  renderModalConfirm() {
-    this.modalConfirmOpenGates.modal.querySelector('.modal-confirm-open-barrier__content p').innerHTML = `
-    Вы уверены, что хотите открыть ворота на складе 1?`
+	open(warehouse) {
+		this.warehouse = warehouse
+		this.modalConfirmOpenGates.modal.querySelector(
+			'.modal-confirm-open-gates__content p'
+		).innerHTML = `
+    Вы уверены,<br>что хотите открыть ворота на складе <span style="font-weight: 600;white-space: nowrap;">${warehouse.warehouse_name}</span> ?`
 
-    this.modalConfirmOpenGates.open()
-  }
+		this.modalConfirmOpenGates.open()
+	}
 }
 
 export default OpenGates

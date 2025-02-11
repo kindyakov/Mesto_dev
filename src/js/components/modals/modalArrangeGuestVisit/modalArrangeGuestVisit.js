@@ -125,7 +125,7 @@ export function modalArrangeGuestVisit() {
       if (response.data.msg_type === 'success') {
         ym(97074608, 'reachGoal', 'gostevoi')
         document.cookie = `token=Bearer ${access_token}; max-age=${expiration_time}; path=/`;
-        location.pathname = 'account.html'
+        location.origin = `${location.origin}/account`
       }
     } catch (error) {
       console.log(error.message)

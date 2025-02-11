@@ -30,18 +30,18 @@
 		});
 	}
 
-	function handleScrollEvent() {
-		loadYandexMetrica();
-		window.removeEventListener('scroll', handleScrollEvent);
-	}
-
-	window.addEventListener('DOMContentLoaded', function () {
-		if (window.scrollY > 0) {
-			handleScrollEvent()
-		} else {
-			window.addEventListener('scroll', handleScrollEvent);
-		}
-	});
+	// function handleScrollEvent() {
+	// 	loadYandexMetrica();
+	// 	window.removeEventListener('scroll', handleScrollEvent);
+	// }
+	loadYandexMetrica()
+	// window.addEventListener('DOMContentLoaded', function () {
+	// 	if (window.scrollY > 0) {
+	// 		handleScrollEvent()
+	// 	} else {
+	// 		window.addEventListener('scroll', handleScrollEvent);
+	// 	}
+	// });
 </script>
 <noscript>
 	<div><img src="https://mc.yandex.ru/watch/97074608" style="position:absolute; left:-9999px;" alt="" /></div>

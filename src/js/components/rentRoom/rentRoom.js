@@ -179,7 +179,7 @@ class RentRoom {
         const btn = e.target.closest('.btn-download-invoice')
         const bill_id = btn.getAttribute('data-bill-id')
         if (bill_id) {
-          downloadBill(bill_id, this.loader, '/account.html')
+          downloadBill(bill_id, this.loader, '/account')
         }
       }
     })

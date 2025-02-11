@@ -1,332 +1,426 @@
-import { warehouseRoom } from "./html.js";
-import { Range } from "./range.js";
+import { warehouseRoom } from './html.js'
+import { Range } from './range.js'
 
-import { Tabs } from "../../modules/myTabs.js";
-import { Loader } from "../../modules/myLoader.js"
+import { Tabs } from '../../modules/myTabs.js'
+import { Loader } from '../../modules/myLoader.js'
 
-import api from "../../settings/api.js";
+import api from '../../settings/api.js'
 
-import { buildQueryParams } from "../../utils/buildQueryParams.js";
-import { formattingPrice } from "../../utils/formattingPrice.js";
-import { declOfNum } from "../../utils/declOfNum.js";
-import { setMinMaxBlocks } from "../../utils/setMinMaxBlocks.js";
-import { checkMobile } from "../../utils/checkMobile.js";
+import { buildQueryParams } from '../../utils/buildQueryParams.js'
+import { formattingPrice } from '../../utils/formattingPrice.js'
+import { declOfNum } from '../../utils/declOfNum.js'
+import { setMinMaxBlocks } from '../../utils/setMinMaxBlocks.js'
+import { checkMobile } from '../../utils/checkMobile.js'
 
 function addClassRented(rented) {
-  if (rented === 0) {
-    return 'free'
-  } else {
-    return 'disabled'
-  }
+	if (rented === 0) {
+		return 'free'
+	} else {
+		return 'disabled'
+	}
 }
 
 class Warehouse {
-  constructor() {
-    this.warehouse = document.querySelector('.warehouse')
-    if (!this.warehouse) return
+	constructor() {
+		this.warehouse = document.querySelector('.warehouse')
+		if (!this.warehouse) return
 
-    this.urlParams = new URLSearchParams(this.getSearchParams())
+		this.urlParams = new URLSearchParams(this.getSearchParams())
 
-    // this.warehouseId = +this.urlParams.get('id')
-    this.warehouseId = +this.warehouse.getAttribute('data-warehouse-id')
+		// this.warehouseId = +this.urlParams.get('id')
+		this.warehouseId = +this.warehouse.getAttribute('data-warehouse-id')
 
-    this.depth = location.pathname.split('/').filter(el => el).length - 1
-    this.pathPrefix = this.depth > 0 ? '../'.repeat(this.depth) : ''
+		if (!this.warehouseId) return
 
-    if (!this.warehouseId) return
+		this.slider = this.initSlider()
 
-    this.slider = this.initSlider();
+		this.tabsScheme = new Tabs('tabs-warehouse', {
+			btnSelector: '.tabs-btn-schemes',
+			contentSelector: '.tabs-content-schemes',
+		})
 
-    this.tabsScheme = new Tabs('tabs-warehouse', {
-      btnSelector: '.tabs-btn-schemes',
-      contentSelector: '.tabs-content-schemes',
-    })
+		this.range = new Range('.range-filter-warehouse', {
+			selectorInput: '.input-filter-warehouse',
+			warehouse_id: this.warehouseId,
+		})
 
-    this.range = new Range('.range-filter-warehouse', {
-      selectorInput: '.input-filter-warehouse',
-      warehouse_id: this.warehouseId
-    })
+		this.loader = new Loader(document.querySelector('.main'), {
+			isHidden: false,
+			customSelector: 'custom-loader',
+			position: 'fixed',
+		})
 
-    this.loader = new Loader(document.querySelector('.main'), {
-      isHidden: false, customSelector: 'custom-loader', position: 'fixed'
-    })
+		this.contentRoomsWarehouse = this.warehouse.querySelector(
+			'.content-rooms-warehouse'
+		)
+		this.infoResultWarehouse = this.warehouse.querySelector(
+			'.info-result-warehouse'
+		)
+		this.linkResultWarehouse = this.warehouse.querySelector(
+			'.link-result-warehouse'
+		)
+		this.buttonResultWarehouse = this.warehouse.querySelector(
+			'.button-result-warehouse'
+		)
 
-    this.schemeOne = this.warehouse.querySelector('.scheme-1')
-    this.schemeTwo = this.warehouse.querySelector('.scheme-2')
-    this.schemeActive = this.schemeOne
+		this.rooms = []
+		this.resultRoomsData = {
+			volume: 0,
+			price_11m: 0,
+			ids: [],
+			count_rooms: 0,
+			rooms: [],
+		}
 
-    this.contentRoomsWarehouse = this.warehouse.querySelector('.content-rooms-warehouse')
-    this.infoResultWarehouse = this.warehouse.querySelector('.info-result-warehouse')
-    this.linkResultWarehouse = this.warehouse.querySelector('.link-result-warehouse')
-    this.buttonResultWarehouse = this.warehouse.querySelector('.button-result-warehouse')
+		this.pathContent = document.querySelector('.path-content')
 
-    this.rooms = []
-    this.resultRoomsData = { volume: 0, price_11m: 0, ids: [], count_rooms: 0, rooms: [] }
+		this.init()
+	}
 
-    this.pathContent = document.querySelector('.path-content')
+	getSearchParams() {
+		let params = null
 
-    this.init()
-  }
+		if (location.href.includes('?')) {
+			;[params = null] = location.href.split('?')?.[1]?.split('#')
+		}
 
-  getSearchParams() {
-    let params = null
+		return params
+	}
 
-    if (location.href.includes('?')) {
-      [params = null] = location.href.split('?')?.[1]?.split('#')
-    }
+	initSlider() {
+		return new Swiper('.slider-warehouse', {
+			slidesPerView: 1,
+			observeSlideChildren: true,
+			observer: true,
+			loop: true,
+			navigation: {
+				nextEl: '.warehouse__slider-btn.btn-slider-next',
+				prevEl: '.warehouse__slider-btn.btn-slider-prev',
+			},
+		})
+	}
 
-    return params;
-  }
+	init() {
+		const volume_start = +this.urlParams.get('volume_start')
+		const volume_end = +this.urlParams.get('volume_end')
+		const price_start = +this.urlParams.get('price_start')
+		const price_end = +this.urlParams.get('price_end')
 
-  initSlider() {
-    return new Swiper('.slider-warehouse', {
-      slidesPerView: 1,
-      observeSlideChildren: true,
-      observer: true,
-      loop: true,
-      navigation: {
-        nextEl: '.warehouse__slider-btn.btn-slider-next',
-        prevEl: '.warehouse__slider-btn.btn-slider-prev',
-      },
-    });
-  }
+		this.range.setSlider('volume', [volume_start, volume_end])
+		this.range.setSlider('price', [price_start, price_end])
 
-  init() {
-    const volume_start = +this.urlParams.get('volume_start')
-    const volume_end = +this.urlParams.get('volume_end')
-    const price_start = +this.urlParams.get('price_start')
-    const price_end = +this.urlParams.get('price_end')
+		this.range.updateInputValue('volume', [volume_start, volume_end])
+		this.range.updateInputValue('price', [price_start, price_end])
 
-    this.range.setSlider('volume', [volume_start, volume_end])
-    this.range.setSlider('price', [price_start, price_end])
+		this.reqData = {
+			...this.range.rangeData,
+			warehouse_id: this.warehouseId,
+			floor: 1,
+		}
 
-    this.range.updateInputValue('volume', [volume_start, volume_end])
-    this.range.updateInputValue('price', [price_start, price_end])
+		this.events()
+		this.process()
+	}
 
-    this.reqData = { ...this.range.rangeData, warehouse_id: this.warehouseId, floor: 1 }
+	events() {
+		this.tabsScheme.options.onChange = (
+			nexTabBtn,
+			prevTabBtn,
+			nextTabContent,
+			prevTabContent
+		) => {
+			this.schemeActive = nextTabContent.querySelector('.scheme')
+			this.reqData.floor = nexTabBtn.dataset.floor
+			this.process(buildQueryParams(this.reqData))
+		}
 
-    this.events()
-    this.process()
-  }
+		this.range.options.onChange = rangeData => {
+			this.reqData = {
+				...this.reqData,
+				floor: this.reqData.floor,
+				...rangeData,
+			}
+			this.process(buildQueryParams(this.reqData))
+		}
 
-  events() {
-    this.tabsScheme.options.onChange = (nexTabBtn, prevTabBtn, nextTabContent, prevTabContent) => {
-      this.schemeActive = nextTabContent.classList.contains('content-schemes-one') ? this.schemeOne : this.schemeTwo;
-      this.reqData.floor = this.schemeActive === this.schemeOne ? 1 : 2;
+		this.warehouse.addEventListener('click', e => {
+			const isMobile = checkMobile()
 
-      this.process(buildQueryParams(this.reqData))
-    }
+			if (e.target.closest('.warehouse__svg-cell')) {
+				e.preventDefault()
+			}
 
-    this.range.options.onChange = (rangeData) => {
-      this.reqData = { ...  this.reqData, floor: this.reqData.floor, ...rangeData }
-      this.process(buildQueryParams(this.reqData))
-    }
+			if (e.target.closest('.warehouse__svg-cell.free')) {
+				e.preventDefault()
+				this.rooms.length && this.handlerClickSvgCell(e, this.rooms)
+			}
 
-    this.warehouse.addEventListener('click', e => {
-      const isMobile = checkMobile()
+			if (
+				e.target.closest('.link-result-warehouse') &&
+				!this.resultRoomsData.ids.length
+			) {
+				e.preventDefault()
+			}
 
-      if (e.target.closest('.warehouse__svg-cell')) {
-        e.preventDefault()
-      }
+			if (e.target.closest('.warehouse__filter_tab')) {
+				const tab = e.target.closest('.warehouse__filter_tab')
+				const nameRange = tab.getAttribute('data-type-range')
+				const values = tab.getAttribute('data-va')?.split(',')
+				if (!nameRange || !values?.length) return
 
-      if (e.target.closest('.warehouse__svg-cell.free')) {
-        e.preventDefault()
-        this.rooms.length && this.handlerClickSvgCell(e, this.rooms)
-      }
+				this.range.setSlider(nameRange, values)
+				this.range.updateInputValue(nameRange, values)
 
-      if (e.target.closest('.link-result-warehouse') && !this.resultRoomsData.ids.length) {
-        e.preventDefault()
-      }
+				if (this.range.rangeData.volume_end === 16) {
+					this.range.rangeData.volume_end = 100
+				}
 
-      if (e.target.closest('.warehouse__filter_tab')) {
-        const tab = e.target.closest('.warehouse__filter_tab')
-        const nameRange = tab.getAttribute('data-type-range')
-        const values = tab.getAttribute('data-va')?.split(',')
-        if (!nameRange || !values?.length) return
+				if (
+					this.range.rangeData.price_end === this.range.rangeStartData.price_end
+				) {
+					this.range.rangeData.price_end = 100000
+				}
 
-        this.range.setSlider(nameRange, values)
-        this.range.updateInputValue(nameRange, values)
+				this.reqData = {
+					...this.reqData,
+					floor: this.reqData.floor,
+					...this.range.rangeData,
+				}
 
-        if (this.range.rangeData.volume_end === 16) {
-          this.range.rangeData.volume_end = 100
-        }
+				if (+values[0] == 10) {
+					this.reqData.area_start = 10
+					delete this.reqData['area_end']
+				}
+				this.process(buildQueryParams(this.reqData))
+			}
 
-        if (this.range.rangeData.price_end === this.range.rangeStartData.price_end) {
-          this.range.rangeData.price_end = 100000
-        }
+			if (
+				e.target.closest('.room-warehouse') &&
+				!e.target.closest('.warehouse__rooms_room-link')
+			) {
+				this.rooms.length && this.handlerClickSvgCell(e, this.rooms)
+			}
+		})
+	}
 
-        this.reqData = { ...this.reqData, floor: this.reqData.floor, ...this.range.rangeData }
+	renderWarehouses(warehouses) {
+		if (!warehouses.length || !this.warehouse || !this.warehouseId) return
+		const [warehouseCurrent] = warehouses.filter(
+			warehouse => +warehouse.warehouse_id == this.warehouseId
+		)
+		this.reqData.warehouse_id = warehouseCurrent.warehouse_id
+	}
 
-        if (+values[0] == 10) {
-          this.reqData.area_start = 10
-          delete this.reqData['area_end']
-        }
-        this.process(buildQueryParams(this.reqData))
-      }
+	renderScheme(filtered_rooms, rooms) {
+		this.warehouse.querySelectorAll('.warehouse__svg-cell')?.forEach(cell => {
+			cell.classList.remove(
+				'free',
+				'busy',
+				'disabled',
+				'_selected',
+				'select-size'
+			)
+		})
 
-      if (e.target.closest('.room-warehouse') && !e.target.closest('.warehouse__rooms_room-link')) {
-        this.rooms.length && this.handlerClickSvgCell(e, this.rooms);
-      }
-    })
-  }
+		filtered_rooms.length &&
+			filtered_rooms.forEach(room => {
+				const cell = this.warehouse.querySelector(
+					`.warehouse__svg-cell[data-cell-num="${room.room_name}"]`
+				)
+				if (!cell) return
 
-  renderWarehouses(warehouses) {
-    if (!warehouses.length || !this.warehouse || !this.warehouseId) return
-    const [warehouseCurrent] = warehouses.filter(warehouse => +warehouse.warehouse_id === this.warehouseId)
-    this.reqData.warehouse_id = warehouseCurrent.warehouse_id
-  }
+				cell.setAttribute('data-rented', room.rented)
+				cell.setAttribute('data-room-id', room.room_id)
+				cell.classList.add('select-size')
+			})
 
-  renderScheme(filtered_rooms, rooms) {
-    this.warehouse.querySelectorAll('.warehouse__svg-cell')?.forEach(cell => {
-      cell.classList.remove('free', 'busy', 'disabled', '_selected', 'select-size')
-    })
+		rooms.length &&
+			rooms.forEach(room => {
+				const cell = this.warehouse.querySelector(
+					`.warehouse__svg-cell[data-cell-num="${room.room_name}"]`
+				)
+				if (!cell) return
+				cell.setAttribute('data-rented', room.rented)
+				cell.setAttribute('data-room-id', room.room_id)
+				cell.classList.add(addClassRented(+room.rented))
+			})
+	}
 
-    filtered_rooms.length && filtered_rooms.forEach(room => {
-      const cell = this.warehouse.querySelector(`.warehouse__svg-cell[data-cell-num="${room.room_name}"]`)
-      if (!cell) return
+	setSizeBlocks() {
+		setMinMaxBlocks('.warehouse__rooms_room-num', { breakpointsNone: 576 })
+		setMinMaxBlocks('.warehouse__rooms_room-area', { breakpoints: [1215, 576] })
+		setMinMaxBlocks('.warehouse__rooms_room-block.dimensions', {
+			breakpoints: [1215, 576],
+		})
+		setMinMaxBlocks('.warehouse__rooms_room-link', { breakpoints: [576, 370] })
+	}
 
-      cell.setAttribute('data-rented', room.rented)
-      cell.setAttribute('data-room-id', room.room_id)
-      cell.classList.add('select-size')
-    })
+	renderRooms(rooms) {
+		rooms.forEach(room => {
+			this.contentRoomsWarehouse.insertAdjacentHTML(
+				'beforeend',
+				warehouseRoom(room)
+			)
+		})
 
-    rooms.length && rooms.forEach(room => {
-      const cell = this.warehouse.querySelector(`.warehouse__svg-cell[data-cell-num="${room.room_name}"]`)
-      if (!cell) return
+		this.setSizeBlocks()
+	}
 
-      cell.setAttribute('data-rented', room.rented)
-      cell.setAttribute('data-room-id', room.room_id)
-      cell.classList.add(addClassRented(+room.rented))
-    })
-  }
+	async process(queryParams = buildQueryParams(this.reqData)) {
+		try {
+			this.loader.enable()
+			const response = await api.get(`/_update_floor_for_client_${queryParams}`)
+			if (response.status !== 200) return
 
-  setSizeBlocks() {
-    setMinMaxBlocks('.warehouse__rooms_room-num', { breakpointsNone: 576 })
-    setMinMaxBlocks('.warehouse__rooms_room-area', { breakpoints: [1215, 576] })
-    setMinMaxBlocks('.warehouse__rooms_room-block.dimensions', { breakpoints: [1215, 576] })
-    setMinMaxBlocks('.warehouse__rooms_room-link', { breakpoints: [576, 370] })
-  }
+			const { filtered_rooms, rooms } = response.data
 
-  renderRooms(rooms) {
-    if (!rooms.length && this.warehouseId !== 2) {
-      this.contentRoomsWarehouse.innerHTML = `<div class="not-filtered-rooms"><span>Нет свободных ячеек по заданным параметрам</span></div>`
-      return
-    } else {
-      rooms.forEach(room => {
-        this.contentRoomsWarehouse.insertAdjacentHTML('beforeend', warehouseRoom(room))
-      })
-    }
+			if (!rooms) return
 
-    this.setSizeBlocks()
-  }
+			this.rooms = rooms
+			this.renderScheme(filtered_rooms, rooms)
+			this.renderRooms(filtered_rooms)
 
-  async process(queryParams = buildQueryParams(this.reqData)) {
-    try {
-      this.loader.enable()
-      const response = await api.get(`/_update_floor_for_client_${queryParams}`)
-      if (response.status !== 200) return
+			this.resultRoomsData.rooms.length &&
+				this.resultRoomsData.rooms.forEach(room => {
+					const cell = this.warehouse.querySelector(
+						`.warehouse__svg-cell[data-room-id="${room.room_name}"]`
+					)
+					const roomWarehouse = this.warehouse.querySelector(
+						`.room-warehouse[data-room-id="${room.room_name}"]`
+					)
 
-      const { filtered_rooms, rooms } = response.data
+					cell && cell.classList.add('_selected')
+					if (roomWarehouse) {
+						roomWarehouse.remove()
+						this.contentRoomsWarehouse.insertAdjacentHTML(
+							'afterbegin',
+							warehouseRoom(room, true)
+						)
+					}
+				})
+		} catch (error) {
+			console.error(error)
+			throw error
+		} finally {
+			this.loader.disable()
+		}
+	}
 
-      if (!rooms) return
+	handlerClickSvgCell(e, rooms) {
+		const element = e.target.closest('[data-room-id]')
+		const roomId = +element.getAttribute('data-room-id')
+		if (!roomId) return
+		let cell = this.warehouse.querySelector(
+			`.warehouse__svg-cell[data-room-id="${roomId}"]`
+		)
+		let roomWarehouse = this.warehouse.querySelector(
+			`.room-warehouse[data-room-id="${roomId}"]`
+		)
+		const [currentRoom] = rooms.filter(room => +room.room_id === roomId)
 
-      this.rooms = rooms
-      this.renderScheme(filtered_rooms, rooms)
-      this.renderRooms(filtered_rooms)
+		if (!currentRoom) {
+			console.error('Ячейка не найдена')
+			return
+		}
 
-      this.resultRoomsData.rooms.length && this.resultRoomsData.rooms.forEach(room => {
-        const cell = this.warehouse.querySelector(`.warehouse__svg-cell[data-room-id="${room.room_name}"]`)
-        const roomWarehouse = this.warehouse.querySelector(`.room-warehouse[data-room-id="${room.room_name}"]`)
+		const isSelected = cell && cell.classList.contains('_selected')
+		const volumeChange = isSelected ? -currentRoom.volume : currentRoom.volume
+		const priceChange = isSelected
+			? -currentRoom.price_11m
+			: currentRoom.price_11m
 
-        cell && cell.classList.add('_selected')
-        if (roomWarehouse) {
-          roomWarehouse.remove()
-          this.contentRoomsWarehouse.insertAdjacentHTML('afterbegin', warehouseRoom(room, true))
-        }
-      })
-    } catch (error) {
-      console.error(error)
-      throw error
-    } finally {
-      this.loader.disable()
-    }
-  }
+		cell?.classList.toggle('_selected', !isSelected)
+		roomWarehouse?.classList.toggle('_selected', !isSelected)
 
-  handlerClickSvgCell(e, rooms) {
-    const element = e.target.closest('[data-room-id]')
-    const roomId = +element.getAttribute('data-room-id')
-    if (!roomId) return
-    let cell = this.warehouse.querySelector(`.warehouse__svg-cell[data-room-id="${roomId}"]`)
-    let roomWarehouse = this.warehouse.querySelector(`.room-warehouse[data-room-id="${roomId}"]`)
-    const [currentRoom] = rooms.filter(room => +room.room_id === roomId)
+		if (isSelected) {
+			roomWarehouse?.classList.remove('_selected')
+			this.resultRoomsData.ids = this.resultRoomsData.ids.filter(
+				id => id !== currentRoom.room_id
+			)
+			this.resultRoomsData.rooms = this.resultRoomsData.rooms.filter(
+				room => +room.room_id !== +currentRoom.room_id
+			)
+			this.resultRoomsData.count_rooms -= 1
+		} else {
+			this.warehouse.querySelector('.not-filtered-rooms')?.remove()
+			if (roomWarehouse) {
+				roomWarehouse?.remove()
+				this.contentRoomsWarehouse.prepend(roomWarehouse)
+			} else {
+				this.contentRoomsWarehouse.insertAdjacentHTML(
+					'afterbegin',
+					warehouseRoom(currentRoom, true)
+				)
+				this.setSizeBlocks()
+			}
 
-    if (!currentRoom) {
-      console.error('Ячейка не найдена');
-      return
-    }
+			this.resultRoomsData.ids.push(currentRoom.room_id)
+			this.resultRoomsData.rooms.push(currentRoom)
+			this.resultRoomsData.count_rooms += 1
+		}
 
-    const isSelected = cell && cell.classList.contains('_selected');
-    const volumeChange = isSelected ? -currentRoom.volume : currentRoom.volume;
-    const priceChange = isSelected ? -currentRoom.price_11m : currentRoom.price_11m;
+		this.resultRoomsData.volume = +(
+			this.resultRoomsData.volume + volumeChange
+		).toFixed(1)
+		this.resultRoomsData.price_11m = +(
+			this.resultRoomsData.price_11m + priceChange
+		).toFixed(0)
 
-    cell?.classList.toggle('_selected', !isSelected);
-    roomWarehouse?.classList.toggle('_selected', !isSelected);
+		if (this.resultRoomsData.count_rooms == 1) {
+			this.buttonResultWarehouse.setAttribute(
+				'data-room-id',
+				this.resultRoomsData.ids[0]
+			)
+			this.buttonResultWarehouse.classList.remove('_none')
+		} else {
+			this.buttonResultWarehouse.setAttribute('data-room-id', '')
+			this.buttonResultWarehouse.classList.add('_none')
+		}
 
-    if (isSelected) {
-      roomWarehouse?.classList.remove('_selected');
-      this.resultRoomsData.ids = this.resultRoomsData.ids.filter(id => id !== currentRoom.room_id);
-      this.resultRoomsData.rooms = this.resultRoomsData.rooms.filter(room => +room.room_id !== +currentRoom.room_id);
-      this.resultRoomsData.count_rooms -= 1;
-    } else {
-      this.warehouse.querySelector('.not-filtered-rooms')?.remove();
-      if (roomWarehouse) {
-        roomWarehouse?.remove();
-        this.contentRoomsWarehouse.prepend(roomWarehouse);
-      } else {
-        this.contentRoomsWarehouse.insertAdjacentHTML('afterbegin', warehouseRoom(currentRoom, true))
-        this.setSizeBlocks()
-      }
+		this.infoResultWarehouse.innerHTML = `<span>${
+			this.resultRoomsData.volume
+		} м<sup>3</sup></span><span>от ${formattingPrice(
+			this.resultRoomsData.price_11m
+		)}</span>`
+		this.linkResultWarehouse.innerHTML = `<span>Арендовать ${
+			this.resultRoomsData.count_rooms
+		}
+    ${declOfNum(this.resultRoomsData.count_rooms, [
+			'кладовку',
+			'кладовки',
+			'кладовок',
+		])}</span>`
+		this.linkResultWarehouse.href = `${
+			location.origin
+		}/rent-room?ids=${encodeURIComponent(
+			JSON.stringify(this.resultRoomsData.ids)
+		)}`
+		// this.scrollToRoom(roomWarehouse)
+		document
+			.querySelector('.warehouse__rooms')
+			.scrollIntoView({ behavior: 'smooth', block: 'center' })
+		setTimeout(() => {
+			this.contentRoomsWarehouse.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth',
+			})
+		}, 600)
+	}
 
-      this.resultRoomsData.ids.push(currentRoom.room_id);
-      this.resultRoomsData.rooms.push(currentRoom);
-      this.resultRoomsData.count_rooms += 1;
-    }
-
-    this.resultRoomsData.volume = +(this.resultRoomsData.volume + volumeChange).toFixed(1);
-    this.resultRoomsData.price_11m = +(this.resultRoomsData.price_11m + priceChange).toFixed(0);
-
-    if (this.resultRoomsData.count_rooms == 1) {
-      this.buttonResultWarehouse.setAttribute('data-room-id', this.resultRoomsData.ids[0])
-      this.buttonResultWarehouse.classList.remove('_none')
-    } else {
-      this.buttonResultWarehouse.setAttribute('data-room-id', '')
-      this.buttonResultWarehouse.classList.add('_none')
-    }
-
-    this.infoResultWarehouse.innerHTML = `<span>${this.resultRoomsData.volume} м<sup>3</sup></span><span>от ${formattingPrice(this.resultRoomsData.price_11m)}</span>`
-    this.linkResultWarehouse.innerHTML = `<span>Арендовать ${this.resultRoomsData.count_rooms}
-    ${declOfNum(this.resultRoomsData.count_rooms, ['кладовку', 'кладовки', 'кладовок'])}</span>`
-    this.linkResultWarehouse.href = `${location.origin}/rent-room.html?ids=${encodeURIComponent(JSON.stringify(this.resultRoomsData.ids))}`
-    // this.scrollToRoom(roomWarehouse)
-    document.querySelector('.warehouse__rooms').scrollIntoView({ behavior: "smooth", block: "center" })
-    setTimeout(() => {
-      this.contentRoomsWarehouse.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-      })
-    }, 600)
-  }
-
-  scrollToRoom(room) {
-    if (this.contentRoomsWarehouse.scrollHeight >= this.contentRoomsWarehouse.offsetHeight && room) {
-      this.contentRoomsWarehouse.scrollTo({
-        top: room.offsetTop - this.contentRoomsWarehouse.offsetTop,
-        left: 0,
-        behavior: 'smooth'
-      })
-    }
-  }
+	scrollToRoom(room) {
+		if (
+			this.contentRoomsWarehouse.scrollHeight >=
+				this.contentRoomsWarehouse.offsetHeight &&
+			room
+		) {
+			this.contentRoomsWarehouse.scrollTo({
+				top: room.offsetTop - this.contentRoomsWarehouse.offsetTop,
+				left: 0,
+				behavior: 'smooth',
+			})
+		}
+	}
 }
 
 export default Warehouse

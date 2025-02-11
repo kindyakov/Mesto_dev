@@ -1,17 +1,17 @@
 export function thing(data) {
-  let imgSrc = `${location.origin}/${data.img}`
-  const imgPathWebp = imgSrc.replace('.png', '.webp')
-  const img = new Image()
+	let imgSrc = `${location.origin}/${data.img}`
+	// const imgPathWebp = imgSrc.replace('.png', '.webp')
+	// const img = new Image()
 
-  if (location.hostname !== "localhost") {
-    img.src = imgPathWebp
-    img.onload = () => imgSrc = imgPathWebp;
-  }
+	// if (location.hostname !== 'localhost') {
+	// 	img.src = imgPathWebp
+	// 	img.onload = () => (imgSrc = imgPathWebp)
+	// }
 
-  return `
+	return `
   <div class="calculator__thing thing-calculator" data-thing-id=${data.id}>
     <div class="calculator__thing_img">
-      <img src="${imgSrc}" alt="Иконка">
+      <img src="${imgSrc}" alt="Иконка" loading="lazy">
     </div>
     <span class="calculator__thing_name">${data.title}</span>
     <div class="calculator__thing_counter">

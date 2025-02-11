@@ -1,7 +1,9 @@
 export function cardHtml(data, isFos = false) {
-  return `<div class="special-offer__slider-slide cards-slider__slide swiper-slide">
+	return `<div class="special-offer__slider-slide cards-slider__slide swiper-slide">
   <div class="cards-slider__slide_img">
-    <img src="${data.img}" alt="Фото кладовки" width="${data.imgW}" height="${data.imgH}" loading="lazy">
+    <img src="${data.img}" alt="Фото кладовки" width="${data.imgW}" height="${
+		data.imgH
+	}" loading="lazy">
   </div>
   <div class="cards-slider__slide_content">
     <div class="cards-slider__slide_row">
@@ -9,14 +11,16 @@ export function cardHtml(data, isFos = false) {
       <h5 class="cards-slider__slide_title">${data.area || ''}</h5>
     </div>
     <div class="cards-slider__slide_prices">
-      <span class="cards-slider__slide_price price-count">${data.priceCount}</span>
-      <strike class="cards-slider__slide_price-old price-old">${data.priceOld}</strike>
+      <span class="cards-slider__slide_price price-count">${
+				data.priceCount
+			}</span>
+      <strike class="cards-slider__slide_price-old price-old">${
+				data.priceOld
+			}</strike>
     </div>
-    <a href="${data.href}" class="cards-slider__slide_button button ${isFos ? 'btn-open-modal-feedback-form' : ''}"><span>Забронировать</span></a>
+    <a href="${data.href}" class="cards-slider__slide_button button ${
+		isFos ? 'btn-open-modal-feedback-form' : ''
+	}"><span>Забронировать</span></a>
   </div>
 </div>`
 }
-
-// <svg class='icon icon-arrow-cos'>
-// <use xlink:href='img/svg/sprite.svg#arrow-cos'></use>
-// </svg>
