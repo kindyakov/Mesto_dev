@@ -109,6 +109,7 @@ class Account {
 				this.accountTabs.tabsBtnActive,
 				this.accountTabs.tabsContentActive
 			)
+			await this.getShemes()
 		} catch (error) {
 			this.loader.disable()
 		}
@@ -156,6 +157,27 @@ class Account {
 			console.error(error)
 		} finally {
 			this.events()
+		}
+	}
+
+	async getShemes() {
+		try {
+			this.loader.enable()
+			const response = await fetch(`${wpData.ajax_url}/`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				body: new URLSearchParams({
+					action: 'warehouse_shemes',
+				}),
+			})
+
+			if (response.status !== 200) return
+			const data = await response.json()
+			console.log(data);
+		} catch (error) {
+			console.log(error);
+		} finally {
+			this.loader.disable()
 		}
 	}
 

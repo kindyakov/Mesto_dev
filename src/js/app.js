@@ -28,7 +28,7 @@ rentOut()
 checkSupportWebP()
 showPassword('.icon-eye')
 specialOffer()
-const calculator = new Calculator({ priceData: wpData.priceData })
+const calculator = new Calculator({ priceData: wpData.prices_data })
 // const schemeMobile = new SchemeMobile();
 const isAuth = checkAuth()
 

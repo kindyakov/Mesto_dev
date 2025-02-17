@@ -197,12 +197,12 @@
         </aside>
         <div class="calculator__wrapper-things">
           <div class="calculator__header-col">Выберите предметы хранения</div>
-          <div class="calculator__body-things" data-category="Гостиная">
+          <div class="calculator__body-things _active" data-category="Гостиная">
             <div class="calculator__current-category category-current">Гостиная</div>
             <div class="calculator__things">
-              <div class="calculator__thing thing-calculator">
+              <div class="calculator__thing thing-calculator" data-thing-id="0">
                 <div class="calculator__thing_img">
-                  <img src="https://mesto/wp-content/uploads/2024/09/thing-1.webp" alt="Иконка">
+                  <img src="https://mesto-store.ru/wp-content/uploads/2024/09/thing-1.webp" alt="Иконка" loading="lazy">
                 </div>
                 <span class="calculator__thing_name">Диван двухместный</span>
                 <div class="calculator__thing_counter">
@@ -211,9 +211,9 @@
                   <button class="counter-btn plus"></button>
                 </div>
               </div>
-              <div class="calculator__thing thing-calculator">
+              <div class="calculator__thing thing-calculator" data-thing-id="1">
                 <div class="calculator__thing_img">
-                  <img src="https://mesto/wp-content/uploads/2024/09/thing-2.webp" alt="Иконка">
+                  <img src="https://mesto-store.ru/wp-content/uploads/2024/09/thing-2.webp" alt="Иконка" loading="lazy">
                 </div>
                 <span class="calculator__thing_name">Диван угловой</span>
                 <div class="calculator__thing_counter">
@@ -222,14 +222,37 @@
                   <button class="counter-btn plus"></button>
                 </div>
               </div>
+              <div class="calculator__thing thing-calculator" data-thing-id="2">
+                <div class="calculator__thing_img">
+                  <img src="https://mesto-store.ru/wp-content/uploads/2024/10/thing-3.png" alt="Иконка" loading="lazy">
+                </div>
+                <span class="calculator__thing_name">Диван трехместный</span>
+                <div class="calculator__thing_counter">
+                  <button class="counter-btn minus"></button>
+                  <input type="number" readonly="true" value="0" min="0" max="100" class="count" data-value-area="2.5">
+                  <button class="counter-btn plus"></button>
+                </div>
+              </div>
+              <div class="calculator__thing thing-calculator" data-thing-id="3">
+                <div class="calculator__thing_img">
+                  <img src="https://mesto-store.ru/wp-content/uploads/2024/10/thing-4.png" alt="Иконка" loading="lazy">
+                </div>
+                <span class="calculator__thing_name">Кушетка</span>
+                <div class="calculator__thing_counter">
+                  <button class="counter-btn minus"></button>
+                  <input type="number" readonly="true" value="0" min="0" max="100" class="count" data-value-area="1.5">
+                  <button class="counter-btn plus"></button>
+                </div>
+              </div>
             </div>
           </div>
           <div class="calculator__body-things" data-category="Кухня и столовая">
             <div class="calculator__current-category category-current">Кухня и столовая</div>
             <div class="calculator__things">
-              <div class="calculator__thing thing-calculator">
+              <div class="calculator__thing thing-calculator" data-thing-id="4">
                 <div class="calculator__thing_img">
-                  <img src="https://mesto/wp-content/uploads/2024/09/thing-1-1.webp" alt="Иконка">
+                  <img src="https://mesto-store.ru/wp-content/uploads/2024/09/thing-1-1.webp" alt="Иконка"
+                    loading="lazy">
                 </div>
                 <span class="calculator__thing_name">Стол</span>
                 <div class="calculator__thing_counter">
@@ -238,14 +261,26 @@
                   <button class="counter-btn plus"></button>
                 </div>
               </div>
+              <div class="calculator__thing thing-calculator" data-thing-id="5">
+                <div class="calculator__thing_img">
+                  <img src="https://mesto-store.ru/wp-content/uploads/2024/10/thing-2.png" alt="Иконка" loading="lazy">
+                </div>
+                <span class="calculator__thing_name">Духовой шкаф</span>
+                <div class="calculator__thing_counter">
+                  <button class="counter-btn minus"></button>
+                  <input type="number" readonly="true" value="0" min="0" max="100" class="count" data-value-area="0.9">
+                  <button class="counter-btn plus"></button>
+                </div>
+              </div>
             </div>
           </div>
           <div class="calculator__body-things" data-category="Спальня">
             <div class="calculator__current-category category-current">Спальня</div>
             <div class="calculator__things">
-              <div class="calculator__thing thing-calculator">
+              <div class="calculator__thing thing-calculator" data-thing-id="6">
                 <div class="calculator__thing_img">
-                  <img src="https://mesto/wp-content/uploads/2024/09/thing-1-2.webp" alt="Иконка">
+                  <img src="https://mesto-store.ru/wp-content/uploads/2024/09/thing-1-2.webp" alt="Иконка"
+                    loading="lazy">
                 </div>
                 <span class="calculator__thing_name">Кровать двухместная</span>
                 <div class="calculator__thing_counter">
@@ -259,9 +294,10 @@
           <div class="calculator__body-things" data-category="Детская комната">
             <div class="calculator__current-category category-current">Детская комната</div>
             <div class="calculator__things">
-              <div class="calculator__thing thing-calculator">
+              <div class="calculator__thing thing-calculator" data-thing-id="7">
                 <div class="calculator__thing_img">
-                  <img src="https://mesto/wp-content/uploads/2024/09/thing-1-3.webp" alt="Иконка">
+                  <img src="https://mesto-store.ru/wp-content/uploads/2024/09/thing-1-3.webp" alt="Иконка"
+                    loading="lazy">
                 </div>
                 <span class="calculator__thing_name">Пеленальный столик</span>
                 <div class="calculator__thing_counter">
@@ -275,9 +311,10 @@
           <div class="calculator__body-things" data-category="Кабинет">
             <div class="calculator__current-category category-current">Кабинет</div>
             <div class="calculator__things">
-              <div class="calculator__thing thing-calculator">
+              <div class="calculator__thing thing-calculator" data-thing-id="8">
                 <div class="calculator__thing_img">
-                  <img src="https://mesto/wp-content/uploads/2024/09/thing-1-4.webp" alt="Иконка">
+                  <img src="https://mesto-store.ru/wp-content/uploads/2024/09/thing-1-4.webp" alt="Иконка"
+                    loading="lazy">
                 </div>
                 <span class="calculator__thing_name">Рабочий стол</span>
                 <div class="calculator__thing_counter">
@@ -291,9 +328,10 @@
           <div class="calculator__body-things" data-category="Постирочная">
             <div class="calculator__current-category category-current">Постирочная</div>
             <div class="calculator__things">
-              <div class="calculator__thing thing-calculator">
+              <div class="calculator__thing thing-calculator" data-thing-id="9">
                 <div class="calculator__thing_img">
-                  <img src="https://mesto/wp-content/uploads/2024/09/thing-1-5.webp" alt="Иконка">
+                  <img src="https://mesto-store.ru/wp-content/uploads/2024/09/thing-1-5.webp" alt="Иконка"
+                    loading="lazy">
                 </div>
                 <span class="calculator__thing_name">Стиральная машина</span>
                 <div class="calculator__thing_counter">
@@ -307,9 +345,10 @@
           <div class="calculator__body-things" data-category="Сад">
             <div class="calculator__current-category category-current">Сад</div>
             <div class="calculator__things">
-              <div class="calculator__thing thing-calculator">
+              <div class="calculator__thing thing-calculator" data-thing-id="10">
                 <div class="calculator__thing_img">
-                  <img src="https://mesto/wp-content/uploads/2024/09/thing-1-6.webp" alt="Иконка">
+                  <img src="https://mesto-store.ru/wp-content/uploads/2024/09/thing-1-6.webp" alt="Иконка"
+                    loading="lazy">
                 </div>
                 <span class="calculator__thing_name">Газонокосилка</span>
                 <div class="calculator__thing_counter">
@@ -323,9 +362,10 @@
           <div class="calculator__body-things" data-category="Подвал">
             <div class="calculator__current-category category-current">Подвал</div>
             <div class="calculator__things">
-              <div class="calculator__thing thing-calculator">
+              <div class="calculator__thing thing-calculator" data-thing-id="11">
                 <div class="calculator__thing_img">
-                  <img src="https://mesto/wp-content/uploads/2024/09/thing-1-7.webp" alt="Иконка">
+                  <img src="https://mesto-store.ru/wp-content/uploads/2024/09/thing-1-7.webp" alt="Иконка"
+                    loading="lazy">
                 </div>
                 <span class="calculator__thing_name">Велосипед</span>
                 <div class="calculator__thing_counter">

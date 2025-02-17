@@ -73,9 +73,8 @@ class Calculator {
 					item: item,
 					name: span.textContent,
 					updateItemValue: () => {
-						item.querySelector('.value').innerHTML = `${
-							this.categoryData[item.dataset.category].value
-						}м<sup>2</sup>`
+						item.querySelector('.value').innerHTML = `${this.categoryData[item.dataset.category].value
+							}м<sup>2</sup>`
 					},
 				}
 
@@ -196,12 +195,16 @@ class Calculator {
 
 		const volumeIndex = this.sliderArea.getVolumeIndex()
 		const month = this.sliderMonth.getValue()
-		const dataPrice = this.prices[volumeIndex]
+		if (!this.prices.length) return // если нет цен
+		const arrayCurrentprices = this.prices[+this.select.value] || []
+		if (!arrayCurrentprices.length) return // если нет цен для выбранного склада
+		const dataPrice = arrayCurrentprices[volumeIndex] || null
+		if (!dataPrice) return // если нет цены для объема и месяца
 		const price = this.sliderArea.calcDiscount(month, dataPrice)
 		this.priceCalculator.textContent = formattingPrice(price) + '/мес'
 	}
 
-	async init() {
+	init() {
 		try {
 			this.loader.enable()
 			this.calculator
