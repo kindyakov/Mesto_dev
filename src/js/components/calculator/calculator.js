@@ -156,6 +156,10 @@ class Calculator {
 			}
 		})
 
+		this.selectCalculator.options.onChange = (e, select, warehouse_id) => {
+			this.updateRange(+warehouse_id)
+		}
+
 		this.selectAreaCalculator.options.onChange = (e, select, optionValue) => {
 			this.renderItems(optionValue)
 		}
@@ -193,10 +197,15 @@ class Calculator {
 				})
 		}
 
+
+		this.updateRange()
+	}
+
+	updateRange(warehouse_id = +this.select.value) {
 		const volumeIndex = this.sliderArea.getVolumeIndex()
 		const month = this.sliderMonth.getValue()
 		if (!this.prices.length) return // если нет цен
-		const arrayCurrentprices = this.prices[+this.select.value] || []
+		const arrayCurrentprices = this.prices[warehouse_id] || []
 		if (!arrayCurrentprices.length) return // если нет цен для выбранного склада
 		const dataPrice = arrayCurrentprices[volumeIndex] || null
 		if (!dataPrice) return // если нет цены для объема и месяца
