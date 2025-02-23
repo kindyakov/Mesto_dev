@@ -1,14 +1,18 @@
 import { Modal } from '../../../modules/myModal.js'
 import { apiWithAuth } from '../../../settings/api.js'
 import { outputInfo } from '../../../utils/outputinfo.js'
+import { Loader } from '../../../modules/myLoader.js'
 
 class OpenBarrier {
-	constructor({ loader }) {
+	constructor() {
 		this.modalConfirmOpenBarrier = new Modal('.modal-confirm-open-barrier', {
 			modalBtnClose: '.btn-modal-close',
 		})
 
-		this.loader = loader
+		this.loader = new Loader(
+			this.modalConfirmOpenBarrier.modal.querySelector('.modal__body')
+		)
+
 		this.warehouse = null
 		this.events()
 	}
@@ -44,6 +48,7 @@ class OpenBarrier {
 			console.error(error)
 		} finally {
 			this.loader.disable()
+			this.modalConfirmOpenBarrier.close()
 		}
 	}
 }

@@ -26,3 +26,18 @@ export const getAgreement = async (queryParams = '') => {
 		console.error('Ошибка при получение данных о договорах:', error)
 	}
 }
+
+export const getRoomsWarehouse = async (warehouse_id = 1) => {
+	try {
+		const response = await api.get(
+			`/_get_all_rooms_?warehouse_id=${warehouse_id}`
+		)
+		if (response.status == 200) {
+			return response.data
+		} else {
+			return null
+		}
+	} catch (error) {
+		console.error('Ошибка при получение кладовок:', error)
+	}
+}

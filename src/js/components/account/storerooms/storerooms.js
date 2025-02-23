@@ -8,7 +8,7 @@ import { Modal, ConfirmModal } from '../../../modules/myModal.js'
 import { setMinMaxBlocks } from '../../../utils/setMinMaxBlocks.js'
 import { formattingPrice } from '../../../utils/formattingPrice.js'
 import { buildQueryParams } from '../../../utils/buildQueryParams.js'
-import api, { apiWithAuth } from '../../../settings/api.js'
+import { apiWithAuth } from '../../../settings/api.js'
 
 import {
 	agreementHtml,
@@ -17,9 +17,9 @@ import {
 	roomHtml3,
 	roomModalHtml,
 } from './html.js'
-import { getClientTotalData, getAgreement } from '../request.js'
+import { getAgreement, getRoomsWarehouse } from '../request.js'
 
-import RouteScheme from './routeScheme.js'
+// import RouteScheme from './routeScheme.js'
 import { isOneRented } from '../utils/isAllRented.js'
 
 import { replaceRoomForClient } from '../../../settings/request.js'
@@ -80,12 +80,7 @@ class Storerooms {
 			contentSelector: '.tabs-content-schemes',
 		})
 
-		this.routeScheme = new RouteScheme()
-
-		this.schemeOne = this.account.querySelector('.scheme-1')
-		this.schemeTwo = this.account.querySelector('.scheme-2')
-		this.schemeActive = this.schemeOne
-		this.targetFloor = 1
+		// this.routeScheme = new RouteScheme()
 
 		this.agrId = null
 
@@ -93,7 +88,7 @@ class Storerooms {
 		this.newRoomId = null
 
 		this.clientData = null
-		this.warehouses = null
+		this.warehousesRooms = null
 
 		this.isMonth = false
 		this.isMobile = false
@@ -204,21 +199,6 @@ class Storerooms {
 			}
 		})
 
-		this.schemeTabs.options.onChange = (
-			nexTabBtn,
-			prevTabBtn,
-			nextTabContent,
-			prevTabContent
-		) => {
-			if (nextTabContent.classList.contains('content-schemes-one')) {
-				this.schemeActive = this.schemeOne
-				this.targetFloor = 1
-			} else if (nextTabContent.classList.contains('content-schemes-two')) {
-				this.schemeActive = this.schemeTwo
-				this.targetFloor = 2
-			}
-		}
-
 		this.accordionAgreement.options.onOpen = (
 			accordionTarget,
 			accordionContent
@@ -236,17 +216,8 @@ class Storerooms {
 			this.oldRoomId = null
 			this.newRoomId = null
 			this.agrId = null
-			this.renderScheme(
-				this.clientData.rooms,
-				this.warehouses[0].rooms,
-				this.schemeOne
-			)
-			this.renderScheme(
-				this.clientData.rooms,
-				this.warehouses[1].rooms,
-				this.schemeTwo
-			)
-			this.routeScheme.clear(this.schemeActive)
+			this.renderScheme([], this.clientData.rooms)
+			// this.routeScheme.clear(this.schemeActive)
 		}
 
 		this.modalConfirmReplaceRoom.options.onClose = e => {
@@ -291,36 +262,33 @@ class Storerooms {
 	//   return Math.round((+newRoom.price - +oldRoom.price) + (12 * +getMonthDiff(oldRoom.rentplanenddate, getCurrentDate())))
 	// }
 
-	renderScheme(roomsClient, roomsAll, scheme) {
-		scheme.querySelectorAll('.warehouse__svg-cell').forEach(cell => {
-			cell.classList.remove('my', 'free', 'busy', 'disabled', '_selected')
-		})
-
-		roomsAll.length &&
-			roomsAll.forEach((room, i) => {
-				const cell = scheme.querySelector(
-					`.warehouse__svg-cell[data-cell-num="${room.room_id}"]`
+	renderScheme(rooms, roomsClient = []) {
+		rooms.length &&
+			rooms.forEach(room => {
+				const cell = this.account.querySelector(
+					`.warehouse__svg-cell[data-room-id="${room.room_id}"]`
 				)
-				if (!cell) return
 
-				cell.setAttribute('data-rented', room.rented)
-				cell.setAttribute('data-room-id', room.room_id)
-				cell.classList.add(addClassRented(+room.rented))
+				if (cell) {
+					cell.classList.remove('my', 'free', 'busy', 'disabled', '_selected')
+					cell.setAttribute('data-rented', room.rented)
+
+					if (room.rented === 0.25) {
+						cell.classList.add('free')
+						this.handlerClickToCellFree(room.room_id, cell)
+					} else {
+						cell.classList.add(addClassRented(+room.rented))
+					}
+				}
 			})
 
 		roomsClient.length &&
 			roomsClient.forEach(room => {
-				const cell = scheme.querySelector(
-					`.warehouse__svg-cell[data-cell-num="${room.room_id}"]`
+				const cell = this.account.querySelector(
+					`.warehouse__svg-cell[data-room-id="${room.room_id}"]`
 				)
-				if (!cell) return
-
-				cell.setAttribute('data-room-id', room.room_id)
-				cell.classList.remove('my', 'free', 'busy', 'disabled', '_selected')
-				if (room.rented === 0.25) {
-					cell.classList.add('free')
-					this.handlerClickToCellFree(room.room_id, cell)
-				} else {
+				if (cell) {
+					cell.classList.remove('my', 'free', 'busy', 'disabled', '_selected')
 					cell.classList.add(addClassRented(2))
 				}
 			})
@@ -333,7 +301,7 @@ class Storerooms {
 		const currentRoom = this.clientData.rooms.filter(
 			room => room.agrid === agreementId
 		)
-		if (!this.warehouses || !currentRoom.length) return
+		if (!this.warehousesRooms || !currentRoom.length) return
 		const roomsFromSecondFloor = currentRoom.filter(room => room.floor === 1)
 		const roomsFromFirstFloor = currentRoom.filter(room => room.floor === 2)
 
@@ -354,16 +322,7 @@ class Storerooms {
 			)
 		}
 
-		this.renderScheme(
-			roomsFromSecondFloor,
-			this.warehouses[0].rooms,
-			this.schemeOne
-		)
-		this.renderScheme(
-			roomsFromFirstFloor,
-			this.warehouses[1].rooms,
-			this.schemeTwo
-		)
+		this.renderScheme(this.warehousesRooms, currentRoom)
 	}
 
 	handlerClickToCellFree(roomId, cell) {
@@ -373,12 +332,12 @@ class Storerooms {
 
 		if (cell.classList.contains('_selected')) {
 			cell.classList.remove('_selected')
-			this.routeScheme.deletePath(cell)
+			// this.routeScheme.deletePath(cell)
 			this.newRoomId = null
 		} else {
-			const [currentRoom] = this.warehouses[this.targetFloor - 1].rooms.filter(
-				room => +room.room_id === +roomId
-			)
+			const [currentRoom] = this.warehousesRooms[
+				this.schemeTabs.activeIndexTab
+			].rooms.filter(room => +room.room_id === +roomId)
 			const cellSelect = this.account.querySelector(
 				'.warehouse__svg-cell.free._selected'
 			)
@@ -402,7 +361,7 @@ class Storerooms {
 
 			if (cellSelect) {
 				cellSelect.classList.remove('_selected')
-				this.routeScheme.deletePath(cellSelect)
+				// this.routeScheme.deletePath(cellSelect)
 			}
 
 			if (!this.clientData.rooms.length) {
@@ -410,7 +369,7 @@ class Storerooms {
 			}
 
 			cell.classList.add('_selected')
-			this.routeScheme.drawing([cell])
+			// this.routeScheme.drawing([cell])
 		}
 	}
 
@@ -426,7 +385,7 @@ class Storerooms {
 			btnRentRoom && btnRentRoom.classList.remove('_none')
 			cell.classList.remove('_selected')
 			this.oldRoomId = null
-			this.routeScheme.deletePath(cell)
+			// this.routeScheme.deletePath(cell)
 		} else {
 			const [currentRoom] = this.clientData.rooms.filter(
 				room => +room.room_id === +roomId
@@ -458,20 +417,19 @@ class Storerooms {
 
 			if (cellSelect) {
 				cellSelect.classList.remove('_selected')
-				this.routeScheme.deletePath(cellSelect)
+				// this.routeScheme.deletePath(cellSelect)
 			}
 			cell.classList.add('_selected')
-			this.routeScheme.drawing([cell])
+			// this.routeScheme.drawing([cell])
 		}
 	}
 
 	async handlerClickToBtnReplaceRoom(roomId) {
 		try {
 			if (!roomId) return
-			const [currentNewRoom] = [
-				...this.warehouses[0].rooms,
-				...this.warehouses[1].rooms,
-			].filter(room => +room.room_id === +roomId)
+			const [currentNewRoom] = this.warehousesRooms.filter(
+				room => +room.room_id === +roomId
+			)
 
 			if (this.oldRoomId) {
 				this.loader.enable()
@@ -588,10 +546,9 @@ class Storerooms {
 	}
 
 	rentNewRoom({ agrId }) {
-		const [currentNewRoom] = [
-			...this.warehouses[0].rooms,
-			...this.warehouses[1].rooms,
-		].filter(room => +room.room_id === +this.newRoomId)
+		const [currentNewRoom] = this.warehousesRooms.filter(
+			room => +room.room_id === +this.newRoomId
+		)
 		if (!currentNewRoom) return
 
 		let data = {
@@ -608,13 +565,134 @@ class Storerooms {
 		replaceRoomForClient(data, this.loader)
 	}
 
-	async renderAgreement({ clientTotalData, formNewAgreement }) {
+	renderWarehouses(warehouses = []) {
+		try {
+			const warehousesSwitches = this.account.querySelector(
+				'.warehouses-switches'
+			)
+			const titleScheme = this.account.querySelector('.warehouse__scheme_name')
+			const tabsFloor = this.account.querySelector('.warehouse__schemes_tabs')
+			const tabsContents = this.account.querySelector(
+				'.warehouse__schemes_contents'
+			)
+
+			if (!warehouses.length) return
+
+			if (warehousesSwitches) {
+				warehousesSwitches.classList.add('_none')
+				warehousesSwitches.innerHTML = ''
+				if (warehouses.length > 1) {
+					warehousesSwitches.classList.remove('_none')
+					warehouses.forEach((warehouse, i) => {
+						const button = document.createElement('button')
+						button.className = i == 0 ? '_active' : ''
+						button.textContent = warehouse.warehouse_name
+						button.addEventListener('click', e => {
+							if (!e.target.classList.contains('_active')) {
+								alert('Надо сменить склад')
+							}
+						})
+						warehousesSwitches.appendChild(button)
+					})
+				}
+			}
+
+			if (titleScheme) {
+				titleScheme.textContent = `(${warehouses[0].warehouse_name})`
+			}
+
+			warehouses.forEach(warehouse => {
+				if (tabsFloor) {
+					tabsFloor.innerHTML = warehouse.schemes
+						.map(
+							(scheme, i) =>
+								`<button class="warehouse__schemes_tab button tabs-btn-schemes ${
+									i == 0 ? '_tab-btn-active' : ''
+								}" data-tabs-btn="account-schemes-tabs-${i}">
+							<span>${i + 1} ярус</span>
+							</button>`
+						)
+						.join('')
+					tabsFloor.classList.toggle(
+						'_none',
+						+warehouse.warehouse_num_of_floors == 1
+					)
+				}
+
+				if (tabsContents) {
+					tabsContents.innerHTML = ''
+					warehouse.schemes.forEach((scheme, i) => {
+						const content = document.createElement('div')
+						content.className = `warehouse__schemes_content tabs-content-schemes ${
+							i == 0 ? '_tab-content-active' : ''
+						}`
+						content.setAttribute(
+							'data-tabs-content',
+							`account-schemes-tabs-${i}`
+						)
+						content.innerHTML = `<div class="wrap-scheme">${scheme}</div>`
+						const cells = content.querySelectorAll('.warehouse__svg-cell')
+
+						cells.length &&
+							cells.forEach(cell => {
+								const cellNum = +cell.getAttribute('data-cell-num')
+								const [room = null] = warehouse.rooms.filter(
+									room => room.room_name == cellNum
+								)
+								if (room) {
+									cell.setAttribute('data-room-id', room.room_id)
+								}
+							})
+						tabsContents.append(content)
+					})
+				}
+			})
+
+			this.schemeTabs.init()
+		} catch (error) {
+			throw error
+		}
+	}
+
+	async renderAgreement({ clientTotalData, formNewAgreement, warehouses }) {
 		try {
 			this.loader.enable()
-			const [...warehouses] = await Promise.all([
-				getAgreement(buildQueryParams({ floor: 1 })),
-				getAgreement(buildQueryParams({ floor: 2 })),
-			])
+			const roomsClient = [
+				...clientTotalData.rooms,
+				...clientTotalData.test_rooms,
+			] // получаем все комнаты клиента
+
+			let warehousesRentClient = [] // массив складов, где находятся комнаты клиента
+
+			// если у клиента есть комнаты, то добавляем в массив warehousesRentClient все склады, где находятся эти комнаты
+			if (roomsClient.length) {
+				roomsClient.map(room => {
+					if (!warehousesRentClient.includes(room.warehouse_id)) {
+						const warehouse = warehouses.find(
+							warehouse => warehouse.warehouse_id == room.warehouse_id
+						)
+						if (warehouse) {
+							warehouse.rooms_client = roomsClient
+							warehousesRentClient.push(warehouse)
+						}
+					}
+				})
+			} else {
+				// если у клиента нет комнат, то добавляем в массив warehousesRentClient первый склад из массива warehouses
+				warehousesRentClient.push(warehouses[0])
+			}
+
+			for await (const warehouse of warehousesRentClient) {
+				let { rooms } = await getRoomsWarehouse(warehouse.warehouse_id)
+				rooms = rooms.filter(
+					room => room.warehouse_id == warehouse.warehouse_id
+				)
+				warehouse.rooms = rooms
+			}
+
+			this.warehousesRooms = Array.from(
+				...warehousesRentClient.map(warehouse => warehouse.rooms)
+			)
 
 			if (!clientTotalData) return
 			this.agreements.innerHTML = ''
@@ -646,7 +724,9 @@ class Storerooms {
 			}
 
 			this.clientData = clientTotalData
-			this.warehouses = warehouses ? warehouses : null
+			this.warehousesRentClient = warehousesRentClient
+				? warehousesRentClient
+				: null
 			this.oldRoomId = null
 			this.newRoomId = null
 			this.agrId = null
@@ -658,21 +738,14 @@ class Storerooms {
 			this.storeroomsTitleAgreement.innerHTML = ''
 			this.storeroomsSchemeRooms.innerHTML = ''
 
-			formNewAgreement.allRooms = [
-				...this.warehouses[0].rooms,
-				...this.warehouses[1].rooms,
-			]
-			this.renderScheme(
-				[...clientTotalData.rooms, ...clientTotalData.test_rooms],
-				this.warehouses[0].rooms,
-				this.schemeOne
-			)
-			this.renderScheme(
-				[...clientTotalData.rooms, ...clientTotalData.test_rooms],
-				this.warehouses[1].rooms,
-				this.schemeTwo
-			)
-			setMinMaxBlocks('.room-accordion-control>p span', { breakpoints: [768] })
+			formNewAgreement.allRooms = this.warehousesRooms
+
+			this.renderWarehouses(warehousesRentClient)
+			this.renderScheme(this.warehousesRooms, roomsClient)
+
+			setMinMaxBlocks('.room-accordion-control>p span', {
+				breakpoints: [768],
+			})
 			setMinMaxBlocks('.room-accordion-control .title-product', {
 				breakpoints: [768],
 				breakpointsNone: 580,

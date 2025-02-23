@@ -1,12 +1,12 @@
 import { Modal } from '../../../modules/myModal.js'
 import { Loader } from '../../../modules/myLoader.js'
-import api, { apiWithAuth } from '../../../settings/api.js'
+import { apiWithAuth } from '../../../settings/api.js'
 
 import { roomModalHtml } from './html.js'
 import { outputInfo } from '../../../utils/outputinfo.js'
 
 class OpenRoom {
-	constructor({ loader }) {
+	constructor() {
 		this.modalSelectRoom = new Modal('.modal-select-room-access', {
 			modalBtnClose: '.btn-modal-close',
 		})
@@ -14,7 +14,9 @@ class OpenRoom {
 			modalBtnClose: '.btn-modal-close',
 		})
 
-		this.loader = loader
+		this.loader = new Loader(
+			this.modalConfirmOpenRoom.modal.querySelector('.modal__body')
+		)
 
 		this.roomsModal = this.modalSelectRoom.modal.querySelector(
 			'.modal-select-room-access__rooms'
@@ -41,7 +43,9 @@ class OpenRoom {
 		if (!this.rooms.length) return
 
 		if (this.rooms.length > 1) {
-			this.roomsModal.innerHTML = this.rooms.map(room => roomModalHtml(room)).join('')
+			this.roomsModal.innerHTML = this.rooms
+				.map(room => roomModalHtml(room))
+				.join('')
 
 			this.handlerClickToRoomBtn()
 			this.modalSelectRoom.open()
@@ -90,6 +94,7 @@ class OpenRoom {
 			console.error(error)
 		} finally {
 			this.loader.disable()
+			this.modalConfirmOpenRoom.close()
 		}
 	}
 }

@@ -237,8 +237,8 @@
                         autocomplete="off">
                     </div>
                     <div class="wrap-input">
-                      <input type="text" class="input my-data-input input-date" placeholder="Дата выдачи" name="issue_date"
-                        autocomplete="off">
+                      <input type="text" class="input my-data-input input-date" placeholder="Дата выдачи"
+                        name="issue_date" autocomplete="off">
                     </div>
                     <div class="wrap-input">
                       <input type="text" class="input my-data-input" placeholder="Код подразделения" name="subdivision"
@@ -519,9 +519,11 @@
               </div>
             </div>
           </div>
+
           <div class="agreement2__container-bottom account-storerooms-scheme _none">
+            <div class="warehouses-switches"></div>
             <div class="account-storerooms-scheme__top">
-              <h2>Чертёж</h2>
+              <h2>Чертёж <span class="warehouse__scheme_name" style="font-size: 16px;font-weight: normal;"></span></h2>
               <h2 class="account-storerooms-title-agreement"></h2>
             </div>
             <div class="account-storerooms-scheme__rooms">
@@ -536,18 +538,10 @@
                 <li class="boock">Занято</li>
               </ul>
               <div class="warehouse__schemes_tabs">
-                <button class="warehouse__schemes_tab button tabs-btn-schemes"><span>1 ярус</span></button>
-                <button class="warehouse__schemes_tab button tabs-btn-schemes"><span>2 ярус</span></button>
+
               </div>
-              <div class="warehouse__schemes_content tabs-content-schemes content-schemes-one">
-                <div class="wrap-scheme">
-                  @@include('html/sсhemes/1/scheme-1.html',{path:''})
-                </div>
-              </div>
-              <div class="warehouse__schemes_content tabs-content-schemes content-schemes-two">
-                <div class="wrap-scheme">
-                  @@include('html/sсhemes/1/scheme-2.html',{path:''})
-                </div>
+              <div class="warehouse__schemes_contents">
+
               </div>
               <div class="warehouse__schemes_buttons">
                 <button class="warehouse__schemes_button btn-left">

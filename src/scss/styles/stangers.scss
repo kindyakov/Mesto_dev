@@ -970,10 +970,47 @@
 	}
 }
 
+.warehouses-switches {
+	display: flex;
+	column-gap: 10px;
+	row-gap: 5px;
+	flex-wrap: wrap;
+	position: absolute;
+	left: 10px;
+	top: 0;
+	transform: translateY(-50%);
+	button {
+		padding: 4px 8px;
+		border-radius: 6px;
+		font-size: 14px;
+		background-color: #fff;
+		outline: 1px solid #ffd495;
+		transition: transform 0.2s, background-color 0.2s, color 0.2s;
+
+		&:hover {
+			background-color: #ffd495;
+		}
+
+		&._active {
+			background-color: #f59100;
+			color: #fff;
+			outline: none;
+			transform: scale(1.05);
+		}
+	}
+
+	@media (max-width: $md2) {
+		position: relative;
+		inset: auto;
+		transform: translateY(0);
+	}
+}
+
 .account-storerooms-scheme {
 	display: flex;
 	flex-direction: column;
 	row-gap: 20px;
+	position: relative;
 	&__top {
 		display: flex;
 		align-items: center;
