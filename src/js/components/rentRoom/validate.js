@@ -182,12 +182,12 @@ export function validateAgreementConclusion(form) {
 
   Inputmask.default("9999").mask(inputSeries)
   Inputmask.default("999999").mask(inputNo)
-  Inputmask.default("99-99-9999").mask(inputIssueDate)
-  Inputmask.default("99-99-9999").mask(inputBirthday)
+  Inputmask.default("99.99.9999").mask(inputIssueDate)
+  Inputmask.default("99.99.9999").mask(inputBirthday)
   Inputmask.default("999-999").mask(inputSubdivision)
 
   const dataPickerBirthday = new AirDatepicker(inputBirthday, {
-    dateFormat: 'dd-MM-yyyy',
+    dateFormat: 'dd.MM.yyyy',
     position: 'bottom center',
     autoClose: true,
     maxDate: calculateMinDate(),
@@ -195,7 +195,7 @@ export function validateAgreementConclusion(form) {
   });
 
   const dataPickerIssueDate = new AirDatepicker(inputIssueDate, {
-    dateFormat: 'dd-MM-yyyy',
+    dateFormat: 'dd.MM.yyyy',
     position: 'bottom center',
     autoClose: true,
     // maxDate: calculateMinDate(),
@@ -240,10 +240,9 @@ export function validateAgreementConclusion(form) {
     {
       validator: value => {
         let isValid = false,
-          valYear = +value.split('-')[2],
-          valMonth = +value.split('-')[1],
-          valDay = +value.split('-')[0];
-
+          valYear = +value.split('.')[2],
+          valMonth = +value.split('.')[1],
+          valDay = +value.split('.')[0];
         if (valYear <= year - 18) {
           isValid = true
         }
@@ -293,7 +292,7 @@ export function validateAgreementConclusion(form) {
     {
       plugin: JustValidatePluginDate(fields => {
         return {
-          format: 'dd-MM-yyyy',
+          format: 'dd.MM.yyyy',
           required: true,
         }
       }),
@@ -337,7 +336,7 @@ export function validatePassports(form) {
 
   Inputmask.default("9999").mask(inputSeries)
   Inputmask.default("999999").mask(inputNo)
-  Inputmask.default("99-99-9999").mask(inputIssueDate)
+  Inputmask.default("99.99.9999").mask(inputIssueDate)
   Inputmask.default("999-999").mask(inputSubdivision)
 
   const dataPickerIssueDate = new AirDatepicker(inputIssueDate, {
@@ -380,7 +379,7 @@ export function validatePassports(form) {
     {
       plugin: JustValidatePluginDate((fields) => ({
         required: true,
-        format: 'dd-MM-yyyy'
+        format: 'dd.MM.yyyy'
       })),
       errorMessage: 'Неверный формат',
     }

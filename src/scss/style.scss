@@ -876,6 +876,16 @@ input[type='date'] {
 		flex-direction: column;
 		row-gap: 15px;
 
+		h2 {
+			@include adaptiv-font(28, 20, 1);
+			font-weight: 700;
+			line-height: 120%;
+			padding-left: 40px;
+			@media (max-width: $md1) {
+				padding-left: 0;
+			}
+		}
+
 		h3 {
 			font-weight: bold;
 			@include adaptiv-font(24, 18, 1);

@@ -75,6 +75,7 @@
     "just-validate": "^4.3.0",
     "just-validate-plugin-date": "^1.2.0",
     "lodash.merge": "^4.6.2",
+    "moment": "^2.30.1",
     "tippy.js": "^6.3.7"
   }
 }

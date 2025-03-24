@@ -23,7 +23,7 @@ export function validatePassport(form) {
   Inputmask.default("999-999").mask(inputSubdivision)
 
   const dataPickerIssueDate = new AirDatepicker(inputIssueDate, {
-    dateFormat: 'yyyy-MM-dd',
+    dateFormat: 'dd.MM.yyyy',
     position: 'bottom center',
     autoClose: true,
     // maxDate: calculateMinDate(),
@@ -60,10 +60,13 @@ export function validatePassport(form) {
       errorMessage: 'Заполните поле',
     },
     {
-      plugin: JustValidatePluginDate((fields) => ({
-        required: true,
-        format: 'yyyy-MM-dd',
-      })),
+      plugin: JustValidatePluginDate((fields) => {
+        console.log(fields)
+        return {
+          required: true,
+          format: 'dd.MM.yyyy',
+        }
+      }),
       errorMessage: 'Неверный формат',
     }
   ]).addField(inputSubdivision, [

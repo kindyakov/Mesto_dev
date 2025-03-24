@@ -335,9 +335,9 @@ class Storerooms {
 			// this.routeScheme.deletePath(cell)
 			this.newRoomId = null
 		} else {
-			const [currentRoom] = this.warehousesRooms[
-				this.schemeTabs.activeIndexTab
-			].rooms.filter(room => +room.room_id === +roomId)
+			const [currentRoom] = this.warehousesRooms.filter(
+				room => +room.room_id === +roomId
+			)
 			const cellSelect = this.account.querySelector(
 				'.warehouse__svg-cell.free._selected'
 			)
@@ -663,23 +663,30 @@ class Storerooms {
 			] // получаем все комнаты клиента
 
 			let warehousesRentClient = [] // массив складов, где находятся комнаты клиента
-
 			// если у клиента есть комнаты, то добавляем в массив warehousesRentClient все склады, где находятся эти комнаты
 			if (roomsClient.length) {
-				roomsClient.map(room => {
-					if (!warehousesRentClient.includes(room.warehouse_id)) {
-						const warehouse = warehouses.find(
+				for (const room of roomsClient) {
+					if (
+						warehousesRentClient.find(
 							warehouse => warehouse.warehouse_id == room.warehouse_id
 						)
-						if (warehouse) {
-							warehouse.rooms_client = roomsClient
-							warehousesRentClient.push(warehouse)
-						}
+					) {
+						continue
 					}
-				})
+
+					const warehouse = warehouses.find(
+						warehouse => warehouse.warehouse_id == room.warehouse_id
+					)
+					if (warehouse) {
+						warehouse.rooms_client = roomsClient
+						warehousesRentClient.push(warehouse)
+					}
+				}
 			} else {
 				// если у клиента нет комнат, то добавляем в массив warehousesRentClient первый склад из массива warehouses
-				warehousesRentClient.push(warehouses[0])
+				warehousesRentClient.push(
+					warehouses.find(warehouse => warehouse.warehouse_id == 1)
+				) // это временное решение, пока не будет реализована логика выбора склада
 			}
 
 			for await (const warehouse of warehousesRentClient) {

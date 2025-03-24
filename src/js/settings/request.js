@@ -117,7 +117,7 @@ export async function downloadBill(bill_id, loader, redirect = '') {
 
 			const link = document.createElement('a')
 			link.href = url
-			link.download = `МЕСТО. Счет №${bill_id} от ${getFormattedDate()}.xlsx`
+			link.download = `МЕСТО. Счет №${bill_id} от ${getFormattedDate(new Date())}.xlsx`
 			link.click()
 			URL.revokeObjectURL(url)
 

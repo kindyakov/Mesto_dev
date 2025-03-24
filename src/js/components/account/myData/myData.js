@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { Tabs } from "../../../modules/myTabs.js"
 import { Loader } from "../../../modules/myLoader.js"
 
@@ -124,7 +125,7 @@ class MyData {
       if (this.isRequiredPassportsData) {
         let data = {}
 
-        formData.set('issue_date', getFormattedDate('YYYY-MM-DD', new Date(formData.get('issue_date'))))
+        formData.set('issue_date', moment(formData.get('issue_date'), 'DD.MM.YYYY', true).format('YYYY-MM-DD'))
         Array.from(formData).forEach(arr => data[arr[0]] = arr[1])
 
         this.editClient(data)
@@ -133,8 +134,8 @@ class MyData {
 
         formData.set('file', this.imgPassportFile)
         formData.set('room_ids', JSON.stringify(ids))
-        formData.set('birthday', getFormattedDate('YYYY-MM-DD', new Date(formData.get('birthday'))))
-        formData.set('issue_date', getFormattedDate('YYYY-MM-DD', new Date(formData.get('issue_date'))))
+        formData.set('birthday', moment(formData.get('birthday'), 'DD.MM.YYYY', true).format('YYYY-MM-DD'))
+        formData.set('issue_date', moment(formData.get('issue_date'), 'DD.MM.YYYY', true).format('YYYY-MM-DD'))
 
         this.formNewAgreement(formData)
       }
@@ -162,7 +163,7 @@ class MyData {
       if (input.name === 'username') {
         input.value = value ? value.slice(1) : ''
       } else if (input.classList.contains('input-date')) {
-        input.value = value ? getFormattedDate('DD-MM-YYYY', new Date(value)) : ''
+        input.value = value ? getFormattedDate(new Date(value)) : ''
       }
       else {
         input.value = value

@@ -104,7 +104,7 @@ class Account {
 
 		try {
 			this.loader.enable()
-			this.warehouses = await this.getShemes()
+			this.warehouses = await this.getSchemes()
 			await this.getProfile()
 			await this.initTabs(
 				this.accountTabs.tabsBtnActive,
@@ -160,21 +160,21 @@ class Account {
 		}
 	}
 
-	async getShemes() {
+	async getSchemes() {
 		try {
 			this.loader.enable()
-			// const response = await fetch(`${wpData.ajax_url}/`, {
-			// 	method: 'POST',
-			// 	headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-			// 	body: new URLSearchParams({
-			// 		action: 'warehouse_shemes',
-			// 	}),
-			// })
+			const response = await fetch(`${wpData.ajax_url}/`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				body: new URLSearchParams({
+					action: 'warehouse_schemes',
+				}),
+			})
 
-			const response = await fetch(`${location.origin}/assets/shemes.json`)
+			// const response = await fetch(`${location.origin}/assets/schemes.json`)
 
 			if (response.status !== 200) return
-			const data = await response.json()
+			const { data, success } = await response.json()
 			return data
 		} catch (error) {
 			console.log(error)
@@ -273,8 +273,6 @@ class Account {
 					formNewAgreement: this.formNewAgreement,
 					warehouses: this.warehouses,
 				})
-				// Типо вывод подходящей схемы
-				// this.storerooms.renderScheme(this.warehouses, this.clientData)
 				this.storeroomsScheme.classList.remove('_none')
 			} else if (
 				tabsContentActive.classList.contains('account-change-password')
