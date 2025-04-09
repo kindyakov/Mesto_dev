@@ -34,7 +34,7 @@ class RentRoom {
 		this.rentRoom = document.querySelector('.rent-room')
 		if (!this.rentRoom) return
 
-		this.urlParams = new URLSearchParams(window.location.search)
+		this.urlParams = new URLSearchParams(location.search)
 		this.roomIds = this.urlParams.get('ids')
 			? JSON.parse(this.urlParams.get('ids'))
 			: []
@@ -95,9 +95,8 @@ class RentRoom {
 		this.month = this.urlParams.get('num_monthes')
 			? JSON.parse(this.urlParams.get('num_monthes'))
 			: null
-		this.agrBegDate = this.urlParams.get('agrbegdate')
-			? JSON.parse(this.urlParams.get('agrbegdate'))
-			: null
+
+		this.agrBegDate = this.urlParams.get('agrbegdate') || null
 		this.agreementData = null
 		this.user = null
 		this.formDataPaymentInvoice = null
@@ -302,7 +301,7 @@ class RentRoom {
 				this.submitAgreementConclusion.bind(this)
 			)
 
-		this.authorization.options.onAuth = () => this.onAuth()
+		this.authorization.options.onAuth = () => this.onAuth('auth')
 		this.registration.options.onReg = () => this.onAuth('register')
 
 		this.promoCode.onApply = data => {
@@ -404,8 +403,7 @@ class RentRoom {
 		formData.set('autopay', formData.get('auto-payments') ? 1 : 0)
 		formData.set(
 			'return_url',
-			location.href +
-			`&step=2&num_monthes=${this.month}&agrbegdate=${this.agrBegDate}`
+			`${location.href}&step=2&num_monthes=${this.month}&agrbegdate=${this.agrBegDate}`
 		)
 
 		if (this.promocode) {

@@ -44,6 +44,7 @@ class Calculator {
 		)
 
 		this.prices = priceData
+
 		this.category = null
 		this.totalArea = 0
 		this.categoryData = {}
@@ -189,14 +190,13 @@ class Calculator {
 		if (noUiSlider.target.getAttribute('data-type-range') == 'area') {
 			this.texts.length &&
 				this.texts.forEach((el, i) => {
-					if (this.sliderArea.getValue() - 1 == i) {
+					if (this.sliderArea.getVolumeIndex() == i) {
 						el.classList.remove('_none')
 					} else {
 						el.classList.add('_none')
 					}
 				})
 		}
-
 
 		this.updateRange()
 	}
