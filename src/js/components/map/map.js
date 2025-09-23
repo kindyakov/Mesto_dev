@@ -88,7 +88,7 @@ const mapInit = async warehouses => {
 		document.getElementById('yandex-map'),
 		{
 			location: {
-				center: [warehouses[0].y, warehouses[0].x],
+				center: [parseFloat(warehouses[0].y) + 0.5, parseFloat(warehouses[0].x)],
 				zoom: 10,
 			},
 			showScaleInCopyrights: true,
@@ -166,7 +166,15 @@ const mapInit = async warehouses => {
 
 	function handleMediaChange() {
 		if (mediaQueryList.matches) {
+			map.setLocation({
+				center: [parseFloat(warehouses[0].y) + 0.15, parseFloat(warehouses[0].x)],
+				zoom: 10
+			});
 		} else {
+			map.setLocation({
+				center: [parseFloat(warehouses[0].y) + 0.5, parseFloat(warehouses[0].x)],
+				zoom: 10
+			});
 			modalInfoAllWarehouses.classList.add('_active')
 			modalInfoWarehouse.classList.remove('_active')
 		}
@@ -200,6 +208,7 @@ const mapInit = async warehouses => {
 			setMinMaxBlocks('.map__modal_warehouse-link.button')
 		})
 
+	handleMediaChange()
 	mediaQueryList.addEventListener('change', handleMediaChange)
 
 	yandexMap.addEventListener('click', e => {

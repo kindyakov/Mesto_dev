@@ -1,19 +1,17 @@
 import { formattingPrice } from '../../utils/formattingPrice.js'
 
 export function roomHtml(data) {
-	return `
+  return `
   <div class="rent-room__room swiper-slide">
     <div class="rent-room__room_img">
       <img src="${window.app.directory}/assets/img/rooms.jpg" alt="Картинка">
     </div>
     <div class="rent-room__room_content">
       <div class="rent-room__room_top">
-        <h4 class="rent-room__room_title">${
-					data.room_id ? 'Кладовка ' + data.room_id : ''
-				}</h4>
-        <span class="rent-room__room_price">${
-					data.price ? 'от ' + formattingPrice(data.price) + '/мес.' : ''
-				}</span>
+        <h4 class="rent-room__room_title">${data.room_name ? 'Кладовка ' + data.room_name : ''
+    }</h4>
+        <span class="rent-room__room_price">${data.price_11m ? 'от ' + formattingPrice(data.price_11m) + '/мес.' : ''
+    }</span>
       </div>
     <div class="rent-room__room_features"><span>Электромеханический замок</span></div>
       <ul class="rent-room__room_characteristic">
@@ -35,7 +33,7 @@ export function roomHtml(data) {
 }
 
 export function formDetailsModal(data) {
-	return `
+  return `
   <b>Проверка и подтверждение выписки счета</b>
   <span>Организация: "${data.fullname ? data.fullname : ''}"</span>
   <span>ИНН: ${data.inn ? data.inn : ''}</span>
@@ -46,7 +44,6 @@ export function formDetailsModal(data) {
 // <span>КПП ${data.kpp}</span>
 
 export function formInfoModal(data) {
-	return `<b style="align-items: center;">Счет ${
-		data.bill_id ? data.bill_id : ''
-	} сформирован и отправлен вам на почту ${data.email ? data.email : ''}</b>`
+  return `<b style="align-items: center;">Счет ${data.bill_id ? data.bill_id : ''
+    } сформирован и отправлен вам на почту ${data.email ? data.email : ''}</b>`
 }

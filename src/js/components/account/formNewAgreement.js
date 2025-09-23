@@ -146,11 +146,10 @@ class FormNewAgreement {
 				}
 
 				if (currentAgreement && currentRoom[0]?.rented == 0.4) {
-					location.href = `${
-						location.origin
-					}/rent-room?ids=${encodeURIComponent(
-						JSON.stringify(currentAgreement.room_ids)
-					)}`
+					location.href = `${location.origin
+						}/rent-room?ids=${encodeURIComponent(
+							JSON.stringify(currentAgreement.room_ids)
+						)}`
 					return
 				}
 			}

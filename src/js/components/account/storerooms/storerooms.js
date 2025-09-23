@@ -7,7 +7,7 @@ import { Modal, ConfirmModal } from '../../../modules/myModal.js'
 
 import { setMinMaxBlocks } from '../../../utils/setMinMaxBlocks.js'
 import { formattingPrice } from '../../../utils/formattingPrice.js'
-import { buildQueryParams } from '../../../utils/buildQueryParams.js'
+// import { buildQueryParams } from '../../../utils/buildQueryParams.js'
 import { apiWithAuth } from '../../../settings/api.js'
 
 import {
@@ -463,18 +463,15 @@ class Storerooms {
 				this.modalConfirmReplaceRoom.modal.querySelector(
 					'.modal-confirm-replace-room__text'
 				).innerHTML = `
-          <p>Вы уверены, что хотите заменить<br> Кладовка ${
-						currentOldRoom.room_id
+          <p>Вы уверены, что хотите заменить<br> Кладовка ${currentOldRoom.room_id
 					} на Кладовка ${currentNewRoom.room_id}?</p>
           <p style="display: flex; align-items: center; gap: 6px;">
-            <b>${
-							difference < 0
-								? `Экономия составит  ${formattingPrice(-1 * difference)}`
-								: `Доплата составит ${formattingPrice(difference)}`
-						} </b><svg class='icon icon-info  icon-info-tippy' style="width: 30px; height: 40px;">
-            <use xlink:href='${
-							window.app.directory
-						}/assets/img/svg/sprite.svg#info'></use>
+            <b>${difference < 0
+						? `Экономия составит  ${formattingPrice(-1 * difference)}`
+						: `Доплата составит ${formattingPrice(difference)}`
+					} </b><svg class='icon icon-info  icon-info-tippy' style="width: 30px; height: 40px;">
+            <use xlink:href='${window.app.directory
+					}/assets/img/svg/sprite.svg#info'></use>
             </svg>
           </p>`
 
@@ -606,8 +603,7 @@ class Storerooms {
 					tabsFloor.innerHTML = warehouse.schemes
 						.map(
 							(scheme, i) =>
-								`<button class="warehouse__schemes_tab button tabs-btn-schemes ${
-									i == 0 ? '_tab-btn-active' : ''
+								`<button class="warehouse__schemes_tab button tabs-btn-schemes ${i == 0 ? '_tab-btn-active' : ''
 								}" data-tabs-btn="account-schemes-tabs-${i}">
 							<span>${i + 1} ярус</span>
 							</button>`
@@ -623,9 +619,8 @@ class Storerooms {
 					tabsContents.innerHTML = ''
 					warehouse.schemes.forEach((scheme, i) => {
 						const content = document.createElement('div')
-						content.className = `warehouse__schemes_content tabs-content-schemes ${
-							i == 0 ? '_tab-content-active' : ''
-						}`
+						content.className = `warehouse__schemes_content tabs-content-schemes ${i == 0 ? '_tab-content-active' : ''
+							}`
 						content.setAttribute(
 							'data-tabs-content',
 							`account-schemes-tabs-${i}`
