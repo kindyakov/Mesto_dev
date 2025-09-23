@@ -1,0 +1,34 @@
+{
+  "components": {
+    "title": "components",
+    "children": {
+      "account": {
+        "title": "account",
+        "path": "components/account.md"
+      },
+      "authorization": {
+        "title": "authorization",
+        "path": "components/authorization.md"
+      }
+    },
+    "path": "components.md"
+  },
+  "modules": {
+    "title": "modules",
+    "path": "modules.md"
+  },
+  "settings": {
+    "title": "settings",
+    "path": "settings.md"
+  },
+  "utils": {
+    "title": "utils",
+    "children": {
+      "addClassRented": {
+        "title": "addClassRented",
+        "path": "utils/addClassRented.md"
+      }
+    },
+    "path": "utils.md"
+  }
+}

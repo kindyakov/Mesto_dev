@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import moment from 'moment';
+=======
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 import { Tabs } from "../../../modules/myTabs.js"
 import { Loader } from "../../../modules/myLoader.js"
 
@@ -125,7 +128,11 @@ class MyData {
       if (this.isRequiredPassportsData) {
         let data = {}
 
+<<<<<<< HEAD
         formData.set('issue_date', moment(formData.get('issue_date'), 'DD.MM.YYYY', true).format('YYYY-MM-DD'))
+=======
+        formData.set('issue_date', getFormattedDate('YYYY-MM-DD', new Date(formData.get('issue_date'))))
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
         Array.from(formData).forEach(arr => data[arr[0]] = arr[1])
 
         this.editClient(data)
@@ -134,8 +141,13 @@ class MyData {
 
         formData.set('file', this.imgPassportFile)
         formData.set('room_ids', JSON.stringify(ids))
+<<<<<<< HEAD
         formData.set('birthday', moment(formData.get('birthday'), 'DD.MM.YYYY', true).format('YYYY-MM-DD'))
         formData.set('issue_date', moment(formData.get('issue_date'), 'DD.MM.YYYY', true).format('YYYY-MM-DD'))
+=======
+        formData.set('birthday', getFormattedDate('YYYY-MM-DD', new Date(formData.get('birthday'))))
+        formData.set('issue_date', getFormattedDate('YYYY-MM-DD', new Date(formData.get('issue_date'))))
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 
         this.formNewAgreement(formData)
       }
@@ -163,7 +175,11 @@ class MyData {
       if (input.name === 'username') {
         input.value = value ? value.slice(1) : ''
       } else if (input.classList.contains('input-date')) {
+<<<<<<< HEAD
         input.value = value ? getFormattedDate(new Date(value)) : ''
+=======
+        input.value = value ? getFormattedDate('DD-MM-YYYY', new Date(value)) : ''
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
       }
       else {
         input.value = value

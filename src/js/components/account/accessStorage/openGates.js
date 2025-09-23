@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Modal } from '../../../modules/myModal.js'
 import { apiWithAuth } from '../../../settings/api.js'
 import { outputInfo } from '../../../utils/outputinfo.js'
@@ -54,3 +55,26 @@ class OpenGates {
 }
 
 export default OpenGates
+=======
+import { Modal } from "../../../modules/myModal.js"
+
+
+class OpenGates {
+  constructor({ loader }) {
+    this.modalConfirmOpenGates = new Modal('.modal-confirm-open-gates', {
+      modalBtnClose: '.btn-modal-close'
+    })
+
+    this.loader = loader
+  }
+
+  renderModalConfirm() {
+    this.modalConfirmOpenGates.modal.querySelector('.modal-confirm-open-barrier__content p').innerHTML = `
+    Вы уверены, что хотите открыть ворота на складе 1?`
+
+    this.modalConfirmOpenGates.open()
+  }
+}
+
+export default OpenGates
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53

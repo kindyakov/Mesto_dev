@@ -3,5 +3,13 @@ node_modules
 dist
 .vscode
 package-lock.json
+<<<<<<< HEAD
 *.zip
 *.ini
+=======
+Mesto_dev.zip
+Mesto_build.zip
+Место_dev.zip
+Место_build.zip
+Desktop.ini
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53

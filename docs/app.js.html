@@ -1,0 +1,452 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> app.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Документация</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                <div class="dropdown is-hoverable is-right">
+                    <a class="dropdown-trigger link">
+                        Tutorials
+                        <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                        
+                            <a class="dropdown-item" href="tutorial-components.html">
+                                components
+                            </a>
+                        
+                            <a class="dropdown-item" href="tutorial-modules.html">
+                                modules
+                            </a>
+                        
+                            <a class="dropdown-item" href="tutorial-settings.html">
+                                settings
+                            </a>
+                        
+                            <a class="dropdown-item" href="tutorial-utils.html">
+                                utils
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-Account.html">Account</a></li><li><a href="module-app.html">app</a></li><li><a href="module-Cards.html">Cards</a></li></ul><h3>Global</h3><ul><li><a href="global.html#useDynamicAdapt">useDynamicAdapt</a></li></ul></div><div class="category"><h2>components</h2><h3>Classes</h3><ul><li><a href="Account.html">Account</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>app.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Главный модуль приложения.
+ * @module app
+ */
+
+import checkSupportWebP from "./utils/checkSupportWebP.js";
+import { useDynamicAdapt } from "./utils/dynamicAdapt.js";
+import { burger, updateLinks, scroll, dropdown } from "./utils/header.js";
+import { showPassword } from './utils/showPassword.js';
+import { addBrowserSpecificClass } from './utils/detectBrowser.js';
+import { Accordion } from "./modules/myAccordion.js";
+import { Tabs } from "./modules/myTabs.js";
+import { getWarehousesInfo } from "./settings/request.js";
+import api, { checkAuth } from "./settings/api.js";
+import mapInit from "./components/map/map.js";
+import questions from "./components/questions/questions.js";
+import rentOut from "./components/rentOut/rentOut.js";
+import Calculator from "./components/calculator/calculator.js";
+import SchemeMobile from './components/schemeMobile/schemeMobile.js';
+import ModalQuiz from "./components/modals/modalQuiz/modalQuiz.js";
+import { modals } from "./components/modals/modals.js";
+import { specialOffer } from "./components/specialOffer/specialOffer.js";
+
+/**
+ * Обновление ссылок в шапке сайта.
+ * @function
+ * @memberof category:utils
+ * @see {@link module:utils/header~updateLinks}
+ */
+updateLinks('.link-update');
+
+/** 
+ * Инициализация бургер-меню.
+ * @function
+ * @memberof category:utils
+ * @see {@link module:utils/header~burger}
+ */
+burger();
+
+/**
+ * Инициализация прокрутки по якорям.
+ * @function
+ * @param {string} selector - Селектор для прокрутки.
+ * @param {Object} options - Опции для прокрутки.
+ * @memberof category:utils
+ * @see {@link module:utils/header~scroll}
+ */
+scroll('.link-scroll', { isHeader: false });
+
+/**
+ * Инициализация выпадающего меню.
+ * @function
+ * @param {Object} options - Опции для выпадающего меню.
+ * @memberof category:utils
+ * @see {@link module:utils/header~dropdown}
+ */
+dropdown({});
+
+/**
+ * Часто задаваемые вопросы.
+ * @function
+ * @memberof category:utils
+ * @see {@link module:components/questions~questions}
+ */
+questions();
+
+/**
+ * Функция сдачи в аренду.
+ * @function
+ * @memberof category:components
+ * @see {@link module:components/rentOut~rentOut}
+ */
+rentOut();
+
+/**
+ * Проверка поддержки формата WebP в браузере.
+ * @function
+ * @memberof category:utils
+ * @see {@link module:utils/checkSupportWebP~checkSupportWebP}
+ */
+checkSupportWebP();
+
+/**
+ * Показывает или скрывает пароль.
+ * @function
+ * @param {string} selector - Селектор для иконки показа пароля.
+ * @memberof category:utils
+ * @see {@link module:utils/showPassword~showPassword}
+ */
+showPassword('.icon-eye');
+
+/**
+ * Специальное предложение.
+ * @function
+ * @memberof category:components
+ * @see {@link module:components/specialOffer~specialOffer}
+ */
+specialOffer();
+
+const calculator = new Calculator();
+const schemeMobile = new SchemeMobile();
+const isAuth = checkAuth();
+
+let warehouse, room, rentRoom, account;
+
+/**
+ * Получает информацию о складах и инициализирует различные компоненты в зависимости от текущего пути.
+ * @function
+ * @memberof module:app
+ * @see {@link module:settings/request~getWarehousesInfo}
+ */
+getWarehousesInfo().then(async ({ warehouses }) => {
+  const pathname = window.location.pathname;
+
+  if (pathname === '/' || pathname.includes('/index')) {
+    const modalQuiz = new ModalQuiz({ warehouses });
+
+    if (!isAuth) {
+      const isFeedback = !!sessionStorage.getItem('isFeedback') || false;
+
+      if (!isFeedback) {
+        setTimeout(() => {
+          modalQuiz.modalQuiz.open();
+          sessionStorage.setItem('isFeedback', true);
+        }, 40000);
+      }
+    }
+  } else if (pathname.includes('/rent-room')) {
+    import(`./components/rentRoom/rentRoom.js`).then(({ default: RentRoom }) => {
+      rentRoom = new RentRoom();
+    });
+  } else if (pathname.includes('/account')) {
+    import(`./components/account/account.js`).then(({ default: Account }) => {
+      account = new Account();
+    });
+  } else if (pathname.includes('/warehouse') || pathname.includes('/for-your-business')) {
+    import(`./components/warehouse/warehouse.js`).then(({ default: Warehouse }) => {
+      warehouse = new Warehouse();
+      warehouse.renderWarehouses(warehouses);
+    });
+  } else if (pathname.includes('/room')) {
+    import(`./components/room/room.js`).then(({ default: Room }) => {
+      room = new Room();
+      room.renderRoom(warehouses);
+    });
+  } else if (pathname.includes('/authorization')) {
+    const authorizationImport = import(`./components/authorization/authorization.js`).then(({ default: Authorization }) => {
+      const authorization = new Authorization({
+        redirect: `account.html`
+      });
+    });
+
+    const registrationImport = import(`./components/authorization/registration.js`).then(({ default: Registration }) => {
+      const registration = new Registration({
+        redirect: `warehouse/1.html`
+      });
+    });
+
+    Promise.all([authorizationImport, registrationImport]).then(() => {
+      const authorizationSection = document.querySelector('.authorization');
+      if (authorizationSection) {
+        const authorizationTabs = new Tabs('authorization-tabs');
+
+        document.addEventListener('click', e => {
+          if (e.target.closest('.tab-registration')) {
+            e.preventDefault();
+            authorizationTabs.switchTabs(authorizationTabs.tabs.querySelector('.btn-registration'));
+          }
+
+          if (e.target.closest('.tab-authorization')) {
+            e.preventDefault();
+            authorizationTabs.switchTabs(authorizationTabs.tabs.querySelector('.btn-authorization'));
+          }
+        });
+      }
+    });
+  }
+
+  calculator &amp;&amp; calculator.process(warehouses);
+  mapInit(warehouses);
+});
+
+modals();
+
+/**
+ * Инициализация адаптации динамического контента.
+ * @function
+ * @memberof module:app
+ * @see {@link module:utils/dynamicAdapt~useDynamicAdapt}
+ */
+useDynamicAdapt();
+
+/**
+ * Добавляет классы для специфических браузеров.
+ * @function
+ * @param {Array&lt;string>} selectors - Список селекторов для элементов.
+ * @memberof module:app
+ * @see {@link module:utils/detectBrowser~addBrowserSpecificClass}
+ */
+addBrowserSpecificClass(['.mySelect__list']);
+
+/**
+ * Генерирует уникальные ID для всех checkbox и radio input и обновляет соответствующие label.
+ * @function
+ * @memberof module:app
+ */
+const inputsCheckbox = document.querySelectorAll('input[type="checkbox"]');
+const inputsRadio = document.querySelectorAll('input[type="radio"]');
+const inputs = [...inputsCheckbox, ...inputsRadio];
+
+inputs.length &amp;&amp; inputs.forEach((input, i) => {
+  const newId = new Date().getTime() + i;
+  const label = input.parentElement.querySelector(`label[for="${input.id}"]`);
+
+  input.id = newId;
+  label &amp;&amp; label.setAttribute('for', newId);
+});
+
+/**
+ * Обновляет padding-top у элемента .intro в зависимости от высоты шапки.
+ * @function
+ * @memberof module:app
+ */
+const intro = document.querySelector('.intro');
+const header = document.querySelector('.header');
+if (intro &amp;&amp; header) {
+  intro.style.paddingTop = header.clientHeight + 'px';
+
+  window.addEventListener('resize', () => {
+    intro.style.paddingTop = header.clientHeight + 'px';
+  });
+}
+
+/**
+ * Инициализирует вкладки и аккордеон для FAQ.
+ * @function
+ * @memberof module:app
+ * @see {@link module:modules/myTabs~Tabs}
+ * @see {@link module:modules/myAccordion~Accordion}
+ */
+const faq = document.querySelector('.faq');
+if (faq) {
+  const faqTabs = new Tabs('faq-tabs');
+  const faqAccordion = new Accordion('.faq__body');
+}
+
+/**
+ * Инициализирует вкладки для элемента .advantages-storage.
+ * @function
+ * @memberof module:app
+ * @see {@link module:modules/myTabs~Tabs}
+ */
+const advantagesStorage = document.querySelector('.advantages-storage');
+if (advantagesStorage) {
+  const advantagesStorageTabs = new Tabs('advantages-storage-tabs');
+}
+
+/**
+ * Инициализирует вкладки для бизнеса и аккордеон.
+ * @function
+ * @memberof module:app
+ * @see {@link module:modules/myTabs~Tabs}
+ * @see {@link module:modules/myAccordion~Accordion}
+ */
+if (document.querySelector('[data-tabs-init="business-tabs"]')) {
+  const businessTabs = new Tabs('business-tabs', {
+    btnSelector: '._business-tabs-btn',
+    contentSelector: '._business-tabs-content'
+  });
+}
+
+if (document.querySelector('.business__accords')) {
+  const businessAccord = new Accordion('.business__accords');
+}
+
+/**
+ * Инициализирует слайдер для бизнес-предложений.
+ * @function
+ * @memberof module:app
+ * @see {@link https://swiperjs.com/}
+ */
+if (document.querySelector('.business__benefit_swiper ')) {
+  new Swiper('.business__benefit_swiper ', {
+    spaceBetween: 10,
+    autoWidth: true,
+    slidesPerView: 1,
+    autoplay: {
+      delay: 2000,
+    },
+  });
+}
+
+/**
+ * Инициализирует слайдер для специальных предложений.
+ * @function
+ * @memberof module:app
+ * @see {@link https://swiperjs.com/}
+ */
+if (document.querySelector('.special-swiper-offer')) {
+  new Swiper('.special-swiper-offer', {
+    spaceBetween: 10,
+  });
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

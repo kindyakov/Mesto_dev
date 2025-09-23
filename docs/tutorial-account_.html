@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> account</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Документация</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                <div class="dropdown is-hoverable is-right">
+                    <a class="dropdown-trigger link">
+                        Tutorials
+                        <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                        
+                            <a class="dropdown-item" href="tutorial-components.html">
+                                components
+                            </a>
+                        
+                            <a class="dropdown-item" href="tutorial-modules.html">
+                                modules
+                            </a>
+                        
+                            <a class="dropdown-item" href="tutorial-settings.html">
+                                settings
+                            </a>
+                        
+                            <a class="dropdown-item" href="tutorial-utils.html">
+                                utils
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar tutorials"
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-components.html">components</a><ul><li><a href="tutorial-account_.html">account</a></li><li><a href="tutorial-authorization.html">authorization</a></li></ul></li><li><a href="tutorial-modules.html">modules</a></li><li><a href="tutorial-settings.html">settings</a></li><li><a href="tutorial-utils.html">utils</a><ul><li><a href="tutorial-addClassRented.html">addClassRented</a></li></ul></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Tutorial</p>
+                    <h1>account</h1>
+                </header>
+                <section>
+
+<article>
+    <h2>Файл <code>account.js</code></h2>
+<h2>Общая информация</h2>
+<p>Файл <code>account.js</code> предназначен для управления аккаунтом пользователя на веб-сайте. Он содержит класс <code>Account</code>, который отвечает за инициализацию и обработку всех действий, связанных с аккаунтом, включая управление вкладками, загрузку данных профиля пользователя и обработку событий на странице аккаунта.</p>
+<h2>Импортируемые модули</h2>
+<ul>
+<li><strong>Tabs</strong>: модуль для управления вкладками.</li>
+<li><strong>Loader</strong>: модуль для управления загрузочным индикатором.</li>
+<li><strong>apiWithAuth, checkAuth</strong>: модули для работы с API и проверки авторизации.</li>
+<li><strong>AccessStorage, Storerooms, ChangePassword, Departure, MyData, PaymentMethods, FormNewAgreement</strong>: модули для различных разделов аккаунта.</li>
+<li><strong>getClientTotalData</strong>: функция для получения данных о клиенте.</li>
+<li><strong>isOneRented</strong>: утилита для проверки аренды.</li>
+</ul>
+<h2>Класс <code>Account</code></h2>
+<p>Класс <code>Account</code> управляет всеми аспектами аккаунта пользователя.</p>
+<h3>Свойства</h3>
+<ul>
+<li><code>account</code>: HTMLElement, общая обертка личного кабинета.</li>
+<li><code>urlParams</code>: URLSearchParams, поисковые параметры из URL.</li>
+<li><code>formNewAgreement</code>: объект, экземпляр для создания новой формы.</li>
+<li><code>accountTabs</code>: объект, экземпляр вкладок аккаунта.</li>
+<li><code>accessStorage</code>: объект, экземпляр для управления доступом к складу.</li>
+<li><code>storerooms</code>: объект, экземпляр для управления складскими помещениями.</li>
+<li><code>changePassword</code>: объект, экземпляр для изменения пароля.</li>
+<li><code>myData</code>: объект, экземпляр для управления данными пользователя.</li>
+<li><code>paymentMethods</code>: объект, экземпляр для управления методами оплаты.</li>
+<li><code>departure</code>: объект, экземпляр для управления выездом.</li>
+<li><code>loader</code>: объект, экземпляр загрузчика.</li>
+<li><code>accountLink</code>: HTMLElement, ссылка для выхода из аккаунта.</li>
+<li><code>isAuth</code>: boolean, проверка авторизации пользователя.</li>
+<li><code>profile</code>: объект или null, данные профиля пользователя.</li>
+<li><code>user</code>: объект или null, полные данные пользователя.</li>
+<li><code>completeLeaseRoomId</code>: number или null, ID завершения аренды комнаты.</li>
+</ul>
+<h3>Методы</h3>
+<h4><strong><code>constructor()</code></strong></h4>
+<p>Конструктор инициализирует основные свойства класса и вызывает метод <code>init()</code>.</p>
+<h4><strong><code>init()</code></strong></h4>
+<p>Инициализирует аккаунт, проверяет авторизацию, получает профиль пользователя и инициализирует вкладки.</p>
+<h4><strong><code>getProfile()</code></strong></h4>
+<p>Получает профиль пользователя и обновляет вкладки в зависимости от состояния аккаунта.</p>
+<h4><strong><code>initTabs(tabsBtnActive, tabsContentActive)</code></strong></h4>
+<p>Инициализирует вкладки при загрузке страницы и обрабатывает состояние вкладок в зависимости от данных клиента.</p>
+<ul>
+<li>
+<p><strong>Параметры</strong>:</p>
+<ul>
+<li><code>tabsBtnActive</code>: HTMLElement - Активная кнопка вкладки.</li>
+<li><code>tabsContentActive</code>: HTMLElement - Активное содержимое вкладки.</li>
+</ul>
+</li>
+<li>
+<p><strong>Описание</strong>:</p>
+<ul>
+<li>Метод <code>initTabs</code> вызывается при загрузке страницы для инициализации вкладок на основе данных клиента.</li>
+<li>Включает и выключает индикатор загрузки (loader).</li>
+<li>Получает данные о клиенте с помощью функции <code>getClientTotalData</code>.</li>
+<li>Обрабатывает отображение и скрытие вкладок в зависимости от данных о комнатах и состоянии аренды.</li>
+<li>Если пользователь не арендует ни одной комнаты или тестовых комнат, определенные вкладки скрываются, а другие переключаются для отображения соответствующего контента.</li>
+</ul>
+</li>
+<li>
+<p><strong>Используемые функции и модули</strong>:</p>
+<ul>
+<li><code>getClientTotalData</code>: функция для получения данных о клиенте.</li>
+<li><code>isOneRented</code>: утилита для проверки аренды.</li>
+</ul>
+</li>
+</ul>
+<h4><strong><code>changeTabs(tabsBtnActive, tabsContentActive)</code></strong></h4>
+<p>Обрабатывает изменение вкладок и обновляет содержимое вкладок в зависимости от текущих данных клиента.</p>
+<h4><strong><code>events()</code></strong></h4>
+<p>Обрабатывает события на странице аккаунта, такие как нажатия кнопок и переключение вкладок.</p>
+</article>
+
+</section>
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

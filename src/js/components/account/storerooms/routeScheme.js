@@ -11,7 +11,11 @@ class RouteScheme {
     if (!cells?.length) return
 
     cells.forEach(cell => {
+<<<<<<< HEAD
       let rect = cell.querySelector('rect') || cell.querySelector('path')
+=======
+      let rect = cell.querySelector('rect')
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
       let rectX = +rect.getAttribute('x')
       let rectY = +rect.getAttribute('y')
       let rectH = +rect.getAttribute('height')

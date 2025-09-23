@@ -542,20 +542,29 @@
 			transition: 0.2s;
 		}
 		&.my {
+<<<<<<< HEAD
 			rect,
 			path {
+=======
+			rect {
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 				fill: $green;
 			}
 			text {
 				fill: $white;
 			}
 			&:hover {
+<<<<<<< HEAD
 				rect,
 				path {
+=======
+				rect {
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 					fill: rgba(0, 77, 86, 0.6);
 				}
 			}
 			&._selected {
+<<<<<<< HEAD
 				rect,
 				path {
 					fill: $orange;
@@ -563,37 +572,60 @@
 				&:hover {
 					rect,
 					path {
+=======
+				rect {
+					fill: $orange;
+				}
+				&:hover {
+					rect {
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 						fill: $orange;
 					}
 				}
 			}
 		}
 		&.free {
+<<<<<<< HEAD
 			rect,
 			path {
+=======
+			rect {
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 				fill: #ffd495;
 			}
 			text {
 				fill: $black;
 			}
 			&:hover {
+<<<<<<< HEAD
 				rect,
 				path {
+=======
+				rect {
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 					fill: #ffbc57;
 				}
 			}
 		}
 		&.select-size {
+<<<<<<< HEAD
 			rect,
 			path {
+=======
+			rect {
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 				fill: $orange;
 			}
 			text {
 				fill: $white;
 			}
 			&:hover {
+<<<<<<< HEAD
 				rect,
 				path {
+=======
+				rect {
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 					fill: #f59300b4;
 				}
 			}
@@ -602,6 +634,7 @@
 			text {
 				fill: $white;
 			}
+<<<<<<< HEAD
 			rect,
 			path {
 				fill: #068a3b;
@@ -609,6 +642,13 @@
 			&:hover {
 				rect,
 				path {
+=======
+			rect {
+				fill: #068a3b;
+			}
+			&:hover {
+				rect {
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 					fill: #068a3b;
 				}
 			}
@@ -616,8 +656,12 @@
 		// &.busy {}
 		&.disabled {
 			cursor: auto;
+<<<<<<< HEAD
 			rect,
 			path {
+=======
+			rect {
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 				fill: #d9d9d9;
 			}
 			&:hover {

@@ -19,6 +19,10 @@
 		display: block;
 		transition: 0.3s;
 		font-weight: 600;
+<<<<<<< HEAD
+=======
+		@include adaptiv-font(20, 16, 1);
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 		padding: 8px 12px;
 		border-radius: 4px;
 		color: #fff;
@@ -29,8 +33,11 @@
 		top: 0;
 		transform: translate(-50%, 0);
 		box-sizing: content-box;
+<<<<<<< HEAD
 		@include adaptiv-font(20, 16, 1);
 
+=======
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 		&._error {
 			background-color: #cf1d1d;
 		}

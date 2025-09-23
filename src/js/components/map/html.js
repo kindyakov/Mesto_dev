@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { declOfNum } from '../../utils/declOfNum.js'
 import { formattingPrice } from '../../utils/formattingPrice.js'
 
@@ -10,12 +11,25 @@ export function markerContent(data) {
     <img src="${
 			window.app.directory
 		}/assets/img/icons/map-marker-2.png" alt="Иконка" class="marker__img img-active">
+=======
+import { declOfNum } from "../../utils/declOfNum.js"
+import { formattingPrice } from "../../utils/formattingPrice.js"
+
+const expansionFile = '.html'
+
+export function markerContent(data) {
+  return `
+  <div class="marker__content">
+    <img src="${location.origin}/img/icons/map-marker.png" alt="Иконка" class="marker__img img-default">
+    <img src="${location.origin}/img/icons/map-marker-2.png" alt="Иконка" class="marker__img img-active">
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
     <span class="marker__price">от ${formattingPrice(data.min_price)}</span>
     <span class="marker__rooms">${data.cnt_free}</span>
   </div>`
 }
 
 export function modalWarehouse(data) {
+<<<<<<< HEAD
 	return `
   <div class="map__modal_warehouse">
     <div class="map__modal_warehouse-content">
@@ -33,10 +47,24 @@ export function modalWarehouse(data) {
       <address class="map__modal_warehouse-address">${
 				data.warehouse_address ? data.warehouse_address : 'Адрес уточняется'
 			}</address>
+=======
+  return `
+  <div class="map__modal_warehouse">
+    <div class="map__modal_warehouse-content">
+      <h6 class="map__modal_warehouse-name">
+        <span>${data.warehouse_metro ? data.warehouse_metro : 'Скоро открытие'}</span>
+        <div class="map__modal_warehouse-distance">
+          <img src="${location.origin}/img/icons/m.png" alt="Иконка">
+          <span>1 км</span>
+        </div>
+      </h6>
+      <address class="map__modal_warehouse-address">${data.warehouse_address ? data.warehouse_address : 'Адрес уточняется'}</address>
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
       <span class="map__modal_warehouse-work">Круглосуточно</span>
     </div>
     <div class="map__modal_warehouse-block">
       <span>
+<<<<<<< HEAD
       ${`${data.cnt_free ? data.cnt_free : 'Нет данных'}
         ${data.cnt_free &&
 					declOfNum(data.cnt_free, ['свободная', 'свободных', 'свободных'])} 
@@ -51,30 +79,49 @@ export function modalWarehouse(data) {
 					? 'от ' + formattingPrice(data.min_price)
 					: 'Забронировать'
 			}</span>
+=======
+      ${data.warehouse_id == 2 ? 'скоро открытие' :
+      ` ${data.cnt_free ? data.cnt_free : 'Нет данных'}
+        ${data.cnt_free && declOfNum(data.cnt_free, ['свободная', 'свободных', 'свободных'])} 
+        ${data.cnt_free && declOfNum(data.cnt_free, ['кладовка', 'кладовки', 'кладовок'])}`}
+      </span>
+    <a href="${location.origin}/warehouse/${data.warehouse_id}${expansionFile}" class="map__modal_warehouse-link button">
+      <span>${data.min_price ? 'от ' + formattingPrice(data.min_price) : 'Забронировать'}</span>
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
     </a>
     </div>
   </div>`
 }
 
 export function modalWarehouseCurrent(data) {
+<<<<<<< HEAD
 	return `
+=======
+  return `
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
     <div class="map__modal_close modal__close">
     <span></span>
     <span></span>
   </div>
   <div class="modal-info-warehouse__top">
+<<<<<<< HEAD
     <h6 class="modal-info-warehouse__metro">${
 			data.warehouse_metro ? data.warehouse_metro : 'Скоро открытие'
 		}</h6>
     <address class="modal-info-warehouse__address">${
 			data.warehouse_address ? data.warehouse_address : 'Адрес уточняется'
 		}</address>
+=======
+    <h6 class="modal-info-warehouse__metro">${data.warehouse_metro ? data.warehouse_metro : 'Скоро открытие'}</h6>
+    <address class="modal-info-warehouse__address">${data.warehouse_address ? data.warehouse_address : 'Адрес уточняется'}</address>
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
   </div>
 
   <ul class="modal-info-warehouse__location">
     <li>м. ${data.warehouse_metro ? `${data.warehouse_metro} (1 км)` : ''}</li>
   </ul>
 
+<<<<<<< HEAD
   ${
 		wpData.phone
 			? `<a href="tel:+${wpData.phone.replace(
@@ -83,23 +130,35 @@ export function modalWarehouseCurrent(data) {
 			  )}" class="modal-info-warehouse__phone">${wpData.phone}</a>`
 			: ''
 	}
+=======
+  <a href="tel:74951651565" class="modal-info-warehouse__phone">+7 (495) 165-15-65</a>
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 
   <ul class="modal-info-warehouse__info">
     <li>
       ${data.cnt_free ? data.cnt_free : 'Нет данных'}
+<<<<<<< HEAD
       ${data.cnt_free &&
 				declOfNum(data.cnt_free, ['свободная', 'свободных', 'свободных'])} 
       ${data.cnt_free &&
 				declOfNum(data.cnt_free, ['кладовка', 'кладовки', 'кладовок'])}
+=======
+      ${data.cnt_free && declOfNum(data.cnt_free, ['свободная', 'свободных', 'свободных'])} 
+      ${data.cnt_free && declOfNum(data.cnt_free, ['кладовка', 'кладовки', 'кладовок'])}
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
     </li>
     <li>Круглосуточно</li>
     <li>Без выходных</li>
   </ul>
 
   <div class="modal-info-warehouse__bottom">
+<<<<<<< HEAD
     <a href="${location.origin}/warehouse/${
 		data.warehouse_id
 	}" class="modal-info-warehouse__link button">
+=======
+    <a href="${location.origin}/warehouse/${data.warehouse_id}${expansionFile}" class="modal-info-warehouse__link button">
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
       <span>Выбрать кладовку</span>
     </a>
   </div>`
@@ -107,6 +166,7 @@ export function modalWarehouseCurrent(data) {
 // <span class="modal-info-warehouse__rating">4.4 балла из 5</span>
 
 export function warehouseList(data) {
+<<<<<<< HEAD
 	return `
     <div class="map__warehouse">
     <div class="map__warehouse_top">
@@ -143,3 +203,27 @@ export function warehouseList(data) {
     </a>
   </div>`
 }
+=======
+  return `
+    <div class="map__warehouse">
+    <div class="map__warehouse_top">
+      <h6 class="map__warehouse_metro">${data.warehouse_metro ? data.warehouse_metro : 'Скоро открытие'}</h6>
+      <address class="map__warehouse_address">${data.warehouse_address ? data.warehouse_address : 'Адрес уточняется'}</address>
+    </div>
+    <div class="map__warehouse_row">
+      <div class="map__warehouse_location">
+        <img src="${location.origin}/img/icons/m-2.png" alt="Иконка">
+        <span>1 км</span>
+      </div>
+      <span class="map__warehouse_rooms">
+        ${data.cnt_free ? data.cnt_free : 'Нет данных'} из ${data.cnt_all ? data.cnt_all : 'Нет данных'} 
+        ${data.cnt_free && declOfNum(data.cnt_free, ['кладовка', 'кладовки', 'кладовок'])} 
+        ${data.cnt_free && declOfNum(data.cnt_free, ['свободная', 'свободных', 'свободных'])}
+      </span>
+    </div>
+    <a href="${location.origin}/warehouse/${data.warehouse_id}${expansionFile}" class="map__warehouse_link button">
+      <span>${data.min_price ? 'от ' + formattingPrice(data.min_price) : 'Нет данных'}</span>
+    </a>
+  </div>`
+}
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53

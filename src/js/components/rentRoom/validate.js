@@ -88,6 +88,7 @@ export function validatePaymentInvoice(form) {
     },
     {
       validator: value => {
+<<<<<<< HEAD
         if (value.length > 12) {
           inputInn.value = value.slice(0, 12)
         } else {
@@ -95,6 +96,14 @@ export function validatePaymentInvoice(form) {
         }
         let l = inputInn.value.replace(/[^0-9]/g, '').length
         return 10 <= l && l <= 12
+=======
+        if (value.length > 10) {
+          inputInn.value = value.slice(0, 10)
+        } else {
+          inputInn.value = value.replace(/[^0-9]/g, '')
+        }
+        return inputInn.value.replace(/[^0-9]/g, '').length === 10
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
       },
       errorMessage: 'Неверный формат',
     }
@@ -119,11 +128,19 @@ export function validatePaymentInvoice(form) {
       rule: 'required',
       errorMessage: 'Заполните поле',
     },
+<<<<<<< HEAD
     // {
     //   rule: 'customRegexp',
     //   value: /^[А-ЯЁа-яё\s"«»\-—]+$/,
     //   errorMessage: 'Неверный формат',
     // },
+=======
+    {
+      rule: 'customRegexp',
+      value: /^[А-ЯЁа-яё\s]+$/,
+      errorMessage: 'Неверный формат',
+    },
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
   ]).addField(inputRs, [
     {
       rule: 'required',
@@ -182,12 +199,21 @@ export function validateAgreementConclusion(form) {
 
   Inputmask.default("9999").mask(inputSeries)
   Inputmask.default("999999").mask(inputNo)
+<<<<<<< HEAD
   Inputmask.default("99.99.9999").mask(inputIssueDate)
   Inputmask.default("99.99.9999").mask(inputBirthday)
   Inputmask.default("999-999").mask(inputSubdivision)
 
   const dataPickerBirthday = new AirDatepicker(inputBirthday, {
     dateFormat: 'dd.MM.yyyy',
+=======
+  Inputmask.default("99-99-9999").mask(inputIssueDate)
+  Inputmask.default("99-99-9999").mask(inputBirthday)
+  Inputmask.default("999-999").mask(inputSubdivision)
+
+  const dataPickerBirthday = new AirDatepicker(inputBirthday, {
+    dateFormat: 'dd-MM-yyyy',
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
     position: 'bottom center',
     autoClose: true,
     maxDate: calculateMinDate(),
@@ -195,7 +221,11 @@ export function validateAgreementConclusion(form) {
   });
 
   const dataPickerIssueDate = new AirDatepicker(inputIssueDate, {
+<<<<<<< HEAD
     dateFormat: 'dd.MM.yyyy',
+=======
+    dateFormat: 'dd-MM-yyyy',
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
     position: 'bottom center',
     autoClose: true,
     // maxDate: calculateMinDate(),
@@ -240,9 +270,16 @@ export function validateAgreementConclusion(form) {
     {
       validator: value => {
         let isValid = false,
+<<<<<<< HEAD
           valYear = +value.split('.')[2],
           valMonth = +value.split('.')[1],
           valDay = +value.split('.')[0];
+=======
+          valYear = +value.split('-')[2],
+          valMonth = +value.split('-')[1],
+          valDay = +value.split('-')[0];
+
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
         if (valYear <= year - 18) {
           isValid = true
         }
@@ -292,7 +329,11 @@ export function validateAgreementConclusion(form) {
     {
       plugin: JustValidatePluginDate(fields => {
         return {
+<<<<<<< HEAD
           format: 'dd.MM.yyyy',
+=======
+          format: 'dd-MM-yyyy',
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
           required: true,
         }
       }),
@@ -336,7 +377,11 @@ export function validatePassports(form) {
 
   Inputmask.default("9999").mask(inputSeries)
   Inputmask.default("999999").mask(inputNo)
+<<<<<<< HEAD
   Inputmask.default("99.99.9999").mask(inputIssueDate)
+=======
+  Inputmask.default("99-99-9999").mask(inputIssueDate)
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
   Inputmask.default("999-999").mask(inputSubdivision)
 
   const dataPickerIssueDate = new AirDatepicker(inputIssueDate, {
@@ -379,7 +424,11 @@ export function validatePassports(form) {
     {
       plugin: JustValidatePluginDate((fields) => ({
         required: true,
+<<<<<<< HEAD
         format: 'dd.MM.yyyy'
+=======
+        format: 'dd-MM-yyyy'
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
       })),
       errorMessage: 'Неверный формат',
     }

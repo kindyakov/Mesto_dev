@@ -26,8 +26,11 @@ export const zipDev = () => {
       'shared/**/*',
       'package.json',
       'gulpfile.js',
+<<<<<<< HEAD
       'settings.json',
       '.gitignore'
+=======
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
     ], { base: '.' }) // Указываем базовую директорию для корректной структуры в архиве
       .pipe(zipPlugins(`${app.path.rootFolder}_dev.zip`))
       .pipe(app.gulp.dest('./'))

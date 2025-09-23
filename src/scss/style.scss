@@ -117,16 +117,27 @@ body {
 
 .h1 {
 	font-weight: 700;
+<<<<<<< HEAD
 	line-height: 110%;
 	@include adaptiv-font(40, 26, 1);
+=======
+	@include adaptiv-font(40, 26, 1);
+	line-height: 110%;
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 }
 
 .h2 {
 	font-weight: 700;
+<<<<<<< HEAD
 	line-height: 120%;
 	padding-left: 40px;
 	@include adaptiv-font(40, 28, 1);
 
+=======
+	@include adaptiv-font(40, 28, 1);
+	line-height: 120%;
+	padding-left: 40px;
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 	@media (max-width: $md1) {
 		padding-left: 0;
 	}
@@ -162,15 +173,24 @@ form {
 	justify-content: center;
 	padding: 20px 50px;
 	font-weight: 700;
+<<<<<<< HEAD
+=======
+	@include adaptiv-font(16, 13, 1);
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 	text-align: center;
 	background-color: $white;
 	color: $white;
 	overflow: hidden;
 	cursor: pointer;
 	transition: 0.3s;
+<<<<<<< HEAD
 	position: relative;
 	@include adaptiv-font(16, 13, 1);
 
+=======
+
+	position: relative;
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 	&::after,
 	&::before {
 		content: '';
@@ -218,15 +238,24 @@ form {
 	justify-content: center;
 	padding: 20px 50px;
 	font-weight: 700;
+<<<<<<< HEAD
+=======
+	@include adaptiv-font(16, 13, 1);
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 	text-align: center;
 	background-color: $white;
 	color: $orange;
 	overflow: hidden;
 	cursor: pointer;
 	transition: 0.3s;
+<<<<<<< HEAD
 	position: relative;
 	@include adaptiv-font(16, 13, 1);
 
+=======
+
+	position: relative;
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 	&::after {
 		content: '';
 		position: absolute;
@@ -708,8 +737,13 @@ form {
 		span {
 			flex: 1 1 auto;
 			font-weight: 600;
+<<<<<<< HEAD
 			letter-spacing: -0.01em;
 			@include adaptiv-font(20, 14, 1);
+=======
+			@include adaptiv-font(20, 14, 1);
+			letter-spacing: -0.01em;
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 		}
 		@media (max-width: $md1) {
 			padding: 5px 20px 5px 20px;
@@ -876,6 +910,7 @@ input[type='date'] {
 		flex-direction: column;
 		row-gap: 15px;
 
+<<<<<<< HEAD
 		h2 {
 			@include adaptiv-font(28, 20, 1);
 			font-weight: 700;
@@ -889,6 +924,11 @@ input[type='date'] {
 		h3 {
 			font-weight: bold;
 			@include adaptiv-font(24, 18, 1);
+=======
+		h3 {
+			@include adaptiv-font(24, 18, 1);
+			font-weight: bold;
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 		}
 
 		ul {
@@ -935,11 +975,18 @@ input[type='date'] {
 	align-items: center;
 	justify-content: center;
 	min-height: 191px;
+<<<<<<< HEAD
+=======
+	@include adaptiv-font(24, 18, 1);
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 	line-height: normal;
 	font-weight: 700;
 	text-align: center;
 	border: 1px solid #004d56;
+<<<<<<< HEAD
 	@include adaptiv-font(24, 18, 1);
+=======
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
 }
 
 .btn-promo-code {

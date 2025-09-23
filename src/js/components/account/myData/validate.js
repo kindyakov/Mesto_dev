@@ -23,7 +23,11 @@ export function validatePassport(form) {
   Inputmask.default("999-999").mask(inputSubdivision)
 
   const dataPickerIssueDate = new AirDatepicker(inputIssueDate, {
+<<<<<<< HEAD
     dateFormat: 'dd.MM.yyyy',
+=======
+    dateFormat: 'yyyy-MM-dd',
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
     position: 'bottom center',
     autoClose: true,
     // maxDate: calculateMinDate(),
@@ -60,6 +64,7 @@ export function validatePassport(form) {
       errorMessage: 'Заполните поле',
     },
     {
+<<<<<<< HEAD
       plugin: JustValidatePluginDate((fields) => {
         console.log(fields)
         return {
@@ -67,6 +72,12 @@ export function validatePassport(form) {
           format: 'dd.MM.yyyy',
         }
       }),
+=======
+      plugin: JustValidatePluginDate((fields) => ({
+        required: true,
+        format: 'yyyy-MM-dd',
+      })),
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
       errorMessage: 'Неверный формат',
     }
   ]).addField(inputSubdivision, [
@@ -139,6 +150,7 @@ export function validateUrData(form) {
     },
     {
       validator: value => {
+<<<<<<< HEAD
         if (value.length > 12) {
           inputInn.value = value.slice(0, 12)
         } else {
@@ -146,6 +158,14 @@ export function validateUrData(form) {
         }
         let l = inputInn.value.replace(/[^0-9]/g, '').length
         return 10 <= l && l <= 12
+=======
+        if (value.length > 10) {
+          inputInn.value = value.slice(0, 10)
+        } else {
+          inputInn.value = value.replace(/[^0-9]/g, '')
+        }
+        return inputInn.value.replace(/[^0-9]/g, '').length === 10
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
       },
       errorMessage: 'Неверный формат',
     }
@@ -170,11 +190,19 @@ export function validateUrData(form) {
       rule: 'required',
       errorMessage: 'Заполните поле',
     },
+<<<<<<< HEAD
     // {
     //   rule: 'customRegexp',
     //   value: /^[А-ЯЁа-яё\s"«»\-—]+$/,
     //   errorMessage: 'Неверный формат',
     // },
+=======
+    {
+      rule: 'customRegexp',
+      value: /^[А-ЯЁа-яё\s]+$/,
+      errorMessage: 'Неверный формат',
+    },
+>>>>>>> a4320cc4e9c5a2e79ea95f2f1e9e13252a5b2f53
   ]).addField(inputRs, [
     {
       rule: 'required',
